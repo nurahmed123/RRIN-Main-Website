@@ -80,7 +80,7 @@ export default function Home() {
             <div className="image_bg_top"></div>
             <div className="image_bg_top2"></div>
             {/* <img src="/img/coder.png" alt="coder" /> */}
-            <Image src={"/img/coder.png"} height={"100"} width={"100"} />
+            <Image src={"https://github.com/nurahmed123/RRIN-Main-Website/blob/main/frontend_blog_app/public/img/Coder.png?raw=true"} height={"100"} width={"100"} />
           </div>
         </div>
       </section>
