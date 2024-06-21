@@ -2,8 +2,8 @@ import React from "react";
 
 const Pricing = () => {
     return (
-        <section className="pt-20 lg:pt-[120px] pb-12 lg:pb-[90px] relative z-20 overflow-hidden">
-            <div className="container">
+        <section className="m-auto w-full pt-20 lg:pt-[120px] pb-12 lg:pb-[90px] relative z-20 overflow-hidden">
+            <div className="container !m-auto !w-full">
                 <div className="flex flex-wrap -mx-4">
                     <div className="w-full px-4">
                         <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
@@ -28,7 +28,7 @@ const Pricing = () => {
                     </div>
                 </div>
                 <div className="flex flex-wrap justify-center -mx-4">
-                    <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="w-full md:w-1/2 lg:w-1/3 px-4">
                         <div
                             className="
                             dark:bg-gray-700
@@ -369,7 +369,7 @@ const Pricing = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+                    <div data-aos="fade-down" data-aos-anchor-placement="center-bottom" className="w-full md:w-1/2 lg:w-1/3 px-4">
                         <div
                             className="
                 dark:bg-gray-700
@@ -710,7 +710,7 @@ const Pricing = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+                    <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" className="w-full md:w-1/2 lg:w-1/3 px-4">
                         <div
                             className="
                bg-white

@@ -43,11 +43,39 @@ export default function Aside() {
                         <span>Blogs</span>
                     </li>
                 </Link>
+                <Link href="/projects">
+                    <li className={activeLink === '/projects' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/projects')}>
+                        <BsPostcard />
+                        <span>Projects</span>
+                    </li>
+                </Link>
+                <Link href="/achievements">
+                    <li className={activeLink === '/achievements' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/achievements')}>
+                        <BsPostcard />
+                        <span>Achievements</span>
+                    </li>
+                </Link>
                 <Link href="/blogs/addblog">
                     <li className={activeLink === '/blogs/addblog' ? 'navactive' : ''}
                         onClick={() => handleLinkClick('/blogs/addblog')}>
                         <MdOutlineAddPhotoAlternate />
                         <span>AddBlog</span>
+                    </li>
+                </Link>
+                <Link href="/projects/addproject">
+                    <li className={activeLink === '/projects/addproject' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/projects/addproject')}>
+                        <MdOutlineAddPhotoAlternate />
+                        <span>Add Projects</span>
+                    </li>
+                </Link>
+                <Link href="/achievements/addachievement">
+                    <li className={activeLink === '/achievements/addachievement' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/achievements/addachievement')}>
+                        <MdOutlineAddPhotoAlternate />
+                        <span>Add Achievements</span>
                     </li>
                 </Link>
                 <Link href="/draft">

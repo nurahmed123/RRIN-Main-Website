@@ -7,8 +7,17 @@ import { IoMoonSharp } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { LuSun } from "react-icons/lu";
+import { useRouter } from 'next/router';
+
 
 export default function Header() {
+    const router = useRouter();
+    const [activeLink, setActiveLink] = useState('/');
+
+    useEffect(() => {
+        // Update active link state when the page is reloaded
+        setActiveLink(router.pathname);
+    }, [router.pathname]);
 
     const [searchopen, setSearchopen] = useState(false);
 
@@ -88,12 +97,12 @@ export default function Header() {
 
                 <div className="nav_list_dark">
                     <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/blog">Blog</Link></li>
-                        <li><Link href="/projects">Projects</Link></li>
-                        <li><Link href="/achievements">Achievements</Link></li>
-                        <li><Link href="/about">About us</Link></li>
-                        <li><Link href="/contact">Contact</Link></li>
+                        <li><Link className={activeLink === '/' ? '!text-[#5485e0]' : ''} href="/">Home</Link></li>
+                        <li><Link className={activeLink === '/blog' ? '!text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
+                        <li><Link className={activeLink === '/project' ? '!text-[#5485e0]' : ''} href="/project">Projects</Link></li>
+                        <li><Link className={activeLink === '/achievement' ? '!text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
+                        <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
+                        <li><Link className={activeLink === '/contact' ? '!text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
                     </ul>
                     <div className="navlist_mobile_ul">
                         <button onClick={toggleDarkMode}>{darkMode ? <IoMoonSharp /> : <LuSun />}</button>
@@ -146,9 +155,12 @@ export default function Header() {
                 <hr />
                 <h3 className="mt-3">Main Menu</h3>
                 <ul onClick={handleLinkClick}>
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/">About Me</Link></li>
-                    <li><Link href="/">Contact</Link></li>
+                    <li><Link className={activeLink === '/' ? 'text-[#5485e0]' : ''} href="/">Home</Link></li>
+                    <li><Link className={activeLink === '/blog' ? 'text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
+                    <li><Link className={activeLink === '/project' ? 'text-[#5485e0]' : ''} href="/project">Projects</Link></li>
+                    <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
+                    <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
+                    <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
                 </ul>
                 <hr />
                 <h3 className="mt-3">Topics</h3>

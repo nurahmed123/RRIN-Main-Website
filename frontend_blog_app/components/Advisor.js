@@ -7,7 +7,7 @@ const Advisor = () => {
                 <div className="mx-auto max-w-2xl md:text-center">
                     <h2 className="font-display text-3xl tracking-tight dark:text-slate-100 text-slate-900 sm:text-4xl">Our Advisors</h2>
                 </div>
-                <ul role="list"
+                <ul data-aos="fade-up" role="list"
                     className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
                     <li>
                         <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">

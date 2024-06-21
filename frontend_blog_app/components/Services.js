@@ -15,7 +15,7 @@ const Services = () => {
             <p className="mb-12 text-lg text-gray-500">Here is a few of the awesome Services we provide.</p>
             <div className="w-full">
                 <div className="flex flex-col w-full mb-10 sm:flex-row">
-                    <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div data-aos="fade-right" className="w-full mb-10 sm:mb-0 sm:w-1/2">
                         <div className="relative h-full ml-0 mr-0 sm:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white dark:bg-gray-700 border-2 border-indigo-500 rounded-lg">
@@ -28,7 +28,7 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full sm:w-1/2">
+                    <div data-aos="fade-left" className="w-full sm:w-1/2">
                         <div className="relative h-full ml-0 md:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg dark:bg-gray-700">
@@ -42,7 +42,7 @@ const Services = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full mb-5 sm:flex-row">
+                <div data-aos="zoom-in-right" className="flex flex-col w-full mb-5 sm:flex-row">
                     <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
                         <div className="relative h-full ml-0 mr-0 sm:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-blue-400 rounded-lg"></span>
@@ -56,7 +56,7 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div data-aos="zoom-in-up" className="w-full mb-10 sm:mb-0 sm:w-1/2">
                         <div className="relative h-full ml-0 mr-0 sm:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-yellow-400 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-yellow-400 rounded-lg dark:bg-gray-700">
@@ -69,7 +69,7 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full sm:w-1/2">
+                    <div data-aos="zoom-in-left" className="w-full sm:w-1/2">
                         <div className="relative h-full ml-0 md:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg dark:bg-gray-700">

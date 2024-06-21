@@ -317,7 +317,7 @@ button {
     position: fixed;
     top: 100px;
     left: 0;
-    width: 130px;
+    width: 160px;
     height: 100vh;
     background-color: #fff;
     z-index: 9;
@@ -427,6 +427,7 @@ button {
     flex-direction: column;
     justify-content: center;
     border-radius: 50px;
+    margin: 1rem;
 }
 
 .four_card:nth-child(2) {
@@ -1238,12 +1239,12 @@ button {
 
     from,
     to {
-        stroke-dashoffset: 452;
+        strokeDashoffset: 452;
         transform: rotate(-45deg);
     }
 
     50% {
-        stroke-dashoffset: 169.5;
+        strokeDashoffset: 169.5;
         transform: rotate(-180deg);
     }
 }
@@ -1254,12 +1255,12 @@ button {
     3%,
     47%,
     to {
-        stroke-dashoffset: -12;
+        strokeDashoffset: -12;
     }
 
     14%,
     36% {
-        stroke-dashoffset: 0;
+        strokeDashoffset: 0;
     }
 }
 

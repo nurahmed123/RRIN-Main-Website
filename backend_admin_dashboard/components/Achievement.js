@@ -7,14 +7,14 @@ import MarkdownEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 
 
-export default function Blog(
+export default function Achievement(
 
     {
         _id,
         title: existingTitle,
         slug: existingSlug,
         description: existingDescription,
-        blogcategory: existingBlogcategory,
+        achievementcategory: existingAachievementcategory,
         tags: existingTags,
         status: existingStatus,
     }
@@ -28,7 +28,7 @@ export default function Blog(
 
     const [title, setTitle] = useState(existingTitle || '')
     const [slug, setSlug] = useState(existingSlug || '')
-    const [blogcategory, setBlogcategory] = useState(existingBlogcategory || [])
+    const [achievementcategory, setAchievementcategory] = useState(existingAachievementcategory || [])
     const [description, setDescription] = useState(existingDescription || '')
     const [tags, setTags] = useState(existingTags || [])
     const [status, setStatus] = useState(existingStatus || '')
@@ -38,13 +38,13 @@ export default function Blog(
         ev.preventDefault();
       
 
-        const data = { title, slug, description, blogcategory, tags, status };
+        const data = { title, slug, description, achievementcategory, tags, status };
 
         if (_id) {
-            await axios.put('/api/blogs', { ...data, _id })
+            await axios.put('/api/achievements', { ...data, _id })
             toast.success('Data Updated!')
         } else {
-            await axios.post('/api/blogs', data)
+            await axios.post('/api/achievements', data)
             toast.success('Product Created!')
         }
 
@@ -54,7 +54,7 @@ export default function Blog(
     
 
     if (redirect) {
-        router.push('/blogs')
+        router.push('/achievements')
         return null;
     }
 
@@ -96,20 +96,19 @@ export default function Blog(
             {/* blog category */}
             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="catergory">Select Category (ctrl + leftclick for multiple select)</label>
-                <select onChange={(e) => setBlogcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={blogcategory} >
-                    <option value="htmlcssjs">Html, Css & javaScript</option>
-                    <option value="nextjs">Next Js, React js</option>
-                    <option value="database">Database</option>
-                    <option value="deployment">Deployment</option>
+                <select onChange={(e) => setAchievementcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={achievementcategory} >
+                    <option value="htmlcssjs">Internatioanl</option>
+                    <option value="nextjs">National</option>
+                    <option value="database">Regional</option>
                 </select>
-                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingBlogcategory) && existingBlogcategory.map(category => (
+                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingAachievementcategory) && existingAachievementcategory.map(category => (
                     <span key={category}>{category}</span>
                 ))}</p>
             </div>
 
             {/* markdown description */}
             <div className='description w-100 flex flex-col flex-left mb-2'>
-                <label htmlFor="description">Blog Content</label>
+                <label htmlFor="description">About Achievements</label>
                 <MarkdownEditor
                     value={description}
                     onChange={(ev) => setDescription(ev.text)}
@@ -173,7 +172,7 @@ export default function Blog(
 
 
             <div className='w-100 mb-2'>
-                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE BLOG</button>
+                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE Achievements</button>
             </div>
 
         </form>

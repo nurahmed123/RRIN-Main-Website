@@ -18,7 +18,7 @@ import { FaGithub, FaHtml5, FaInstagram, FaTwitter } from "react-icons/fa6";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
 
-export default function blogPage() {
+export default function projectPage() {
 
     const router = useRouter();
     const { slug } = router.query;
@@ -28,7 +28,7 @@ export default function blogPage() {
 
     useEffect(() => {
         if (slug) { // Check if slug exists
-            axios.get(`/api/getblog?slug=${slug}`).then(res => {
+            axios.get(`/api/getproject?slug=${slug}`).then(res => {
                 const alldata = res.data;
                 setBlog(alldata);
                 setLoading(false);

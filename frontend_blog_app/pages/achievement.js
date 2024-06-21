@@ -21,10 +21,10 @@ function extractFirstImageUrl(markdownContent) {
     return match ? match[1] : null;
 }
 
-export default function achievements() {
+export default function achievement() {
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(5);
-    const { alldata, loading } = useFetchData(`/api/getblog`);
+    const { alldata, loading } = useFetchData(`/api/getachievement`);
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -73,13 +73,13 @@ export default function achievements() {
                                     const firstImageUrl = extractFirstImageUrl(blog.description);
                                     return <div className="blog" key={blog._id} data-aos="fade-up">
                                         <div className="blogimg">
-                                            <Link href={`/blog/${blog.slug}`}>
+                                            <Link href={`/achievement/${blog.slug}`}>
                                                 <img src={firstImageUrl || "/img/noimage.jpg"} alt="blog" />
                                             </Link>
                                         </div>
                                         <div className="bloginfo">
                                             <Link href={`/tag/${blog.tags[0]}`}><div className="blogtag">{blog.tags[0]}</div></Link>
-                                            <Link href={`/blog/${blog.slug}`}><h3>{blog.title}</h3></Link>
+                                            <Link href={`/achievement/${blog.slug}`}><h3>{blog.title}</h3></Link>
                                             <p>Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…</p>
                                             <div className="blogauthor flex gap-1">
                                                 <div className="blogaimg">

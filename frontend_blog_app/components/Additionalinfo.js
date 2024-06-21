@@ -7,7 +7,7 @@ const Additionalinfo = () => {
         <section className="overflow-hidden py-8 sm:py-16 mt-8">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-                    <div className="lg:pr-8 lg:pt-4">
+                    <div data-aos="zoom-in-right" className="lg:pr-8 lg:pt-4">
                         <div className="lg:max-w-lg">
                             <h2 className="text-base font-semibold leading-7 text-indigo-600">Produce faster</h2>
                             <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">An Enterprise API</p>
@@ -70,7 +70,7 @@ const Additionalinfo = () => {
                             </a>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxjb21wdXRlcnxlbnwwfDB8fHwxNjkxODE2NjY3fDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Product screenshot" className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442" />
+                    <img data-aos="zoom-in-left" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxjb21wdXRlcnxlbnwwfDB8fHwxNjkxODE2NjY3fDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Product screenshot" className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442" />
                     {/* <Image src={"../public/img/table-professor.svg"} width="300" height="200"></Image> */}
                 </div>
             </div>
@@ -79,8 +79,8 @@ const Additionalinfo = () => {
             <div className="relative mt-[10rem]">
                 <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
                     <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 lg:col-start-2">
-                        <div>
-                            <div>
+                        <div data-aos="zoom-in-left">
+                            <div >
                                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         strokeWidth="1.5" stroke="currentColor" aria-hidden="true"
@@ -91,7 +91,7 @@ const Additionalinfo = () => {
                                     </svg>
                                 </span>
                             </div>
-                            <div className="mt-6">
+                            <div data-aos="zoom-in-left" className="mt-6">
                                 <h2 className="text-3xl font-bold tracking-tight text-white">
                                     Sentiment Analysis:
                                 </h2>
@@ -110,7 +110,7 @@ const Additionalinfo = () => {
                     </div>
                     <div className="mt-12 sm:mt-16 lg:mt-0">
                         <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                            <img alt="Inbox user interface" loading="lazy" width="647" height="486"
+                            <img data-aos="zoom-in-right" alt="Inbox user interface" loading="lazy" width="647" height="486"
                                 className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
                                 src="https://images.unsplash.com/photo-1599134842279-fe807d23316e" />
                         </div>

@@ -110,7 +110,7 @@ export default function Home() {
           {/* title dashboard */}
           <div className="titledashboard flex flex-sb">
             <div data-aos="fade-right">
-              <h2>Blogs <span>Dashboard</span></h2>
+              <h2>RoboSuperior <span>Dashboard</span></h2>
               <h3>ADMIN PANEL</h3>
             </div>
             <div className="breadcrumb" data-aos="fade-left">

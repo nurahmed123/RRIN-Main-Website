@@ -7,14 +7,14 @@ import MarkdownEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 
 
-export default function Blog(
+export default function Project(
 
     {
         _id,
         title: existingTitle,
         slug: existingSlug,
         description: existingDescription,
-        blogcategory: existingBlogcategory,
+        projectcategory: existingProjectcategory,
         tags: existingTags,
         status: existingStatus,
     }
@@ -28,7 +28,7 @@ export default function Blog(
 
     const [title, setTitle] = useState(existingTitle || '')
     const [slug, setSlug] = useState(existingSlug || '')
-    const [blogcategory, setBlogcategory] = useState(existingBlogcategory || [])
+    const [projectcategory, setProjectcategory] = useState(existingProjectcategory || [])
     const [description, setDescription] = useState(existingDescription || '')
     const [tags, setTags] = useState(existingTags || [])
     const [status, setStatus] = useState(existingStatus || '')
@@ -38,13 +38,13 @@ export default function Blog(
         ev.preventDefault();
       
 
-        const data = { title, slug, description, blogcategory, tags, status };
+        const data = { title, slug, description, projectcategory, tags, status };
 
         if (_id) {
-            await axios.put('/api/blogs', { ...data, _id })
+            await axios.put('/api/projects', { ...data, _id })
             toast.success('Data Updated!')
         } else {
-            await axios.post('/api/blogs', data)
+            await axios.post('/api/projects', data)
             toast.success('Product Created!')
         }
 
@@ -54,7 +54,7 @@ export default function Blog(
     
 
     if (redirect) {
-        router.push('/blogs')
+        router.push('/projects')
         return null;
     }
 
@@ -96,20 +96,20 @@ export default function Blog(
             {/* blog category */}
             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="catergory">Select Category (ctrl + leftclick for multiple select)</label>
-                <select onChange={(e) => setBlogcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={blogcategory} >
+                <select onChange={(e) => setProjectcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={projectcategory} >
                     <option value="htmlcssjs">Html, Css & javaScript</option>
                     <option value="nextjs">Next Js, React js</option>
                     <option value="database">Database</option>
                     <option value="deployment">Deployment</option>
                 </select>
-                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingBlogcategory) && existingBlogcategory.map(category => (
+                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingProjectcategory) && existingProjectcategory.map(category => (
                     <span key={category}>{category}</span>
                 ))}</p>
             </div>
 
             {/* markdown description */}
             <div className='description w-100 flex flex-col flex-left mb-2'>
-                <label htmlFor="description">Blog Content</label>
+                <label htmlFor="description">ABOUT PROJECTS</label>
                 <MarkdownEditor
                     value={description}
                     onChange={(ev) => setDescription(ev.text)}
@@ -173,7 +173,7 @@ export default function Blog(
 
 
             <div className='w-100 mb-2'>
-                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE BLOG</button>
+                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE PROJECT</button>
             </div>
 
         </form>

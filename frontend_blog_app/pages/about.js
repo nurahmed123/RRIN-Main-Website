@@ -18,7 +18,7 @@ const about = () => {
                 <div className='text-red-100'>about</div>
             </div>
 
-            <AboutSection/>
+            <AboutSection />
         </>
     )
 }

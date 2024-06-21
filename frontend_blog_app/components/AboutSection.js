@@ -20,17 +20,17 @@ const AboutSection = () => {
                                     <a href="#" className="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
                                 </div>
                             </div>
-                            <hr className="my-6 border-t border-gray-300"/>
-                                <div className="flex flex-col">
-                                    <span className="text-gray-700 uppercase font-bold tracking-wider mb-2 dark:text-gray-50">Skills</span>
-                                    <ul>
-                                        <li className="mb-2 dark:text-gray-50">JavaScript</li>
-                                        <li className="mb-2 dark:text-gray-50">React</li>
-                                        <li className="mb-2 dark:text-gray-50">Node.js</li>
-                                        <li className="mb-2 dark:text-gray-50">HTML/CSS</li>
-                                        <li className="mb-2 dark:text-gray-50">Tailwind Css</li>
-                                    </ul>
-                                </div>
+                            <hr className="my-6 border-t border-gray-300" />
+                            <div className="flex flex-col">
+                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2 dark:text-gray-50">Skills</span>
+                                <ul>
+                                    <li className="mb-2 dark:text-gray-50">JavaScript</li>
+                                    <li className="mb-2 dark:text-gray-50">React</li>
+                                    <li className="mb-2 dark:text-gray-50">Node.js</li>
+                                    <li className="mb-2 dark:text-gray-50">HTML/CSS</li>
+                                    <li className="mb-2 dark:text-gray-50">Tailwind Css</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div className="col-span-4 sm:col-span-9">

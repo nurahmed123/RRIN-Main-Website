@@ -60,6 +60,10 @@ body.dark {
   color: #fff;
 }
 
+.dark #white-image{
+  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(185deg) brightness(119%) contrast(115%);
+}
+
 .scrollToTop.show {
   opacity: 1;
 }
@@ -374,7 +378,7 @@ button {
 .nav_list_dark ul {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .nav_list_dark ul li a {

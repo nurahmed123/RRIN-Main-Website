@@ -17,7 +17,7 @@ export default function DeleteProduct() {
     const router = useRouter();
     // Check if there's no active session and redirect to login page
     if (!session) {
-        router.push('/blogs');
+        router.push('/login');
         return null; // Return null or any loading indicator while redirecting
     }
 
@@ -41,18 +41,18 @@ export default function DeleteProduct() {
         if (!id) {
             return;
         } else {
-            axios.get('/api/blogs?id=' + id).then(response => {
+            axios.get('/api/projects?id=' + id).then(response => {
                 setProductInfo(response.data)
             })
         }
     }, [id]);
 
     function goback() {
-        router.push('/blogs');
+        router.push('/projects');
     }
 
     async function deleteProduct() {
-        await axios.delete('/api/blogs?id=' + id)
+        await axios.delete('/api/projects?id=' + id)
         toast.success('Deleted Sucessfully!')
         goback();
     }
