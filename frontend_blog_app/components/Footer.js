@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="footer_logo" data-aos="fade-right">
                     <h2>RoboSuperior</h2>
                     <h4>&copy; 2024 ALL Rights Reserved.</h4>
-                    <h3>Coded By <Link href="https://linkedin.com/in/06nurahmed" target="_blank"><span>@Nur Ahmed</span></Link></h3>
+                    <h3>Developed By <Link href="https://linkedin.com/in/06nurahmed" target="_blank"><span>@Nur Ahmad</span></Link></h3>
                 </div>
                 <div className="q_links" data-aos="fade-up">
                     <h3>Quick Links</h3>

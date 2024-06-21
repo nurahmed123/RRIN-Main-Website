@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 
@@ -16,19 +17,20 @@ const AboutSection = () => {
                                 <h1 className="text-xl font-bold dark:text-gray-50">RoboSeperior</h1>
                                 <p className="text-gray-700 dark:text-gray-300">By Md Nur Ahmad</p>
                                 <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                    <a href="#" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
+                                    <Link href="/contat" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</Link>
                                     <a href="#" className="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
                                 </div>
                             </div>
                             <hr className="my-6 border-t border-gray-300" />
                             <div className="flex flex-col">
-                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2 dark:text-gray-50">Skills</span>
+                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2 dark:text-gray-50">Menu</span>
                                 <ul>
-                                    <li className="mb-2 dark:text-gray-50">JavaScript</li>
-                                    <li className="mb-2 dark:text-gray-50">React</li>
-                                    <li className="mb-2 dark:text-gray-50">Node.js</li>
-                                    <li className="mb-2 dark:text-gray-50">HTML/CSS</li>
-                                    <li className="mb-2 dark:text-gray-50">Tailwind Css</li>
+                                    <Link href={"/"}><li className="mb-2 dark:text-gray-50">Home</li></Link>
+                                    <Link href={"/blog"}><li className="mb-2 dark:text-gray-50">Blog</li></Link>
+                                    <Link href={"/projects"}><li className="mb-2 dark:text-gray-50">Projects</li></Link>
+                                    <Link href={"/achievements"}><li className="mb-2 dark:text-gray-50">Achievements</li></Link>
+                                    <Link href={"/about us"}><li className="mb-2 dark:text-gray-50 !text-[#5485e0]">About us</li></Link>
+                                    <Link href={"/contact"}><li className="mb-2 dark:text-gray-50">Contact</li></Link>
                                 </ul>
                             </div>
                         </div>

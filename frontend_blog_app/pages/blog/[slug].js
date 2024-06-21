@@ -71,7 +71,7 @@ export default function blogPage() {
                     >
                         {String(children).replace(/\n$/, '')}
                     </SyntaxHighlighter>
-                    <button style={{ position: 'absolute', top: '0', right: '0', zIndex: '1', background: '#3d3d3d', color: '#fff', padding: '10px' }} onClick={handleCopy}>
+                    <button style={{ position: 'absolute', top: '0', borderRadius: '.6rem', right: '0', zIndex: '1', background: '#3d3d3d', color: '#fff', padding: '10px' }} onClick={handleCopy}>
                         {copied ? 'Copied!' : 'Copy code'}
                     </button>
                 </div>

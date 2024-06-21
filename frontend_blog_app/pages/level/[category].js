@@ -77,10 +77,10 @@ export default function AchievementCategoryPage() {
                 <div className="container">
                     <div className="category_title">
                         <div className="flex gap-1" data-aos="fade-right">
-                            <h1>{loading ? <div>Loading...</div> : publishedblogs ? publishedblogs && publishedblogs[0]?.blogcategory : publishedblogs && publishedblogs.blogcategory}</h1>
-                            <span>{loading ? <div>0</div> : publishedblogs.filter(blog => blog.blogcategory).length}</span>
+                            <h1>{loading ? <div>Loading...</div> : publishedblogs ? publishedblogs && publishedblogs[0]?.achievementcategory : publishedblogs && publishedblogs.achievementcategory}</h1>
+                            <span>{loading ? <div>0</div> : publishedblogs.filter(blog => blog.achievementcategory).length}</span>
                         </div>
-                        <p data-aos="fade-left">Nothing To Preview</p>
+                        <p data-aos="fade-left">{(publishedblogs.filter(blog => blog.achievementcategory).length) != 0 ? "" : "Nothing To Preview"}</p>
                     </div>
                     <div className="category_blogs mt-3">
                         {loading ? <><div className="wh-100 flex flex-center mt-2 pb-5">

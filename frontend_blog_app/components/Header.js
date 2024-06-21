@@ -101,7 +101,7 @@ export default function Header() {
                         <li><Link className={activeLink === '/blog' ? '!text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                         <li><Link className={activeLink === '/project' ? '!text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                         <li><Link className={activeLink === '/achievement' ? '!text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
-                        <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
+                        <li><Link className={activeLink === '/about' ? '!text-[#5485e0]' : ''} href="/about">About us</Link></li>
                         <li><Link className={activeLink === '/contact' ? '!text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
                     </ul>
                     <div className="navlist_mobile_ul">
