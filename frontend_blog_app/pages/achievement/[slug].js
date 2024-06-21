@@ -16,7 +16,7 @@ import { FiDatabase } from "react-icons/fi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { FaGithub, FaHtml5, FaInstagram, FaTwitter } from "react-icons/fa6";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
-import { RightTopicSection } from "@/components/RightTopicSection";
+import { RightAchievementTopicSection } from "@/components/RightAchievementTopicSection";
 
 export default function blogPage() {
 
@@ -101,8 +101,8 @@ export default function blogPage() {
         <div className="slugpage">
             <div className="container">
                 <div className="topslug_titles" data-aos="fade-right">
-                    <h1 className="slugtitle">{loading ?<div> loading...</div> : blog && blog[0]?.title}</h1>
-                    <h5>By <span>RoboSuperior</span>・ Published in <span>{loading ?<div> loading...</div> : blog && blog[0]?.blogcategory}</span> ・   {blog && new Date(blog[0].createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    <h1 className="slugtitle">{loading ? <div> loading...</div> : blog && blog[0]?.title}</h1>
+                    <h5>By <span>RoboSuperior</span>・ Published in <span>{loading ? <div> loading...</div> : blog && blog[0]?.blogcategory}</span> ・   {blog && new Date(blog[0].createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                         <span>・ 1 min read</span></h5>
                 </div>
 
@@ -111,7 +111,7 @@ export default function blogPage() {
                     <div className="leftblog_data_markdown" data-aos="fade-up">
                         {loading ? <>
                             <div className='wh-100 flex flex-center mt-3'>
-                                    <div aria-live="assertive" role="alert" className="loader"></div>
+                                <div aria-live="assertive" role="alert" className="loader"></div>
                             </div>
                         </> : <>
                             <div className="w-100 blogcontent" >
@@ -130,8 +130,8 @@ export default function blogPage() {
                         </>}
                     </div>
                     <div className="rightslug_data">
-                        <RightPortfolioInfo/>
-                        <RightTopicSection/>
+                        <RightPortfolioInfo />
+                        <RightAchievementTopicSection />
                     </div>
                 </div>
             </div>

@@ -37,6 +37,8 @@ export default function Home() {
 
   // use this on top for render error
   const [blogsData, setBlogsData] = useState([]);
+  const [projectsData, setProjectsData] = useState([]);
+  const [achievementsData, setAchievementsData] = useState([]);
 
   // Define options within the component scope
   const options = {
@@ -60,6 +62,16 @@ export default function Home() {
         const response = await fetch('/api/blogs');
         const data = await response.json();
         setBlogsData(data); // Assuming data is an array of blog objects
+
+        const projectResponse = await fetch('/api/projects');
+        const projectData = await projectResponse.json();
+        setProjectsData(projectData); // Assuming data is an array of blog objects
+
+        const achievementResponse = await fetch('/api/achievements');
+        const achievementResponseData = await achievementResponse.json();
+        setAchievementsData(achievementResponseData); // Assuming data is an array of blog objects
+
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -124,12 +136,12 @@ export default function Home() {
               <span>{blogsData.filter(dat => dat.status === "publish").length}</span>
             </div>
             <div className="four_card" data-aos="fade-right">
-              <h2>Total Topics</h2>
-              <span>4</span>
+            <h2>Total Projects</h2>
+            <span>{projectsData.filter(dat => dat.status === "publish").length}</span>
             </div>
             <div className="four_card" data-aos="fade-left">
-              <h2>Total Tags</h2>
-              <span>6</span>
+            <h2>Total Achievements</h2>
+            <span>{achievementsData.filter(dat => dat.status === "publish").length}</span>
             </div>
             <div className="four_card" data-aos="fade-left">
               <h2>Draft Blogs</h2>

@@ -11,9 +11,9 @@ export default async function handle(req, res) {
             // Fetch a single blog by id
             const blog = await Achievement.findById(req.query.id);
             res.json(blog);
-        } else if (req.query?.blogcategory) {
+        } else if (req.query?.achievementcategory) {
             // Fetch blogs by blogcategory
-            const blogs = await Achievement.find({ blogcategory: req.query.blogcategory });
+            const blogs = await Achievement.find({ achievementcategory: req.query.achievementcategory });
             res.json(blogs.reverse());
         } else if (req.query?.tags) {
             // Fetch blogs by blogcategory

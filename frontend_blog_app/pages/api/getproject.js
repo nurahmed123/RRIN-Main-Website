@@ -11,7 +11,7 @@ export default async function handle(req, res) {
             // Fetch a single blog by id
             const blog = await Project.findById(req.query.id);
             res.json(blog);
-        } else if (req.query?.blogcategory) {
+        } else if (req.query?.projectcategory) {
             // Fetch blogs by blogcategory
             const blogs = await Project.find({ blogcategory: req.query.blogcategory });
             res.json(blogs.reverse());

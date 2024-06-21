@@ -12,7 +12,7 @@ const AboutSection = () => {
                             <div className="flex flex-col items-center">
                                 {/* <img src="../public/img/Coder.png"> */}
                                 {/* <Image src={"/../public/img/Coder.png"} height={'100'} width={'100'} /> */}
-                                <Image src={"/img/coder.png"} height={"100"} width={"100"} className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
+                                <Image src={"/img/coder.png"} alt='RoboSuperior' height={"100"} width={"100"} className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
                                 <h1 className="text-xl font-bold dark:text-gray-50">RoboSeperior</h1>
                                 <p className="text-gray-700 dark:text-gray-300">By Md Nur Ahmad</p>
                                 <div className="mt-6 flex flex-wrap gap-4 justify-center">

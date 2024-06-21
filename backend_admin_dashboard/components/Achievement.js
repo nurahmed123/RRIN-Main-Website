@@ -33,10 +33,10 @@ export default function Achievement(
     const [tags, setTags] = useState(existingTags || [])
     const [status, setStatus] = useState(existingStatus || '')
 
-    
+
     async function createProduct(ev) {
         ev.preventDefault();
-      
+
 
         const data = { title, slug, description, achievementcategory, tags, status };
 
@@ -51,7 +51,7 @@ export default function Achievement(
         setRedirect(true);
     };
 
-    
+
 
     if (redirect) {
         router.push('/achievements')
@@ -97,9 +97,9 @@ export default function Achievement(
             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="catergory">Select Category (ctrl + leftclick for multiple select)</label>
                 <select onChange={(e) => setAchievementcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={achievementcategory} >
-                    <option value="htmlcssjs">Internatioanl</option>
-                    <option value="nextjs">National</option>
-                    <option value="database">Regional</option>
+                    <option value="international">Internatioanl</option>
+                    <option value="national">National</option>
+                    <option value="regional">Regional</option>
                 </select>
                 <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingAachievementcategory) && existingAachievementcategory.map(category => (
                     <span key={category}>{category}</span>
@@ -145,12 +145,9 @@ export default function Achievement(
             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="tags">Tags</label>
                 <select onChange={(e) => setTags(Array.from(e.target.selectedOptions, option => option.value))} name="tags" id="tags" multiple value={tags}>
-                    <option value="html">Html</option>
-                    <option value="css">css</option>
-                    <option value="javascript">javaScript</option>
-                    <option value="nextjs">Next Js</option>
-                    <option value="reactjs">react Js</option>
-                    <option value="database">Database</option>
+                    <option value="nasa conrad challengesa">Nasa Conrad Challenge</option>
+                    <option value="nasa">Nasa</option>
+                    <option value="competition">Competition</option>
                 </select>
                 <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {existingTags && existingTags.length > 0 && (
                     <span>{existingTags}</span>

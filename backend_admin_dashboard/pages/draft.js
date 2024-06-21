@@ -30,7 +30,7 @@ export default function Draft() {
     // pagination blogs
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(4);
-    const { alldata, loading } = useFetchData('/api/blogs');
+    const { alldata, loading } = useFetchData('/api/achievements');
 
     // Function to handle page change
     const paginate = (pageNumber) => {

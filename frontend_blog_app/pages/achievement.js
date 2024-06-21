@@ -8,6 +8,7 @@ import { FaGithub, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import useFetchData from "@/hooks/useFetchData";
 import GalleryView from "@/components/GalleryView";
+import { RightAchievementTopicSection } from "@/components/RightAchievementTopicSection";
 
 function extractFirstImageUrl(markdownContent) {
     // Check if markdownContent is provided and non-empty
@@ -113,43 +114,7 @@ export default function achievement() {
                         </div>
                     </div>
                     <div className="rightblog_info">
-                        <div className="topics_sec">
-                            <h2>Topics</h2>
-                            <div className="topics_list">
-                                <Link href='/topics/htmlcssjs' data-aos="fade-up">
-                                    <div className="topics">
-                                        <div className="flex flex-center topics_svg">
-                                            <FaHtml5 />
-                                        </div>
-                                        <h3>Html, css & javaScript</h3>
-                                    </div>
-                                </Link>
-                                <Link href='/topics/nextjs'>
-                                    <div className="topics">
-                                        <div className="flex flex-center topics_svg">
-                                            <TbBrandNextjs />
-                                        </div>
-                                        <h3>Next Js, React js</h3>
-                                    </div>
-                                </Link>
-                                <Link href='/topics/database' data-aos="fade-up">
-                                    <div className="topics">
-                                        <div className="flex flex-center topics_svg">
-                                            <FiDatabase />
-                                        </div>
-                                        <h3>DataBase</h3>
-                                    </div>
-                                </Link>
-                                <Link href='/topics/deployment' data-aos="fade-up">
-                                    <div className="topics">
-                                        <div className="flex flex-center topics_svg">
-                                            <AiOutlineDeploymentUnit />
-                                        </div>
-                                        <h3>Deployment</h3>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
+                        <RightAchievementTopicSection />
                         <div className="tags_sec mt-3">
                             <h2>Tags</h2>
                             <div className="tags_list" data-aos="fade-up">
