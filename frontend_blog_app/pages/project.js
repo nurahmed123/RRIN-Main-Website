@@ -58,7 +58,22 @@ export default function project() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <div className="!mt-4 container">
+                <div className="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
+                    <div className="flex items-center gap-12">
+                        <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-white">Our Projects </h2>
 
+                        <p className="hidden max-w-screen-sm text-gray-500 dark:text-gray-300 md:block">
+                            Here is our few memories....
+                        </p>
+                    </div>
+
+                    <a href="#"
+                        className="inline-block rounded-lg border bg-white dark:bg-gray-700 dark:border-none px-4 py-2 text-center text-sm font-semibold text-gray-500 dark:text-gray-200 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:px-8 md:py-3 md:text-base">
+                        More
+                    </a>
+                </div>
+            </div>
             <GalleryView />
 
             <section className="main_blog_section">

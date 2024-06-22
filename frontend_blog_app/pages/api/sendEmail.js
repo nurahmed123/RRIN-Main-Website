@@ -15,7 +15,7 @@ export default async function sendEmail(req, res) {
             auth: {
                 user: process.env.SMTP_EMAIL,
                 pass: process.env.SMTP_PASSWORD
-    
+
             }
         });
 
@@ -266,7 +266,7 @@ export default async function sendEmail(req, res) {
     
     </html>`
         };
-    
+
         auth.sendMail(receiver, (error, emailResponse) => {
             if (error)
                 throw error;
