@@ -13,8 +13,8 @@ export default function Footer() {
                     <h3>Quick Links</h3>
                     <ul>
                         <li><Link href='/'>Advertise with us</Link></li>
-                        <li><Link href='/'>About Us</Link></li>
-                        <li><Link href='/'>Contact Us</Link></li>
+                        <li><Link href='/about'>About Us</Link></li>
+                        <li><Link href='/contact'>Contact Us</Link></li>
                     </ul>
                 </div>
                 <div className="q_links" data-aos="fade-up">
@@ -29,9 +29,9 @@ export default function Footer() {
                     <h3>Social Media</h3>
                     <ul>
                         <li><Link href='https://github.com/nurahmed123' target="_blank">Github</Link></li>
-                        <li><Link href='https://twitter.com/06nurahmed' target="_blank">Twitter</Link></li>
-                        <li><Link href='https://instagram.com/06nurahmed' target="_blank">Instagram</Link></li>
-                        <li><Link href='https://facebook.com/06nurahmed' target="_blank">Facebook</Link></li>
+                        <li><Link href='https://x.com/robo_superior' target="_blank">Twitter</Link></li>
+                        <li><Link href='https://www.instagram.com/_robo_superior/' target="_blank">Instagram</Link></li>
+                        <li><Link href='https://www.facebook.com/robosuperior' target="_blank">Facebook</Link></li>
                     </ul>
                 </div>
             </div>

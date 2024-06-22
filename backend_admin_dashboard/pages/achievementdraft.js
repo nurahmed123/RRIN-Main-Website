@@ -30,7 +30,7 @@ export default function Draft() {
     // pagination blogs
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(4);
-    const { alldata, loading } = useFetchData('/api/blogs');
+    const { alldata, loading } = useFetchData('/api/achievements');
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -62,11 +62,11 @@ export default function Draft() {
                 {/* title dashboard */}
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
-                        <h2>Draft <span>Blogs</span></h2>
+                        <h2>Draft <span>Achievements</span></h2>
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
-                        <IoSettingsOutline /> <span>/</span><span>Pending Blogs</span>
+                        <IoSettingsOutline /> <span>/</span><span>Pending Achievements</span>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@ export default function Draft() {
                                 </> : <>
                                     {draftblogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="4" className="text-center">No Draft Blogs Available</td>
+                                            <td colSpan="4" className="text-center">No Draft Achievements Available</td>
                                         </tr>
                                     ) : (
                                         draftblogs.map((blog, index) => (
@@ -102,8 +102,8 @@ export default function Draft() {
                                                 <td><pre>{blog.slug}</pre></td>
                                                 <td>
                                                     <div className='flex gap-2 flex-center'>
-                                                        <Link href={'/blogs/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
-                                                        <Link href={'/blogs/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
+                                                        <Link href={'/achievements/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
+                                                        <Link href={'/achievements/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
                                                     </div>
                                                 </td>
                                             </tr>

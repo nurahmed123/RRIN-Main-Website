@@ -32,7 +32,7 @@ export default function AchievementCategoryPage() {
             try {
                 const res = await axios.get(`/api/getachievement?achievementcategory=${category}`);
                 const alldata = res.data;
-                console.log(alldata)
+                // console.log(alldata)
                 setBlog(alldata);
                 setLoading(false); // Set loading state to false after data is fetched
             } catch (error) {

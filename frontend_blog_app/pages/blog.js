@@ -184,7 +184,7 @@ export default function blog() {
                                         <Link href={"https:github.com/nurahmed123"} target="_blank"><FaGithub /></Link>
                                     </div>
                                     <div className="st_icon" data-aos="fade-up">
-                                        <Link href={"https:twitter.com/06nurahmed"} target="_blank"><FaTwitter /></Link>
+                                        <Link href={"https://x.com/robo_superior"} target="_blank"><FaTwitter /></Link>
                                     </div>
                                     <div className="st_icon" data-aos="fade-up">
                                         <Link href={"https:linkedin.com/in/06nurahmed"} target="_blank"> <FaLinkedinIn /></Link>

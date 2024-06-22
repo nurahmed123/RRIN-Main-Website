@@ -82,7 +82,21 @@ export default function Aside() {
                     <li className={activeLink === '/draft' ? 'navactive' : ''}
                         onClick={() => handleLinkClick('/draft')}>
                         <MdOutlinePending />
-                        <span>Pending</span>
+                        <span>Blog Pending</span>
+                    </li>
+                </Link>
+                <Link href="/achievementdraft">
+                    <li className={activeLink === '/achievementdraft' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/achievementdraft')}>
+                        <MdOutlinePending />
+                        <span>Ach Pending</span>
+                    </li>
+                </Link>
+                <Link href="/projectdraft">
+                    <li className={activeLink === '/projectdraft' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/projectdraft')}>
+                        <MdOutlinePending />
+                        <span>Proj Pending</span>
                     </li>
                 </Link>
                 <Link href="/setting">
