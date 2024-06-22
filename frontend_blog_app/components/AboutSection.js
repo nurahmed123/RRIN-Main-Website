@@ -8,12 +8,12 @@ const AboutSection = () => {
         <div className="">
             <div className="container mx-auto py-8">
                 <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-                    <div className="col-span-4 sm:col-span-3">
+                    <div data-aos="zoom-in-right" className="col-span-4 sm:col-span-3">
                         <div className="bg-white dark:bg-slate-700 shadow rounded-lg p-6">
                             <div className="flex flex-col items-center">
                                 {/* <img src="../public/img/Coder.png"> */}
                                 {/* <Image src={"/../public/img/Coder.png"} height={'100'} width={'100'} /> */}
-                                <Image src={"https://github.com/nurahmed123/RRIN-Main-Website/blob/main/frontend_blog_app/public/img/Coder.png?raw=true"} alt='RoboSuperior' height={"100"} width={"100"} className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
+                                <Image src={"/img/Coder.png"} alt='RoboSuperior' height={"100"} width={"100"} className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
                                 <h1 className="text-xl font-bold dark:text-gray-50">RoboSeperior</h1>
                                 <p className="text-gray-700 dark:text-gray-300"></p>
                                 <div className="mt-6 flex flex-wrap gap-4 justify-center">
@@ -35,7 +35,7 @@ const AboutSection = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-4 sm:col-span-9">
+                    <div data-aos="zoom-in-left" className="col-span-4 sm:col-span-9">
                         <div className="bg-white dark:bg-slate-700 shadow rounded-lg p-6">
                             <h1 className="text-xl font-bold mb-4 dark:text-gray-50">About Me</h1>
                             <p className="text-gray-70 dark:text-gray-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est

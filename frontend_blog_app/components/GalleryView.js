@@ -19,7 +19,7 @@ const GalleryView = () => {
             </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+        <div data-aos="zoom-in-up" className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
 
             <a href="#"
                 className="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
