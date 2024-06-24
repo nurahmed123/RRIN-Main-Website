@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Dataloading from "@/components/Dataloading";
 
-export default function Blogs() {
+export default function Members() {
 
     const { data: session, status } = useSession();
 
@@ -30,7 +30,7 @@ export default function Blogs() {
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(7);
     const [searchQuery, setSearchQuery] = useState('');
-    const { alldata, loading } = useFetchData(`/api/blogs`);
+    const { alldata, loading } = useFetchData(`/api/members`);
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -42,7 +42,7 @@ export default function Blogs() {
 
     // Filter all data based on search query
     const filteredBlogs = searchQuery.trim() === '' ? alldata : alldata.filter(blog =>
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase())
+        blog.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     // Calculate index of the first blog displayed on the current page
@@ -52,7 +52,7 @@ export default function Blogs() {
     // Get the current page's blogs
     const currentBlogs = filteredBlogs.slice(indexOfFirstblog, indexOfLastblog);
 
-    const publishedblogs = currentBlogs.filter(ab => ab.status === "publish");
+    const publishedblogs = currentBlogs.filter(ab => ab.status === "active");
 
     const pageNumbers = [];
 
@@ -68,16 +68,16 @@ export default function Blogs() {
             <div className="blogpage">
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
-                        <h2>All Published<span> Blogs</span></h2>
+                        <h2>All Active<span> Members</span></h2>
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
-                        <BsPostcard /> <span>/</span><span><Link className="underline" href="/blogs/addblog">Add Blogs</Link></span>
+                        <BsPostcard /> <span>/</span><span><Link className="underline" href="/members/addmember">Add Members</Link></span>
                     </div>
                 </div>
                 <div className="blogstable">
                     <div className="flex gap-2 mb-1" data-aos="fade-left">
-                        <h2>Search Blogs: </h2>
+                        <h2>Search Members: </h2>
                         <input
                             type="text"
                             value={searchQuery}
@@ -91,8 +91,8 @@ export default function Blogs() {
                         <thead data-aos="fade-up">
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Slug</th>
+                                <th>Name</th>
+                                <th>Role</th>
                                 <th>Edit / Delete</th>
                             </tr>
                         </thead>
@@ -106,18 +106,18 @@ export default function Blogs() {
                             </> : <>
                                 {publishedblogs.length === 0 ? (
                                     <tr>
-                                        <td colSpan="4" className="text-center">No Blogs Available</td>
+                                        <td colSpan="4" className="text-center">No Member Available</td>
                                     </tr>
                                 ) : (
                                     publishedblogs.map((blog, index) => (
                                         <tr key={blog._id} >
                                             <td>{indexOfFirstblog + index + 1}</td>
-                                            <td><h3>{blog.title}</h3></td>
-                                            <td><pre>{blog.slug}</pre></td>
+                                            <td><h3>{blog.name}</h3></td>
+                                            <td><pre>{blog.role}</pre></td>
                                             <td>
                                                 <div className='flex gap-2 flex-center'>
-                                                    <Link href={'/blogs/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
-                                                    <Link href={'/blogs/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
+                                                    <Link href={'/members/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
+                                                    <Link href={'/members/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
                                                 </div>
                                             </td>
                                         </tr>

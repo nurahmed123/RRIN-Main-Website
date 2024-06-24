@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/accordion": "^2.0.35",
+    "@nextui-org/system": "^2.2.2",
+    "@nextui-org/theme": "^2.2.6",
     "@sweetalert2/theme-dark": "^5.0.16",
     "aos": "^2.3.4",
     "axios": "^1.6.8",
+    "framer-motion": "^11.2.11",
     "handlebars": "^4.7.8",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.0",

@@ -224,6 +224,16 @@ body {
     height: 100vh;
 }
 
+.underline{
+    text-decoration: underline;
+    padding: 0rem .5rem;
+
+}
+
+.underline:hover{
+    text-decoration: none;
+}
+
 
 a {
     text-decoration: none;

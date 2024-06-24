@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import TeamMembers from './TeamMembers'
+
+
 
 const AboutSection = () => {
     return (
@@ -27,8 +30,8 @@ const AboutSection = () => {
                                 <ul>
                                     <Link href={"/"}><li className="mb-2 dark:text-gray-50">Home</li></Link>
                                     <Link href={"/blog"}><li className="mb-2 dark:text-gray-50">Blog</li></Link>
-                                    <Link href={"/projects"}><li className="mb-2 dark:text-gray-50">Projects</li></Link>
-                                    <Link href={"/achievements"}><li className="mb-2 dark:text-gray-50">Achievements</li></Link>
+                                    <Link href={"/project"}><li className="mb-2 dark:text-gray-50">Projects</li></Link>
+                                    <Link href={"/achievement"}><li className="mb-2 dark:text-gray-50">Achievements</li></Link>
                                     <Link href={"/about us"}><li className="mb-2 dark:text-gray-50 !text-[#5485e0]">About us</li></Link>
                                     <Link href={"/contact"}><li className="mb-2 dark:text-gray-50">Contact</li></Link>
                                 </ul>
@@ -92,48 +95,53 @@ const AboutSection = () => {
                             </div>
 
 
-                            <h2 className="text-xl font-bold mt-6 mb-4 dark:text-gray-50">Experience</h2>
-                            <div className="mb-6">
-                                <div className="flex justify-between flex-wrap gap-2 w-full">
-                                    <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
-                                    <p>
-                                        <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
-                                        <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                            <h2 className="text-xl font-bold mt-6 mb-4 dark:text-gray-50">Our Team</h2>
+                            {/* <div className="container">
+                                <div className="mb-6">
+                                    <div className="flex justify-between flex-wrap gap-2 w-full">
+                                        <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
+                                        <p>
+                                            <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
+                                            <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                                        </p>
+                                    </div>
+                                    <p className="mt-2 dark:text-gray-50">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
+                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
+                                        suscipit.
                                     </p>
                                 </div>
-                                <p className="mt-2 dark:text-gray-50">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                    tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                    suscipit.
-                                </p>
-                            </div>
-                            <div className="mb-6">
-                                <div className="flex justify-between flex-wrap gap-2 w-full">
-                                    <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
-                                    <p>
-                                        <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
-                                        <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                                <div className="mb-6">
+                                    <div className="flex justify-between flex-wrap gap-2 w-full">
+                                        <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
+                                        <p>
+                                            <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
+                                            <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                                        </p>
+                                    </div>
+                                    <p className="mt-2 dark:text-gray-50">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
+                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
+                                        suscipit.
                                     </p>
                                 </div>
-                                <p className="mt-2 dark:text-gray-50">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                    tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                    suscipit.
-                                </p>
-                            </div>
-                            <div className="mb-6">
-                                <div className="flex justify-between flex-wrap gap-2 w-full">
-                                    <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
-                                    <p>
-                                        <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
-                                        <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                                <div className="mb-6">
+                                    <div className="flex justify-between flex-wrap gap-2 w-full">
+                                        <span className="text-gray-700 font-bold dark:text-gray-50">Web Developer</span>
+                                        <p>
+                                            <span className="text-gray-700 mr-2 dark:text-gray-50">at ABC Company</span>
+                                            <span className="text-gray-700 dark:text-gray-50">2017 - 2019</span>
+                                        </p>
+                                    </div>
+                                    <p className="mt-2 dark:text-gray-50">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
+                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
+                                        suscipit.
                                     </p>
                                 </div>
-                                <p className="mt-2 dark:text-gray-50">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                    tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                    suscipit.
-                                </p>
+                            </div> */}
+                            <div className="containere">
+                                <TeamMembers/>
                             </div>
                         </div>
                     </div>

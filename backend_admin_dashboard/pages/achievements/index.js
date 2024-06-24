@@ -72,7 +72,7 @@ export default function Achievements() {
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
-                        <BsPostcard /> <span>/</span><span>Achievements</span>
+                        <BsPostcard /> <span>/</span><span><Link className="underline" href="/achievements/addachievement">Add Achievemnt</Link></span>
                     </div>
                 </div>
                 <div className="blogstable">

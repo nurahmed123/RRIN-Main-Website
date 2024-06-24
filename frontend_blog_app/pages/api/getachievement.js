@@ -6,14 +6,16 @@ export default async function handle(req, res) {
 
     await mongooseConnect();
 
-    if (method === 'GET') {
+    if (method === "GET") {
         if (req.query?.id) {
             // Fetch a single blog by id
             const blog = await Achievement.findById(req.query.id);
             res.json(blog);
         } else if (req.query?.achievementcategory) {
             // Fetch blogs by blogcategory
-            const blogs = await Achievement.find({ achievementcategory: req.query.achievementcategory });
+            const blogs = await Achievement.find({
+                achievementcategory: req.query.achievementcategory,
+            });
             res.json(blogs.reverse());
         } else if (req.query?.tags) {
             // Fetch blogs by blogcategory
@@ -29,6 +31,6 @@ export default async function handle(req, res) {
             res.json(blogs.reverse());
         }
     } else {
-        res.status(405).json({ message: 'Method Not Allowed' });
+        res.status(405).json({ message: "Method Not Allowed" });
     }
 }

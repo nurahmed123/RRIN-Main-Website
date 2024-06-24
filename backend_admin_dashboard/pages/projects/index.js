@@ -72,7 +72,7 @@ export default function Projects() {
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
-                        <BsPostcard /> <span>/</span><span>Project</span>
+                        <BsPostcard /> <span>/</span><span><Link className="underline" href="/projects/addproject">Add Projects</Link></span>
                     </div>
                 </div>
                 <div className="blogstable">
