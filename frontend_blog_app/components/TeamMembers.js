@@ -43,6 +43,7 @@ const TeamMembers = () => {
                     {activeMembers.map((member) => {
                         return (
                             <>
+                                {console.log(member.image)}
                                 <Accordion
                                     selectionMode="multiple"
                                     key={member._id}
@@ -56,7 +57,8 @@ const TeamMembers = () => {
                                                     <img
                                                         color="primary"
                                                         radius="lg"
-                                                        src="/img/noimage.jpg"
+                                                        // src="/img/noimage.jpg"
+                                                        src={member.image}
                                                         width={70}
                                                         height={70}
                                                         alt="this is a demo site"
@@ -79,12 +81,16 @@ const TeamMembers = () => {
                                             </h4>
                                             <br />
                                             <h3>
-                                                Phone: 
-                                                <a className="px-1" href={`tel:${member.phone}`}>{member.phone}</a>
+                                                Phone:
+                                                <a className="px-1" href={`tel:${member.phone}`}>
+                                                    {member.phone}
+                                                </a>
                                             </h3>
                                             <h3>
-                                                Email: 
-                                                <a className="px-1" href={`mailto:${member.mail}`}>{member.email}</a>
+                                                Email:
+                                                <a className="px-1" href={`mailto:${member.mail}`}>
+                                                    {member.email}
+                                                </a>
                                             </h3>
                                             <div className="social_talks flex flex-center gap-1 mt-2">
                                                 {!member.linkedin ? (

@@ -2,6 +2,7 @@ const { Schema, models, model } = require("mongoose");
 
 const MemberSchema = new Schema({
     name: { type: String },
+    image: { type: String },
     role: { type: String },
     phone: { type: String },
     email: { type: String },
