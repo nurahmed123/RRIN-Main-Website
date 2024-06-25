@@ -210,6 +210,7 @@ export default function Project({
                     <input
                         id="fileInput"
                         type="file"
+                        accept=".jpg,.png,.jpeg,.svg,.webp"
                         onChange={(e) => handleImgUpload(e)}
                         className="!w-full max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
                     />
