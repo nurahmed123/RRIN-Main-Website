@@ -5,7 +5,7 @@ export default function Custom404() {
     return (
 
         <div className="w-full h-screen flex flex-col items-center justify-center">
-            <Image src="/img/error.svg" width={400} height={400}/>
+            <Image src="/error.svg" width={400} height={400}/>
             <div className="flex flex-col items-center justify-center">
                 <p className="text-3xl md:text-4xl lg:text-5xl text-gray-800 mt-12 dark:text-gray-100">Page Not Found</p>
                 <p className="md:text-lg lg:text-xl text-gray-600 mt-8 dark:text-gray-100">Sorry, the page you are looking for could not be found.</p>
