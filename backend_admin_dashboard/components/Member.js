@@ -2,194 +2,87 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import ReactMarkdown from "react-markdown";
-import MarkdownEditor from "react-markdown-editor-lite";
-import "react-markdown-editor-lite/lib/index.css";
-import Image from "next/image";
+import ReactMarkdown from 'react-markdown';
+import MarkdownEditor from 'react-markdown-editor-lite';
+import 'react-markdown-editor-lite/lib/index.css';
 
-export default function Project({
-    _id,
-    name: existingName,
-    image: existingImage,
-    role: existingRole,
-    phone: existingPhone,
-    email: existingEmail,
-    linkedin: existingLinkedin,
-    github: existingGithub,
-    facebook: existingFacebook,
-    instagram: existingInstagram,
-    twitter: existingTwitter,
-    youtube: existingYoutube,
-    status: existingStatus,
-}) {
-    const [redirect, setRedirect] = useState(false);
+
+export default function Project(
+
+    {
+        _id,
+        name: existingName,
+        role: existingRole,
+        phone: existingPhone,
+        email: existingEmail,
+        linkedin: existingLinkedin,
+        github: existingGithub,
+        facebook: existingFacebook,
+        instagram: existingInstagram,
+        twitter: existingTwitter,
+        youtube: existingYoutube,
+        status: existingStatus,
+    }
+
+) {
+
+
+
+    const [redirect, setRedirect] = useState(false)
     const router = useRouter();
 
-    const [name, setName] = useState(existingName || "");
-    const [role, setRole] = useState(existingRole || "");
-    const [phone, setPhone] = useState(existingPhone || []);
-    const [email, setEmail] = useState(existingEmail || "");
-    const [linkedin, setLinkedin] = useState(existingLinkedin || []);
-    const [github, setGithub] = useState(existingGithub || "");
-    const [facebook, setFacebook] = useState(existingFacebook || "");
-    const [twitter, setTwitter] = useState(existingTwitter || "");
-    const [youtube, setYoutube] = useState(existingYoutube || "");
-    const [instagram, setInstagram] = useState(existingInstagram || "");
-    const [status, setStatus] = useState(existingStatus || "");
-    const [image, setImage] = useState(existingImage || "");
+    const [name, setName] = useState(existingName || '')
+    const [role, setRole] = useState(existingRole || '')
+    const [phone, setPhone] = useState(existingPhone || [])
+    const [email, setEmail] = useState(existingEmail || '')
+    const [linkedin, setLinkedin] = useState(existingLinkedin || [])
+    const [github, setGithub] = useState(existingGithub || '')
+    const [facebook, setFacebook] = useState(existingFacebook || '')
+    const [twitter, setTwitter] = useState(existingTwitter || '')
+    const [youtube, setYoutube] = useState(existingYoutube || '')
+    const [instagram, setInstagram] = useState(existingInstagram || '')
+    const [status, setStatus] = useState(existingStatus || '')
 
-    const [fileSize, setFileSize] = useState();
 
     async function createProduct(ev) {
         ev.preventDefault();
 
-        const data = {
-            name,
-            role,
-            phone,
-            email,
-            linkedin,
-            github,
-            facebook,
-            instagram,
-            youtube,
-            twitter,
-            status,
-            image,
-        };
+
+        const data = { name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter };
 
         if (_id) {
-            await axios.put("/api/members", { ...data, _id });
-            toast.success("Data Updated!");
+            await axios.put('/api/members', { ...data, _id })
+            toast.success('Data Updated!')
         } else {
-            await axios.post("/api/members", data);
-            toast.success("Product Created!");
+            await axios.post('/api/members', data)
+            toast.success('Product Created!')
         }
 
         setRedirect(true);
-    }
+    };
+
+
 
     if (redirect) {
-        router.push("/members");
+        router.push('/members')
         return null;
     }
 
-    const handleImgUpload = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertToBase64(file);
-        // console.log(file.size);
-        // setImage({ ...image, memberImage: base64 })
-        setFileSize(file.size);
-        {
-            file.size >= 1000000 ? null : setImage(base64);
-        }
+
+    const handleSlugChange = (ev) => {
+        const inputValue = ev.target.value;
+        // console.log("Input Value:", inputValue);
+
+        const newSlug = inputValue
+            // Replace spaces with hyphens
+            .replace(/\s+/g, '-');
+
+        console.log("New Slug:", newSlug);
+        setSlug(newSlug);
     };
 
-    return (
-        <>
-            <form onSubmit={createProduct} className="addWebsiteform">
-                {/* blog title */}
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Full Name</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter your full name"
-                        value={name}
-                        onChange={(ev) => setName(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Your Role</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter your role"
-                        value={role}
-                        onChange={(ev) => setRole(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Email</label>
-                    <input
-                        type="email"
-                        id="title"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(ev) => setEmail(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Phone</label>
-                    <input
-                        type="number"
-                        id="title"
-                        placeholder="Enter your phone number"
-                        value={phone}
-                        onChange={(ev) => setPhone(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Linkedin</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter LinkedIn profile"
-                        value={linkedin}
-                        onChange={(ev) => setLinkedin(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Github</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter Github profile"
-                        value={github}
-                        onChange={(ev) => setGithub(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Facebook</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter Facebook profile"
-                        value={facebook}
-                        onChange={(ev) => setFacebook(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Instagram</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter Instagram profile"
-                        value={instagram}
-                        onChange={(ev) => setInstagram(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Twitter</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter Twitter profile"
-                        value={twitter}
-                        onChange={(ev) => setTwitter(ev.target.value)}
-                    />
-                </div>
-                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
-                    <label htmlFor="title">Youtube</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter Youtube profile"
-                        value={youtube}
-                        onChange={(ev) => setYoutube(ev.target.value)}
-                    />
-                </div>
 
+<<<<<<< HEAD
                 {/* <div className="flex items-center justify-center w-full">
                 <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100">
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -216,58 +109,98 @@ export default function Project({
                     />
                     <small className="pl-0.5 w-full pb-2">PNG, JPG, WebP - Max 1MB</small>
                 </div>
+=======
+    return <>
+>>>>>>> parent of 19fd059 (all done)
 
-                <div className="mb-1 previewImage">
-                    <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
-                        Preview
-                    </label>
-                    <div className="mt-1 w-full max-w-sm bg-white !border bg-gray-300 !border-gray-200 rounded-[.5rem] shadow ">
-                        {image ? (
-                            <img
-                                className="p-8 !rounded"
-                                src={image}
-                                alt="Upload Image For Preview"
-                            />
-                        ) : (
-                            <p className="pt-5 pl-4">Upload Image For Preview</p>
-                        )}
-                        {fileSize >= 1000000 ? (
-                            <p style={{ color: "red" }} className="pt-5 pl-4">
-                                File size is longer than 1MB
-                            </p>
-                        ) : null}
 
-                        <div className="px-5 pb-5">
-                            {/* <a href="#">
-                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
-                    </a> */}
-                        </div>
-                    </div>
-                </div>
+        <form onSubmit={createProduct} className='addWebsiteform'>
+            {/* blog title */}
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Full Name</label>
+                <input type="text" id='title' placeholder='Enter your full name'
+                    value={name}
+                    onChange={ev => setName(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Your Role</label>
+                <input type="text" id='title' placeholder='Enter your role'
+                    value={role}
+                    onChange={ev => setRole(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Email</label>
+                <input type="text" id='title' placeholder='Enter your email'
+                    value={email}
+                    onChange={ev => setEmail(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Phone</label>
+                <input type="number" id='title' placeholder='Enter your phone number'
+                    value={phone}
+                    onChange={ev => setPhone(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Linkedin</label>
+                <input type="text" id='title' placeholder='Enter LinkedIn profile'
+                    value={linkedin}
+                    onChange={ev => setLinkedin(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Github</label>
+                <input type="text" id='title' placeholder='Enter Github profile'
+                    value={github}
+                    onChange={ev => setGithub(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Facebook</label>
+                <input type="text" id='title' placeholder='Enter Facebook profile'
+                    value={facebook}
+                    onChange={ev => setFacebook(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Instagram</label>
+                <input type="text" id='title' placeholder='Enter Instagram profile'
+                    value={instagram}
+                    onChange={ev => setInstagram(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Twitter</label>
+                <input type="text" id='title' placeholder='Enter Twitter profile'
+                    value={twitter}
+                    onChange={ev => setTwitter(ev.target.value)}
+                />
+            </div>
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Youtube</label>
+                <input type="text" id='title' placeholder='Enter Youtube profile'
+                    value={youtube}
+                    onChange={ev => setYoutube(ev.target.value)}
+                />
+            </div>
 
-                <div className="w-100 flex flex-col flex-left mb-2">
-                    <label htmlFor="status">Status</label>
-                    <select
-                        required
-                        onChange={(e) => setStatus(e.target.value)}
-                        name="status"
-                        id="status"
-                        value={status}
-                    >
-                        <option value="">No Select</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                    <p className="existingcategory flex gap-1 mt-1 mb-1">
-                        Selected:{" "}
-                        {existingStatus && existingStatus.length > 0 && (
-                            <span>{existingStatus}</span>
-                        )}
-                    </p>
-                </div>
+             <div className='w-100 flex flex-col flex-left mb-2' >
+                <label htmlFor="status">Status</label>
+                <select onChange={(e) => setStatus(e.target.value)} name="status" id="status" value={status}>
+                    <option value="">No Select</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {existingStatus && existingStatus.length > 0 && (
+                    <span>{existingStatus}</span>
+                )}</p>
+            </div> 
 
-                {/* blog slug url */}
-                {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+            {/* blog slug url */}
+            {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="slug">Slug</label>
                 <input type="text" id='slug' placeholder='Enter slug title'
                     value={slug}
@@ -275,8 +208,8 @@ export default function Project({
                 />
             </div> */}
 
-                {/* blog category */}
-                {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+            {/* blog category */}
+            {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="catergory">Select Category (ctrl + leftclick for multiple select)</label>
                 <select onChange={(e) => setProjectcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={projectcategory} >
                     <option value="htmlcssjs">Html, Css & javaScript</option>
@@ -289,8 +222,8 @@ export default function Project({
                 ))}</p>
             </div> */}
 
-                {/* markdown description */}
-                {/* <div className='description w-100 flex flex-col flex-left mb-2'>
+            {/* markdown description */}
+            {/* <div className='description w-100 flex flex-col flex-left mb-2'>
                 <label htmlFor="description">ABOUT PROJECTS</label>
                 <MarkdownEditor
                     value={description}
@@ -324,8 +257,8 @@ export default function Project({
                 />
             </div> */}
 
-                {/* tags */}
-                {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+            {/* tags */}
+            {/* <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="tags">Tags</label>
                 <select onChange={(e) => setTags(Array.from(e.target.selectedOptions, option => option.value))} name="tags" id="tags" multiple value={tags}>
                     <option value="html">Html</option>
@@ -340,8 +273,8 @@ export default function Project({
                 )}</p>
             </div> */}
 
-                {/* blog status */}
-                {/* <div className='w-100 flex flex-col flex-left mb-2' >
+            {/* blog status */}
+            {/* <div className='w-100 flex flex-col flex-left mb-2' >
                 <label htmlFor="status">Status</label>
                 <select onChange={(e) => setStatus(e.target.value)} name="status" id="status" value={status}>
                     <option value="">No Select</option>
@@ -353,25 +286,13 @@ export default function Project({
                 )}</p>
             </div> */}
 
-                <div className="w-100 mb-2">
-                    <button type="submit" className="w-100 addwebbtn flex-center">
-                        SAVE PROJECT
-                    </button>
-                </div>
-            </form>
-        </>
-    );
+
+            <div className='w-100 mb-2'>
+                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE PROJECT</button>
+            </div>
+
+        </form>
+
+    </>
 }
 
-function convertToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-            resolve(fileReader.result);
-        };
-        fileReader.onerror = (error) => {
-            reject(error);
-        };
-    });
-}

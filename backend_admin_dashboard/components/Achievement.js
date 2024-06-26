@@ -87,7 +87,7 @@ export default function Achievement(
             {/* blog slug url */}
             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="slug">Slug</label>
-                <input required type="text" id='slug' placeholder='Enter slug title'
+                <input type="text" id='slug' placeholder='Enter slug title'
                     value={slug}
                     onChange={handleSlugChange}
                 />
@@ -157,7 +157,7 @@ export default function Achievement(
             {/* blog status */}
             <div className='w-100 flex flex-col flex-left mb-2' >
                 <label htmlFor="status">Status</label>
-                <select required onChange={(e) => setStatus(e.target.value)} name="status" id="status" value={status}>
+                <select onChange={(e) => setStatus(e.target.value)} name="status" id="status" value={status}>
                     <option value="">No Select</option>
                     <option value="draft">Draft</option>
                     <option value="publish">Publish</option>

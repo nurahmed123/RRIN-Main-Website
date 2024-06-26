@@ -10,10 +10,10 @@ export default async function handle(req, res) {
 
 
     if (method === 'POST') {
-        const { name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter, status, image } = req.body;
+        const { name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter } = req.body;
 
         const productDoc = await Member.create({
-            name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter, status, image
+            name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter
         })
 
         res.json(productDoc)
@@ -29,9 +29,9 @@ export default async function handle(req, res) {
 
 
     if (method === 'PUT') {
-        const { _id, name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter, status, image } = req.body;
+        const { _id, name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter } = req.body;
         await Member.updateOne({ _id }, {
-            name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter, status, image
+            name, role, phone, email, linkedin, github, facebook, instagram, youtube, twitter
         });
 
         res.json(true);

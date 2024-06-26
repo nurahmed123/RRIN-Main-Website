@@ -39,7 +39,6 @@ export default function Home() {
   const [blogsData, setBlogsData] = useState([]);
   const [projectsData, setProjectsData] = useState([]);
   const [achievementsData, setAchievementsData] = useState([]);
-  const [membersData, setMembersData] = useState([]);
 
   // Define options within the component scope
   const options = {
@@ -71,10 +70,6 @@ export default function Home() {
         const achievementResponse = await fetch('/api/achievements');
         const achievementResponseData = await achievementResponse.json();
         setAchievementsData(achievementResponseData); // Assuming data is an array of blog objects
-        
-        const memberResponse = await fetch('/api/members');
-        const memberResponseData = await memberResponse.json();
-        setMembersData(memberResponseData); // Assuming data is an array of blog objects
 
 
       } catch (error) {
@@ -149,8 +144,8 @@ export default function Home() {
             <span>{achievementsData.filter(dat => dat.status === "publish").length}</span>
             </div>
             <div className="four_card" data-aos="fade-left">
-              <h2>Total Members</h2>
-              <span>{membersData.filter(dat => dat.status === "active").length}</span>
+              <h2>Draft Blogs</h2>
+              <span>{blogsData.filter(dat => dat.status === "draft").length}</span>
             </div>
           </div>
           {/* year overview */}
