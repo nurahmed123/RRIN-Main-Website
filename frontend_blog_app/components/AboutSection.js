@@ -41,11 +41,14 @@ const AboutSection = () => {
                     <div data-aos="zoom-in-left" className="col-span-4 sm:col-span-9">
                         <div className="bg-white dark:bg-slate-700 shadow rounded-lg p-6">
                             <h1 className="text-xl font-bold mb-4 dark:text-gray-50">About Me</h1>
-                            <p className="text-gray-70 dark:text-gray-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est
-                                vitae tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                suscipit. Nunc finibus vel ante id euismod. Vestibulum ante ipsum primis in faucibus orci luctus
-                                et ultrices posuere cubilia Curae; Aliquam erat volutpat. Nulla vulputate pharetra tellus, in
-                                luctus risus rhoncus id.
+                            <p className="text-gray-70 dark:text-gray-50">
+                            ROBO Superior is a leading organization dedicated to advancing the fields of robotics, mechatronics and electrical project management. Based in Bangladesh, we are committed to promoting the growth and development of robotics through comprehensive educational and learning opportunities. Our mission is to foster a vibrant community of innovators and enthusiasts by providing extensive resources and support for robotics education. We offer a variety of programs and initiatives designed to cater to individuals at all levels of expertise. These include hands-on workshops, theoretical courses and participation in extracurricular activities (ECAs) focused on robotics.
+<br/><br/>
+At ROBO Superior, we believe in the power of competition to drive excellence. Our members have consistently <Link href={"/achievements"} className='text-xl italic font-bold'>achieved</Link> remarkable success in various <Link href="/projects"className='text-xl italic font-bold'>project</Link> showcase competitions. The most notable highlight in our history is the exceptional accomplishment of our organization’s “Team EXO MAX.” This team qualified for the international round of the prestigious NASA CONRAD CHALLENGE 2024, a global scientific case study and problem-solving contest. Competing against over 3,000 contestants worldwide, Team EXO MAX secured an impressive 5th place in the whole world, showcasing the talent and dedication present within our organization.
+<br/><br/>
+Our focus on mechatronics and robotics-related project management ensures that our members are well-equipped with the knowledge and skills necessary to excel in these dynamic fields. Through our initiatives, we aim to bridge the gap between theoretical knowledge and practical application, preparing our members for successful careers in technology and engineering.
+<br/><br/>
+ROBO Superior is not just an organization; it is a community dedicated to pushing the boundaries of what is possible in robotics. We are passionate about fostering a culture of innovation, collaboration and excellence. Join us in our mission to elevate the standards of robotics education and to inspire the next generation of engineers and technologists. Together, we are ROBO Superior and we are building the future of Bangladesh.
                             </p>
 
                             <h2 className="dark:text-gray-50 font-semibold text-center mt-3 -mb-2">
