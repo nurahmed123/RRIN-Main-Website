@@ -56,7 +56,7 @@ const TeamMembers = () => {
                                                     <img
                                                         color="primary"
                                                         radius="lg"
-                                                        src="/img/noimage.jpg"
+                                                        src={member.image}
                                                         width={70}
                                                         height={70}
                                                         alt="this is a demo site"
