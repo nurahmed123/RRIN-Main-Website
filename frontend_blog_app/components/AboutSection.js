@@ -40,7 +40,7 @@ const AboutSection = () => {
                     </div>
                     <div data-aos="zoom-in-left" className="col-span-4 sm:col-span-9">
                         <div className="bg-white dark:bg-slate-700 shadow rounded-lg p-6">
-                            <h1 className="text-xl font-bold mb-4 dark:text-gray-50">About Me</h1>
+                            <h1 className="text-xl font-bold mb-4 dark:text-gray-50">About Us</h1>
                             <p className="text-gray-70 dark:text-gray-50">
                             ROBO Superior is a leading organization dedicated to advancing the fields of robotics, mechatronics and electrical project management. Based in Bangladesh, we are committed to promoting the growth and development of robotics through comprehensive educational and learning opportunities. Our mission is to foster a vibrant community of innovators and enthusiasts by providing extensive resources and support for robotics education. We offer a variety of programs and initiatives designed to cater to individuals at all levels of expertise. These include hands-on workshops, theoretical courses and participation in extracurricular activities (ECAs) focused on robotics.
 <br/><br/>

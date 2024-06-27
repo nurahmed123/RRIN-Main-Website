@@ -33,7 +33,7 @@ const login = () => {
     if (!session) {
         return (
             <div className="loginfront flex flex-center flex-col full-w" >
-                <Image src='/img/coder.png' width={250} height={250} />
+                <Image src='/img/user.png' width={250} height={250} />
                 <h1  >Welcome Admin of the RoboSuperior 👋</h1>
                 <p>Visit my profile <Link target="_blank" href="https://linkedin.com/in/06nurahmed">Md Nur Ahmad</Link></p>
 
