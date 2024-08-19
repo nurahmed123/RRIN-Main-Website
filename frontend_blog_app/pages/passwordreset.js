@@ -35,7 +35,7 @@ const passwordreset = () => {
                 setKey(Math.random())
             }
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             localStorage.clear()
         }
     }, [])
@@ -44,14 +44,14 @@ const passwordreset = () => {
     const SendOTP = (ev) => {
         // ev.preventDefault();
         const { otp, expires } = TOTP.generate("JBSWY3DPEHPK3PXP")
-        console.log(otp)
+        // console.log(otp)
         setGOTP(otp)
 
         const data = { otp, email };
         try {
 
             axios.post('/api/sendEmail', data)
-            console.log(data)
+            // console.log(data)
         } catch {
             return
         }
@@ -79,9 +79,9 @@ const passwordreset = () => {
     async function createUserAccount(ev) {
         ev.preventDefault();
         let password = await bcrypt.hash(passwordin, 10)
-        console.log(password)
+        // console.log(password)
         const data = { email, password};
-        console.log(data)
+        // console.log(data)
 
         try {
 
