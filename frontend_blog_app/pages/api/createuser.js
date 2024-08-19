@@ -63,14 +63,8 @@ export default async function createuser(req, res) {
         const { _id, name, role, username, country, email, phone, password, image } = req.body;
 
         const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return new Response(data, {
-                message: 'Email is already taken',
-                status: 400,
-            });
-        }
 
-        await User.updateOne({ _id }, {
+        await User.updateOne({ email }, {
             name, role, username, country, email, phone, password, image
         });
 
