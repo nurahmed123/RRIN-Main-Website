@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { BsPostcard } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import Aside from "@/components/Aside";
 
 export default function EditProduct() {
     const { data: session, status } = useSession();
@@ -61,6 +62,7 @@ export default function EditProduct() {
     // Render the component when data is available
     return (
         <>
+        <Aside/>
             <Head>
                 <title>Update Blog</title>
             </Head>

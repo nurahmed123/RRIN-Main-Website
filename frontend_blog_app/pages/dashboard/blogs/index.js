@@ -16,25 +16,29 @@ export default function Blogs() {
     const router = useRouter();
     // login user check
     const [user, setUser] = useState({ value: null })
+    const [author, setAuthor] = useState('');
 
     useEffect(() => {
         const checkUser = () => {
-          try {
-            const token = localStorage.getItem("Token");
-            if (token) {
-              setUser({ value: token });
-            } else {
-              router.push('/'); // Redirect if no token is found
+            try {
+                const token = localStorage.getItem("Token");
+                if (token) {
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace('-', '+').replace('_', '/');
+                    const JWTData = JSON.parse(window.atob(base64));
+                    setAuthor(JWTData.data._id); // Set author from JWT
+                    setUser(JWTData.data); // Set user data if needed
+                } else {
+                    router.push('/'); // Redirect if no token is found
+                }
+            } catch (err) {
+                console.error(err);
+                localStorage.clear();
+                router.push('/'); // Redirect on error
             }
-          } catch (err) {
-            console.error(err);
-            localStorage.clear();
-            router.push('/'); // Redirect on error
-          }
         };
-        
         checkUser();
-      }, [router]); // Adding router as a dependency
+    }, [router]); // Adding router as a dependency
     // Check if there's no active session and redirect to login page
     // if (!session) {
     //     router.push('/login');
@@ -74,7 +78,7 @@ export default function Blogs() {
     // Get the current page's blogs
     const currentBlogs = filteredBlogs.slice(indexOfFirstblog, indexOfLastblog);
 
-    const publishedblogs = currentBlogs.filter(ab => ab.primarystatus === "publish");
+    const publishedblogs = currentBlogs.filter(ab => ab.author === author);
 
     const pageNumbers = [];
 

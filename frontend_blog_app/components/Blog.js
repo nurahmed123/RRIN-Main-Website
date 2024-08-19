@@ -6,128 +6,93 @@ import ReactMarkdown from 'react-markdown';
 import MarkdownEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 
-
-export default function Blog(
-
-    {
-        _id,
-        title: existingTitle,
-        slug: existingSlug,
-        author: existingAuthor,
-        description: existingDescription,
-        blogcategory: existingBlogcategory,
-        tags: existingTags,
-        keywords: existingKeywords,
-        metadescription: existingMetadescription,
-        primarystatus: existingPrimarystatus,
-        status: existingStatus,
-    }
-
-) {
-
-
-    // login user check
-    const [user, setUser] = useState({ value: null })
-    const [redirect, setRedirect] = useState(false)
+export default function Blog({
+    _id,
+    title: existingTitle,
+    slug: existingSlug,
+    author: existingAuthor,
+    description: existingDescription,
+    blogcategory: existingBlogcategory,
+    tags: existingTags,
+    keywords: existingKeywords,
+    metadescription: existingMetadescription,
+    primarystatus: existingPrimarystatus,
+    status: existingStatus,
+}) {
+    const [user, setUser] = useState(null);
+    const [redirect, setRedirect] = useState(false);
     const router = useRouter();
 
-    const [title, setTitle] = useState(existingTitle || '')
-    const [slug, setSlug] = useState(existingSlug || '')
-    const [author, setAuthor] = useState(existingAuthor || '')
-    const [blogcategory, setBlogcategory] = useState(existingBlogcategory || [])
-    const [description, setDescription] = useState(existingDescription || '')
-    const [tags, setTags] = useState(existingTags || [])
-    const [keywords, setKeywords] = useState(existingKeywords || [])
-    const [metadescription, setmetadescription] = useState(existingMetadescription || [])
-    const [primarystatus, setPrimarystatus] = useState(existingPrimarystatus || '')
-    const [status, setStatus] = useState(existingStatus || '')
+    const [title, setTitle] = useState(existingTitle || '');
+    const [slug, setSlug] = useState(existingSlug || '');
+    const [author, setAuthor] = useState(existingAuthor || ''); // Make sure to initialize with existingAuthor if available
+    const [blogcategory, setBlogcategory] = useState(existingBlogcategory || []);
+    const [description, setDescription] = useState(existingDescription || '');
+    const [tags, setTags] = useState(existingTags || []);
+    const [keywords, setKeywords] = useState(existingKeywords || '');
+    const [metadescription, setmetadescription] = useState(existingMetadescription || '');
+    const [primarystatus, setPrimarystatus] = useState(existingPrimarystatus || '');
+    const [status, setStatus] = useState(existingStatus || '');
 
     useEffect(() => {
         const checkUser = () => {
             try {
-                const token = localStorage.getItem("Token")
+                const token = localStorage.getItem("Token");
                 if (token) {
-
-                    if (!user.value) { return; }
                     const base64Url = token.split('.')[1];
                     const base64 = base64Url.replace('-', '+').replace('_', '/');
-                    const JWTData = JSON.parse(window.atob(base64))
-                    setAuthor(JWTData.data._id)
-                    console.log(author)
+                    const JWTData = JSON.parse(window.atob(base64));
+                    setAuthor(JWTData.data._id); // Set author from JWT
+                    setUser(JWTData.data); // Set user data if needed
                 } else {
                     router.push('/'); // Redirect if no token is found
                 }
             } catch (err) {
-                console.log(err)
-                localStorage.clear()
+                console.error(err);
+                localStorage.clear();
                 router.push('/'); // Redirect on error
             }
-        }
+        };
         checkUser();
-    }, [router])
-
+    }, [router]);
 
     async function createProduct(ev) {
         ev.preventDefault();
 
-        // try {
-        //     const token = localStorage.getItem("Token")
-        //     if (token) {
-
-        //         if (!user.value) { return; }
-        //         const base64Url = token.split('.')[1];
-        //         const base64 = base64Url.replace('-', '+').replace('_', '/');
-        //         const JWTData = JSON.parse(window.atob(base64))
-        //         setAuthor(JWTData.data._id)
-        //         console.log(author)
-        //     }else {
-        //         router.push('/'); // Redirect if no token is found
-        //       }
-        // } catch (err) {
-        //     console.log(err)
-        //     localStorage.clear()
-        // }
-        // console.log(author)
-
         const data = { title, slug, author, description, blogcategory, tags, keywords, metadescription, primarystatus, status };
 
-        if (_id) {
-            await axios.put('/api/blogs', { ...data, _id })
-            toast.success('Data Updated!')
-        } else {
-            await axios.post('/api/blogs', data)
-            toast.success('Product Created!')
+        try {
+            if (_id) {
+                await axios.put('/api/blogs', { ...data, _id });
+                toast.success('Data Updated!');
+            } else {
+                await axios.post('/api/blogs', data);
+                toast.success('Product Created!');
+            }
+            setRedirect(true);
+        } catch (err) {
+            console.error(err);
+            toast.error('An error occurred!');
         }
-
-        setRedirect(true);
     };
 
-
-
     if (redirect) {
-        router.push('/dashboard/blogs')
+        router.push('/dashboard/blogs');
         return null;
     }
 
-
     const handleSlugChange = (ev) => {
         const inputValue = ev.target.value;
-        // console.log("Input Value:", inputValue);
-
-        const newSlug = inputValue
-            // Replace spaces with hyphens
-            .replace(/\s+/g, '-');
-
-        // console.log("New Slug:", newSlug);
+        const newSlug = inputValue.replace(/\s+/g, '-');
         setSlug(newSlug);
     };
 
     // Early return or loading state if necessary
-    if (user.value === null) {
-        return null; // You can also show a loading spinner or placeholder here
-    }
+    // if (user.value === null) {
+    //     return null; // You can also show a loading spinner or placeholder here
+    // }
 
-    if (user.value !== null) {
+    // if (user.value !== null) {
         return <>
 
 
@@ -257,6 +222,6 @@ export default function Blog(
             </form>
 
         </>
-    }
+    // }
 }
 
