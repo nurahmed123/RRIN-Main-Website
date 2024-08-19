@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Dataloading from "@/components/Dataloading";
 
-export default function MemberDraft() {
+export default function Draft() {
 
     const { data: session, status } = useSession();
 
@@ -30,7 +30,7 @@ export default function MemberDraft() {
     // pagination blogs
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(4);
-    const { alldata, loading } = useFetchData('/api/members');
+    const { alldata, loading } = useFetchData('/api/blogs');
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -42,7 +42,7 @@ export default function MemberDraft() {
     const currentblogs = alldata.slice(indexOfFirstblog, indexOfLastblog);
 
     // Filtering draft blogs
-    const draftblogs = currentblogs.filter(ab => ab.status === "inactive");
+    const draftblogs = currentblogs.filter(ab => ab.primarystatus === "publish");
 
 
     const allblog = alldata.length; // Total number of blogs
@@ -62,7 +62,7 @@ export default function MemberDraft() {
                 {/* title dashboard */}
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
-                        <h2>Draft <span>Members</span></h2>
+                        <h2>Draft <span>Blogs</span></h2>
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
@@ -76,8 +76,8 @@ export default function MemberDraft() {
                             <thead data-aos="fade-up">
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
+                                    <th>Title</th>
+                                    <th>Slug</th>
                                     <th>Edit / Delete</th>
                                 </tr>
                             </thead>
@@ -92,18 +92,18 @@ export default function MemberDraft() {
                                 </> : <>
                                     {draftblogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="4" className="text-center">No Draft Members Available</td>
+                                            <td colSpan="4" className="text-center">No Draft Blogs Available</td>
                                         </tr>
                                     ) : (
                                         draftblogs.map((blog, index) => (
                                             <tr key={blog._id}>
                                                 <td>{index + 1}</td>
-                                                <td><h3>{blog.name}</h3></td>
-                                                <td><pre>{blog.role}</pre></td>
+                                                <td><h3>{blog.title}</h3></td>
+                                                <td><pre>{blog.slug}</pre></td>
                                                 <td>
                                                     <div className='flex gap-2 flex-center'>
-                                                        <Link href={'/members/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
-                                                        <Link href={'/members/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
+                                                        <Link href={'/blogs/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
+                                                        <Link href={'/blogs/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
                                                     </div>
                                                 </td>
                                             </tr>

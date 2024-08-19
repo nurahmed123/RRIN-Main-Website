@@ -17,10 +17,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <title>Code Editor | RoboSuperior</title>
-      <meta name="description" content="Experience the ultimate online code editor for seamless coding in Java, JavaScript, PHP, TypeScript, C#, and Python. Our feature-rich platform allows you to write, test, and debug your code effortlessly, making it perfect for developers, students, and coding enthusiasts. Enjoy syntax highlighting, auto-completion, and real-time collaboration. Start coding smarter and faster with our intuitive and user-friendly interface. Ideal for both beginners and professionals looking to enhance their coding skills. Join our growing community and elevate your coding experience today!" />
-      <meta name="author" content="Md Nur Ahmad" />
-      <meta name="keywords" content="Java, JavaScript, Php, typescript, csharp, python, 06nurahmed, nur ahmed, bong programiz, robosuperior, robo superior, nur ahmad nasa, nur ahmad" />ÏÏ
       <body className={inter.className}>
         <Toaster position="top-center" reverseOrder={false} />
         <ThemeProvider

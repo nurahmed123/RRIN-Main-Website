@@ -66,7 +66,7 @@ export default function Draft() {
                         <h3>ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb" data-aos="fade-left">
-                        <IoSettingsOutline /> <span>/</span><span><Link className="underline" href="/draft">Blogs</Link> <Link className="underline" href="/projectdraft">Projects</Link><Link className="underline" href="/achievementdraft">Achievements</Link><Link className="underline" href="/memberdraft">Members</Link></span>
+                        <IoSettingsOutline /> <span>/</span><span><Link className="underline" href="/draft">Blogs</Link> <Link className="underline" href="/userpostdraft">UBlogs</Link> <Link className="underline" href="/projectdraft">Projects</Link><Link className="underline" href="/achievementdraft">Achievements</Link><Link className="underline" href="/memberdraft">Members</Link></span>
                     </div>
                 </div>
 

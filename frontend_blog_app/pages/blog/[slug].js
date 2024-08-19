@@ -17,6 +17,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { FaGithub, FaHtml5, FaInstagram, FaTwitter } from "react-icons/fa6";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
+import Comments from "@/components/Comments";
 
 export default function blogPage() {
 
@@ -128,6 +129,7 @@ export default function blogPage() {
                             </div>
 
                         </>}
+                        <Comments slug={slug} />
                     </div>
                     <div className="rightslug_data">
                         <RightPortfolioInfo />

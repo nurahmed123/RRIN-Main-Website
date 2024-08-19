@@ -13,9 +13,13 @@ export default function Blog(
         _id,
         title: existingTitle,
         slug: existingSlug,
+        author: existingAuthor,
         description: existingDescription,
         blogcategory: existingBlogcategory,
         tags: existingTags,
+        keywords: existingKeywords,
+        metadescription: existingMetadescription,
+        primarystatus: existingPrimarystatus,
         status: existingStatus,
     }
 
@@ -28,9 +32,13 @@ export default function Blog(
 
     const [title, setTitle] = useState(existingTitle || '')
     const [slug, setSlug] = useState(existingSlug || '')
+    const [author, setAuthor] = useState(existingAuthor || '')
     const [blogcategory, setBlogcategory] = useState(existingBlogcategory || [])
     const [description, setDescription] = useState(existingDescription || '')
     const [tags, setTags] = useState(existingTags || [])
+    const [keywords, setKeywords] = useState(existingKeywords || [])
+    const [metadescription, setmetadescription] = useState(existingMetadescription || [])
+    const [primarystatus, setPrimarystatus] = useState(existingPrimarystatus || '')
     const [status, setStatus] = useState(existingStatus || '')
 
     
@@ -38,7 +46,7 @@ export default function Blog(
         ev.preventDefault();
       
 
-        const data = { title, slug, description, blogcategory, tags, status };
+        const data = { title, slug, author, description, blogcategory, tags, keywords, metadescription, primarystatus, status };
 
         if (_id) {
             await axios.put('/api/blogs', { ...data, _id })
@@ -156,6 +164,23 @@ export default function Blog(
                 <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {existingTags && existingTags.length > 0 && (
                     <span>{existingTags}</span>
                 )}</p>
+            </div>
+
+             {/* blog keyword */}
+             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="title">Keyword</label>
+                <input type="text" id='keyword' placeholder='Enter keywords'
+                    value={keywords}
+                    onChange={ev => setKeywords(ev.target.value)}
+                />
+            </div>
+
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <label htmlFor="metadescription">Meta Descripstion</label>
+                <input type="text" id='metadescription' placeholder='Enter Meta Desription'
+                    value={metadescription}
+                    onChange={ev => setmetadescription(ev.target.value)}
+                />
             </div>
 
             {/* blog status */}

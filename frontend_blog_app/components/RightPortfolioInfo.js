@@ -26,7 +26,7 @@ const RightPortfolioInfo = () => {
                 <div className="profile_imgbg"></div>
                 <div className="slug_profile_img">
                     <div className="image_bg_top0"></div>
-                    <div className="image_bg_top1"></div>
+                    <div className="image_bg_top1 dark:!bg-[#0c172b57]"></div>
                     <img id="white-image" src={image} alt="coder" />
                 </div>
             </div>

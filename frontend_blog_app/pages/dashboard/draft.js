@@ -3,34 +3,54 @@ import Link from "next/link";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import useFetchData from "@/hooks/useFetchData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Dataloading from "@/components/Dataloading";
+import Aside from "@/components/Aside";
 
-export default function MemberDraft() {
+export default function Draft() {
 
-    const { data: session, status } = useSession();
-
+    // const { data: session, status } = useSession();
+    const [user, setUser] = useState({ value: null })
     const router = useRouter();
     // Check if there's no active session and redirect to login page
-    if (!session) {
-        router.push('/login');
-        return null; // Return null or any loading indicator while redirecting
-    }
+    // if (!session) {
+    //     router.push('/login');
+    //     return null; // Return null or any loading indicator while redirecting
+    // }
 
-    if (status === "loading") {
-        // Loading state, loader or any other indicator
-        return <div className='full-h flex flex-center'>
-            <div className="loading-bar">Loading</div>
-        </div>;
-    }
+    // if (status === "loading") {
+    //     // Loading state, loader or any other indicator
+    //     return <div className='full-h flex flex-center'>
+    //         <div className="loading-bar">Loading</div>
+    //     </div>;
+    // }
+
+    useEffect(() => {
+        const checkUser = () => {
+            try {
+                const token = localStorage.getItem("Token");
+                if (token) {
+                    setUser({ value: token });
+                } else {
+                    router.push('/'); // Redirect if no token is found
+                }
+            } catch (err) {
+                console.error(err);
+                localStorage.clear();
+                router.push('/'); // Redirect on error
+            }
+        };
+
+        checkUser();
+    }, [router]); // Adding router as a dependency
 
     // pagination blogs
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(4);
-    const { alldata, loading } = useFetchData('/api/members');
+    const { alldata, loading } = useFetchData('/api/blogs');
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -42,7 +62,7 @@ export default function MemberDraft() {
     const currentblogs = alldata.slice(indexOfFirstblog, indexOfLastblog);
 
     // Filtering draft blogs
-    const draftblogs = currentblogs.filter(ab => ab.status === "inactive");
+    const draftblogs = currentblogs.filter(ab => ab.status === "userdraft");
 
 
     const allblog = alldata.length; // Total number of blogs
@@ -53,21 +73,22 @@ export default function MemberDraft() {
         pageNumbers.push(i);
     }
 
+    if (user.value === null) {
+        return null;
+    }
 
-    if (session) {
 
-
+    if (user.value !== null) {
         return <>
+            <Aside />
             <div className="draftblogspage">
                 {/* title dashboard */}
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
-                        <h2>Draft <span>Members</span></h2>
-                        <h3>ADMIN PANEL</h3>
+                        <h2 className="dark:text-[#6466f1]">Draft <span className="dark:text-gray-100">Blogs</span></h2>
+                        <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
                     </div>
-                    <div className="breadcrumb" data-aos="fade-left">
-                        <IoSettingsOutline /> <span>/</span><span><Link className="underline" href="/draft">Blogs</Link> <Link className="underline" href="/userpostdraft">UBlogs</Link> <Link className="underline" href="/projectdraft">Projects</Link><Link className="underline" href="/achievementdraft">Achievements</Link><Link className="underline" href="/memberdraft">Members</Link></span>
-                    </div>
+
                 </div>
 
                 <div className="draftblogs">
@@ -76,8 +97,8 @@ export default function MemberDraft() {
                             <thead data-aos="fade-up">
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
+                                    <th>Title</th>
+                                    <th>Slug</th>
                                     <th>Edit / Delete</th>
                                 </tr>
                             </thead>
@@ -92,18 +113,18 @@ export default function MemberDraft() {
                                 </> : <>
                                     {draftblogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="4" className="text-center">No Draft Members Available</td>
+                                            <td colSpan="4" className="text-center dark:text-gray-200 dark:bg-[#2d3748]">No Draft Blogs Available</td>
                                         </tr>
                                     ) : (
                                         draftblogs.map((blog, index) => (
                                             <tr key={blog._id}>
                                                 <td>{index + 1}</td>
-                                                <td><h3>{blog.name}</h3></td>
-                                                <td><pre>{blog.role}</pre></td>
+                                                <td><h3>{blog.title}</h3></td>
+                                                <td><pre>{blog.slug}</pre></td>
                                                 <td>
                                                     <div className='flex gap-2 flex-center'>
-                                                        <Link href={'/members/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
-                                                        <Link href={'/members/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
+                                                        <Link href={'/blogs/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
+                                                        <Link href={'/blogs/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
                                                     </div>
                                                 </td>
                                             </tr>

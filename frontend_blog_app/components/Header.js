@@ -8,11 +8,33 @@ import { IoSearch } from "react-icons/io5";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { LuSun } from "react-icons/lu";
 import { useRouter } from 'next/router';
+import { useSession, signOut } from "next-auth/react"
+
 
 
 export default function Header() {
+    const { data: session, status } = useSession();
+
+
     const router = useRouter();
     const [activeLink, setActiveLink] = useState('/');
+
+    // user login
+    const [user, setUser] = useState({ value: null })
+    const [key, setKey] = useState(0)
+
+    useEffect(() => {
+        try {
+            const token = localStorage.getItem("Token")
+            if (token) {
+                setUser({ value: token })
+                setKey(Math.random())
+            }
+        } catch (err) {
+            console.log(err)
+            localStorage.clear()
+        }
+    }, [])
 
     useEffect(() => {
         // Update active link state when the page is reloaded
@@ -44,6 +66,12 @@ export default function Header() {
         setAside(false); // Close the aside menu
     };
 
+    const handleLogout = async () => {
+        localStorage.removeItem("Token")
+        // await router.refresh();
+        await router.push("/")
+        router.reload()
+    }
 
     // darkMode on off
     const [darkMode, setDarkMode] = useState(true);
@@ -103,6 +131,27 @@ export default function Header() {
                         <li><Link className={activeLink === '/achievement' ? '!text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
                         <li><Link className={activeLink === '/about' ? '!text-[#5485e0]' : ''} href="/about">About us</Link></li>
                         <li><Link className={activeLink === '/contact' ? '!text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
+
+
+
+                        {user.value ? <div className="relative ml-3">
+                            <Link href="/dashboard">
+                                <div>
+                                    <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                        <span className="absolute -inset-1.5"></span>
+                                        <span className="sr-only">Open user menu</span>
+                                        <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                    </button>
+                                </div>
+                            </Link>
+                        </div> : ""}
+
+
+                        {user.value ? <button className=" bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
+                            <Link className={activeLink === '/login' ? ' !text-white' : ''} href="/" onClick={handleLogout}>Logout</Link>
+                        </button> : <button className=" bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
+                            <Link className={activeLink === '/login' ? ' !text-white' : ''} href="/login">Login</Link>
+                        </button>}
                     </ul>
                     <div className="navlist_mobile_ul">
                         <button onClick={toggleDarkMode}>{darkMode ? <IoMoonSharp /> : <LuSun />}</button>
@@ -161,6 +210,9 @@ export default function Header() {
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
                     <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
+                    <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
+                        <Link className={activeLink === '/login' ? '!bg-indigo-700 !text-white' : ''} href="/login">Login</Link>
+                    </button>
                 </ul>
                 <hr />
                 <h3 className="mt-3">Topics</h3>
