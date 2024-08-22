@@ -51,7 +51,7 @@ const ManualLogin = () => {
             const resdata = await axios.post('/api/userlogin', data)
             console.log(resdata.data.token)
             localStorage.setItem("Token", resdata.data.token)
-            await signIn();
+            // await signIn();
             
 
             const Toast = Swal.mixin({

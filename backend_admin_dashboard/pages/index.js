@@ -18,12 +18,26 @@ export default function Home() {
 
   const router = useRouter();
   // Check if there's no active session and redirect to login page
+  const [user, setUser] = useState({ value: null });
+  
   useEffect(() => {
-    // Check if there's no active session and redirect to login page
-    if (!session) {
-      router.push('/login');
-    }
-  }, [session, router]);
+    const checkUser = () => {
+      try {
+        const token = localStorage.getItem("Token");
+        if (token) {
+          setUser({ value: token });
+        } else {
+          router.push('/'); // Redirect if no token is found
+        }
+      } catch (err) {
+        console.error(err);
+        localStorage.clear();
+        router.push('/'); // Redirect on error
+      }
+    };
+    
+    checkUser();
+  }, [router]); // Adding router as a dependency
 
   if (status === "loading") {
     // Loading state, loader or any other indicator
@@ -112,7 +126,7 @@ export default function Home() {
 
 
   // if login then show this data
-  if (session) {
+  if (user.value !== null) {
 
     return (
       <>
