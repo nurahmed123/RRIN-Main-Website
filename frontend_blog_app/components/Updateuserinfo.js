@@ -29,7 +29,7 @@ export default function Updateuserinfo({
     const [role, setRole] = useState(existingRole || '');
     const [email, setEmail] = useState(existingEmail || '');
     const [phone, setPhone] = useState(existingPhone || '');
-    const [country, setCountry] = useState(existingPhone || '');
+    const [country, setCountry] = useState(existingCountry || '');
     const [password, setPassword] = useState(existingPassword || '');
     const [bio, setBio] = useState(existingBio || '');
     const [facebook, setFacebook] = useState(existingBacebook || '');
