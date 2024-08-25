@@ -21,6 +21,10 @@ const signup = () => {
     const [gotp, setGOTP] = useState("")
     const [passwordin, setPasswordin] = useState("")
     const [repassword, setRePassword] = useState("")
+    const [bio, setBio] = useState("")
+    const [facebook, setFacebook] = useState("")
+    const [github, setGithub] = useState("")
+    const [linkedin, setLinkedin] = useState("")
     const [image, setImage] = useState("")
 
     // login user check
@@ -44,14 +48,14 @@ const signup = () => {
     const SendOTP = (ev) => {
         // ev.preventDefault();
         const { otp, expires } = TOTP.generate("JBSWY3DPEHPK3PXP")
-        console.log(otp)
+        // console.log(otp)
         setGOTP(otp)
 
         const data = { otp, email };
         try {
 
             axios.post('/api/sendEmail', data)
-            console.log(data)
+            // console.log(data)
         } catch {
             return
         }
@@ -79,9 +83,9 @@ const signup = () => {
     async function createUserSccount(ev) {
         ev.preventDefault();
         let password = await bcrypt.hash(passwordin, 10)
-        console.log(password)
-        const data = { name, role, username, country, email, phone, password, image };
-        console.log(data)
+        // console.log(password)
+        const data = { name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin };
+        // console.log(data)
 
         try {
 
