@@ -6,6 +6,7 @@ const UserSchema = new Schema({
     role: { type: String,  },
     email: { type: String,  },
     phone: { type: String },
+    country: { type: String },
     password: { type: String,  },
     bio: { type: String,  },
     facebook: { type: String,  },

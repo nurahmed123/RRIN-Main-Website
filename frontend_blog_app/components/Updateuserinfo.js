@@ -11,6 +11,7 @@ export default function Updateuserinfo({
     role: existingRole,
     email: existingEmail,
     phone: existingPhone,
+    country: existingCountry,
     password: existingPassword,
     bio: existingBio,
     facebook: existingBacebook,
@@ -27,6 +28,7 @@ export default function Updateuserinfo({
     const [role, setRole] = useState(existingRole || '');
     const [email, setEmail] = useState(existingEmail || '');
     const [phone, setPhone] = useState(existingPhone || '');
+    const [country, setCountry] = useState(existingPhone || '');
     const [password, setPassword] = useState(existingPassword || '');
     const [bio, setBio] = useState(existingBio || '');
     const [facebook, setFacebook] = useState(existingBacebook || '');
@@ -59,6 +61,9 @@ export default function Updateuserinfo({
 
     async function updateUser(ev) {
         ev.preventDefault();
+        console.log(name)
+        console.log(username)
+        console.log(country)
 
         const data = { name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin };
 
@@ -75,7 +80,7 @@ export default function Updateuserinfo({
     };
 
     if (redirect) {
-        router.push('/dashboard/blogs');
+        router.push('/dashboard');
         return null;
     }
 
@@ -107,6 +112,14 @@ export default function Updateuserinfo({
                     <input type="text" id='keyword' placeholder='Enter phone number'
                         value={phone}
                         onChange={ev => setPhone(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="title" className="dark:text-gray-100">Country</label>
+                    <input type="text" id='keyword' placeholder='Enter country name'
+                        value={country}
+                        onChange={ev => setCountry(ev.target.value)}
                         className="dark:text-gray-200 dark:bg-gray-600"
                     />
                 </div>
@@ -149,7 +162,9 @@ export default function Updateuserinfo({
 
 
                 <div className='w-100 mb-2'>
-                    <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>SAVE BLOG</button>
+                    <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
+                    <Link href="/signup" className="text-blue-500 hover:text-blue-600">password?</Link>
+                    <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
                 </div>
 
             </form>
