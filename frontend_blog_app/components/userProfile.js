@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 const UserProfile = () => {
   const [userID, setUserID] = useState(null);
+  console.log(userID)
 
   useEffect(() => {
     const checkUser = () => {
@@ -27,7 +28,7 @@ const UserProfile = () => {
   }, [router]);
 
 
-  const { alldata, loading } = useFetchData(`/api/createuser`);
+  const { alldata, loading } = useFetchData(`/api/createuser?id=${userID}`);
   console.log(alldata)
 
   if (loading) {
