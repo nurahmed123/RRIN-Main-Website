@@ -43,14 +43,14 @@ const UserProfile = () => {
   const { name, bio, image, facebook, linkedin, github } = alldata;
 
   return (
-    <div>
+    <div className='m-4'>
       <div className="max-w-lg mx-auto my-10 bg-white dark:text-gray-100 shadow-xl dark:bg-slate-800 rounded-lg p-5">
         <img className="w-32 h-32 rounded-full mx-auto" src={image || "https://picsum.photos/200"} alt="Profile picture" />
         <h2 className="text-center text-2xl font-semibold mt-3">{name || "John Doe"}</h2>
         <div className="flex justify-center mt-5">
-          {facebook && <a href={facebook} className="text-blue-500 hover:text-blue-700 mx-3">Twitter</a>}
-          {linkedin && <a href={linkedin} className="text-blue-500 hover:text-blue-700 mx-3">LinkedIn</a>}
-          {github && <a href={github} className="text-blue-500 hover:text-blue-700 mx-3">GitHub</a>}
+          {facebook && <a href={facebook} className="text-[#6466f1] hover:text-[#4338ca] mx-3">FaceBook</a>}
+          {linkedin && <a href={linkedin} className="text-[#6466f1] hover:text-[#4338ca] mx-3">LinkedIn</a>}
+          {github && <a href={github} className="text-[#6466f1] hover:text-[#4338ca] mx-3">GitHub</a>}
         </div>
         <div className="mt-5">
           <h3 className="text-xl font-semibold">Bio</h3>
