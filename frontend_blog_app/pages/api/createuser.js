@@ -37,14 +37,14 @@ export default async function createuser(req, res) {
 
 
     if (method === 'POST') {
-        const { name, role, username, country, email, phone, password, image } = req.body;
+        const { name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(405).json({ message: 'Method Not Allowed' });
         }
         const productDoc = await User.create({
-            name, role, username, country, email, phone, password, image
+            name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin
         })
 
         res.json(productDoc)
@@ -60,12 +60,12 @@ export default async function createuser(req, res) {
 
 
     if (method === 'PUT') {
-        const { _id, name, role, username, country, email, phone, password, image } = req.body;
+        const { _id, name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin } = req.body;
 
         const existingUser = await User.findOne({ email });
 
         await User.updateOne({ email }, {
-            name, role, username, country, email, phone, password, image
+            name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin
         });
 
         res.json(true);
