@@ -210,9 +210,25 @@ export default function Header() {
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
                     <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
-                    <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
-                        <Link className={activeLink === '/login' ? '!bg-indigo-700 !text-white' : ''} href="/login">Login</Link>
-                    </button>
+
+                    {user.value ? <div className="relative ml-3">
+                        <Link href="/dashboard">
+                            <div>
+                                <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span className="absolute -inset-1.5"></span>
+                                    <span className="sr-only">Open user menu</span>
+                                    <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                </button>
+                            </div>
+                        </Link>
+                    </div> : ""}
+
+                    {user.value ? <button className=" bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
+                        <Link className={activeLink === '/login' ? ' !text-white' : ''} href="/" onClick={handleLogout}>Logout</Link>
+                    </button> : <button className=" bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">
+                        <Link className={activeLink === '/login' ? ' !text-white' : ''} href="/login">Login</Link>
+                    </button>}
+
                 </ul>
                 <hr />
                 <h3 className="mt-3">Topics</h3>
