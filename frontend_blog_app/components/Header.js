@@ -237,7 +237,7 @@ export default function Header() {
                     <li><Link href="/dashboard">Dashboard</Link></li>
                     <li><Link href="/dashboard/blogs">Blogs</Link></li>
                     <li><Link href="/dashboard/blogs/addblog">Add Blogs</Link></li>
-                    <li><Link href="/setting">Settings</Link></li>
+                    <li><Link href="/dashboard/setting">Settings</Link></li>
                 </ul>
 
                 <hr />
