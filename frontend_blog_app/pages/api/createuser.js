@@ -53,6 +53,10 @@ export default async function createuser(req, res) {
     if (method === 'GET') {
         if (req.query?.id) {
             res.json(await User.findById(req.query.id));
+        } else if (req.query?.email) {
+            // Fetch blogs by bcategory
+            const user = await User.find({ slug: req.query.email });
+            res.json(user.reverse());
         } else {
             res.json((await User.find()).reverse())
         }
