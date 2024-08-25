@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function Updateuserinfo({
     _id,
@@ -163,7 +164,7 @@ export default function Updateuserinfo({
 
                 <div className='w-100 mb-2'>
                     <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
-                    <Link href="/signup" className="text-blue-500 hover:text-blue-600">password?</Link>
+                    <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
                     <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
                 </div>
 

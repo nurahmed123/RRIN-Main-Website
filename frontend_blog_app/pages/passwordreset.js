@@ -129,11 +129,11 @@ const passwordreset = () => {
         return null;
     }
 
-    if (user.value) {
-        // router.reload();
-        router.push('/')
-        return;
-    }
+    // if (user.value) {
+    //     // router.reload();
+    //     router.push('/')
+    //     return;
+    // }
 
     return (
         <div className='container'>
