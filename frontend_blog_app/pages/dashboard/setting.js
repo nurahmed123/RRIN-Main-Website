@@ -53,7 +53,7 @@ export default function setting() {
   }, [id]);
 
   // Handling loading and redirection
-  if (status === "loading" || user.value === null) {
+  if (status === "loading" || userID === null) {
     return (
       <div className='flex flex-col flex-center wh_100'>
         <Loading />
