@@ -81,7 +81,7 @@ export default function Updateuserinfo({
 
     return (
         <>
-            <form onSubmit={updateUser} className='addWebsiteform dark:bg-[#2d3748] mt-2'>
+            <form onSubmit={updateUser} className='container m-0 lg:ml-[12rem] addWebsiteform dark:bg-[#2d3748] mt-2'>
                 {/* blog title */}
                 <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                     <label htmlFor="title" className="dark:text-gray-100">Name</label>
