@@ -31,7 +31,7 @@ export default function EditProduct() {
                 router.push('/'); // Redirect on error
             }
         };
-        
+
         checkUser();
     }, [router]);
 
@@ -62,7 +62,7 @@ export default function EditProduct() {
     // Render the component when data is available
     return (
         <>
-        <Aside/>
+            <Aside />
             <Head>
                 <title>Update Blog</title>
             </Head>
@@ -73,7 +73,7 @@ export default function EditProduct() {
                         <h3 className="dark:!text-[#6466f1]">ADMIN PANEL</h3>
                     </div>
                     <div className="breadcrumb">
-                        <BsPostcard className="dark:!text-[#6466f1]"/> <span className="dark:!text-[#6466f1]">/</span><span className="dark:!text-[#6466f1]">Edit Blog</span>
+                        <BsPostcard className="dark:!text-[#6466f1]" /> <span className="dark:!text-[#6466f1]">/</span><span className="dark:!text-[#6466f1]">Edit Blog</span>
                     </div>
                 </div>
                 <div className="mt-3">

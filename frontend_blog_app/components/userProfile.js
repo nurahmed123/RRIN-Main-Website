@@ -2,6 +2,7 @@ import React from 'react'
 import useFetchData from "@/hooks/useFetchData";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const UserProfile = () => {
   const router = useRouter();
@@ -48,9 +49,9 @@ const UserProfile = () => {
         <img className="w-32 h-32 rounded-full mx-auto" src={image || "https://picsum.photos/200"} alt="Profile picture" />
         <h2 className="text-center text-2xl font-semibold mt-3">{name || "John Doe"}</h2>
         <div className="flex justify-center mt-5">
-          {facebook && <a href={facebook} className="text-[#6466f1] hover:text-[#4338ca] mx-3">FaceBook</a>}
-          {linkedin && <a href={linkedin} className="text-[#6466f1] hover:text-[#4338ca] mx-3">LinkedIn</a>}
-          {github && <a href={github} className="text-[#6466f1] hover:text-[#4338ca] mx-3">GitHub</a>}
+          {facebook && <Link target="_blank" href={facebook} className="text-[#6466f1] hover:text-[#4338ca] mx-3">FaceBook</Link>}
+          {linkedin && <Link target="_blank" href={linkedin} className="text-[#6466f1] hover:text-[#4338ca] mx-3">LinkedIn</Link>}
+          {github && <Link target="_blank" href={github} className="text-[#6466f1] hover:text-[#4338ca] mx-3">GitHub</Link>}
         </div>
         <div className="mt-5">
           <h3 className="text-xl font-semibold">Bio</h3>

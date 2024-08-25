@@ -1,0 +1,158 @@
+import React from 'react'
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+
+export default function Updateuserinfo({
+    _id,
+    name: existingName,
+    username: existingUsername,
+    role: existingRole,
+    email: existingEmail,
+    phone: existingPhone,
+    password: existingPassword,
+    bio: existingBio,
+    facebook: existingBacebook,
+    linkedin: existingLinkedin,
+    github: existingGithub,
+    image: existingImage,
+}) {
+    const [redirect, setRedirect] = useState(false);
+    const [userID, setUserID] = useState(null);
+    const router = useRouter();
+
+    const [name, setName] = useState(existingName || '');
+    const [username, setUsername] = useState(existingUsername || '');
+    const [role, setRole] = useState(existingRole || '');
+    const [email, setEmail] = useState(existingEmail || '');
+    const [phone, setPhone] = useState(existingPhone || '');
+    const [password, setPassword] = useState(existingPassword || '');
+    const [bio, setBio] = useState(existingBio || '');
+    const [facebook, setFacebook] = useState(existingBacebook || '');
+    const [linkedin, setLinkedin] = useState(existingLinkedin || '');
+    const [github, setGithub] = useState(existingGithub || '');
+    const [image, setImage] = useState(existingImage || '');
+
+
+    useEffect(() => {
+        const checkUser = () => {
+            try {
+                const token = localStorage.getItem("Token");
+                if (token) {
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace('-', '+').replace('_', '/');
+                    const JWTData = JSON.parse(window.atob(base64));
+                    setUserID(JWTData.data._id); // Set author from JWT
+                } else {
+                    router.push('/'); // Redirect if no token is found
+                }
+            } catch (err) {
+                console.error(err);
+                localStorage.clear();
+                router.push('/'); // Redirect on error
+            }
+        };
+        checkUser();
+    }, [router]);
+
+
+    async function updateUser(ev) {
+        ev.preventDefault();
+
+        const data = { name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin };
+
+        try {
+            if (_id) {
+                await axios.put('/api/createuser', { ...data, _id });
+                toast.success('Data Updated!');
+            }
+            setRedirect(true);
+        } catch (err) {
+            console.error(err);
+            toast.error('An error occurred!');
+        }
+    };
+
+    if (redirect) {
+        router.push('/dashboard/blogs');
+        return null;
+    }
+
+    return (
+        <>
+            <form onSubmit={createProduct} className='addWebsiteform dark:bg-[#2d3748] mt-2'>
+                {/* blog title */}
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="title" className="dark:text-gray-100">Name</label>
+                    <input type="text" id='title' placeholder='Enter name'
+                        value={name}
+                        onChange={ev => setName(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+                {/* blog slug url */}
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="slug" className="dark:text-gray-100">User Name</label>
+                    <input required type="text" id='slug' placeholder='Enter username'
+                        value={username}
+                        onChange={ev => setUsername(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+                {/* blog keyword */}
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="title" className="dark:text-gray-100">Phone</label>
+                    <input type="text" id='keyword' placeholder='Enter phone number'
+                        value={phone}
+                        onChange={ev => setPhone(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="metadescription" className="dark:text-gray-100">Bio</label>
+                    <input type="text" id='metadescription' placeholder='Write about you'
+                        value={bio}
+                        onChange={ev => setBio(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="metadescription" className="dark:text-gray-100">Facebook URL</label>
+                    <input type="text" id='metadescription' placeholder='https://'
+                        value={facebook}
+                        onChange={ev => setFacebook(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="metadescription" className="dark:text-gray-100">Github URL</label>
+                    <input type="text" id='metadescription' placeholder='https://'
+                        value={github}
+                        onChange={ev => setGithub(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                    <label htmlFor="metadescription" className="dark:text-gray-100">Linkedin URL</label>
+                    <input type="text" id='metadescription' placeholder='https://'
+                        value={linkedin}
+                        onChange={ev => setLinkedin(ev.target.value)}
+                        className="dark:text-gray-200 dark:bg-gray-600"
+                    />
+                </div>
+
+
+                <div className='w-100 mb-2'>
+                    <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>SAVE BLOG</button>
+                </div>
+
+            </form>
+        </>
+    )
+}
