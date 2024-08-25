@@ -1,8 +1,10 @@
 import React from 'react'
 import useFetchData from "@/hooks/useFetchData";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const UserProfile = () => {
+  const router = useRouter();
   const [userID, setUserID] = useState(null);
   console.log(userID)
 
