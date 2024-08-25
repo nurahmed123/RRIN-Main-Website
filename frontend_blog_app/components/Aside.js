@@ -46,7 +46,7 @@ export default function Aside() {
 
 
     return <>
-        <aside className="dark:bg-[#2d3748] dark:text-gray-100 asideleft">
+        <aside className="none lg:relative dark:bg-[#2d3748] dark:text-gray-100 asideleft">
             <ul>
                 <Link href="/dashboard">
                     <li className={activeLink === '/dashboard' ? 'navactive' : ''}
