@@ -3,6 +3,7 @@ import useFetchData from "@/hooks/useFetchData";
 
 const UserProfile = () => {
   const { alldata, loading } = useFetchData(`/api/createuser`);
+  console.log(alldata)
 
   if (loading) {
     return <div>Loading...</div>;
@@ -13,6 +14,9 @@ const UserProfile = () => {
   }
 
   const { name, bio, image, twitter, linkedin, github } = alldata;
+  console.log(name)
+  console.log(bio)
+  console.log(image)
 
   return (
     <div>
