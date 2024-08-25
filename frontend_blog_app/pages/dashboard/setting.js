@@ -12,6 +12,7 @@ export default function setting() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [user, setUser] = useState({ value: null });
+  const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const { id } = router.query;
 
@@ -21,9 +22,12 @@ export default function setting() {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          setUser({ value: token });
+          const base64Url = token.split('.')[1];
+          const base64 = base64Url.replace('-', '+').replace('_', '/');
+          const JWTData = JSON.parse(window.atob(base64));
+          setUserID(JWTData.data._id); // Set author from JWT
         } else {
-          router.push('/login'); // Redirect if no token is found
+          router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
         console.error(err);
@@ -31,14 +35,13 @@ export default function setting() {
         router.push('/'); // Redirect on error
       }
     };
-
     checkUser();
   }, [router]);
 
   // Fetch product information
   useEffect(() => {
     if (id) {
-      axios.get('/api/createuser?id=' + id)
+      axios.get('/api/createuser?id=' + userID)
         .then(response => {
           setUserInfo(response.data);
         })
