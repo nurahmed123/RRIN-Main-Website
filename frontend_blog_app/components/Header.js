@@ -211,7 +211,7 @@ export default function Header() {
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
                     <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
 
-                    {user.value ? <div className="relative ml-3">
+                    {user.value ? <div className="relative mb-3">
                         <Link href="/dashboard">
                             <div>
                                 <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -230,6 +230,16 @@ export default function Header() {
                     </button>}
 
                 </ul>
+
+                <hr />
+                <h3 className="mt-3">Control Center</h3>
+                <ul onClick={handleLinkClick}>
+                    <li><Link href="/dashboard">Dashboard</Link></li>
+                    <li><Link href="/dashboard/blogs">Blogs</Link></li>
+                    <li><Link href="/dashboard/blogs/addblog">Add Blogs</Link></li>
+                    <li><Link href="/settings">Settings</Link></li>
+                </ul>
+
                 <hr />
                 <h3 className="mt-3">Topics</h3>
                 <ul onClick={handleLinkClick}>
