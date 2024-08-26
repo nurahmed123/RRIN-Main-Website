@@ -79,7 +79,7 @@ export default function Setting() {
           {userInfo ? (
             <Updateuserinfo {...userInfo} />
           ) : (
-            <p>Loading user information...</p>
+            <p className="dark:text-gray-100">Loading user information...</p>
           )}
         </div>
       </div>

@@ -172,7 +172,7 @@ export default function Updateuserinfo({
                         />
                     </div>
 
-                    <div className="w-100 flex flex-col flex-left mb-2">
+                    <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
                         <label htmlFor="fileInput" className="dark:text-gray-100 w-full pl-0.5 text-sm">
                             Upload File
                         </label>
@@ -186,7 +186,7 @@ export default function Updateuserinfo({
                         <small className="pl-0.5 w-full pb-2 dark:text-gray-100">PNG, JPG, WebP - Max 1MB</small>
                     </div>
 
-                    <div className="mb-1 previewImage">
+                    <div className="mb-1 previewImage" data-aos="fade-up">
                         <label htmlFor="fileInput" className="dark:text-gray-100 w-full pl-0.5 text-sm">
                             Preview
                         </label>
@@ -219,7 +219,7 @@ export default function Updateuserinfo({
                         <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
                     </div>
 
-                    <div className='w-100 mb-2'>
+                    <div className='w-100 mb-2' data-aos="fade-up">
                         <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
                     </div>
 
