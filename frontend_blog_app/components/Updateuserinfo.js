@@ -179,7 +179,7 @@ export default function Updateuserinfo({
                     </div>
 
                     <div className="w-100 flex flex-col flex-left mb-2">
-                        <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
+                        <label htmlFor="fileInput" className="dark:text-gray-100 w-full pl-0.5 text-sm">
                             Upload File
                         </label>
                         <input
@@ -189,11 +189,11 @@ export default function Updateuserinfo({
                             onChange={(e) => handleImgUpload(e)}
                             className="!w-full max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
                         />
-                        <small className="pl-0.5 w-full pb-2">PNG, JPG, WebP - Max 1MB</small>
+                        <small className="pl-0.5 w-full pb-2 dark:text-gray-100">PNG, JPG, WebP - Max 1MB</small>
                     </div>
 
                     <div className="mb-1 previewImage">
-                        <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
+                        <label htmlFor="fileInput" className="dark:text-gray-100 w-full pl-0.5 text-sm">
                             Preview
                         </label>
                         <div className="mt-1 w-full max-w-sm bg-white !border bg-gray-300 !border-gray-200 rounded-[.5rem] shadow ">
@@ -204,10 +204,10 @@ export default function Updateuserinfo({
                                     alt="Upload Image For Preview"
                                 />
                             ) : (
-                                <p className="pt-5 pl-4">Upload Image For Preview</p>
+                                <p className="pt-5 pl-4 dark:text-gray-100">Upload Image For Preview</p>
                             )}
                             {fileSize >= 1000000 ? (
-                                <p style={{ color: "red" }} className="pt-5 pl-4">
+                                <p style={{ color: "red" }} className="dark:text-gray-100 pt-5 pl-4">
                                     File size is longer than 1MB
                                 </p>
                             ) : null}
