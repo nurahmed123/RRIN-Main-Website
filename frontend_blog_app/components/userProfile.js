@@ -31,7 +31,7 @@ const UserProfile = () => {
 
 
   const { alldata, loading } = useFetchData(`/api/createuser?id=${userID}`);
-  console.log(alldata)
+  // console.log(alldata)
 
   if (loading) {
     return <div>Loading...</div>;
