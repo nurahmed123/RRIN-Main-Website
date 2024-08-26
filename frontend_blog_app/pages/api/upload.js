@@ -1,7 +1,7 @@
-import formidable from 'formidable';
+// pages/api/upload.js
 import fs from 'fs';
-import { v4 as uuidv4 } from 'uuid';
-import { uploadFile } from '../../utils/uploadFile'; // custom function for uploading to S3 or other storage
+import path from 'path';
+import formidable from 'formidable';
 
 export const config = {
     api: {
@@ -9,24 +9,27 @@ export const config = {
     },
 };
 
-export default async (req, res) => {
-    const form = new formidable.IncomingForm();
+export default async function handler(req, res) {
+    if (req.method === 'POST') {
+        const form = new formidable.IncomingForm();
+        const uploadDir = path.join(process.cwd(), 'public/uploads');
 
-    form.parse(req, async (err, fields, files) => {
-        if (err) {
-            res.status(500).json({ error: 'Formidable Error' });
-            return;
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
         }
 
-        const { filepath, originalFilename } = files.file;
-        const fileStream = fs.createReadStream(filepath);
+        form.uploadDir = uploadDir;
+        form.keepExtensions = true;
 
-        try {
-            const imageUrl = await uploadFile(fileStream, originalFilename); // upload to S3 or another storage
-            res.status(200).json({ url: imageUrl });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Upload Failed' });
-        }
-    });
-};
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                return res.status(500).json({ error: 'Failed to upload image.' });
+            }
+
+            const filePath = files.file.path.replace(process.cwd(), '');
+            return res.status(200).json({ url: filePath });
+        });
+    } else {
+        res.status(405).json({ message: 'Method not allowed' });
+    }
+}
