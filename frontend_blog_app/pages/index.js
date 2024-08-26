@@ -62,14 +62,14 @@ export default function Home() {
     try {
       const token = localStorage.getItem("Token")
       if (token) {
-        setUser({ value: token }) 
+        setUser({ value: token })
         setKey(Math.random())
       }
-    } catch(err) {
+    } catch (err) {
       console.log(err)
       localStorage.clear()
     }
-  }, []) 
+  }, [])
 
 
 
@@ -83,7 +83,7 @@ export default function Home() {
       </Head>
 
 
-      <section className="header_data_section">
+      <section className="overflow-hidden header_data_section">
         <div className="container flex flex-sb w-100">
           <div className="leftheader_info" data-aos="fade-right">
             <h1>Hi, This is <span>RoboSuperior</span>.<br /> a team from Bangladesh</h1>
@@ -100,8 +100,8 @@ export default function Home() {
             <Image src={"/img/Coder.png"} height={"100"} width={"100"} />
           </div>
         </div>
-      </section>
-      {/* <section className="main_blog_section">
+
+        {/* <section className="main_blog_section">
         <div className="container flex flex-sb flex-left flex-wrap">
           <div className="leftblog_sec">
             <h2>Recently Published</h2>
@@ -223,10 +223,11 @@ export default function Home() {
       </section> */}
 
 
-      <Additionalinfo />
-      <Services />
-      <Pricing />
-      <Advisor />
+        <Additionalinfo />
+        <Services />
+        <Pricing />
+        <Advisor />
+      </section>
     </>
   );
 }
