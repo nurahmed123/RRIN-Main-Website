@@ -205,11 +205,6 @@ export default function Updateuserinfo({
                                     File size is longer than 1MB
                                 </p>
                             ) : null}
-
-                            <div className="px-5 pb-5">
-                                {/* <a href="#">
-                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
-                    </a> */}
                             </div>
                         </div>
                     </div>
