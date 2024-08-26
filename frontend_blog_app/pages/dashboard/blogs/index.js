@@ -93,7 +93,7 @@ export default function Blogs() {
     if (user.value !== null) {
         return <>
             <Aside />
-            <div className="blogpage">
+            <div className="p-[2rem] min-[1043px]:blogpage">
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
                         <h2 className="dark:!text-[#6466f1]">All Published<span className="dark:!text-gray-100"> Blogs</span></h2>

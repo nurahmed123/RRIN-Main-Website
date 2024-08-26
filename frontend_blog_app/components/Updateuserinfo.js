@@ -86,6 +86,13 @@ export default function Updateuserinfo({
         <>
             <form onSubmit={updateUser} className='container m-0 lg:!ml-[12rem] addWebsiteform dark:bg-[#2d3748] mt-2'>
                 {/* blog title */}
+                <div className="titledashboard flex flex-sb">
+                    <div data-aos="fade-right">
+                        <h2 className="dark:text-[#6466f1]">Update <span className="dark:text-gray-100">User Profile</span></h2>
+                        <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
+                    </div>
+
+                </div>
                 <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                     <label htmlFor="title" className="dark:text-gray-100">Name</label>
                     <input type="text" id='title' placeholder='Enter name'
