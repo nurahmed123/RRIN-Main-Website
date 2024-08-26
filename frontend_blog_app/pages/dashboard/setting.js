@@ -66,6 +66,7 @@ export default function Setting() {
         <title>Update Profile</title>
       </Head>
       <div className="m-6 lg:blogpage">
+        <h1 className="text-2xl font-semibold">Update Profile</h1>
         <div className="titledashboard flex justify-between">
           {/* Add any content for titledashboard if needed */}
         </div>

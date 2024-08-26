@@ -158,7 +158,7 @@ export default function Updateuserinfo({
                     />
                 </div>
 
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                <div className='w-100 mb-2' data-aos="fade-up">
                     <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
                     <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
                 </div>
