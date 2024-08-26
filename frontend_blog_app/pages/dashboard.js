@@ -14,6 +14,7 @@ const Dashboard = () => {
         const token = localStorage.getItem("Token");
         if (token) {
           setUser({ value: token });
+          console.log("paisi token")
         } else {
           router.push('/'); // Redirect if no token is found
         }
