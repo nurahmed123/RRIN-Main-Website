@@ -151,7 +151,7 @@ export default function Header() {
                                             alt="user"
                                             width={32}
                                             height={32}
-                                            style={{ height: "2rem", borderRadious: "100%" }}
+                                            style={{ height: "2rem", borderRadius: "100%" }}
                                         />
                                     </button>
                                 </div>
