@@ -24,7 +24,7 @@ export default function Addblog() {
 
     return <>
     <Aside/>
-        <div className="p-8 container lg:addblogspage">
+        <div className="p-6 container lg:addblogspage">
             <div className="titledashboard flex flex-sb">
                 <div data-aos="fade-right">
                     <h2 className="dark:text-[#6466f1]">Add <span className="dark:text-gray-100">Blog</span></h2>
