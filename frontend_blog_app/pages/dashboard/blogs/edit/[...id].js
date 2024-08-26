@@ -66,7 +66,7 @@ export default function EditProduct() {
             <Head>
                 <title>Update Blog</title>
             </Head>
-            <div className="m-6 lg:blogpage">
+            <div className="m-6 container lg:blogpage">
                 <div className="titledashboard flex flex-sb">
                     <div>
                         <h2 className="dark:!text-[#6466f1]">Edit <span className="dark:text-gray-100">{productInfo?.title}</span></h2>

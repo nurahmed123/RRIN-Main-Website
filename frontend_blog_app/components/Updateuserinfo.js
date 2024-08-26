@@ -62,9 +62,6 @@ export default function Updateuserinfo({
 
     async function updateUser(ev) {
         ev.preventDefault();
-        console.log(name)
-        console.log(username)
-        console.log(country)
 
         const data = { name, role, username, country, email, phone, password, image, bio, facebook, github, linkedin };
 
@@ -161,10 +158,12 @@ export default function Updateuserinfo({
                     />
                 </div>
 
-
-                <div className='w-100 mb-2'>
+                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                     <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
                     <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
+                </div>
+
+                <div className='w-100 mb-2'>
                     <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
                 </div>
 
