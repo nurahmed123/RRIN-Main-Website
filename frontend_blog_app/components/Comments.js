@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import Image from 'next/image'
 
 const Comments = ({ slug }) => {
     const [user, setUser] = useState(null);
@@ -194,12 +195,13 @@ const Comments = ({ slug }) => {
                     <div key={comment._id} className="max-w-screen-sm px-4 my-3">
                         <div className="flex">
                             <div className="rounded-full flex-shrink-0 mr-2">
-                                <img
+                                {/* <img
                                     src="/img/coder.png"
                                     alt=""
                                     style={{ height: "5rem", width: "4rem" }}
                                     className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
-                                />
+                                /> */}
+                                <Image src={"https://www.codewithharry.com/img/user.png"} className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" alt="user" style={{ height: "5rem", width: "4rem" }} height={"50"} width={"50"} />
                             </div>
                             <div className="shadow-xl flex-1 !border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed max-w-[75vw] break-words dark:bg-slate-700 dark:border-black">
                                 <strong className="dark:text-gray-200">{comment.username}</strong>
