@@ -285,7 +285,7 @@ export default async function sendEmail(req, res) {
         auth.sendMail(receiver, (error, emailResponse) => {
             if (error)
                 throw error;
-            console.log("success!");
+            // console.log("success!");
             response.end();
         });
 

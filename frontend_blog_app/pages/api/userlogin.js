@@ -36,17 +36,17 @@ export default async function userlogin(req, res) {
             }));
         }
 
-        console.log(user.password)
+        // console.log(user.password)
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log(isPasswordValid)
+        // console.log(isPasswordValid)
         if (isPasswordValid) {
-            console.log("loggedin")
+            // console.log("loggedin")
             var token = jwt.sign({ data: user }, process.env.JWT_SECRET);
-            console.log(process.env.JWT_SECRET)
+            // console.log(process.env.JWT_SECRET)
             return res.status(200).json({success: true, status: 200, token});
         } else {
-            console.log("failed")
+            // console.log("failed")
             return res.status(400).json({ success: false, status: 400, data: "Wrong Password" });
         }
     }

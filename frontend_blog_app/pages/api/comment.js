@@ -37,12 +37,6 @@ export default async function createuser(req, res) {
     if (method === 'PUT') {
         const { editingCommentId, userid, username, comment, slug } = req.body;
 
-        console.log(editingCommentId)
-        console.log(username)
-        console.log(comment)
-        console.log(slug)
-        console.log(userid)
-
         await Comment.updateOne({ _id: editingCommentId }, {
             userid, username, comment, slug
         });
@@ -53,7 +47,7 @@ export default async function createuser(req, res) {
     if (method === 'DELETE') {
         const { commentId } = req.body;
         if (commentId) {
-            console.log(commentId)
+            // console.log(commentId)
             await Comment.deleteOne({ _id: commentId });
             res.json(true)
         }
