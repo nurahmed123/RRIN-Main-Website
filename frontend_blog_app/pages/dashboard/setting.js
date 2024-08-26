@@ -65,8 +65,13 @@ export default function Setting() {
       <Head>
         <title>Update Profile</title>
       </Head>
-      <div className="m-6 lg:blogpage">
-        
+      <div className="max-[1043px]:!m-0 blogpage">
+        <div className="titledashboard flex flex-sb">
+          <div data-aos="fade-right">
+            <h2 className="dark:text-[#6466f1]">Update <span className="dark:text-gray-100">User Profile</span></h2>
+            <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
+          </div>
+        </div>
         <div className="titledashboard flex justify-between">
           {/* Add any content for titledashboard if needed */}
         </div>

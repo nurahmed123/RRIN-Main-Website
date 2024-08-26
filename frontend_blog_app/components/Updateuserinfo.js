@@ -97,13 +97,7 @@ export default function Updateuserinfo({
     return (
         <>
             <div className="container">
-                <div className="titledashboard flex flex-sb">
-                    <div data-aos="fade-right">
-                        <h2 className="dark:text-[#6466f1]">Update <span className="dark:text-gray-100">User Profile</span></h2>
-                        <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
-                    </div>
-
-                </div>
+                
                 <form onSubmit={updateUser} className='container m-0 lg:!ml-[12rem] addWebsiteform dark:bg-[#2d3748] mt-2'>
                     {/* blog title */}
                     <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
@@ -187,7 +181,7 @@ export default function Updateuserinfo({
                             type="file"
                             accept=".jpg,.png,.jpeg,.webp"
                             onChange={(e) => handleImgUpload(e)}
-                            className="!w-full max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
+                            className="!w-full dark:text-gray-100 max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
                         />
                         <small className="pl-0.5 w-full pb-2 dark:text-gray-100">PNG, JPG, WebP - Max 1MB</small>
                     </div>
