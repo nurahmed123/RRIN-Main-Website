@@ -23,7 +23,7 @@ export default function Aside() {
             }
         } catch (err) {
             console.log(err)
-            localStorage.clear()
+            // localStorage.clear()
         }
     }, []);
 

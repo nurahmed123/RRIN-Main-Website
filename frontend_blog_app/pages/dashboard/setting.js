@@ -29,7 +29,7 @@ export default function Setting() {
         }
       } catch (err) {
         console.error('Error decoding token:', err);
-        localStorage.clear();
+        // localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };

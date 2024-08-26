@@ -22,7 +22,7 @@ const UserProfile = () => {
         }
       } catch (err) {
         console.error(err);
-        localStorage.clear();
+        // localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };
