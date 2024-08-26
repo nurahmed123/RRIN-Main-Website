@@ -9,7 +9,7 @@ import { HiBars3BottomRight } from "react-icons/hi2";
 import { LuSun } from "react-icons/lu";
 import { useRouter } from 'next/router';
 import { useSession, signOut } from "next-auth/react"
-
+import Image from 'next/image'
 
 
 export default function Header() {
@@ -21,6 +21,7 @@ export default function Header() {
 
     // user login
     const [user, setUser] = useState({ value: null })
+    const [userImg, setUserImg] = useState("");
     const [key, setKey] = useState(0)
 
     useEffect(() => {
@@ -29,6 +30,10 @@ export default function Header() {
             if (token) {
                 setUser({ value: token })
                 setKey(Math.random())
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace('-', '+').replace('_', '/');
+                const JWTData = JSON.parse(window.atob(base64));
+                setUserImg(JWTData.data.image);
             }
         } catch (err) {
             console.log(err)
@@ -140,7 +145,13 @@ export default function Header() {
                                     <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                         <span className="absolute -inset-1.5"></span>
                                         <span className="sr-only">Open user menu</span>
-                                        <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                        {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
+                                        <Image
+                                            src={userImg || "https://www.codewithharry.com/img/user.png"}
+                                            alt="user"
+                                            width={32}
+                                            height={32}
+                                        />
                                     </button>
                                 </div>
                             </Link>
@@ -196,7 +207,7 @@ export default function Header() {
                     <h4>ESC</h4>
                 </div>
             </div>
-            <div className={aside ? "navlist_mobile open" : "navlist_mobile"}>
+            <div className={aside ? "navlist_mobile open overflow-auto" : "navlist_mobile"}>
                 <div className="navlist_m_title flex flex-sb">
                     <h1>RoboSuperior</h1>
                     <button onClick={asideClose}><FaXmark /></button>
@@ -217,7 +228,13 @@ export default function Header() {
                                 <button type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
-                                    <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                    {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
+                                    <Image
+                                        src={userImg || "https://www.codewithharry.com/img/user.png"}
+                                        alt="user"
+                                        width={32}
+                                        height={32}
+                                    />
                                 </button>
                             </div>
                         </Link>
