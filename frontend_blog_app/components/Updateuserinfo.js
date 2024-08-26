@@ -97,7 +97,7 @@ export default function Updateuserinfo({
     return (
         <>
             <div className="container">
-                
+
                 <form onSubmit={updateUser} className='container m-0 addWebsiteform dark:bg-[#2d3748] mt-2'>
                     {/* blog title */}
                     <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
@@ -205,7 +205,6 @@ export default function Updateuserinfo({
                                     File size is longer than 1MB
                                 </p>
                             ) : null}
-                            </div>
                         </div>
                     </div>
 
