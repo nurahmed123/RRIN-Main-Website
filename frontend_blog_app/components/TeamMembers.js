@@ -35,7 +35,7 @@ const TeamMembers = () => {
             {loading ? (
                 <>
                     <div className="wh-100 flex flex-center mt-2 pb-5">
-                        <div aria-live="assertive" role="alert" className="loader"></div>
+                        <div aria-live="assertive" role="alert" className="loader m-auto"></div>
                     </div>
                 </>
             ) : (

@@ -79,7 +79,7 @@ export default function project() {
                                         <div
                                             aria-live="assertive"
                                             role="alert"
-                                            className="loader"
+                                            className="loader m-auto"
                                         ></div>
                                     </div>
                                 </>

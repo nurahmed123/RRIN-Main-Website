@@ -67,7 +67,7 @@ export default function achievement() {
                         <h2>Recent Achievement</h2>
                         <div className="blogs_sec">
                             {loading ? <><div className="wh-100 flex flex-center mt-2 pb-5">
-                                <div aria-live="assertive" role="alert" className="loader"></div></div></> : <>
+                                <div aria-live="assertive" role="alert" className="loader m-auto"></div></div></> : <>
                                 {publishedblogs.map((blog) => {
                                     // in the markdown content first image show here
                                     const firstImageUrl = extractFirstImageUrl(blog.description);

@@ -85,7 +85,7 @@ export default function CategoryPage() {
                     </div>
                     <div className="category_blogs mt-3">
                         {loading ? <><div className="wh-100 flex flex-center mt-2 pb-5">
-                            <div aria-live="assertive" role="alert" className="loader"></div></div></> : <>
+                            <div aria-live="assertive" role="alert" className="loader m-auto"></div></div></> : <>
                             {publishedblogs.map((item) => {
                                 // in the markdown content first image show here
                                 const firstImageUrl = extractFirstImageUrl(item.description);

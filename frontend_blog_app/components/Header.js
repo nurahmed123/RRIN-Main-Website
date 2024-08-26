@@ -188,7 +188,7 @@ export default function Header() {
                 </div>
                 <div className="search_data text-center">
                     {loading ? <><div className="wh-100 flex flex-center mt-2 pb-5">
-                        <div aria-live="assertive" role="alert" className="loader"></div></div></> : <>
+                        <div aria-live="assertive" role="alert" className="loader m-auto"></div></div></> : <>
                         {searchQuery ? <>{filteredBlogs.slice(0, 3).map((blog) => {
                             return <Link href={`/blog/${blog.slug}`} onClick={closeSearch} key={blog._id} >
                                 <div className="blog" >
