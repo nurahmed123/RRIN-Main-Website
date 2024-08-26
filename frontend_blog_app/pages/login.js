@@ -80,7 +80,7 @@ const login = () => {
 
             
             
-            await router.push('/');
+            await router.push('/dashboard');
             router.reload()
         } catch {
             const Toast = Swal.mixin({
