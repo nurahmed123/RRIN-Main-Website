@@ -202,7 +202,7 @@ const Comments = ({ slug }) => {
                                     style={{ height: "5rem", width: "4rem" }}
                                     className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
                                 /> */}
-                                <Image src={image} className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" alt="user" style={{ height: "5rem", width: "4rem" }} height={"50"} width={"50"} />
+                                <Image src={image} className="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" alt="user" style={{ height: "5rem" }} height={"50"} width={"50"} />
                             </div>
                             <div className="shadow-xl flex-1 !border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed max-w-[75vw] break-words dark:bg-slate-700 dark:border-black">
                                 <strong className="dark:text-gray-200">{comment.username}</strong>
