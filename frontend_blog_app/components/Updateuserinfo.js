@@ -96,139 +96,154 @@ export default function Updateuserinfo({
 
     return (
         <>
-            <div className="titledashboard flex flex-sb">
-                <div data-aos="fade-right">
-                    <h2 className="dark:text-[#6466f1]">Update <span className="dark:text-gray-100">User Profile</span></h2>
-                    <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
-                </div>
+            <div className="container">
+                <div className="titledashboard flex flex-sb">
+                    <div data-aos="fade-right">
+                        <h2 className="dark:text-[#6466f1]">Update <span className="dark:text-gray-100">User Profile</span></h2>
+                        <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
+                    </div>
 
-            </div>
-            <form onSubmit={updateUser} className='container m-0 lg:!ml-[12rem] addWebsiteform dark:bg-[#2d3748] mt-2'>
-                {/* blog title */}
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="title" className="dark:text-gray-100">Name</label>
-                    <input type="text" id='title' placeholder='Enter name'
-                        value={name}
-                        onChange={ev => setName(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
                 </div>
-                {/* blog slug url */}
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="slug" className="dark:text-gray-100">User Name</label>
-                    <input required type="text" id='slug' placeholder='Enter username'
-                        value={username}
-                        onChange={ev => setUsername(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                <form onSubmit={updateUser} className='container m-0 lg:!ml-[12rem] addWebsiteform dark:bg-[#2d3748] mt-2'>
+                    {/* blog title */}
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="title" className="dark:text-gray-100">Name</label>
+                        <input type="text" id='title' placeholder='Enter name'
+                            value={name}
+                            onChange={ev => setName(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
+                    {/* blog slug url */}
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="slug" className="dark:text-gray-100">User Name</label>
+                        <input required type="text" id='slug' placeholder='Enter username'
+                            value={username}
+                            onChange={ev => setUsername(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                {/* blog keyword */}
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="title" className="dark:text-gray-100">Phone</label>
-                    <input type="text" id='keyword' placeholder='Enter phone number'
-                        value={phone}
-                        onChange={ev => setPhone(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="title" className="dark:text-gray-100">Country</label>
-                    <input type="text" id='keyword' placeholder='Enter country name'
-                        value={country}
-                        onChange={ev => setCountry(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                    {/* blog keyword */}
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="title" className="dark:text-gray-100">Phone</label>
+                        <input type="text" id='keyword' placeholder='Enter phone number'
+                            value={phone}
+                            onChange={ev => setPhone(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="title" className="dark:text-gray-100">Country</label>
+                        <input type="text" id='keyword' placeholder='Enter country name'
+                            value={country}
+                            onChange={ev => setCountry(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="metadescription" className="dark:text-gray-100">Bio</label>
-                    <input type="text" id='metadescription' placeholder='Write about you'
-                        value={bio}
-                        onChange={ev => setBio(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="metadescription" className="dark:text-gray-100">Bio</label>
+                        <input type="text" id='metadescription' placeholder='Write about you'
+                            value={bio}
+                            onChange={ev => setBio(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="metadescription" className="dark:text-gray-100">Facebook URL</label>
-                    <input type="text" id='metadescription' placeholder='https://'
-                        value={facebook}
-                        onChange={ev => setFacebook(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="metadescription" className="dark:text-gray-100">Facebook URL</label>
+                        <input type="text" id='metadescription' placeholder='https://'
+                            value={facebook}
+                            onChange={ev => setFacebook(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="metadescription" className="dark:text-gray-100">Github URL</label>
-                    <input type="text" id='metadescription' placeholder='https://'
-                        value={github}
-                        onChange={ev => setGithub(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="metadescription" className="dark:text-gray-100">Github URL</label>
+                        <input type="text" id='metadescription' placeholder='https://'
+                            value={github}
+                            onChange={ev => setGithub(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                    <label htmlFor="metadescription" className="dark:text-gray-100">Linkedin URL</label>
-                    <input type="text" id='metadescription' placeholder='https://'
-                        value={linkedin}
-                        onChange={ev => setLinkedin(ev.target.value)}
-                        className="dark:text-gray-200 dark:bg-gray-600"
-                    />
-                </div>
+                    <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+                        <label htmlFor="metadescription" className="dark:text-gray-100">Linkedin URL</label>
+                        <input type="text" id='metadescription' placeholder='https://'
+                            value={linkedin}
+                            onChange={ev => setLinkedin(ev.target.value)}
+                            className="dark:text-gray-200 dark:bg-gray-600"
+                        />
+                    </div>
 
-                <div className="w-100 flex flex-col flex-left mb-2">
-                    <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
-                        Upload File
-                    </label>
-                    <input
-                        id="fileInput"
-                        type="file"
-                        accept=".jpg,.png,.jpeg,.webp"
-                        onChange={(e) => handleImgUpload(e)}
-                        className="!w-full max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
-                    />
-                    <small className="pl-0.5 w-full pb-2">PNG, JPG, WebP - Max 1MB</small>
-                </div>
+                    <div className="w-100 flex flex-col flex-left mb-2">
+                        <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
+                            Upload File
+                        </label>
+                        <input
+                            id="fileInput"
+                            type="file"
+                            accept=".jpg,.png,.jpeg,.webp"
+                            onChange={(e) => handleImgUpload(e)}
+                            className="!w-full max-w-md overflow-clip rounded-xl border rounded-lg border-slate-300  text-sm file:mr-4 file:cursor-pointer file:border-none file:bg-slate-100 file:px-4 file:py-2 file:font-medium file:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:focus-visible:outline-blue-600"
+                        />
+                        <small className="pl-0.5 w-full pb-2">PNG, JPG, WebP - Max 1MB</small>
+                    </div>
 
-                <div className="mb-1 previewImage">
-                    <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
-                        Preview
-                    </label>
-                    <div className="mt-1 w-full max-w-sm bg-white !border bg-gray-300 !border-gray-200 rounded-[.5rem] shadow ">
-                        {image ? (
-                            <img
-                                className="p-8 !rounded"
-                                src={image}
-                                alt="Upload Image For Preview"
-                            />
-                        ) : (
-                            <p className="pt-5 pl-4">Upload Image For Preview</p>
-                        )}
-                        {fileSize >= 1000000 ? (
-                            <p style={{ color: "red" }} className="pt-5 pl-4">
-                                File size is longer than 1MB
-                            </p>
-                        ) : null}
+                    <div className="mb-1 previewImage">
+                        <label htmlFor="fileInput" className="w-full pl-0.5 text-sm">
+                            Preview
+                        </label>
+                        <div className="mt-1 w-full max-w-sm bg-white !border bg-gray-300 !border-gray-200 rounded-[.5rem] shadow ">
+                            {image ? (
+                                <img
+                                    className="p-8 !rounded"
+                                    src={image}
+                                    alt="Upload Image For Preview"
+                                />
+                            ) : (
+                                <p className="pt-5 pl-4">Upload Image For Preview</p>
+                            )}
+                            {fileSize >= 1000000 ? (
+                                <p style={{ color: "red" }} className="pt-5 pl-4">
+                                    File size is longer than 1MB
+                                </p>
+                            ) : null}
 
-                        <div className="px-5 pb-5">
-                            {/* <a href="#">
+                            <div className="px-5 pb-5">
+                                {/* <a href="#">
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
                     </a> */}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className='w-100 mb-2' data-aos="fade-up">
-                    <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
-                    <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
-                </div>
+                    <div className='w-100 mb-2' data-aos="fade-up">
+                        <span className="text-sm text-gray-500 dark:text-gray-300">Update </span>
+                        <Link href="/passwordreset" className="text-blue-500 hover:text-blue-600">password?</Link>
+                    </div>
 
-                <div className='w-100 mb-2'>
-                    <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
-                </div>
+                    <div className='w-100 mb-2'>
+                        <button type='submit' className='w-100 addwebbtn flex-center dark:bg-[#667eea] dark:hover:bg-[#7788d4]'>Update</button>
+                    </div>
 
-            </form>
+                </form>
+            </div>
         </>
     )
+}
+
+function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
 }
