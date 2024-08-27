@@ -17,6 +17,8 @@ const UserProfile = () => {
           const base64 = base64Url.replace('-', '+').replace('_', '/');
           const JWTData = JSON.parse(window.atob(base64));
           setUserID(JWTData.data._id); // Set author from JWT
+          console.log("jwt id is",JWTData.data._id)
+          console.log("user id is",userID)
         } else {
           router.push('/'); // Redirect if no token is found
         }
