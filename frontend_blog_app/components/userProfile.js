@@ -7,23 +7,40 @@ const UserProfile = () => {
   const router = useRouter();
   const [userID, setUserID] = useState(null);
 
+  // Function to safely decode the JWT token
+  const decodeJWT = (token) => {
+    try {
+      const base64Url = token.split('.')[1];
+      if (!base64Url) throw new Error("Invalid token structure");
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(window.atob(base64));
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      return null;
+    }
+  };
+
+  // Check user authentication and token validity
   useEffect(() => {
     const checkUser = () => {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          const base64Url = token.split('.')[1];
-          const base64 = base64Url.replace('-', '+').replace('_', '/');
-          const JWTData = JSON.parse(window.atob(base64));
-          setUserID(JWTData.data._id); // Set userID from JWT
+          const JWTData = decodeJWT(token);
+          if (JWTData && JWTData.data && JWTData.data._id) {
+            setUserID(JWTData.data._id); // Set user ID from JWT
+          } else {
+            throw new Error("Invalid token data");
+          }
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
-        console.error(err);
+        console.error('Error checking user:', err);
         router.push('/'); // Redirect on error
       }
     };
+
     checkUser();
   }, [router]);
 
