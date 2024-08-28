@@ -24,22 +24,43 @@ export default function Header() {
     const [userImg, setUserImg] = useState("");
     const [key, setKey] = useState(0)
 
-    useEffect(() => {
+    // Function to safely decode the JWT token
+    const decodeJWT = (token) => {
         try {
-            const token = localStorage.getItem("Token")
-            if (token) {
-                setUser({ value: token })
-                setKey(Math.random())
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace('-', '+').replace('_', '/');
-                const JWTData = JSON.parse(window.atob(base64));
-                setUserImg(JWTData.data.image);
-            }
-        } catch (err) {
-            console.log(err)
-            // localStorage.clear()
+            const base64Url = token.split('.')[1];
+            if (!base64Url) throw new Error("Invalid token structure");
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            return JSON.parse(window.atob(base64));
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            return null;
         }
-    }, [])
+    };
+
+    // Check user authentication and token validity
+    useEffect(() => {
+        const checkUser = () => {
+            try {
+                const token = localStorage.getItem("Token");
+                if (token) {
+                    setUser({ value: token })
+                    const JWTData = decodeJWT(token);
+                    if (JWTData && JWTData.data && JWTData.data.image) {
+                        setUserImg(JWTData.data.image); // Set user ID from JWT
+                    } else {
+                        throw new Error("Invalid token data");
+                    }
+                } else {
+                    router.push('/'); // Redirect if no token is found
+                }
+            } catch (err) {
+                console.error('Error checking user:', err);
+                router.push('/'); // Redirect on error
+            }
+        };
+
+        checkUser();
+    }, [router]);
 
     useEffect(() => {
         // Update active link state when the page is reloaded
