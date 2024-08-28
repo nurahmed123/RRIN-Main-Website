@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
 import Aside from "@/components/Aside";
+import { jwtDecode } from "jwt-decode";
 
 export default function Setting() {
   const { data: session, status } = useSession();
@@ -13,18 +14,6 @@ export default function Setting() {
   const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
-  // Function to safely decode the JWT token
-  const decodeJWT = (token) => {
-    try {
-      const base64Url = token.split('.')[1];
-      if (!base64Url) throw new Error("Invalid token structure");
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      return JSON.parse(window.atob(base64));
-    } catch (error) {
-      console.error("Error decoding token:", error);
-      return null;
-    }
-  };
 
   // Check user authentication and token validity
   useEffect(() => {
@@ -32,12 +21,8 @@ export default function Setting() {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          const JWTData = decodeJWT(token);
-          if (JWTData && JWTData.data && JWTData.data._id) {
-            setUserID(JWTData.data._id); // Set user ID from JWT
-          } else {
-            throw new Error("Invalid token data");
-          }
+          const JWTData = jwtDecode(token);
+          setUserID(JWTData.data._id);
         } else {
           router.push('/'); // Redirect if no token is found
         }

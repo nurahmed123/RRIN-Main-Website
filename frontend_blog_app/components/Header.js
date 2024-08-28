@@ -30,10 +30,8 @@ export default function Header() {
                 const token = localStorage.getItem("Token");
                 if (token) {
                     setUser({ value: token })
-                    const decoded = jwtDecode(token);
-                    console.log(decoded)
-                    console.log(decoded.data.image)
-                    setUserImg(decoded.data.image)
+                    const JWTData = jwtDecode(token);
+                    setUserImg(JWTData.data.image)
                 } else {
                     router.push('/'); // Redirect if no token is found
                 }
