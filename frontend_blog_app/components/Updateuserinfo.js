@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { jwtDecode } from "jwt-decode";
 
 export default function Updateuserinfo({
     _id,
@@ -45,16 +46,14 @@ export default function Updateuserinfo({
             try {
                 const token = localStorage.getItem("Token");
                 if (token) {
-                    const base64Url = token.split('.')[1];
-                    const base64 = base64Url.replace('-', '+').replace('_', '/');
-                    const JWTData = JSON.parse(window.atob(base64));
+                    const JWTData = jwtDecode(token);
                     setUserID(JWTData.data._id); // Set author from JWT
                 } else {
                     router.push('/'); // Redirect if no token is found
                 }
             } catch (err) {
                 console.error(err);
-                localStorage.clear();
+                // localStorage.clear();
                 router.push('/'); // Redirect on error
             }
         };

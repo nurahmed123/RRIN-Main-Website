@@ -13,7 +13,7 @@ export default function Setting() {
   const router = useRouter();
   const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-
+  const { id } = router.query;
 
   // Check user authentication and token validity
   useEffect(() => {
@@ -22,12 +22,13 @@ export default function Setting() {
         const token = localStorage.getItem("Token");
         if (token) {
           const JWTData = jwtDecode(token);
-          setUserID(JWTData.data._id);
+          setUserID(JWTData.data._id); // Set user ID from JWT
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
-        console.error('Error checking user:', err);
+        console.error('Error decoding token:', err);
+        // localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };
