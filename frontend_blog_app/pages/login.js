@@ -101,86 +101,8 @@ const login = () => {
             return
         }
 
-
-        // if (
-        //     resdata.status === 400 ||
-        //     resdata.status === 401 ||
-        //     resdata.status === 403
-        // ) 
-        // {
-        //     const Toast = Swal.mixin({
-        //         toast: true,
-        //         position: "top-end",
-        //         showConfirmButton: false,
-        //         timer: 3000,
-        //         timerProgressBar: true,
-        //         didOpen: (toast) => {
-        //             toast.onmouseenter = Swal.stopTimer;
-        //             toast.onmouseleave = Swal.resumeTimer;
-        //         }
-        //     });
-        //     Toast.fire({
-        //         icon: "fail",
-        //         title: "Invalid Credentials!"
-        //     });
-        // } 
-        // else if (resdata.status === 500) {
-        //     console.log(
-        //         "Server error!"
-        //     );
-        //     alert('Server error!');
-        // } else {
-        //     const Toast = Swal.mixin({
-        //         toast: true,
-        //         position: "top-end",
-        //         showConfirmButton: false,
-        //         timer: 3000,
-        //         timerProgressBar: true,
-        //         didOpen: (toast) => {
-        //             toast.onmouseenter = Swal.stopTimer;
-        //             toast.onmouseleave = Swal.resumeTimer;
-        //         }
-        //     });
-        //     Toast.fire({
-        //         icon: "success",
-        //         title: "Login success"
-        //     });
-        //     router.push('/');
-        //     console.log(resdata);
-        // }
-
-
-
         setRedirect(true);
     };
-
-
-    // const userLogin = async (data) => {
-    //     const resdata = await userlogin("credentials", {
-    //       email: data.email,
-    //       password: data.password,
-    //       redirect: false,
-    //     });
-
-    //     console.log(resdata);
-    //     if (
-    //       resdata.status === 400 ||
-    //       resdata.status === 401 ||
-    //       resdata.status === 403
-    //     ) {
-    //       console.log("Invalid Credentials!");
-    //       alert('Invalid Credentials!');
-    //     } else if (resdata.status === 500) {
-    //       console.log(
-    //         "Server error!"
-    //       );
-    //       alert('Server error!');
-    //     } else {
-    //       alert('Login successfull!');
-    //       router.push('/');
-    //       console.log(resdata);
-    //     }
-    //   };
 
 
     if (redirect) {
@@ -193,11 +115,6 @@ const login = () => {
         router.push('/')
         return;
     }
-
-    // if (session) {
-    //     router.push('/');
-    //     return null; // Return null or any loading indicator while redirecting
-    // }
     return (
         <div className='container'>
             <div className="min-w-screen min-h-screen flex">
