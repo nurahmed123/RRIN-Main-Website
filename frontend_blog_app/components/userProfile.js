@@ -1,8 +1,7 @@
-import React from 'react'
-import useFetchData from "@/hooks/useFetchData";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useFetchData from "@/hooks/useFetchData";
 
 const UserProfile = () => {
   const router = useRouter();
@@ -16,26 +15,21 @@ const UserProfile = () => {
           const base64Url = token.split('.')[1];
           const base64 = base64Url.replace('-', '+').replace('_', '/');
           const JWTData = JSON.parse(window.atob(base64));
-          setUserID(JWTData.data._id); // Set author from JWT
-          console.log("jwt id is",JWTData.data._id)
-          console.log("user id is",userID)
+          setUserID(JWTData.data._id); // Set userID from JWT
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
         console.error(err);
-        // localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };
     checkUser();
   }, [router]);
 
+  const { alldata, loading } = useFetchData(userID ? `/api/createuser?id=${userID}` : null);
 
-  const { alldata, loading } = useFetchData(`/api/createuser?id=${userID}`);
-  // console.log(alldata)
-
-  if (loading) {
+  if (!userID || loading) {
     return <div>Loading...</div>;
   }
 

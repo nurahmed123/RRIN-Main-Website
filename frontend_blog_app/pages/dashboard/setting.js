@@ -12,7 +12,6 @@ export default function Setting() {
   const router = useRouter();
   const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  const { id } = router.query;
 
   // Check user authentication and token validity
   useEffect(() => {
@@ -24,14 +23,11 @@ export default function Setting() {
           const base64 = base64Url.replace('-', '+').replace('_', '/');
           const JWTData = JSON.parse(window.atob(base64));
           setUserID(JWTData.data._id); // Set user ID from JWT
-          console.log("set jwt id is", JWTData.data._id)
-          console.log("set user id is", userID)
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
         console.error('Error decoding token:', err);
-        // localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };
@@ -42,8 +38,6 @@ export default function Setting() {
   // Fetch user information
   useEffect(() => {
     if (userID) {
-      console.log("set i jwt id is", JWTData.data._id)
-      console.log("set i user id is", userID)
       axios.get(`/api/createuser?id=${userID}`)
         .then(response => setUserInfo(response.data))
         .catch(error => {
