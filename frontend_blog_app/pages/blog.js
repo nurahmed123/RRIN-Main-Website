@@ -83,7 +83,7 @@ export default function blog() {
                                         <div
                                             aria-live="assertive"
                                             role="alert"
-                                            className="loader m-auto"
+                                            className="loader"
                                         ></div>
                                     </div>
                                 </>

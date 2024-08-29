@@ -10,7 +10,7 @@ import { LuSun } from "react-icons/lu";
 import { useRouter } from 'next/router';
 import { useSession, signOut } from "next-auth/react"
 import Image from 'next/image'
-import { jwtDecode } from "jwt-decode";
+
 
 export default function Header() {
     const { data: session, status } = useSession();
@@ -22,27 +22,24 @@ export default function Header() {
     // user login
     const [user, setUser] = useState({ value: null })
     const [userImg, setUserImg] = useState("");
+    const [key, setKey] = useState(0)
 
-    // Check user authentication and token validity
     useEffect(() => {
-        const checkUser = () => {
-            try {
-                const token = localStorage.getItem("Token");
-                if (token) {
-                    setUser({ value: token })
-                    const JWTData = jwtDecode(token);
-                    setUserImg(JWTData.data.image)
-                } else {
-                    router.push('/'); // Redirect if no token is found
-                }
-            } catch (err) {
-                console.error('Error checking user:', err);
-                router.push('/'); // Redirect on error
+        try {
+            const token = localStorage.getItem("Token")
+            if (token) {
+                setUser({ value: token })
+                setKey(Math.random())
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace('-', '+').replace('_', '/');
+                const JWTData = JSON.parse(window.atob(base64));
+                setUserImg(JWTData.data.image);
             }
-        };
-
-        checkUser();
-    }, [router]);
+        } catch (err) {
+            console.log(err)
+            localStorage.clear()
+        }
+    }, [])
 
     useEffect(() => {
         // Update active link state when the page is reloaded
@@ -150,11 +147,10 @@ export default function Header() {
                                         <span className="sr-only">Open user menu</span>
                                         {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
                                         <Image
-                                            src={userImg}
+                                            src={userImg || "https://www.codewithharry.com/img/user.png"}
                                             alt="user"
                                             width={32}
                                             height={32}
-                                            style={{ height: "2rem", borderRadious: "100%" }}
                                         />
                                     </button>
                                 </div>
@@ -192,7 +188,7 @@ export default function Header() {
                 </div>
                 <div className="search_data text-center">
                     {loading ? <><div className="wh-100 flex flex-center mt-2 pb-5">
-                        <div aria-live="assertive" role="alert" className="loader m-auto"></div></div></> : <>
+                        <div aria-live="assertive" role="alert" className="loader"></div></div></> : <>
                         {searchQuery ? <>{filteredBlogs.slice(0, 3).map((blog) => {
                             return <Link href={`/blog/${blog.slug}`} onClick={closeSearch} key={blog._id} >
                                 <div className="blog" >
@@ -234,11 +230,10 @@ export default function Header() {
                                     <span className="sr-only">Open user menu</span>
                                     {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
                                     <Image
-                                        src={userImg}
+                                        src={userImg || "https://www.codewithharry.com/img/user.png"}
                                         alt="user"
                                         width={32}
                                         height={32}
-                                        style={{ height: "2rem", borderRadius: "100%" }}
                                     />
                                 </button>
                             </div>

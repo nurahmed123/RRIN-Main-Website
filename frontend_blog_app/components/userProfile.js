@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from 'react'
+import useFetchData from "@/hooks/useFetchData";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import useFetchData from "@/hooks/useFetchData";
-import { jwtDecode } from "jwt-decode";
 
 const UserProfile = () => {
   const router = useRouter();
   const [userID, setUserID] = useState(null);
 
-  // Function to safely decode the JWT token
-  // Check user authentication and token validity
   useEffect(() => {
     const checkUser = () => {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          const JWTData = jwtDecode(token);
-          setUserID(JWTData.data._id);
+          const base64Url = token.split('.')[1];
+          const base64 = base64Url.replace('-', '+').replace('_', '/');
+          const JWTData = JSON.parse(window.atob(base64));
+          setUserID(JWTData.data._id); // Set author from JWT
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
-        console.error('Error checking user:', err);
+        console.error(err);
+        localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };
-
     checkUser();
   }, [router]);
 
-  const { alldata, loading } = useFetchData(userID ? `/api/createuser?id=${userID}` : null);
 
-  if (!userID || loading) {
+  const { alldata, loading } = useFetchData(`/api/createuser?id=${userID}`);
+  // console.log(alldata)
+
+  if (loading) {
     return <div>Loading...</div>;
   }
 

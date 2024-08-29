@@ -111,7 +111,7 @@ export default function projectPage() {
                     <div className="leftblog_data_markdown" data-aos="fade-up">
                         {loading ? <>
                             <div className='wh-100 flex flex-center mt-3'>
-                                <div aria-live="assertive" role="alert" className="loader m-auto"></div>
+                                <div aria-live="assertive" role="alert" className="loader"></div>
                             </div>
                         </> : <>
                             <div className="w-100 blogcontent" >

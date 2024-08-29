@@ -40,7 +40,7 @@ const signup = () => {
             }
         } catch (err) {
             console.log(err)
-            // localStorage.clear()
+            localStorage.clear()
         }
     }, [])
 

@@ -67,7 +67,7 @@ export default function Home() {
       }
     } catch (err) {
       console.log(err)
-      // localStorage.clear()
+      localStorage.clear()
     }
   }, [])
 

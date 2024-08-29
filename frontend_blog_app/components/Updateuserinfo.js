@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import { jwtDecode } from "jwt-decode";
 
 export default function Updateuserinfo({
     _id,
@@ -46,14 +45,16 @@ export default function Updateuserinfo({
             try {
                 const token = localStorage.getItem("Token");
                 if (token) {
-                    const JWTData = jwtDecode(token);
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace('-', '+').replace('_', '/');
+                    const JWTData = JSON.parse(window.atob(base64));
                     setUserID(JWTData.data._id); // Set author from JWT
                 } else {
                     router.push('/'); // Redirect if no token is found
                 }
             } catch (err) {
                 console.error(err);
-                // localStorage.clear();
+                localStorage.clear();
                 router.push('/'); // Redirect on error
             }
         };
@@ -96,7 +97,7 @@ export default function Updateuserinfo({
     return (
         <>
             <div className="container">
-
+                
                 <form onSubmit={updateUser} className='container m-0 addWebsiteform dark:bg-[#2d3748] mt-2'>
                     {/* blog title */}
                     <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
@@ -204,6 +205,12 @@ export default function Updateuserinfo({
                                     File size is longer than 1MB
                                 </p>
                             ) : null}
+
+                            <div className="px-5 pb-5">
+                                {/* <a href="#">
+                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                    </a> */}
+                            </div>
                         </div>
                     </div>
 

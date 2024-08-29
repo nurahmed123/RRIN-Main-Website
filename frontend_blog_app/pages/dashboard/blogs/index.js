@@ -8,8 +8,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Dataloading from "@/components/Dataloading";
 import Aside from "@/components/Aside";
-import { jwtDecode } from "jwt-decode";
-
 
 export default function Blogs() {
 
@@ -25,7 +23,9 @@ export default function Blogs() {
             try {
                 const token = localStorage.getItem("Token");
                 if (token) {
-                    const JWTData = jwtDecode(token);
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace('-', '+').replace('_', '/');
+                    const JWTData = JSON.parse(window.atob(base64));
                     setAuthor(JWTData.data._id); // Set author from JWT
                     setUser(JWTData.data); // Set user data if needed
                 } else {
@@ -33,7 +33,7 @@ export default function Blogs() {
                 }
             } catch (err) {
                 console.error(err);
-                // localStorage.clear();
+                localStorage.clear();
                 router.push('/'); // Redirect on error
             }
         };

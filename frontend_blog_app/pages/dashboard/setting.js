@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
 import Aside from "@/components/Aside";
-import { jwtDecode } from "jwt-decode";
 
 export default function Setting() {
   const { data: session, status } = useSession();
@@ -21,14 +20,16 @@ export default function Setting() {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          const JWTData = jwtDecode(token);
+          const base64Url = token.split('.')[1];
+          const base64 = base64Url.replace('-', '+').replace('_', '/');
+          const JWTData = JSON.parse(window.atob(base64));
           setUserID(JWTData.data._id); // Set user ID from JWT
         } else {
           router.push('/'); // Redirect if no token is found
         }
       } catch (err) {
         console.error('Error decoding token:', err);
-        // localStorage.clear();
+        localStorage.clear();
         router.push('/'); // Redirect on error
       }
     };

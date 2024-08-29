@@ -89,8 +89,8 @@ export default function Tagscategory() {
                                     <div className="wh-100 flex flex-center mt-2 pb-5">
                                         <div
                                             aria-live="assertive"
-                                            role="alert m-auto"
-                                            className="loader m-auto"
+                                            role="alert"
+                                            className="loader"
                                         ></div>
                                     </div>
                                 </>
