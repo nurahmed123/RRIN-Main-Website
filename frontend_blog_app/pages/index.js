@@ -14,6 +14,8 @@ import Additionalinfo from "@/components/Additionalinfo";
 import Pricing from "@/components/Pricing";
 import Advisor from "@/components/Advisor";
 import Image from "next/image";
+import Head from "next/head";
+
 
 function extractFirstImageUrl(markdownContent) {
   // Check if markdownContent is provided and non-empty
