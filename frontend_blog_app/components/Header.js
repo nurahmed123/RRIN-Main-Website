@@ -145,7 +145,7 @@ export default function Header() {
                                         <span className="sr-only">Open user menu</span>
                                         {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
                                         <Image
-                                            src={ userImg }
+                                            src={userImg}
                                             alt="user"
                                             width={32}
                                             height={32}
@@ -229,7 +229,7 @@ export default function Header() {
                                     <span className="sr-only">Open user menu</span>
                                     {/* <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
                                     <Image
-                                        src={ userImg }
+                                        src={userImg}
                                         alt="user"
                                         width={32}
                                         height={32}
@@ -248,14 +248,14 @@ export default function Header() {
 
                 </ul>
 
-                <hr />
-                <h3 className="mt-3">Control Center</h3>
-                <ul onClick={handleLinkClick}>
-                    <li><Link href="/dashboard">Dashboard</Link></li>
-                    <li><Link href="/dashboard/blogs">Blogs</Link></li>
-                    <li><Link href="/dashboard/blogs/addblog">Add Blogs</Link></li>
-                    <li><Link href="/dashboard/setting">Settings</Link></li>
-                </ul>
+                {user.value ? <> <hr />
+                    <h3 className="mt-3">Control Center</h3>
+                    <ul onClick={handleLinkClick}>
+                        <li><Link href="/dashboard">Dashboard</Link></li>
+                        <li><Link href="/dashboard/blogs">Blogs</Link></li>
+                        <li><Link href="/dashboard/blogs/addblog">Add Blogs</Link></li>
+                        <li><Link href="/dashboard/setting">Settings</Link></li>
+                    </ul></> : ""}
 
                 <hr />
                 <h3 className="mt-3">Topics</h3>

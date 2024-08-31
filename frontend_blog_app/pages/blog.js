@@ -112,9 +112,7 @@ export default function blog() {
                                                         <h3>{blog.title}</h3>
                                                     </Link>
                                                     <p>
-                                                        Markdown is a lightweight markup language with
-                                                        plain-text-formatting syntax. Its design allows it
-                                                        to…
+                                                        {blog.metadescription}
                                                     </p>
                                                     <div className="blogauthor flex gap-1">
                                                         <div className="blogaimg">
