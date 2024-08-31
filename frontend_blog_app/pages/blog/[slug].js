@@ -96,7 +96,7 @@ export default function BlogPage() {
             <meta property="og:url" content={process.env.SITE_URL} />
             <meta property="og:site_name" content="Robo Superior" />
             <meta property="og:image" content={blog[0].imageUrl || '/default-image.png'} />
-            <meta property="article:published_time" content={new Date(blog[0].createdAt).toISOString()} />
+            <meta property="article:published_time" content={blog[0].createdAt ? new Date(blog[0].createdAt).toISOString() : ''} />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@RoboSuperior" />
@@ -129,7 +129,7 @@ export default function BlogPage() {
                             "url": "/logo.png"
                         }
                     },
-                    "datePublished": "${new Date(blog[0].createdAt).toISOString()}"
+                    "datePublished": "${blog[0].createdAt ? new Date(blog[0].createdAt).toISOString() : ''}"
                 }`}
             </script>
         </Head>
