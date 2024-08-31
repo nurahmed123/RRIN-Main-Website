@@ -19,6 +19,18 @@ import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
 import Comments from "@/components/Comments";
 
+
+function extractFirstImageUrl(markdownContent) {
+    // Check if markdownContent is provided and non-empty
+    if (!markdownContent || typeof markdownContent !== "string") {
+        return null;
+    }
+
+    // Regular expression to match the first image URL in markdown format ![alt text](imageURL)
+    const regex = /!\[.*?\]\((.*?)\)/;
+    const match = markdownContent.match(regex);
+    return match ? match[1] : null;
+}
 export default function BlogPage() {
 
     const router = useRouter();
@@ -92,17 +104,17 @@ export default function BlogPage() {
             <meta property="og:locale" content="en_US" />
             <meta property="og:type" content="article" />
             <meta property="og:title" content={blog[0].title ? `${blog[0].title} | Robo Superior` : 'Loading...'} />
-            <meta property="og:description" content={blog[0].description ? blog[0].description.substring(0, 155) : 'Loading...'} />
+            <meta property="og:description" content={blog[0].metadescription ? blog[0].description.substring(0, 155) : 'Loading...'} />
             <meta property="og:url" content={process.env.SITE_URL} />
             <meta property="og:site_name" content="Robo Superior" />
-            <meta property="og:image" content={blog[0].imageUrl || '/default-image.png'} />
+            <meta property="og:image" content={extractFirstImageUrl(blog[0].description) || '/img/noimage.jpg'} />
             <meta property="article:published_time" content={blog[0].createdAt ? new Date(blog[0].createdAt).toISOString() : ''} />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@RoboSuperior" />
             <meta name="twitter:title" content={blog[0].title} />
-            <meta name="twitter:description" content={blog[0].description} />
-            <meta name="twitter:image" content={blog[0].imageUrl || '/default-image.png'} />
+            <meta name="twitter:description" content={blog[0].metadescription} />
+            <meta name="twitter:image" content={extractFirstImageUrl(blog[0].description) || '/img/noimage.jpg'} />
 
             <link rel="canonical" href={`${process.env.SITE_URL}/${slug}`} />
 
@@ -115,7 +127,7 @@ export default function BlogPage() {
                         "@id": "${process.env.SITE_URL}/${slug}"
                     },
                     "headline": "${blog[0].title}",
-                    "description": "${blog[0].description}",
+                    "description": "${blog[0].metadescription}",
                     "image": "${blog[0].imageUrl || '/default-image.png'}",
                     "author": {
                         "@type": "Organization",
