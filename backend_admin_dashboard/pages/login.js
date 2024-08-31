@@ -1,5 +1,5 @@
 import Loading from "@/components/Loading";
-import ManualLogin from "@/components/manualLogin";
+import ManualLogin from "@/components/ManualLogin";
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
