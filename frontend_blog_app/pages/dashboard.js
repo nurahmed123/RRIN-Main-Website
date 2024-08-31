@@ -2,7 +2,7 @@ import Aside from '@/components/Aside'
 import UserProfile from '@/components/userProfile'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
-
+import Head from "next/head";
 
 const Dashboard = () => {
   const router = useRouter();

@@ -3,6 +3,7 @@ import Blog from "@/components/Blog";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import Head from "next/head";
 
 export default function Addblog() {
     // const { data: session, status } = useSession();

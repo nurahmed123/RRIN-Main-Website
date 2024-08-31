@@ -97,6 +97,7 @@ export default function blogPage() {
                 }
             </title>
             <meta name="description" content={blog[0].description} />
+            
 
         </Head>
 

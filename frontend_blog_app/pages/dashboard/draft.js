@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Dataloading from "@/components/Dataloading";
 import Aside from "@/components/Aside";
+import Head from "next/head";
 
 export default function Draft() {
 

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Dataloading from "@/components/Dataloading";
 import Aside from "@/components/Aside";
 import { jwtDecode } from "jwt-decode";
-
+import Head from "next/head";
 export default function Blogs() {
 
     // const { data: session, status } = useSession();
