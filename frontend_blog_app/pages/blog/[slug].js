@@ -92,10 +92,11 @@ export default function blogPage() {
             <title>
                 {!blog ? 'Loading...' :
                     blog && blog[0] && blog[0].slug ?
-                        blog[0].slug.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                        `${blog[0].slug.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | Robo Superirror` 
                         : 'Loading...'
                 }
             </title>
+            <meta name="description" content={blog[0].description} />
 
         </Head>
 
