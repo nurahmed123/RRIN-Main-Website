@@ -10,7 +10,7 @@ import { LuSun } from "react-icons/lu";
 import { useRouter } from 'next/router';
 import { useSession, signOut } from "next-auth/react"
 import Image from 'next/image'
-
+import { jwtDecode } from "jwt-decode";
 
 export default function Header() {
     const { data: session, status } = useSession();
@@ -30,9 +30,7 @@ export default function Header() {
             if (token) {
                 setUser({ value: token })
                 setKey(Math.random())
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace('-', '+').replace('_', '/');
-                const JWTData = JSON.parse(window.atob(base64));
+                const JWTData = jwtDecode(token);
                 setUserImg(JWTData.data.image);
             }
         } catch (err) {

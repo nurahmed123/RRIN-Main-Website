@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import ReactMarkdown from 'react-markdown';
 import MarkdownEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-
+import { jwtDecode } from "jwt-decode";
 export default function Blog({
     _id,
     title: existingTitle,
@@ -39,9 +39,7 @@ export default function Blog({
             try {
                 const token = localStorage.getItem("Token");
                 if (token) {
-                    const base64Url = token.split('.')[1];
-                    const base64 = base64Url.replace('-', '+').replace('_', '/');
-                    const JWTData = JSON.parse(window.atob(base64));
+                    const JWTData = jwtDecode(token);
                     setAuthor(JWTData.data._id); // Set author from JWT
                     setUser(JWTData.data); // Set user data if needed
                 } else {

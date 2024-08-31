@@ -3,6 +3,7 @@ import useFetchData from "@/hooks/useFetchData";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { jwtDecode } from "jwt-decode";
 
 const UserProfile = () => {
   const router = useRouter();
@@ -13,9 +14,7 @@ const UserProfile = () => {
       try {
         const token = localStorage.getItem("Token");
         if (token) {
-          const base64Url = token.split('.')[1];
-          const base64 = base64Url.replace('-', '+').replace('_', '/');
-          const JWTData = JSON.parse(window.atob(base64));
+          const JWTData = jwtDecode(token);
           setUserID(JWTData.data._id); // Set author from JWT
         } else {
           router.push('/'); // Redirect if no token is found
