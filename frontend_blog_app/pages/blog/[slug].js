@@ -89,15 +89,17 @@ export default function blogPage() {
 
     return <>
         <Head>
-            {/* <title>
+            <title>
                 {!blog ? 'Loading...' :
                     blog && blog[0] && blog[0].slug ?
-                        `${blog[0].slug.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | Robo Superirror` 
+                        `${blog[0].slug.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | Robo Superirror`
                         : 'Loading...'
                 }
-            </title> */}
+            </title>
             <meta name="description" content={blog[0].description} />
-            
+            <meta name="keywords" content={blog[0].keywords} />
+            <meta name="author" content={blog[0].author} />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         </Head>
 
@@ -147,22 +149,3 @@ export default function blogPage() {
 
 
 
-
-
-export function generateMetadata({params}){
-    return {
-        title: `this is blog title`,
-        description: `Blog | ${params.slug}`,
-        keywords: `Blog | ${params.slug}`,
-        image: `/images/blog/${params.slug}.jpg`,
-        url: `https://www.robosuperior.com/blog/${params.slug}`,
-        type: 'article',
-        article: {
-            publishedTime: new Date().toISOString(),
-            modifiedTime: new Date().toISOString(),
-            expirationTime: new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString(),
-            section: 'Technology',
-            tag: ['Technology', 'React', 'Next.js', 'Node.js', 'Express.js', 'MongoDB', 'MERN Stack'],
-        },
-    }
-}
