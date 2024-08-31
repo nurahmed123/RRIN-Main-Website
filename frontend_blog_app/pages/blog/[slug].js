@@ -89,13 +89,13 @@ export default function blogPage() {
 
     return <>
         <Head>
-            <title>
+            {/* <title>
                 {!blog ? 'Loading...' :
                     blog && blog[0] && blog[0].slug ?
                         `${blog[0].slug.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | Robo Superirror` 
                         : 'Loading...'
                 }
-            </title>
+            </title> */}
             <meta name="description" content={blog[0].description} />
             
 
@@ -147,3 +147,22 @@ export default function blogPage() {
 
 
 
+
+
+export function generateMetadata({params}){
+    return {
+        title: `this is blog title`,
+        description: `Blog | ${params.slug}`,
+        keywords: `Blog | ${params.slug}`,
+        image: `/images/blog/${params.slug}.jpg`,
+        url: `https://www.robosuperior.com/blog/${params.slug}`,
+        type: 'article',
+        article: {
+            publishedTime: new Date().toISOString(),
+            modifiedTime: new Date().toISOString(),
+            expirationTime: new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString(),
+            section: 'Technology',
+            tag: ['Technology', 'React', 'Next.js', 'Node.js', 'Express.js', 'MongoDB', 'MERN Stack'],
+        },
+    }
+}
