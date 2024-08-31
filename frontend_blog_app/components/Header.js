@@ -37,7 +37,7 @@ export default function Header() {
             }
         } catch (err) {
             console.log(err)
-            localStorage.clear()
+            // localstorage.clear()
         }
     }, [])
 

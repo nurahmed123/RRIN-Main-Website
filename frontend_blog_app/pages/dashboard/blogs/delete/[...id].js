@@ -27,7 +27,7 @@ export default function DeleteProduct() {
                 }
             } catch (err) {
                 console.error(err);
-                localStorage.clear();
+                // localstorage.clear();
                 router.push('/login'); // Redirect on error
             }
         };

@@ -54,7 +54,7 @@ export default function Updateuserinfo({
                 }
             } catch (err) {
                 console.error(err);
-                localStorage.clear();
+                // localstorage.clear();
                 router.push('/'); // Redirect on error
             }
         };
