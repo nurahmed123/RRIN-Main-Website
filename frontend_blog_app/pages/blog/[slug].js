@@ -172,7 +172,7 @@ export default function BlogPage({ blog }) {
 
 export async function getServerSideProps(context) {
     const { slug } = context.params;
-    const res = await axios.get(`https://your-api-url/api/getblog?slug=${slug}`);
+    const res = await axios.get(`/api/getblog?slug=${slug}`);
     const alldata = res.data;
 
     return {
