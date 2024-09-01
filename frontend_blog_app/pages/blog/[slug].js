@@ -1,32 +1,43 @@
-import { BsTags } from "react-icons/bs";
-import { LuClock3 } from "react-icons/lu";
-import { AiOutlineDeploymentUnit, AiOutlineUser } from "react-icons/ai";
-import { PiMedalFill } from "react-icons/pi";
-import { SlCalender } from "react-icons/sl";
-import Link from "next/link";
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Head from "next/head";
-import { FiDatabase } from "react-icons/fi";
-import { TbBrandNextjs } from "react-icons/tb";
-import { FaGithub, FaHtml5, FaInstagram, FaTwitter } from "react-icons/fa6";
+import Link from "next/link";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
 import Comments from "@/components/Comments";
-import axios from 'axios';
 
 export async function getServerSideProps(context) {
     const { slug } = context.params;
-    let blog = null;
+    
+    // Check if slug is undefined or null
+    if (!slug) {
+        return {
+            notFound: true,
+        };
+    }
+
     try {
         const res = await axios.get(`${process.env.SITE_URL}/api/getblog?slug=${slug}`);
-        blog = res.data[0] || null;
+        const blog = res.data[0] || null;
+
+        // If no blog is found, return a 404 status
+        if (!blog) {
+            return {
+                notFound: true,
+            };
+        }
+
+        return { props: { blog } };
     } catch (error) {
         console.error("Error fetching blog:", error);
+        return {
+            props: { error: "Failed to load blog data." },
+        };
     }
-    return { props: { blog } };
 }
 
 function extractFirstImageUrl(markdownContent) {
@@ -39,13 +50,18 @@ function extractFirstImageUrl(markdownContent) {
     return match ? match[1] : null;
 }
 
-export default function BlogPage({ blog }) {
-
+export default function BlogPage({ blog, error }) {
     const router = useRouter();
-    const [copied, setCopied] = useState(false);
+
+    // If there's an error or no blog is found, show an error message
+    if (error || !blog) {
+        return <div>Error: {error || "Blog not found."}</div>;
+    }
 
     const Code = ({ node, inline, className, children, ...props }) => {
         const match = /language-(\w+)/.exec(className || '');
+
+        const [copied, setCopied] = useState(false);
 
         const handleCopy = () => {
             navigator.clipboard.writeText(children);
@@ -82,10 +98,6 @@ export default function BlogPage({ blog }) {
             );
         }
     };
-
-    if (!blog) {
-        return <div>Blog not found.</div>;
-    }
 
     const imageUrl = extractFirstImageUrl(blog.description) || '/img/noimage.jpg';
 
