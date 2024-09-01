@@ -179,13 +179,13 @@ export default function BlogPage() {
                         <RightPortfolioInfo />
                         <RightTopicSection />
 
-                        <div className="related-posts">
+                        {/* <div className="related-posts">
                             <h2>Related Articles</h2>
                             <ul>
                                 <li><Link href="/blog/post1">How AI is Revolutionizing Robotics</Link></li>
                                 <li><Link href="/blog/post2">Top 10 Robotic Innovations of 2024</Link></li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
