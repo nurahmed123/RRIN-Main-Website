@@ -19,17 +19,17 @@ export default function Setting() {
     const router = useRouter();
     // Check if there's no active session and redirect to login page
     if (!session) {
-      router.push('/login');
-      return null; // Return null or any loading indicator while redirecting
+        router.push('/login');
+        return null; // Return null or any loading indicator while redirecting
     }
-   
+
     async function logout() {
         await router.push('/login');
         await signOut();
     }
 
 
-    if (session) {        
+    if (session) {
         return (
             <div className="settingpage">
                 {/* title dashboard */}
@@ -45,7 +45,7 @@ export default function Setting() {
 
                 <div className="profilesettings">
                     <div className="leftprofile_details flex">
-                        <img src="/img/coder.png" alt="coder" data-aos="fade-left" />
+                        <img src="/img/user.png" alt="coder" data-aos="fade-left" />
                         <div className="w-100" data-aos="fade-up">
                             <div className='flex flex-sb flex-left mt-2'>
                                 <h2>My Profile:</h2>
