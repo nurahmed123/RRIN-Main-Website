@@ -23,7 +23,7 @@ const login = () => {
 
     async function login() {
         await router.push('/');
-        await signIn();
+        await signIn('google');
     }
 
     if (session) {
@@ -42,6 +42,7 @@ const login = () => {
 
                 <ManualLogin />
                 <button onClick={login} className='mt-2' >Login with Google</button>
+                <button onClick={signIn('github')} className='mt-2' >Login with Google</button>
             </div>
         )
     }
