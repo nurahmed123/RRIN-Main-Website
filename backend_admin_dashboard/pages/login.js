@@ -21,9 +21,13 @@ const login = () => {
 
     const router = useRouter();
 
-    async function login(message) {
+    async function loginGoogle() {
         await router.push('/');
-        await signIn(message);
+        await signIn('google');
+    }
+    async function loginGithub() {
+        await router.push('/');
+        await signIn('github');
     }
 
     if (session) {
@@ -41,8 +45,8 @@ const login = () => {
 
 
                 <ManualLogin />
-                <button onClick={login("google")} className='mt-2' >Login with Google</button>
-                <button onClick={login("github")} className='mt-2' >Login with Github</button>
+                <button onClick={loginGoogle} className='mt-2' >Login with Google</button>
+                <button onClick={loginGithub} className='mt-2' >Login with Github</button>
             </div>
         )
     }
