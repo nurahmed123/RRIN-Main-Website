@@ -42,9 +42,7 @@ const login = () => {
                 <Image src={appLogo} width={250} height={250} />
                 <h1  >Welcome Admin of the RoboSuperior 👋</h1>
                 <p>Visit my profile <Link target="_blank" href="https://linkedin.com/in/06nurahmed">Md Nur Ahmad</Link></p>
-
-
-                <ManualLogin />
+                <h2>Login with your Google or Github account</h2>
                 <button onClick={loginGoogle} className='mt-2' >Login with Google</button>
                 <button onClick={loginGithub} className='mt-2' >Login with Github</button>
             </div>
