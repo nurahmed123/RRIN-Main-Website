@@ -129,7 +129,7 @@ const login = ({ csrfToken }) => {
                                 <p className=' dark:text-gray-300'>Enter your information to register</p>
                             </div>
                             {/* <form onSubmit={userLogin}> */}
-                            <form method="post" action="/api/auth/callback/credentials">
+                            <form method="post" action={`${process.env.SITE_URL}/api/auth/callback/credentials`}>
                                 <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">
