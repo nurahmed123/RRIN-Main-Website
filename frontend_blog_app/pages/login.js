@@ -8,14 +8,14 @@ import bcrypt from "bcryptjs";
 var jwt = require('jsonwebtoken');
 import { useSession, signIn, signOut } from "next-auth/react"
 import Loading from '@/components/Loading';
+import { getCsrfToken } from 'next-auth/react';
 
 
-
-const login = () => {
+const login = ({ csrfToken }) => {
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    
+
 
     const [redirect, setRedirect] = useState(false)
     const [email, setEmail] = useState("")
@@ -58,7 +58,7 @@ const login = () => {
             console.log(resdata.data.token)
             localStorage.setItem("Token", resdata.data.token)
             // await signIn();
-            
+
             console.log("secceon is")
             console.log(session)
 
@@ -78,8 +78,8 @@ const login = () => {
                 title: "Login success"
             });
 
-            
-            
+
+
             await router.push('/dashboard');
             router.reload()
         } catch {
@@ -128,7 +128,9 @@ const login = () => {
                                 <h1 className="font-bold text-3xl text-gray-900 dark:text-gray-100 ">Login</h1>
                                 <p className=' dark:text-gray-300'>Enter your information to register</p>
                             </div>
-                            <form onSubmit={userLogin}>
+                            {/* <form onSubmit={userLogin}> */}
+                            <form method="post" action="/api/auth/callback/credentials">
+                                <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">
                                         <label htmlFor="" className="text-xs font-semibold px-1 dark:text-gray-300">Email*</label>
@@ -168,3 +170,12 @@ const login = () => {
 }
 
 export default login
+
+
+export async function getServerSideProps(context) {
+    return {
+        props: {
+            csrfToken: await getCsrfToken(context),
+        },
+    };
+}

@@ -4,15 +4,19 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { jwtDecode } from "jwt-decode";
+import { useSession } from 'next-auth/react';
 
 const UserProfile = () => {
+  const { data: session } = useSession();
   const router = useRouter();
   const [userID, setUserID] = useState(null);
 
   useEffect(() => {
     const checkUser = () => {
       try {
-        const token = localStorage.getItem("Token");
+        // const token = localStorage.getItem("Token");
+        const token = session.user.jwt
+        console.log(token)
         if (token) {
           const JWTData = jwtDecode(token);
           setUserID(JWTData.data._id); // Set author from JWT
