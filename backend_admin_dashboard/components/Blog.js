@@ -41,10 +41,10 @@ export default function Blog(
     const [primarystatus, setPrimarystatus] = useState(existingPrimarystatus || '')
     const [status, setStatus] = useState(existingStatus || '')
 
-    
+
     async function createProduct(ev) {
         ev.preventDefault();
-      
+
 
         const data = { title, slug, author, description, blogcategory, tags, keywords, metadescription, primarystatus, status };
 
@@ -59,7 +59,7 @@ export default function Blog(
         setRedirect(true);
     };
 
-    
+
 
     if (redirect) {
         router.push('/blogs')
@@ -166,8 +166,8 @@ export default function Blog(
                 )}</p>
             </div>
 
-             {/* blog keyword */}
-             <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+            {/* blog keyword */}
+            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
                 <label htmlFor="title">Keyword</label>
                 <input type="text" id='keyword' placeholder='Enter keywords'
                     value={keywords}

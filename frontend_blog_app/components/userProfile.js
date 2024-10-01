@@ -14,8 +14,8 @@ const UserProfile = () => {
   useEffect(() => {
     const checkUser = () => {
       try {
-        // const token = localStorage.getItem("Token");
-        const token = session.user.jwt
+        const token = localStorage.getItem("Token");
+        // const token = session.user.jwt
         console.log(token)
         if (token) {
           const JWTData = jwtDecode(token);
