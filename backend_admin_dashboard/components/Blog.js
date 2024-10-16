@@ -22,6 +22,7 @@ export default function Blog({
 }) {
     const router = useRouter();
     const [redirect, setRedirect] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [blogData, setBlogData] = useState({
         title: existingTitle,
@@ -64,17 +65,24 @@ export default function Blog({
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true); // Set loading to true when the form submission begins
 
-        if (_id) {
-            await axios.put('/api/blogs', { ...blogData, _id });
-            toast.success('Blog Updated!');
-        } else {
-            await axios.post('/api/blogs', blogData);
-            toast.success('Blog Created!');
+        try {
+            if (_id) {
+                await axios.put('/api/blogs', { ...blogData, _id });
+                toast.success('Blog Updated!');
+            } else {
+                await axios.post('/api/blogs', blogData);
+                toast.success('Blog Created!');
+            }
+            setRedirect(true); // Redirect after successful save
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false); // Always set loading to false once the operation is complete
         }
-
-        setRedirect(true);
     };
+
 
     return (
         <form onSubmit={handleSubmit} className="addWebsiteform">
@@ -194,7 +202,39 @@ export default function Blog({
 
             {/* Submit Button */}
             <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
-                <button type="submit" className="submit-button">Save Blog</button>
+                <button
+                    type="submit"
+                    className={`submit-button ${loading ? 'bg-gray-400 cursor-not-allowed' : ''}`}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <div className="flex items-center justify-center">
+                            <svg
+                                className="animate-spin h-5 w-5 mr-3 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                ></path>
+                            </svg>
+                            Saving...
+                        </div>
+                    ) : (
+                        'Save Blog'
+                    )}
+                </button>
             </div>
         </form>
     );
