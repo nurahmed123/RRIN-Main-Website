@@ -30,7 +30,7 @@ export default NextAuth({
   callbacks: {
     async signIn({ user, account, profile }) {
       // Specify allowed email addresses
-      const allowedEmails = ['06nurahmed@gmail.com', 'contact.robosuperior@gmail.com', 'ibnemahdi5@gmail.com', 'nadimshahriarapurbo@gmail.com', 'mdnurahmadoli529@gmail.com'];
+      const allowedEmails = ['06nurahmed@gmail.com', 'contact.robosuperior@gmail.com', 'ibnemahdi5@gmail.com', 'nadimshahriarapurbo@gmail.com', 'mdnurahmadoli529@gmail.com', 'arrohman.contact@gmail.com'];
       // console.log(user.email)
       // Check if the user's email is in the allowed list
       if (allowedEmails.includes(user.email)) {
