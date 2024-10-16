@@ -29,6 +29,14 @@ const login = () => {
         await router.push('/');
         await signIn('github');
     }
+    async function loginDiscord() {
+        await router.push('/');
+        await signIn('discord');
+    }
+    async function loginFacebook() {
+        await router.push('/');
+        await signIn('facebook');
+    }
 
     if (session) {
         router.push('/');
@@ -45,6 +53,8 @@ const login = () => {
                 <h2>Login with your Google or Github account</h2>
                 <button onClick={loginGoogle} className='mt-2' >Login with Google</button>
                 <button onClick={loginGithub} className='mt-2' >Login with Github</button>
+                <button onClick={loginDiscord} className='mt-2' >Login with Discord</button>
+                <button onClick={loginFacebook} className='mt-2' >Login with Facebook</button>
             </div>
         )
     }

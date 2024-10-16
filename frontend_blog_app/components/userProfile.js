@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { jwtDecode } from "jwt-decode";
 import { useSession } from 'next-auth/react';
+import Loading from './Loading';
 
 const UserProfile = () => {
   const { data: session } = useSession();
@@ -36,8 +37,13 @@ const UserProfile = () => {
   const { alldata, loading } = useFetchData(`/api/createuser?id=${userID}`);
   // console.log(alldata)
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (loading === "loading" || !userID) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <Loading />
+        <h1 className="mt-1">Loading...</h1>
+      </div>
+    );
   }
 
   if (!alldata) {

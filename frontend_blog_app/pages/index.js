@@ -5,8 +5,26 @@ import Additionalinfo from "@/components/Additionalinfo";
 import Pricing from "@/components/Pricing";
 import Advisor from "@/components/Advisor";
 import Image from "next/image";
+import Typed from 'typed.js';
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Problem Solving', 'Exprolore science', 'Innovation'],
+      loop: true,
+      loopCount: Infinity,
+      typeSpeed: 50,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -43,7 +61,7 @@ export default function Home() {
         <div className="container flex flex-sb w-100">
           <div className="leftheader_info" data-aos="fade-right">
             <h1>Hi, This is <span>RoboSuperior</span>.<br /> A team from Bangladesh</h1>
-            <h3>We are passionate about tackling challenges.</h3>
+            <h3>We are passionate about <span ref={el} /></h3>
             <div className="flex gap-2 ">
               <Link href='/contact'><button>Contact Us</button></Link>
               <Link href='/about'><button>About Us</button></Link>

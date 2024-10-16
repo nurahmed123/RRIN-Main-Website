@@ -42,7 +42,7 @@ export default function Draft() {
     const currentblogs = alldata.slice(indexOfFirstblog, indexOfLastblog);
 
     // Filtering draft blogs
-    const draftblogs = currentblogs.filter(ab => ab.primarystatus === "publish");
+    const draftblogs = currentblogs.filter(ab => ab.status === "draft" && ab.primarystatus === "publish")
 
 
     const allblog = alldata.length; // Total number of blogs

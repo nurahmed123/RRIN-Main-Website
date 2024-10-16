@@ -1,16 +1,29 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import ReactMarkdown from 'react-markdown';
 import MarkdownEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
+import debounce from 'lodash.debounce';
 
+export default function Blog({
+    _id,
+    title: existingTitle = '',
+    slug: existingSlug = '',
+    author: existingAuthor = '',
+    description: existingDescription = '',
+    blogcategory: existingBlogcategory = [],
+    tags: existingTags = [],
+    keywords: existingKeywords = '',
+    metadescription: existingMetadescription = '',
+    primarystatus: existingPrimarystatus = '',
+    status: existingStatus = ''
+}) {
+    const router = useRouter();
+    const [redirect, setRedirect] = useState(false);
 
-export default function Blog(
-
-    {
-        _id,
+    const [blogData, setBlogData] = useState({
         title: existingTitle,
         slug: existingSlug,
         author: existingAuthor,
@@ -20,189 +33,169 @@ export default function Blog(
         keywords: existingKeywords,
         metadescription: existingMetadescription,
         primarystatus: existingPrimarystatus,
-        status: existingStatus,
-    }
+        status: existingStatus
+    });
 
-) {
+    useEffect(() => {
+        if (redirect) {
+            router.push('/blogs');
+        }
+    }, [redirect, router]);
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setBlogData({ ...blogData, [name]: value });
+    };
 
+    const handleSelectChange = (e) => {
+        const { name, options } = e.target;
+        const values = Array.from(options).filter(option => option.selected).map(option => option.value);
+        setBlogData({ ...blogData, [name]: values });
+    };
 
-    const [redirect, setRedirect] = useState(false)
-    const router = useRouter();
+    const handleSlugChange = debounce((value) => {
+        const newSlug = value.replace(/\s+/g, '-');
+        setBlogData((prev) => ({ ...prev, slug: newSlug }));
+    }, 300);
 
-    const [title, setTitle] = useState(existingTitle || '')
-    const [slug, setSlug] = useState(existingSlug || '')
-    const [author, setAuthor] = useState(existingAuthor || '')
-    const [blogcategory, setBlogcategory] = useState(existingBlogcategory || [])
-    const [description, setDescription] = useState(existingDescription || '')
-    const [tags, setTags] = useState(existingTags || [])
-    const [keywords, setKeywords] = useState(existingKeywords || [])
-    const [metadescription, setmetadescription] = useState(existingMetadescription || [])
-    const [primarystatus, setPrimarystatus] = useState(existingPrimarystatus || '')
-    const [status, setStatus] = useState(existingStatus || '')
+    const handleMarkdownChange = ({ text }) => {
+        setBlogData((prev) => ({ ...prev, description: text }));
+    };
 
-
-    async function createProduct(ev) {
-        ev.preventDefault();
-
-
-        const data = { title, slug, author, description, blogcategory, tags, keywords, metadescription, primarystatus, status };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
         if (_id) {
-            await axios.put('/api/blogs', { ...data, _id })
-            toast.success('Data Updated!')
+            await axios.put('/api/blogs', { ...blogData, _id });
+            toast.success('Blog Updated!');
         } else {
-            await axios.post('/api/blogs', data)
-            toast.success('Product Created!')
+            await axios.post('/api/blogs', blogData);
+            toast.success('Blog Created!');
         }
 
         setRedirect(true);
     };
 
-
-
-    if (redirect) {
-        router.push('/blogs')
-        return null;
-    }
-
-
-    const handleSlugChange = (ev) => {
-        const inputValue = ev.target.value;
-        // console.log("Input Value:", inputValue);
-
-        const newSlug = inputValue
-            // Replace spaces with hyphens
-            .replace(/\s+/g, '-');
-
-        console.log("New Slug:", newSlug);
-        setSlug(newSlug);
-    };
-
-
-    return <>
-
-
-        <form onSubmit={createProduct} className='addWebsiteform'>
-            {/* blog title */}
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+    return (
+        <form onSubmit={handleSubmit} className="addWebsiteform">
+            {/* Blog Title */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
                 <label htmlFor="title">Title</label>
-                <input type="text" id='title' placeholder='Enter small title'
-                    value={title}
-                    onChange={ev => setTitle(ev.target.value)}
-                />
-            </div>
-            {/* blog slug url */}
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                <label htmlFor="slug">Slug</label>
-                <input required type="text" id='slug' placeholder='Enter slug title'
-                    value={slug}
-                    onChange={handleSlugChange}
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Enter title"
+                    value={blogData.title}
+                    onChange={handleInputChange}
                 />
             </div>
 
-            {/* blog category */}
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                <label htmlFor="catergory">Select Category (ctrl + leftclick for multiple select)</label>
-                <select onChange={(e) => setBlogcategory(Array.from(e.target.selectedOptions, option => option.value))} name="catergory" id="catergory" multiple value={blogcategory} >
-                    <option value="htmlcssjs">Html, Css & javaScript</option>
-                    <option value="nextjs">Next Js, React js</option>
+            {/* Blog Slug */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
+                <label htmlFor="slug">Slug</label>
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    placeholder="Enter slug"
+                    value={blogData.slug}
+                    onChange={(e) => handleSlugChange(e.target.value)}
+                />
+            </div>
+
+            {/* Blog Category */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
+                <label htmlFor="blogcategory">Select Category</label>
+                <select
+                    name="blogcategory"
+                    id="blogcategory"
+                    multiple
+                    value={blogData.blogcategory}
+                    onChange={handleSelectChange}
+                >
+                    <option value="htmlcssjs">HTML, CSS & JavaScript</option>
+                    <option value="nextjs">Next.js, React.js</option>
                     <option value="database">Database</option>
                     <option value="deployment">Deployment</option>
                 </select>
-                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {Array.isArray(existingBlogcategory) && existingBlogcategory.map(category => (
-                    <span key={category}>{category}</span>
-                ))}</p>
             </div>
 
-            {/* markdown description */}
-            <div className='description w-100 flex flex-col flex-left mb-2'>
+            {/* Markdown Description */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
                 <label htmlFor="description">Blog Content</label>
                 <MarkdownEditor
-                    value={description}
-                    onChange={(ev) => setDescription(ev.text)}
-                    style={{ width: '100%', height: '400px' }} // You can adjust the height as needed
-                    renderHTML={(text) => (
-                        <ReactMarkdown components={{
-                            code: ({ node, inline, className, children, ...props }) => {
-                                const match = /language-(\w+)/.exec(className || '');
-                                if (inline) {
-                                    return <code>{children}</code>;
-                                } else if (match) {
-                                    return (
-                                        <div style={{ position: 'relative' }}>
-                                            <pre style={{ padding: '0', borderRadius: '5px', overflowX: 'auto', whiteSpace: 'pre-wrap' }} {...props}>
-                                                <code >{children}</code>
-                                            </pre>
-                                            <button style={{ position: 'absolute', top: '0', right: '0', zIndex: '1' }} onClick={() => navigator.clipboard.writeText(children)}>
-                                                Copy code
-                                            </button>
-                                        </div>
-                                    );
-                                } else {
-                                    return <code {...props}>{children}</code>;
-                                }
-                            },
-                        }}>
-                            {text}
-                        </ReactMarkdown>
-                    )}
+                    value={blogData.description}
+                    onChange={handleMarkdownChange}
+                    style={{ width: '100%', height: '400px' }}
+                    renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>}
                 />
             </div>
 
-            {/* tags */}
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
+            {/* Tags */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
                 <label htmlFor="tags">Tags</label>
-                <select onChange={(e) => setTags(Array.from(e.target.selectedOptions, option => option.value))} name="tags" id="tags" multiple value={tags}>
-                    <option value="html">Html</option>
-                    <option value="css">css</option>
-                    <option value="javascript">javaScript</option>
-                    <option value="nextjs">Next Js</option>
-                    <option value="reactjs">react Js</option>
+                <select
+                    name="tags"
+                    id="tags"
+                    multiple
+                    value={blogData.tags}
+                    onChange={handleSelectChange}
+                >
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="nextjs">Next.js</option>
+                    <option value="reactjs">React.js</option>
                     <option value="database">Database</option>
                 </select>
-                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {existingTags && existingTags.length > 0 && (
-                    <span>{existingTags}</span>
-                )}</p>
             </div>
 
-            {/* blog keyword */}
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                <label htmlFor="title">Keyword</label>
-                <input type="text" id='keyword' placeholder='Enter keywords'
-                    value={keywords}
-                    onChange={ev => setKeywords(ev.target.value)}
+            {/* Keywords */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
+                <label htmlFor="keywords">Keywords</label>
+                <input
+                    type="text"
+                    id="keywords"
+                    name="keywords"
+                    placeholder="Enter keywords"
+                    value={blogData.keywords}
+                    onChange={handleInputChange}
                 />
             </div>
 
-            <div className='w-100 flex flex-col flex-left mb-2' data-aos="fade-up">
-                <label htmlFor="metadescription">Meta Descripstion</label>
-                <input type="text" id='metadescription' placeholder='Enter Meta Desription'
-                    value={metadescription}
-                    onChange={ev => setmetadescription(ev.target.value)}
+            {/* Meta Description */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
+                <label htmlFor="metadescription">Meta Description</label>
+                <input
+                    type="text"
+                    id="metadescription"
+                    name="metadescription"
+                    placeholder="Enter meta description"
+                    value={blogData.metadescription}
+                    onChange={handleInputChange}
                 />
             </div>
 
-            {/* blog status */}
-            <div className='w-100 flex flex-col flex-left mb-2' >
+            {/* Blog Status */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
                 <label htmlFor="status">Status</label>
-                <select required onChange={(e) => setStatus(e.target.value)} name="status" id="status" value={status}>
+                <select
+                    name="status"
+                    id="status"
+                    value={blogData.status}
+                    onChange={handleInputChange}
+                >
                     <option value="">No Select</option>
                     <option value="draft">Draft</option>
                     <option value="publish">Publish</option>
                 </select>
-                <p className="existingcategory flex gap-1 mt-1 mb-1">Selected: {existingStatus && existingStatus.length > 0 && (
-                    <span>{existingStatus}</span>
-                )}</p>
             </div>
 
-
-            <div className='w-100 mb-2'>
-                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE BLOG</button>
+            {/* Submit Button */}
+            <div className="w-100 flex flex-col flex-left mb-2 aos-init aos-animate">
+                <button type="submit" className="submit-button">Save Blog</button>
             </div>
-
         </form>
-
-    </>
+    );
 }
-

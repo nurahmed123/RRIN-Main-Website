@@ -1,59 +1,44 @@
-import NextAuth from 'next-auth'
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import clientPromise from '@/lib/mongodb'
-import GoogleProvider from 'next-auth/providers/google'
-import GitHubProvider from 'next-auth/providers/github';
+import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
-import { User } from '@/models/User';
+import jwt from 'jsonwebtoken';
+
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
   providers: [
-    // OAuth authentication providers...   
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET
-    }),
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
     CredentialsProvider({
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
-      },
+      name: 'Credentials',
       async authorize(credentials) {
-
         const user = await User.findOne({ email: credentials.email });
-
-        if (!user) {
-          throw new Error('No user found with this email');
+        if (user && await bcrypt.compare(credentials.password, user.password)) {
+          return { ...user._doc, id: user._id }; // Assuming user data is in user._doc
         }
-
-        const isValidPassword = await bcrypt.compare(credentials.password, user.password);
-
-        if (!isValidPassword) {
-          throw new Error('Invalid password');
-        }
-
-        return user;
-      }
+        throw new Error('Invalid credentials');
+      },
     }),
   ],
   callbacks: {
-
-    async session({ session, Token, user }) {
-      session.user = user;
-      return session;
-    },
-    async jwt({ Token, user }) {
+    async jwt({ token, user }) {
       if (user) {
-        Token.id = user.id;
+        token.uid = user.id; // Store user ID in JWT
       }
-      return Token;
+      return token;
+    },
+    async session({ session, token }) {
+      session.user = token; // Store the JWT token in the session
+      return session;
     }
-
   },
-  secret: process.env.NEXTAUTH_SECRET,
-})
+  session: {
+    strategy: 'jwt',
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    encryption: true,
+  },
+  pages: {
+    signIn: '/login',
+  },
+});
