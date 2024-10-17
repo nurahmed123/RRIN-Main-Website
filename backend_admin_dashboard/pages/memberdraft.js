@@ -8,6 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Dataloading from "@/components/Dataloading";
+import Image from "next/image";
 
 export default function MemberDraft() {
 
@@ -72,46 +73,52 @@ export default function MemberDraft() {
 
                 <div className="draftblogs">
                     <div className="blogstable">
-                        <table className="table table-styling">
-                            <thead data-aos="fade-up">
+                        <table className="w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
+                            <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Edit / Delete</th>
+                                    <th className="px-4 py-2 text-left border-b dark:border-gray-200 shadow-lg">#</th>
+                                    <th className="px-4 py-2 text-left border-b dark:border-gray-200 shadow-lg">Name</th>
+                                    <th className="px-4 py-2 text-left border-b dark:border-gray-200 shadow-lg">Role</th>
+                                    <th className="px-4 py-2 text-left border-b dark:border-gray-200 shadow-lg">Member</th>
+                                    <th className="px-4 py-2 text-left border-b dark:border-gray-200 shadow-lg">Edit / Delete</th>
                                 </tr>
                             </thead>
-
-                            <tbody data-aos="fade-up">
-                                {loading ? <>
-                                    <tr>
-                                        <td>
-                                            <Dataloading />
-                                        </td>
-                                    </tr>
-                                </> : <>
-                                    {draftblogs.length === 0 ? (
+                            <tbody>
+                                {loading ? (
+                                    <>
                                         <tr>
-                                            <td colSpan="4" className="text-center">No Draft Members Available</td>
+                                            <td colSpan="5" className="text-center py-4 ">Loading...</td>
                                         </tr>
-                                    ) : (
-                                        draftblogs.map((blog, index) => (
-                                            <tr key={blog._id}>
-                                                <td>{index + 1}</td>
-                                                <td><h3>{blog.name}</h3></td>
-                                                <td><pre>{blog.role}</pre></td>
-                                                <td>
-                                                    <div className='flex gap-2 flex-center'>
-                                                        <Link href={'/members/edit/' + blog._id}><button title='edit'><FaEdit />Edit</button></Link>
-                                                        <Link href={'/members/delete/' + blog._id}><button title='delete'><RiDeleteBin6Fill />Delete</button></Link>
-                                                    </div>
-                                                </td>
+                                    </>
+                                ) : (
+                                    <>
+                                        {draftblogs.length === 0 ? (
+                                            <tr>
+                                                <td colSpan="5" className="text-center py-4 ">No Members Available</td>
                                             </tr>
-                                        ))
-                                    )}
-                                </>
-                                }
-
+                                        ) : (
+                                            draftblogs.map((blog, index) => (
+                                                <tr key={blog._id} className="border-b dark:border-gray-200 shadow-lg">
+                                                    <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">{indexOfFirstblog + index + 1}</td>
+                                                    <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg break-words">{blog.name}</td>
+                                                    <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg break-words">{blog.role}</td>
+                                                    <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg"><Image src={blog.image} width={50} height={50} /></td>
+                                                    {/* <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td> */}
+                                                    <td className="px-4 py-2">
+                                                        <div className="flex gap-2">
+                                                            <Link href={`/members/edit/${blog._id}`}>
+                                                                <button className="dark:text-gray-100"><FaEdit /> Edit</button>
+                                                            </Link>
+                                                            <Link href={`/members/delete/${blog._id}`}>
+                                                                <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
+                                                            </Link>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
+                                    </>
+                                )}
                             </tbody>
                         </table>
                         {draftblogs.length === 0 ? (
