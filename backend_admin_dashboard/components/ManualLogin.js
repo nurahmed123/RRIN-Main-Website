@@ -43,13 +43,13 @@ const ManualLogin = () => {
 
     async function userLogin(ev) {
         ev.preventDefault();
-        console.log(password)
+        // console.log(password)
         const data = { email, password };
 
         try {
 
             const resdata = await axios.post('/api/userlogin', data)
-            console.log(resdata.data.token)
+            // console.log(resdata.data.token)
             localStorage.setItem("Token", resdata.data.token)
             // await signIn();
             

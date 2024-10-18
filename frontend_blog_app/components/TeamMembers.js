@@ -22,7 +22,7 @@ import { useState, useEffect } from "react";
 const TeamMembers = () => {
     const { alldata, loading } = useFetchData(`/api/getmember`);
     const activeMembers = alldata.filter((ab) => ab.status === "active");
-    console.log(activeMembers);
+    // console.log(activeMembers);
 
     const imgStyle = {
         borderRadius: "100%",

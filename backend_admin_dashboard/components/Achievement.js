@@ -67,7 +67,7 @@ export default function Achievement(
             // Replace spaces with hyphens
             .replace(/\s+/g, '-');
 
-        console.log("New Slug:", newSlug);
+        // console.log("New Slug:", newSlug);
         setSlug(newSlug);
     };
 

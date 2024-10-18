@@ -17,7 +17,7 @@ const UserProfile = () => {
       try {
         const token = localStorage.getItem("Token");
         // const token = session.user.jwt
-        console.log(token)
+        // console.log(token)
         if (token) {
           const JWTData = jwtDecode(token);
           setUserID(JWTData.data._id); // Set author from JWT
