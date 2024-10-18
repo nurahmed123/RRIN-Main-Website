@@ -63,11 +63,11 @@ export default function Aside() {
                     </li>
                 </Link>
 
-                <Link href="/dashboard/draft">
-                    <li className={activeLink === '/dashboard/draft' ? 'navactive' : ''}
-                        onClick={() => handleLinkClick('/dashboard/draft')}>
+                <Link href="/dashboard/userpublishedpost">
+                    <li className={activeLink === '/dashboard/userpublishedpost' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/dashboard/userpublishedpost')}>
                         <MdOutlinePending />
-                        <span>Pending</span>
+                        <span>Published</span>
                     </li>
                 </Link>
 
