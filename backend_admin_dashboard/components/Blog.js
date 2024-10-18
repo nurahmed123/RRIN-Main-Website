@@ -11,7 +11,7 @@ export default function Blog({
     _id,
     title: existingTitle = '',
     slug: existingSlug = '',
-    author: existingAuthor = '',
+    author: existingAuthor = 'admin',
     description: existingDescription = '',
     blogcategory: existingBlogcategory = [],
     tags: existingTags = [],
