@@ -91,7 +91,7 @@ export default function Draft() {
                                 <>
                                     {draftblogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="5" className="text-center py-4 ">No Projects Available</td>
+                                            <td colSpan="5" className="text-center py-4 ">No Achievement Available</td>
                                         </tr>
                                     ) : (
                                         draftblogs.map((blog, index) => (
