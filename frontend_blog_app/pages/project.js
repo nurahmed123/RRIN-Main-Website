@@ -57,14 +57,14 @@ export default function project() {
 
             <GalleryView
                 img4text="demo t"
-                img4url="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&q=75&fit=crop&w=600"
+                img4url={"./../public/img/about.png"}
                 img3text="text"
                 img3url="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
                 img2text="demo"
                 img2url="https://images.unsplash.com/photo-1542759564-7ccbb6ac450a?auto=format&q=75&fit=crop&w=1000"
                 img1text="Nasa"
                 img1url="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
-                headline="Recent Projects"
+                headline="Our Projects"
                 description="Here is our few memories...."
             />
 

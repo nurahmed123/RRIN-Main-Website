@@ -19,12 +19,17 @@ const Advisor = () => {
                                     </path>
                                 </svg>
                                     <blockquote className="relative">
-                                        <p className="text-lg tracking-tight text-slate-900 dark:text-gray-300">I love the fitness apparel and gear I purchased from
-                                            this site. The quality is exceptional and the prices are unbeatable.</p>
+                                        <p className="text-lg tracking-tight text-slate-900 dark:text-gray-300">"Empowering the community through science and innovation is not just a passion; it’s a commitment to building a brighter future for all."
+
+</p>
                                     </blockquote>
                                     <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
                                         <div>
-                                            <div className="font-display text-base text-slate-900 dark:text-gray-100">Sheryl Berge</div>
+                                            <div className="font-display text-base text-slate-900 dark:text-gray-100">SALMAN PROMON</div>
+                                            <div className="font-display text-base text-slate-900 dark:text-gray-100">Founder, Mechamind </div>
+                                            <div className="font-display text-base text-slate-900 dark:text-gray-100">Lecturer, Independent University, Bangladesh </div>
+                                            <div className="font-display text-base text-slate-900 dark:text-gray-100">Former Lecturer, BRAC University Bangladesh </div>
+                                        
                                         </div>
                                         <div className="overflow-hidden rounded-full bg-slate-50">
                                             <img alt="" className="h-14 w-14 object-cover" src="https://randomuser.me/api/portraits/men/15.jpg"/>
@@ -34,7 +39,7 @@ const Advisor = () => {
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    {/* <li>
                         <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
                             <li>
                                 <figure className="relative rounded-2xl dark:bg-gray-700 bg-white p-6 shadow-xl shadow-slate-900/10"><svg aria-hidden="true"
@@ -58,8 +63,9 @@ const Advisor = () => {
                                 </figure>
                             </li>
                         </ul>
-                    </li>
-                    <li>
+                    </li> */}
+                    
+                    {/* <li>
                         <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
                             <li>
                                 <figure className="relative rounded-2xl dark:bg-gray-700 bg-white p-6 shadow-xl shadow-slate-900/10"><svg aria-hidden="true"
@@ -83,7 +89,7 @@ const Advisor = () => {
                                 </figure>
                             </li>
                         </ul>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </section>

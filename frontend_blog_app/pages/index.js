@@ -75,7 +75,7 @@ export default function Home() {
         </div>
         <Additionalinfo />
         <Services />
-        <Pricing />
+        {/* <Pricing /> */}
         <Advisor />
       </section>
     </>

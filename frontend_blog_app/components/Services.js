@@ -20,11 +20,10 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white dark:bg-gray-700 border-2 border-indigo-500 rounded-lg">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-700 dark:text-gray-100">DAPP Development</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-700 dark:text-gray-100">Web Development</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-indigo-500 uppercase">------------</p>
-                                <p className="mb-2 text-gray-600 dark:text-gray-300">A decentralized application (dapp) is an application built on a
-                                    decentralized network that combines a smart contract and a frontend user interface.</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We specialize in creating responsive, custom websites designed to elevate your brand and enhance user experience. Our team delivers fast, secure, and scalable web solutions tailored to meet your business goals.</p>
                             </div>
                         </div>
                     </div>
@@ -33,11 +32,10 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg dark:bg-gray-700">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Web 3.0 Development</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">App Deployment</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">------------</p>
-                                <p className="mb-2 text-gray-600 dark:text-gray-300">Web 3.0 is the third generation of Internet services that will
-                                    focus on understanding and analyzing data to provide a semantic web.</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We provide comprehensive app development services, creating custom, user-friendly applications for both Android and iOS platforms. Our team delivers innovative, secure, and scalable solutions tailored to meet your business needs.</p>
                             </div>
                         </div>
                     </div>
@@ -48,11 +46,10 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-blue-400 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg dark:bg-gray-700">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Project Audit</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Project Development</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
-                                <p className="mb-2 text-gray-600 dark:text-gray-300">A Project Audit is a formal review of a project, which is intended
-                                    to assess the extent up to which project management standards are being upheld.</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We provide end-to-end project development services, turning your ideas into fully realized, high-quality solutions. Our expert team ensures efficient project management, delivering innovative and scalable results on time and within budget.</p>
                             </div>
                         </div>
                     </div>
@@ -61,11 +58,10 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-yellow-400 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-yellow-400 rounded-lg dark:bg-gray-700">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Hacking / RE</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Project Paper</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">------------</p>
-                                <p className="mb-2 text-gray-600 dark:text-gray-300">A security hacker is someone who explores methods for breaching
-                                    defenses and exploiting weaknesses in a computer system or network.</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We offer professional project paper writing services, delivering well-researched, clear, and compelling documents tailored to your requirements. Our experienced writers ensure academic and professional quality, helping you present your ideas with precision and impact.</p>
                             </div>
                         </div>
                     </div>
@@ -74,11 +70,10 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg dark:bg-gray-700">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Bot/Script Development</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Research Paper</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-green-500 uppercase">------------</p>
-                                <p className="mb-2 text-gray-600 dark:text-gray-300">Bot development frameworks were created as advanced software tools
-                                    that eliminate a large amount of manual work and accelerate the development process.</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We offer expert assistance in writing research papers, providing guidance through every step, from topic selection to final edits. Our service ensures high-quality, well-researched papers tailored to meet academic and professional standards.</p>
                             </div>
                         </div>
                     </div>
