@@ -54,11 +54,11 @@ export default function userDiary() {
                     setUsername(JWTData.data.username); // Set author from JWT
                     setUser(JWTData.data); // Set user data if needed
                 } else {
-                    router.push('/'); // Redirect if no token is found
+                    router.push('/login'); // Redirect if no token is found
                 }
             } catch (err) {
                 console.error(err);
-                router.push('/'); // Redirect on error
+                router.push('/login'); // Redirect on error
             }
         };
         checkUser();
