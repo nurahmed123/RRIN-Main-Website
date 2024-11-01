@@ -3,8 +3,7 @@ const { Schema, models, model } = require("mongoose");
 const DiarySchema = new Schema({
     userid: { type: String, required: true },
     username: { type: String },
-    debitted: { type: String },
-    creditted: { type: String },
+    transactionType: { type: String },
     reason: { type: String },
     note: { type: String },
     cost: { type: String },
