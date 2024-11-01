@@ -14,22 +14,8 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import axios from "axios"; // Ensure axios is imported
 
 export default function userDiary() {
-    const [option, setOption] = useState('');
-    const [note, setNote] = useState('');
-    const [transactionType, setTransactionType] = useState('');
-    const [reason, setReason] = useState('');
-    const [cost, setCost] = useState();
-    const [waiting, setWaiting] = useState(false)
-    const [notes, setNotes] = useState([]);
-
-
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [backdrop, setBackdrop] = React.useState('opaque')
-
-    const handleOpen = (backdrop) => {
-        setBackdrop(backdrop)
-        onOpen();
-    }
+    const [backdrop, setBackdrop] = React.useState('opaque');
 
     const router = useRouter();
     const [user, setUser] = useState({ value: null });
@@ -39,8 +25,22 @@ export default function userDiary() {
     const [perPage, setPerPage] = useState(5); // Default number of blogs per page
     const [searchQuery, setSearchQuery] = useState('');
 
+    const [option, setOption] = useState('');
+    const [note, setNote] = useState('');
+    const [transactionType, setTransactionType] = useState('');
+    const [reason, setReason] = useState('');
+    const [cost, setCost] = useState();
+    const [waiting, setWaiting] = useState(false);
+    const [editingNoteId, setEditingNoteId] = useState(null); // Track the note being edited
+
+    const handleOpen = (backdrop) => {
+        setBackdrop(backdrop);
+        onOpen();
+    };
+
     // Fetch all blogs on component load
-    const { alldata: allBlogs, loading } = useFetchData(`/api/diary`);
+    const { alldata, loading } = useFetchData(`/api/diary?userid=${author}`);
+    let allNotes = alldata;
 
     useEffect(() => {
         const checkUser = () => {
@@ -62,29 +62,47 @@ export default function userDiary() {
         checkUser();
     }, [router]);
 
-    useEffect(() => {
-        setNote()
-        setTransactionType()
-        setReason()
-        setCost()
-    }, [option])
+    // useEffect(() => {
+    //     setOption('');
+    //     setNote('');
+    //     setTransactionType('');
+    //     setReason('');
+    //     setCost('');
+    // }, [onClose, handleOpen])
+    function closeReset(){
+        setOption('');
+        setNote('');
+        setTransactionType('');
+        setReason('');
+        setCost('');
+        onClose()
+    }
 
-    // Filter blogs by author first, then by search query
-    const filteredBlogs = useMemo(() => {
-        const authorBlogs = allBlogs.filter((ab) => ab.userid === author);
-        if (searchQuery.trim() === '') return authorBlogs; // If no search query, return author's blogs
-        return authorBlogs.filter(blog =>
-            blog.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }, [searchQuery, allBlogs, author]);
+    useEffect(() => {
+        if (editingNoteId) {
+            const noteToEdit = allNotes.find(note => note._id === editingNoteId);
+            if (noteToEdit) {
+                setOption(noteToEdit.note ? 'note' : 'hisab');
+                setNote(noteToEdit.note || '');
+                setTransactionType(noteToEdit.transactionType || '');
+                setReason(noteToEdit.reason || '');
+                setCost(noteToEdit.cost || '');
+            }
+        } else {
+            setNote('');
+            setTransactionType('');
+            setReason('');
+            setCost('');
+        }
+    }, [editingNoteId, allNotes]);
 
     // Calculate total number of filtered blogs
-    const totalFilteredBlogs = filteredBlogs.length;
+    const totalFilteredBlogs = allNotes.length;
 
     // Calculate the currently displayed blogs with pagination logic
     const indexOfFirstBlog = (currentPage - 1) * perPage;
     const indexOfLastBlog = currentPage * perPage;
-    const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
+    const currentBlogs = allNotes.slice(indexOfFirstBlog, indexOfLastBlog);
 
     // Pagination page numbers calculation
     const pageNumbers = useMemo(() => {
@@ -105,16 +123,18 @@ export default function userDiary() {
 
         const data = { userid: author, username, transactionType, reason, note, cost };
 
-        console.log(data)
         try {
-            if (data._id) {
-                await axios.put('/api/diary', { ...data, _id: data._id });
+            if (editingNoteId) {
+                await axios.put('/api/diary', { ...data, _id: editingNoteId });
                 toast.success('Data Updated!');
-                onClose()
+                onClose();
+                setEditingNoteId(null); // Reset editing note ID
+                router.push("/a");
             } else {
                 await axios.post('/api/diary', data);
                 toast.success('Product Created!');
-                onClose()
+                onClose();
+                router.push("/a");
             }
         } catch (err) {
             console.error(err);
@@ -124,6 +144,10 @@ export default function userDiary() {
         }
     }
 
+    function editNote(id) {
+        setEditingNoteId(id);
+        handleOpen('opaque');
+    }
 
     if (user.value === null) {
         return null; // Prevent rendering if user data is not yet available
@@ -140,7 +164,7 @@ export default function userDiary() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Modal className="dark:!bg-[#1a202c] !shadow-xl" backdrop={"blur"} isDismissable={false} size={"3xl"} isOpen={isOpen} onClose={onClose}>
+            <Modal className="dark:!bg-[#1a202c] !shadow-xl" backdrop={"blur"} isDismissable={false} size={"3xl"} isOpen={isOpen} onClose={closeReset}>
                 <ModalContent className="rounded-lg shadow-lg bg-white dark:bg-[#1c1c1e]">
                     {(onClose) => (
                         <>
@@ -148,11 +172,11 @@ export default function userDiary() {
                                 <h2 className="text-lg font-bold dark:text-gray-200">Make Note</h2>
                             </ModalHeader>
                             <ModalBody className="max-w-3xl w-[48rem]">
-                                <div className="p-6 w-[48rem] shadow-md rounded-md">
+                                <form className="p-6 w-[48rem] shadow-md rounded-md">
                                     <div className="mb-4">
                                         <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
                                         <select
-                                            required
+                                            isRequired
                                             className="block w-full p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
                                             value={option}
                                             onChange={(e) => setOption(e.target.value)}
@@ -166,10 +190,11 @@ export default function userDiary() {
                                     {option === 'note' && (
                                         <div className="mb-4 dark:!bg-[#2d3748]">
                                             <Textarea
-                                                required
+                                                isRequired
                                                 label="Note"
                                                 placeholder="Enter your note here..."
                                                 value={note}
+                                                color="dark:!bg-[#2d3748]"
                                                 onChange={(e) => setNote(e.target.value)}
                                                 className="dark:text-gray-200 dark:!bg-[#2d3748]"
                                             />
@@ -181,7 +206,7 @@ export default function userDiary() {
                                             <div className="mb-4 w-[43rem]">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
                                                 <Input
-                                                    required
+                                                    isRequired
                                                     autoFocus
                                                     label="Spend in"
                                                     type="text"
@@ -195,7 +220,7 @@ export default function userDiary() {
                                             <div className="mb-4 w-[43rem]">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
                                                 <Input
-                                                    required
+                                                    isRequired
                                                     label="Cost"
                                                     type="number"
                                                     placeholder="Enter cost..."
@@ -208,7 +233,7 @@ export default function userDiary() {
                                             <div className="mb-4">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Hisab</label>
                                                 <select
-                                                    required
+                                                    isRequired
                                                     className="block w-full p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
                                                     value={transactionType}
                                                     onChange={(e) => setTransactionType(e.target.value)}
@@ -221,13 +246,14 @@ export default function userDiary() {
                                             </div>
                                         </>
                                     )}
-                                </div>
+                                    <Button type="submit" color="primary" className="mt-4 w-2/2" onClick={createProduct}>
+                                    {editingNoteId?"Update":"Create"}
+                                    </Button>
+                                </form>
                             </ModalBody>
                             <ModalFooter className="flex justify-between">
-                                <Button type="submit" color="primary" className="mt-4 w-2/2" onClick={createProduct}>
-                                    Create
-                                </Button>
-                                <Button color="danger" variant="light" onPress={onClose} className="w-2/2 mr-2">
+
+                                <Button color="danger" variant="light" onPress={closeReset} className="w-2/2 mr-2">
                                     Close
                                 </Button>
                             </ModalFooter>
@@ -250,7 +276,7 @@ export default function userDiary() {
                 </div>
                 <div className="blogstable mt-6">
                     <div className="flex gap-2 mb-4" data-aos="fade-left">
-                        <h2 className="dark:text-gray-100">Search Blogs: </h2>
+                        <h2 className="dark:text-gray-100">Search Notes: </h2>
                         <input
                             type="text"
                             value={searchQuery}
@@ -290,13 +316,13 @@ export default function userDiary() {
                         <tbody>
                             {loading ? (
                                 <tr>
-                                    <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Loading...</td>
+                                    <td colSpan="7" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Loading...</td>
                                 </tr>
                             ) : (
                                 <>
                                     {currentBlogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Nothing.... Create Note</td>
+                                            <td colSpan="7" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Nothing.... Create Note</td>
                                         </tr>
                                     ) : (
                                         currentBlogs.map((blog, index) => (
@@ -310,9 +336,11 @@ export default function userDiary() {
                                                 {/* <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td> */}
                                                 <td className="px-4 py-2">
                                                     <div className="flex gap-2">
-                                                        <Link href={`/privatenote/edit/${blog._id}`}>
+
+                                                        <button onClick={() => editNote(blog._id)} className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:!bg-[#424f85] hover:!border-[#38457b]"><FaEdit /> Edit</button>
+                                                        {/* <Link href={`/privatenote/edit/${blog._id}`}>
                                                             <button className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:!bg-[#424f85] hover:!border-[#38457b]"><FaEdit /> Edit</button>
-                                                        </Link>
+                                                        </Link> */}
                                                         <Link href={`/privatenote/delete/${blog._id}`}>
                                                             <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
                                                         </Link>
