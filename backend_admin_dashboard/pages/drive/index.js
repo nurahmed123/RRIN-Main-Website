@@ -12,7 +12,7 @@ import Image from "next/image";
 import { useEdgeStore } from "@/lib/edgestore";
 import axios from "axios";
 
-export default function Blogs() {
+export default function Drive() {
     const { data: session, status } = useSession();
     const router = useRouter();
 
@@ -30,7 +30,7 @@ export default function Blogs() {
     }
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [perPage, setPerPage] = useState(7);
+    const [perPage, setPerPage] = useState(5);
     const [searchQuery, setSearchQuery] = useState('');
     const [file, setFile] = useState(null);
     const { edgestore } = useEdgeStore();
@@ -39,53 +39,67 @@ export default function Blogs() {
     const [name, setName] = useState('');
     const { alldata, loading } = useFetchData(`/api/drive`);
 
-    const filteredBlogs = searchQuery.trim() === '' ? alldata : alldata.filter(blog =>
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredFiles = searchQuery.trim() === '' ? alldata : alldata.filter(file =>
+        file.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const indexOfFirstBlog = (currentPage - 1) * perPage;
-    const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfFirstBlog + perPage);
+    const indexOfFirstFile = (currentPage - 1) * perPage;
+    const currentFiles = filteredFiles.slice(indexOfFirstFile, indexOfFirstFile + perPage);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(filteredBlogs.length / perPage); i++) {
+    for (let i = 1; i <= Math.ceil(filteredFiles.length / perPage); i++) {
         pageNumbers.push(i);
     }
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     const handleFileUpload = async () => {
         if (!file) return;
-    
+
         try {
             const res = await edgestore.publicFiles.upload({
                 file,
                 onProgressChange: (progress) => setProgress(progress),
             });
-    
+
             // Set the URL only after the upload completes
             const uploadUrl = res.url;
             setUrl(uploadUrl);
             setProgress(0); // Reset progress
-    
+
             // Now upload to the database
             await uploadToDatabase(uploadUrl, name); // Pass URL and name to the upload function
         } catch (error) {
             console.error("Error during file upload:", error);
         }
     };
-    
+
     async function uploadToDatabase(uploadUrl, name) {
         if (!uploadUrl || !name) return; // Ensure url and name are defined
-    
+
         const data = { url: uploadUrl, name };
         try {
             await axios.post('/api/drive', data);
             console.log("Upload to database successful");
             // Reset fields after successful upload
+            router.push("/drive")
             setFile(null);
             setName('');
             setUrl('');
         } catch (err) {
             console.error("Error uploading data:", err);
         }
+    }
+
+    async function deleteFile(id, url) {
+        console.log(url)
+        router.push(`/drive/delete/${id}`)
+        // const res = await edgestore.publicFiles.delete({
+        //     url: url,
+        // });
+        console.log(res)
     }
 
     return (
@@ -105,7 +119,7 @@ export default function Blogs() {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search by title..."
+                        placeholder="Search by name..."
                         className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                     />
                     <input
@@ -145,25 +159,25 @@ export default function Blogs() {
                                 <td colSpan="5" className="text-center py-4"><Dataloading />Loading...</td>
                             </tr>
                         ) : (
-                            currentBlogs.length === 0 ? (
+                            currentFiles.length === 0 ? (
                                 <tr>
                                     <td colSpan="5" className="text-center py-4">No File Available</td>
                                 </tr>
                             ) : (
-                                currentBlogs.map((file, index) => (
+                                currentFiles.map((file, index) => (
                                     <tr key={file._id} className="border-b dark:border-gray-200">
-                                        <td className="px-4 py-2 border-r dark:border-gray-200">{indexOfFirstBlog + index + 1}</td>
+                                        <td className="px-4 py-2 border-r dark:border-gray-200">{indexOfFirstFile + index + 1}</td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200 break-words"><Image src={file.url} width={50} height={50} alt={file.name} /></td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200 break-words">{file.url}</td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200">{file.name}</td>
                                         <td className="px-4 py-2">
                                             <div className="flex gap-2">
-                                                <Link href={`/blogs/edit/${file._id}`}>
+                                                <Link href={`/drive`}>
                                                     <button className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-2 rounded transition"><FaEdit /> Edit</button>
                                                 </Link>
-                                                <Link href={`/drive/delete/${file._id}`}>
+                                                <spam onClick={() => deleteFile(file._id, file.url)}>
                                                     <button className="bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded transition"><RiDeleteBin6Fill /> Delete</button>
-                                                </Link>
+                                                </spam>
                                             </div>
                                         </td>
                                     </tr>
@@ -173,30 +187,46 @@ export default function Blogs() {
                     </tbody>
                 </table>
 
-                {filteredBlogs.length > 0 && (
+                {filteredFiles.length > 0 && (
                     <div className="flex justify-between items-center mt-6">
                         <div>
                             <select
                                 value={perPage}
                                 onChange={(e) => setPerPage(parseInt(e.target.value))}
-                                className="border border-gray-300 dark:border-gray-600 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                                className="!border !border-gray-300 dark:!border-gray-600 !px-3 !py-2 !rounded-lg focus:!outline-none focus:!ring-2 focus:!ring-blue-500 !transition"
                             >
-                                <option value="5">5</option>
-                                <option value="7">7</option>
-                                <option value="10">10</option>
+                                <option value={5}>5 per page</option>
+                                <option value={10}>10 per page</option>
+                                <option value={15}>15 per page</option>
+                                <option value={20}>20 per page</option> 
+                                <option value={50}>50 per page</option>
                             </select>
                         </div>
-                        <div className="flex space-x-2">
-                            {pageNumbers.map(number => (
+                        <div className='flex gap-2'>
                                 <button
-                                    key={number}
-                                    onClick={() => setCurrentPage(number)}
-                                    className={`border px-4 py-2 rounded ${number === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+                                    onClick={() => paginate(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className={`px-4 py-2 rounded-lg transition ${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
                                 >
-                                    {number}
+                                    Previous
                                 </button>
-                            ))}
-                        </div>
+                                {pageNumbers.slice(Math.max(currentPage - 2, 0), Math.min(currentPage + 1, pageNumbers.length)).map(number => (
+                                    <button
+                                        key={number}
+                                        onClick={() => paginate(number)}
+                                        className={`px-4 py-2 rounded-lg transition ${currentPage === number ? 'bg-blue-700 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+                                    >
+                                        {number}
+                                    </button>
+                                ))}
+                                <button
+                                    onClick={() => paginate(currentPage + 1)}
+                                    disabled={currentFiles.length < perPage}
+                                    className={`px-4 py-2 rounded-lg transition ${currentFiles.length < perPage ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
+                                >
+                                    Next
+                                </button>
+                            </div>
                     </div>
                 )}
             </div>

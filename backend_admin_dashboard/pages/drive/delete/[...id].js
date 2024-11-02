@@ -6,9 +6,10 @@ import toast from "react-hot-toast";
 import { BsPostcard } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import { useEdgeStore } from "@/lib/edgestore";
 
 export default function DeleteProduct() {
-
+    const { edgestore } = useEdgeStore();
 
 
     // login first
@@ -43,6 +44,7 @@ export default function DeleteProduct() {
         } else {
             axios.get('/api/drive?id=' + id).then(response => {
                 setProductInfo(response.data)
+                // console.log(productInfo.url)
             })
         }
     }, [id]);
@@ -52,7 +54,10 @@ export default function DeleteProduct() {
     }
 
     async function deleteProduct() {
-        await axios.delete('/api/drive?id=' + id)
+        // await axios.delete('/api/drive?id=' + id)
+        await edgestore.publicFiles.delete({
+            url: productInfo.url,
+        });
         toast.success('Deleted Sucessfully!')
         goback();
     }
@@ -64,7 +69,7 @@ export default function DeleteProduct() {
         <div className="blogpage">
             <div className="titledashboard flex flex-sb">
                 <div>
-                    <h2>Delete <span>{productInfo?.title}</span></h2>
+                    <h2>Delete <span>{productInfo?.name}</span></h2>
                     <h3>ADMIN PANEL</h3>
                 </div>
                 <div className="breadcrumb">
