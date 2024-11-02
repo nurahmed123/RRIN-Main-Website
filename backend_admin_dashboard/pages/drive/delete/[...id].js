@@ -55,9 +55,9 @@ export default function DeleteProduct() {
 
     async function deleteProduct() {
         // await axios.delete('/api/drive?id=' + id)
-        await edgestore.publicFiles.delete({
-            url: productInfo.url,
-        });
+        // await edgestore.publicFiles.delete({
+        //     url: productInfo.url,
+        // });
         toast.success('Deleted Sucessfully!')
         goback();
     }
