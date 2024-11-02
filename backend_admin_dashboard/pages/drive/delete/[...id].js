@@ -17,7 +17,7 @@ export default function DeleteProduct() {
     const router = useRouter();
     // Check if there's no active session and redirect to login page
     if (!session) {
-        router.push('/blogs');
+        router.push('/drive');
         return null; // Return null or any loading indicator while redirecting
     }
 
@@ -41,18 +41,18 @@ export default function DeleteProduct() {
         if (!id) {
             return;
         } else {
-            axios.get('/api/blogs?id=' + id).then(response => {
+            axios.get('/api/drive?id=' + id).then(response => {
                 setProductInfo(response.data)
             })
         }
     }, [id]);
 
     function goback() {
-        router.push('/blogs');
+        router.push('/drive');
     }
 
     async function deleteProduct() {
-        await axios.delete('/api/blogs?id=' + id)
+        await axios.delete('/api/drive?id=' + id)
         toast.success('Deleted Sucessfully!')
         goback();
     }
@@ -68,7 +68,7 @@ export default function DeleteProduct() {
                     <h3>ADMIN PANEL</h3>
                 </div>
                 <div className="breadcrumb">
-                    <BsPostcard /> <span>/</span><span>Delete Blog</span>
+                    <BsPostcard /> <span>/</span><span>Delete File</span>
                 </div>
             </div>
             <div className="deletesec flex flex-center wh_100">
