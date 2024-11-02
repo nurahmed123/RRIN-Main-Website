@@ -148,7 +148,7 @@ export default function Drive() {
                         <tr>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">#</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Image</th>
-                            <th className="px-4 py-2 text-left border-b dark:border-gray-200">Url</th>
+                            <th className="px-4 py-2 text-left border-b dark:border-gray-200">Url ( Click to copy )</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Name</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Edit / Delete</th>
                         </tr>
@@ -174,7 +174,7 @@ export default function Drive() {
                                                 <span>File not supported</span>
                                             )}
                                         </td>
-                                        <td className="px-4 py-2 border-r dark:border-gray-200 break-words">{file.url}</td>
+                                        <td className="px-4 py-2 border-r dark:border-gray-200 break-words cursor-pointer hover:underline-offset-2 hover:underline" onClick={() => navigator.clipboard.writeText(file.url)}>{file.url}</td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200">{file.name}</td>
                                         <td className="px-4 py-2">
                                             <div className="flex gap-2">
