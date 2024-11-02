@@ -64,6 +64,13 @@ export default function Aside() {
                         <span>Members</span>
                     </li>
                 </Link>
+                <Link href="/drive">
+                    <li className={activeLink === '/drive' ? 'navactive' : ''}
+                        onClick={() => handleLinkClick('/drive')}>
+                        <BsPostcard />
+                        <span>Drive</span>
+                    </li>
+                </Link>
 
                 <Link href="/draft">
                     <li className={activeLink === '/draft' ? 'navactive' : ''}
