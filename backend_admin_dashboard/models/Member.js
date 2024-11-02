@@ -4,6 +4,7 @@ const MemberSchema = new Schema({
     name: { type: String },
     image: { type: String },
     role: { type: String },
+    department: { type: String },
     phone: { type: String },
     email: { type: String },
     linkedin: { type: String },

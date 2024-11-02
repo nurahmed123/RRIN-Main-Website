@@ -12,6 +12,7 @@ export default function Project({
     name: existingName,
     image: existingImage,
     role: existingRole,
+    department: existingDepartment,
     phone: existingPhone,
     email: existingEmail,
     linkedin: existingLinkedin,
@@ -27,6 +28,7 @@ export default function Project({
 
     const [name, setName] = useState(existingName || "");
     const [role, setRole] = useState(existingRole || "");
+    const [department, setDescription] = useState(existingDepartment || "");
     const [phone, setPhone] = useState(existingPhone || []);
     const [email, setEmail] = useState(existingEmail || "");
     const [linkedin, setLinkedin] = useState(existingLinkedin || []);
@@ -48,6 +50,7 @@ export default function Project({
         const data = {
             name,
             role,
+            department,
             phone,
             email,
             linkedin,
@@ -114,6 +117,16 @@ export default function Project({
                         placeholder="Enter your role"
                         value={role}
                         onChange={(ev) => setRole(ev.target.value)}
+                    />
+                </div>
+                <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
+                    <label htmlFor="title">Your Department</label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter your role"
+                        value={department}
+                        onChange={(ev) => setDescription(ev.target.value)}
                     />
                 </div>
                 <div className="w-100 flex flex-col flex-left mb-2" data-aos="fade-up">
