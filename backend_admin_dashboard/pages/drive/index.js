@@ -95,13 +95,8 @@ export default function Drive() {
         }
     }
 
-    async function deleteFile(id, url) {
-        console.log(url)
+    async function deleteFile(id) {
         router.push(`/drive/delete/${id}`)
-        // const res = await edgestore.publicFiles.delete({
-        //     url: url,
-        // });
-        // console.log(res)
     }
 
     function formatFileSize(bytes) {
@@ -196,7 +191,7 @@ export default function Drive() {
                                                 <Link href={`/drive`}>
                                                     <button className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-2 rounded transition"><FaEdit /> Edit</button>
                                                 </Link>
-                                                <spam onClick={() => deleteFile(file._id, file.url)}>
+                                                <spam onClick={() => deleteFile(file._id)}>
                                                     <button className="bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded transition"><RiDeleteBin6Fill /> Delete</button>
                                                 </spam>
                                             </div>
