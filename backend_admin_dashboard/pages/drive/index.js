@@ -134,13 +134,6 @@ export default function Drive() {
                         placeholder="Search by name..."
                         className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                     />
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Give an image name"
-                        className="border border-gray-300 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                    />
                     {
                         progress > 0 || progress === 0 ? (
                             <div id="UpProgress" className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
@@ -148,6 +141,14 @@ export default function Drive() {
                             </div>
                         ) : (
                             <div className="blogpagination">
+                                <input
+                                    disable={true}
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="Give an image name"
+                                    className="border border-gray-300 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                                />
                                 <input onChange={(e) => setFile(e.target.files?.[0])} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none mx-4 dark:bg-gray-700 dark:border-gray-600" id="multiple_files" type="file" />
                                 <button disabled={!name || !file} onClick={handleFileUpload} className="active">Upload</button>
                             </div>
