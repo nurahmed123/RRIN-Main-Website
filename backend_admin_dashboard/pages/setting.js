@@ -56,7 +56,7 @@ export default function Setting() {
                                 <input type="text" tel="+8801886772094" defaultValue="+880 1886772094" />
                             </div>
                             <div className="mt-2">
-                                <input type="email" defaultValue="contact@nurahmed.us" />
+                                <input type="email" defaultValue="contact.robosuperior@gmail.com" />
                             </div>
                             <div className="flex flex-center w-100 mt-2">
                                 <button>Save</button>
