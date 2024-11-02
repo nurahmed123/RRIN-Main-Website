@@ -10,10 +10,10 @@ export default async function handle(req, res) {
 
 
     if (method === 'POST') {
-        const { url, name } = req.body;
+        const { url, name, size } = req.body;
 
         const productDoc = await Drive.create({
-            url, name
+            url, name, size
         })
 
         res.json(productDoc)
@@ -29,9 +29,9 @@ export default async function handle(req, res) {
 
 
     if (method === 'PUT') {
-        const { _id, url, name } = req.body;
+        const { _id, url, name, size } = req.body;
         await Drive.updateOne({ _id }, {
-            url, name
+            url, name, size
         });
 
         res.json(true);

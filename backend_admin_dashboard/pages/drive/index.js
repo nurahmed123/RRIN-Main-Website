@@ -36,6 +36,7 @@ export default function Drive() {
     const { edgestore } = useEdgeStore();
     const [progress, setProgress] = useState();
     const [url, setUrl] = useState('');
+    const [size, setSize] = useState('');
     const [name, setName] = useState('');
     const { alldata, loading } = useFetchData(`/api/drive`);
 
@@ -66,23 +67,24 @@ export default function Drive() {
 
             // Set the URL only after the upload completes
             const uploadUrl = res.url;
+            const uploadSize = res.size;
             setUrl(uploadUrl);
+            setSize(uploadSize);
             setProgress(); // Reset progress
 
             // Now upload to the database
-            await uploadToDatabase(uploadUrl, name); // Pass URL and name to the upload function
+            await uploadToDatabase(uploadUrl, name, uploadSize); // Pass URL and name to the upload function
         } catch (error) {
             console.error("Error during file upload:", error);
         }
     };
 
-    async function uploadToDatabase(uploadUrl, name) {
+    async function uploadToDatabase(uploadUrl, name, uploadSize) {
         if (!uploadUrl || !name) return; // Ensure url and name are defined
 
-        const data = { url: uploadUrl, name };
+        const data = { url: uploadUrl, name, size: uploadSize };
         try {
             await axios.post('/api/drive', data);
-            console.log("Upload to database successful");
             // Reset fields after successful upload
             router.push("/drive")
             setFile(null);
@@ -99,7 +101,17 @@ export default function Drive() {
         // const res = await edgestore.publicFiles.delete({
         //     url: url,
         // });
-        console.log(res)
+        // console.log(res)
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes < 1024) {
+            return `${bytes} B`; // Display in bytes if less than 1 KB
+        } else if (bytes < 1024 * 1024) {
+            return `${(bytes / 1024).toFixed(2)} KB`; // Convert to KB if less than 1 MB
+        } else {
+            return `${(bytes / (1024 * 1024)).toFixed(2)} MB`; // Convert to MB if 1 MB or larger
+        }
     }
 
     return (
@@ -150,18 +162,19 @@ export default function Drive() {
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Image</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Url ( Click to copy )</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Name</th>
+                            <th className="px-4 py-2 text-left border-b dark:border-gray-200">Size</th>
                             <th className="px-4 py-2 text-left border-b dark:border-gray-200">Edit / Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {loading ? (
                             <tr>
-                                <td colSpan="5" className="text-center py-4"><Dataloading />Loading...</td>
+                                <td colSpan="6" className="text-center py-4"><Dataloading />Loading...</td>
                             </tr>
                         ) : (
                             currentFiles.length === 0 ? (
                                 <tr>
-                                    <td colSpan="5" className="text-center py-4">No File Available</td>
+                                    <td colSpan="6" className="text-center py-4">No File Available</td>
                                 </tr>
                             ) : (
                                 currentFiles.map((file, index) => (
@@ -176,6 +189,7 @@ export default function Drive() {
                                         </td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200 break-words cursor-pointer hover:underline-offset-2 hover:underline" onClick={() => navigator.clipboard.writeText(file.url)}>{file.url}</td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200">{file.name}</td>
+                                        <td className="px-4 py-2 border-r dark:border-gray-200">{formatFileSize(file.size)}</td>
                                         <td className="px-4 py-2">
                                             <div className="flex gap-2">
                                                 <Link href={`/drive`}>
