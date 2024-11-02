@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Loading from "@/components/Loading";
 import Aos from "@/components/Aos";
+import { EdgeStoreProvider } from '../lib/edgestore';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(true);
@@ -32,24 +33,26 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   }, [router.isReady]); // Add router.events as dependency
 
   return <>
-    <SessionProvider session={session}>
-      {loading ? (
-        // loading while load
-        <div className='flex flex-col flex-center wh_100'>
-          <Loading/>
-          <h1 className='mt-1'>Loading...</h1>
-        </div>
-      ) : (
-        <>
-          <Header />
-          <Aside />
-          <main>
-            <Aos>            
-            <Component {...pageProps} />
-            </Aos>
-          </main>
-        </>
-      )}
-    </SessionProvider>
+    <EdgeStoreProvider>
+      <SessionProvider session={session}>
+        {loading ? (
+          // loading while load
+          <div className='flex flex-col flex-center wh_100'>
+            <Loading />
+            <h1 className='mt-1'>Loading...</h1>
+          </div>
+        ) : (
+          <>
+            <Header />
+            <Aside />
+            <main>
+              <Aos>
+                <Component {...pageProps} />
+              </Aos>
+            </main>
+          </>
+        )}
+      </SessionProvider>
+    </EdgeStoreProvider>
   </>
 }

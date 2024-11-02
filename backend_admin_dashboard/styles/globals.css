@@ -229,13 +229,13 @@ body {
     height: 100vh;
 }
 
-.underline{
+.underline {
     text-decoration: underline;
     padding: 0rem .5rem;
 
 }
 
-.underline:hover{
+.underline:hover {
     text-decoration: none;
 }
 
@@ -748,6 +748,27 @@ button {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+#UpProgress {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: #124d70;
+    border-radius: 9999px;
+}
+
+#UpProgressIn {
+    background-color: #2578a8;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #BFDBFE;
+    text-align: center;
+    padding: 0.125rem;
+    line-height: 1;
+    border-radius: 9999px;
+}
+
+
 
 
 /* ********************************************** */

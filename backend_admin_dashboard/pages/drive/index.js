@@ -1,6 +1,6 @@
+'use client';
 import { BsPostcard } from "react-icons/bs";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { FaEdit } from "react-icons/fa";
 import useFetchData from "@/hooks/useFetchData";
 import { useState } from "react";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Dataloading from "@/components/Dataloading";
 import Image from "next/image";
+import { useEdgeStore } from "@/lib/edgestore";
+import axios from "axios";
 
 export default function Blogs() {
     const { data: session, status } = useSession();
@@ -28,6 +30,11 @@ export default function Blogs() {
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(7); // Allow user to change per page
     const [searchQuery, setSearchQuery] = useState('');
+    const [file, setFile] = useState();
+    const { edgestore } = useEdgeStore();
+    const [progress, setProgress] = useState()
+    const [url, setUrl] = useState()
+    const [name, setName] = useState()
 
     // Fetch all blogs data
     const { alldata, loading } = useFetchData(`/api/drive`);
@@ -55,6 +62,24 @@ export default function Blogs() {
         pageNumbers.push(i);
     }
 
+    async function uploadToDatabase(ev) {
+        // ev.preventDefault();
+
+        const data = { url, name };
+        console.log(data)
+
+        try {
+            await axios.post('/api/drive', data);
+            // toast.success('Product Created!');
+            console.log("created")
+            setFile()
+            setName()
+        } catch (err) {
+            console.error(err);
+
+        }
+    }
+
     return (
         <>
             <div className="blogpage p-8">
@@ -80,6 +105,13 @@ export default function Blogs() {
                             placeholder="Search by title..."
                             className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                         />
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Give a image name"
+                            className="border border-gray-300 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                        />
                         {/* <select
                             isRequired
                             className="block shadow-2xl w-[15rem] p-4 border-gray-300 !rounded-lg bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
@@ -89,10 +121,41 @@ export default function Blogs() {
                             <option value="$.1">Amount</option>
                             <option value="$.2">Note</option>
                         </select> */}
-                        <div className="blogpagination">
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 !rounded-lg !cursor-pointer bg-gray-50 !focus:outline-none mx-4 dark:bg-gray-700 dark:border-gray-600" id="multiple_files" type="file" multiple />
-                            <button type="button" class="active">Upload</button>
-                        </div>
+
+                        {
+                            progress === 0 || progress > 0 ?
+                                <div id="UpProgress" class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+                                    <div id="UpProgressIn" class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{ width: `${progress}%` }}> {progress}%</div>
+                                </div>
+                                :
+                                <div className="blogpagination">
+                                    <input onChange={(e) => {
+                                        setFile(e.target.files?.[0]);
+                                    }} class="block w-full text-sm text-gray-900 border border-gray-300 !rounded-lg !cursor-pointer bg-gray-50 !focus:outline-none mx-4 dark:bg-gray-700 dark:border-gray-600" id="multiple_files" type="file" multiple />
+                                    <button disabled={!name || !file} onClick={async () => {
+                                        if (file) {
+                                            const res = await edgestore.publicFiles.upload({
+                                                file,
+                                                onProgressChange: (progress) => {
+                                                    // you can use this to show a progress bar
+                                                    setProgress(progress);
+                                                    console.log(progress);
+                                                },
+                                            });
+                                            setProgress();
+                                            setUrl(res.url)
+                                            uploadToDatabase()
+                                            console.log(res);
+                                            console.log(url)
+
+
+                                            // setFile()
+                                            // setName()
+                                        }
+                                    }} type="button" class="active">Upload</button>
+
+                                </div>
+                        }
 
                     </div>
 
@@ -126,9 +189,6 @@ export default function Blogs() {
                                                 <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">{blog.name}</td>
                                                 <td className="px-4 py-2">
                                                     <div className="flex gap-2">
-                                                        <Link href={`/blogs/edit/${blog._id}`}>
-                                                            <button className="dark:text-gray-100 bg-blue-500 hover:bg-blue-700 text-white px-3 py-2 rounded transition"><FaEdit /> Edit</button>
-                                                        </Link>
                                                         <Link href={`/blogs/delete/${blog._id}`}>
                                                             <button className="dark:text-gray-100 bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded transition"><RiDeleteBin6Fill /> Delete</button>
                                                         </Link>
