@@ -34,7 +34,7 @@ export default function Drive() {
     const [searchQuery, setSearchQuery] = useState('');
     const [file, setFile] = useState(null);
     const { edgestore } = useEdgeStore();
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState();
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
     const { alldata, loading } = useFetchData(`/api/drive`);
@@ -67,7 +67,7 @@ export default function Drive() {
             // Set the URL only after the upload completes
             const uploadUrl = res.url;
             setUrl(uploadUrl);
-            setProgress(0); // Reset progress
+            setProgress(); // Reset progress
 
             // Now upload to the database
             await uploadToDatabase(uploadUrl, name); // Pass URL and name to the upload function
@@ -108,7 +108,7 @@ export default function Drive() {
                 <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100">All Published<span> File</span></h2>
                 <div className="breadcrumb flex items-center text-gray-600 dark:text-gray-300">
                     <BsPostcard className="mr-2" />
-                    <span><Link className="underline ml-2" href="/blogs/addblog">Add Blogs</Link></span>
+                    <span><div className="underline ml-2 cursor-default">Add Files</div></span>
                 </div>
             </div>
 
@@ -130,7 +130,7 @@ export default function Drive() {
                         className="border border-gray-300 px-4 py-2 rounded-lg w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                     />
                     {
-                        progress > 0 ? (
+                        progress > 0 || progress === 0 ? (
                             <div id="UpProgress" className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
                                 <div id="UpProgressIn" className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{ width: `${progress}%` }}>{progress}%</div>
                             </div>
@@ -167,7 +167,13 @@ export default function Drive() {
                                 currentFiles.map((file, index) => (
                                     <tr key={file._id} className="border-b dark:border-gray-200">
                                         <td className="px-4 py-2 border-r dark:border-gray-200">{indexOfFirstFile + index + 1}</td>
-                                        <td className="px-4 py-2 border-r dark:border-gray-200 break-words"><Image src={file.url} width={50} height={50} alt={file.name} /></td>
+                                        <td className="px-4 py-2 border-r dark:border-gray-200 break-words">
+                                            {/\.(jpeg|jpg|gif|png|svg|webp|bmp)$/i.test(file.url) ? (
+                                                <Image src={file.url} width={50} height={50} alt={file.name} />
+                                            ) : (
+                                                <span>File not supported</span>
+                                            )}
+                                        </td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200 break-words">{file.url}</td>
                                         <td className="px-4 py-2 border-r dark:border-gray-200">{file.name}</td>
                                         <td className="px-4 py-2">
@@ -198,35 +204,35 @@ export default function Drive() {
                                 <option value={5}>5 per page</option>
                                 <option value={10}>10 per page</option>
                                 <option value={15}>15 per page</option>
-                                <option value={20}>20 per page</option> 
+                                <option value={20}>20 per page</option>
                                 <option value={50}>50 per page</option>
                             </select>
                         </div>
                         <div className='flex gap-2'>
+                            <button
+                                onClick={() => paginate(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className={`px-4 py-2 rounded-lg transition ${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
+                            >
+                                Previous
+                            </button>
+                            {pageNumbers.slice(Math.max(currentPage - 2, 0), Math.min(currentPage + 1, pageNumbers.length)).map(number => (
                                 <button
-                                    onClick={() => paginate(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                    className={`px-4 py-2 rounded-lg transition ${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
+                                    key={number}
+                                    onClick={() => paginate(number)}
+                                    className={`px-4 py-2 rounded-lg transition ${currentPage === number ? 'bg-blue-700 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
                                 >
-                                    Previous
+                                    {number}
                                 </button>
-                                {pageNumbers.slice(Math.max(currentPage - 2, 0), Math.min(currentPage + 1, pageNumbers.length)).map(number => (
-                                    <button
-                                        key={number}
-                                        onClick={() => paginate(number)}
-                                        className={`px-4 py-2 rounded-lg transition ${currentPage === number ? 'bg-blue-700 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
-                                    >
-                                        {number}
-                                    </button>
-                                ))}
-                                <button
-                                    onClick={() => paginate(currentPage + 1)}
-                                    disabled={currentFiles.length < perPage}
-                                    className={`px-4 py-2 rounded-lg transition ${currentFiles.length < perPage ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
-                                >
-                                    Next
-                                </button>
-                            </div>
+                            ))}
+                            <button
+                                onClick={() => paginate(currentPage + 1)}
+                                disabled={currentFiles.length < perPage}
+                                className={`px-4 py-2 rounded-lg transition ${currentFiles.length < perPage ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'}`}
+                            >
+                                Next
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
