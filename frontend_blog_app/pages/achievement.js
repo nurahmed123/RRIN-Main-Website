@@ -104,7 +104,7 @@ export default function Blog() {
                                                 <p>{blog.metadescription}</p>
                                                 <div className="blogauthor flex gap-1">
                                                     <div className="blogaimg">
-                                                        <img src={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png"} alt="author" />
+                                                        <img src={process.env.SEPERIOR_LOGO} alt="author" />
                                                     </div>
                                                     <div className="flex flex-col flex-left gap-05">
                                                         <h4>RoboSuperior</h4>
