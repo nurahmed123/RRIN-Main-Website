@@ -17,9 +17,6 @@ export default function userpublishedpost() {
     const [perPage, setPerPage] = useState(5); // Default number of blogs per page
     const [searchQuery, setSearchQuery] = useState('');
 
-    // Fetch all blogs on component load
-    const { alldata: allBlogs, loading } = useFetchData(`/api/blogs`);
-
     useEffect(() => {
         const checkUser = () => {
             try {
@@ -38,6 +35,9 @@ export default function userpublishedpost() {
         };
         checkUser();
     }, [router]);
+
+    // Fetch all blogs on component load
+    const { alldata: allBlogs, loading } = useFetchData(`/api/blogs?author=${author}`);
 
     // Filter blogs by author first, then by search query
     const filteredBlogs = useMemo(() => {
