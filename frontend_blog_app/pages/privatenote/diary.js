@@ -114,6 +114,16 @@ export default function userDiary() {
                     costNotes.filter(note => note.transactionType === "credit"),
                     "reason"
                 );
+            } else if (transType === "borrowed") {
+                return filterBySearchQuery(
+                    costNotes.filter(note => note.transactionType === "borrowed"),
+                    "reason"
+                );
+            } else if (transType === "lent") {
+                return filterBySearchQuery(
+                    costNotes.filter(note => note.transactionType === "lent"),
+                    "reason"
+                );
             } else {
                 return filterBySearchQuery(costNotes, "reason");
             }
@@ -276,6 +286,8 @@ export default function userDiary() {
                                                     <option value="">Select...</option>
                                                     <option value="debit">Debit</option>
                                                     <option value="credit">Credit</option>
+                                                    <option value="borrowed">Borrowed</option>
+                                                    <option value="lent">Lent</option>
                                                 </select>
                                             </div>
                                         </>
@@ -374,6 +386,8 @@ export default function userDiary() {
                                         <option value="all">All</option>
                                         <option value="debit">Debit</option>
                                         <option value="credit">Credit</option>
+                                        <option value="borrowed">Borrowed</option>
+                                        <option value="lent">Lent</option>
                                     </select>
 
                                 </> : ""
@@ -409,7 +423,11 @@ export default function userDiary() {
                                             <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">
                                                 <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{indexOfFirstBlog + index + 1}</td>
                                                 <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.note ? "Note" : "Spend"}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.transactionType ? blog.transactionType === "debit" ? "Debit" : "Creadit" : ""}</td>
+                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">
+                                                    {blog.transactionType
+                                                        ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
+                                                        : ""}
+                                                </td>
                                                 <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.reason}</td>
                                                 <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.note || 'N/A'}</td>
                                                 <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.cost || 'N/A'}</td>
