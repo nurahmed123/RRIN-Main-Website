@@ -422,8 +422,8 @@ export default function userDiary() {
                             <tr>
                                 <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
                                 <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Type</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Type of</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Spent at</th>
+                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Transaction Type</th>
+                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Spent at / Reason</th>
                                 <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Note</th>
                                 <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Cost</th>
                                 <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Edit / Delete</th>
