@@ -16,7 +16,7 @@ function extractFirstImageUrl(markdownContent) {
 }
 
 export default function Blog() {
-    const LogoImage = process.env.SEPERIOR_LOGO;
+    const LogoImage = `https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png`;
     const [allBlogs, setAllBlogs] = useState([]);
     const [displayedBlogs, setDisplayedBlogs] = useState([]);
     const [loading, setLoading] = useState(true);

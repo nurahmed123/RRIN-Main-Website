@@ -9,7 +9,7 @@ import Head from 'next/head'
 
 const signup = () => {
     const router = useRouter();
-    const appLogoUrl = process.env.SEPERIOR_LOGO;
+    const appLogoUrl = `https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png`;
 
     const [redirect, setRedirect] = useState(false)
     const [name, setName] = useState("")

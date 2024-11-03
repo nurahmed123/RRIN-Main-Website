@@ -10,7 +10,7 @@ import { jwtDecode } from "jwt-decode";
 
 export default function Setting() {
   const { data: session, status } = useSession();
-  const appLogoUrl = process.env.SEPERIOR_LOGO;
+  const appLogoUrl = `https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png`;
   const router = useRouter();
   const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
