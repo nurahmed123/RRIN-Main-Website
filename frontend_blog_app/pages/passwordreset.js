@@ -5,23 +5,18 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { TOTP } from "totp-generator"
 import bcrypt from "bcryptjs";
-
+import Head from 'next/head';
 
 const passwordreset = () => {
     const router = useRouter();
+    const appLogoUrl = process.env.SEPERIOR_LOGO;
 
     const [redirect, setRedirect] = useState(false)
-    const [name, setName] = useState("")
-    const [username, setusername] = useState("")
-    const [phone, setPhone] = useState("")
-    const [role, setRole] = useState("user")
     const [email, setEmail] = useState("")
-    const [country, setCountry] = useState("")
     const [otp, setOTP] = useState("")
     const [gotp, setGOTP] = useState("")
     const [passwordin, setPasswordin] = useState("")
     const [repassword, setRePassword] = useState("")
-    const [image, setImage] = useState("")
 
     // login user check
     const [user, setUser] = useState({ value: null })
@@ -35,7 +30,7 @@ const passwordreset = () => {
                 setKey(Math.random())
             }
         } catch (err) {
-            // console.log(err)
+            console.log(err)
             // localstorage.clear()
         }
     }, [])
@@ -80,7 +75,7 @@ const passwordreset = () => {
         ev.preventDefault();
         let password = await bcrypt.hash(passwordin, 10)
         // console.log(password)
-        const data = { email, password};
+        const data = { email, password };
         // console.log(data)
 
         try {
@@ -99,7 +94,7 @@ const passwordreset = () => {
             });
             Toast.fire({
                 icon: "success",
-                title: "Account successfully created"
+                title: "Password changed successfully"
             });
 
         } catch {
@@ -137,6 +132,34 @@ const passwordreset = () => {
 
     return (
         <div className='container'>
+            <Head>
+                <title>Password Reset | RoboSuperior</title>
+                <meta
+                    name="description"
+                    content="Forgot your password? Reset it easily to regain access to your RoboSuperior account and continue exploring our programming tutorials, challenges, and tech blogs."
+                />
+                <meta
+                    name="keywords"
+                    content="password reset, forgot password, recover account, coding, programming, blogging, tech community, developer support"
+                />
+                <meta name="author" content="Robo Superior" />
+                <meta property="og:title" content="Password Reset | RoboSuperior" />
+                <meta
+                    property="og:description"
+                    content="Reset your RoboSuperior password to regain access to top-quality programming content, challenges, and tech insights."
+                />
+                <meta property="og:image" content={appLogoUrl} />
+                <meta property="og:url" content="https://robosuperior.com/password-reset" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Password Reset | RoboSuperior" />
+                <meta
+                    name="twitter:description"
+                    content="Recover your account quickly by resetting your password. Get back to coding and stay connected with the RoboSuperior community."
+                />
+                <meta name="twitter:image" content={appLogoUrl} />
+            </Head>
+
             <div className="min-w-screen min-h-screen flex">
                 <div className=" text-gray-500 dark:bg-[#202937] rounded-3xl shadow-xl w-full overflow-hidden" >
                     <div className="md:flex w-full">

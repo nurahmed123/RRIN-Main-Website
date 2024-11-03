@@ -9,12 +9,12 @@ var jwt = require('jsonwebtoken');
 import { useSession, signIn, signOut } from "next-auth/react"
 import Loading from '@/components/Loading';
 import { getCsrfToken } from 'next-auth/react';
-
+import Head from 'next/head';
 
 const login = ({ csrfToken }) => {
     const { data: session, status } = useSession();
     const router = useRouter();
-
+    const appLogoUrl = process.env.SEPERIOR_LOGO;
 
 
     const [redirect, setRedirect] = useState(false)
@@ -126,6 +126,33 @@ const login = ({ csrfToken }) => {
     }
     return (
         <div className='container'>
+            <Head>
+                <title>Login | RoboSuperior</title>
+                <meta
+                    name="description"
+                    content="Log in to your RoboSuperior account to continue your coding journey! Access your favorite programming tutorials, participate in coding challenges, and stay updated with the latest tech blogs."
+                />
+                <meta
+                    name="keywords"
+                    content="login, sign in, coding, programming, blogging, tech community, developer resources, coding tutorials"
+                />
+                <meta name="author" content="Robo Superior" />
+                <meta property="og:title" content="Login | RoboSuperior" />
+                <meta
+                    property="og:description"
+                    content="Log in to RoboSuperior to access your coding content, participate in challenges, and read tech insights from leading developers."
+                />
+                <meta property="og:image" content={appLogoUrl} />
+                <meta property="og:url" content="https://robosuperior.com/login" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Login | RoboSuperior" />
+                <meta
+                    name="twitter:description"
+                    content="Sign in to continue your coding journey with RoboSuperior. Access exclusive content, challenges, and more!"
+                />
+                <meta name="twitter:image" content={appLogoUrl} />
+            </Head>
             <div className="min-w-screen min-h-screen flex">
                 <div className=" text-gray-500 dark:bg-[#202937] rounded-3xl shadow-xl w-full overflow-hidden" >
                     <div className="md:flex w-full">
@@ -138,8 +165,8 @@ const login = ({ csrfToken }) => {
                                 <p className=' dark:text-gray-300'>Enter your information to register</p>
                             </div>
                             <form onSubmit={userLogin}>
-                            {/* <form method="post" action={`${process.env.SITE_URL}/api/auth/callback/credentials`}> */}
-				{/* <form method="post" action={userAuthLogin}> */}
+                                {/* <form method="post" action={`${process.env.SITE_URL}/api/auth/callback/credentials`}> */}
+                                {/* <form method="post" action={userAuthLogin}> */}
                                 <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">

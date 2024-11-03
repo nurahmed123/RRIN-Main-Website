@@ -5,10 +5,11 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { TOTP } from "totp-generator"
 import bcrypt from "bcryptjs";
-
+import Head from 'next/head'
 
 const signup = () => {
     const router = useRouter();
+    const appLogoUrl = process.env.SEPERIOR_LOGO;
 
     const [redirect, setRedirect] = useState(false)
     const [name, setName] = useState("")
@@ -140,7 +141,37 @@ const signup = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container !my-12'>
+            <Head>
+                <title>Sign Up | RoboSuperior</title>
+                <meta
+                    name="description"
+                    content="Sign up to become part of our coding community! Access exclusive programming tutorials, take on coding challenges, and read expert tech blogs."
+                />
+                <meta
+                    name="keywords"
+                    content="sign up, register, coding, programming, blogging, tech community, developer resources, coding tutorials"
+                />
+                <meta name="author" content="Robo Superior" />
+                <meta property="og:title" content="Sign Up | Robo Superior" />
+                <meta
+                    property="og:description"
+                    content="Join robo superior today and gain access to top-notch programming content, coding challenges, and developer insights."
+                />
+                <meta property="og:image" content={appLogoUrl} />
+                <meta property="og:url" content="https://robosuperior.com/signup" />
+                <meta property="og:type" content="website" />
+                <meta
+                    name="twitter:card"
+                    content="summary_large_image"
+                />
+                <meta name="twitter:title" content="Sign Up | RoboSuperior" />
+                <meta
+                    name="twitter:description"
+                    content="Become a member of our coding community. Access exclusive tutorials, take on challenges, and read tech blogs by top developers."
+                />
+                <meta name="twitter:image" content={appLogoUrl} />
+            </Head>
             <div className="min-w-screen min-h-screen flex">
                 <div className=" text-gray-500 dark:bg-[#202937] rounded-3xl shadow-xl w-full overflow-hidden" >
                     <div className="md:flex w-full">
