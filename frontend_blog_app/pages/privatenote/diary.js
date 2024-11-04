@@ -140,10 +140,19 @@ export default function userDiary() {
     }, [searchItem, searchQuery, allNotes, transType]);
 
 
+    const totalCost = useMemo(() => {
+        const calculateTotalCost = (array) => {
+            if (!Array.isArray(array)) return 0; // Ensure array is valid
+            return array.reduce((total, item) => total + parseInt(item.cost, 10), 0);
+        };
+
+        return calculateTotalCost(filteredBlogs);
+    }, [filteredBlogs, searchItem, searchQuery, allNotes, transType]);
+
+
 
     // Calculate total number of filtered blogs
     const totalFilteredBlogs = filteredBlogs.length;
-
     // Calculate the currently displayed blogs with pagination logic
     const indexOfFirstBlog = (currentPage - 1) * perPage;
     const indexOfLastBlog = currentPage * perPage;
@@ -469,6 +478,22 @@ export default function userDiary() {
                                 </>
                             )}
                         </tbody>
+                        {searchItem === "$.1"
+                            ?
+                            <thead thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
+                                <tr>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Total</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">{totalCost}</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
+                                </tr>
+                            </thead>
+                            : ""
+                        }
+
                     </table>
 
                     {totalFilteredBlogs > 0 && (
@@ -487,7 +512,7 @@ export default function userDiary() {
                         </div>
                     )}
                 </div>
-            </div>
+            </div >
         </>
     );
 }
