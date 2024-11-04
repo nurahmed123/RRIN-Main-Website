@@ -40,114 +40,97 @@ const TeamMembers = () => {
                 </>
             ) : (
                 <>
-                    {activeMembers.map((member) => {
+                    {activeMembers.slice().reverse().map((member) => {
                         return (
-                            <>
-                                <Accordion
-                                    selectionMode="multiple"
-                                    key={member._id}
-                                    variant="splitted"
-                                    className="gap-[1rem] my-3"
-                                >
-                                    <AccordionItem
-                                        startContent={
-                                            <>
-                                                <div className="flex">
-                                                    <img
-                                                        color="primary"
-                                                        radius="lg"
-                                                        src={member.image}
-                                                        width={70}
-                                                        height={70}
-                                                        alt="this is a demo site"
-                                                        style={imgStyle}
-                                                    />
-                                                    <p>{member.name}</p>
-                                                </div>
-                                            </>
-                                        }
-                                        className="dark:text-gray-300 dark:!bg-[#1a202c] w-full"
-                                        aria-label="Anchor"
-                                        // indicator={<FaAnchor />}
-                                        subtitle={member.role}
-                                    >
-                                        <h2 className="pb-2">Social Links</h2>
-                                        <div className="talk_sec">
-                                            <h4>
-                                                Want to find out how I can solve problems specific to
-                                                your business? Let's talk.
-                                            </h4>
-                                            <br />
-                                            <h3>
-                                                Phone: 
-                                                <a className="px-1" href={`tel:${member.phone}`}>{member.phone}</a>
-                                            </h3>
-                                            <h3>
-                                                Email: 
-                                                <a className="px-1" href={`mailto:${member.mail}`}>{member.email}</a>
-                                            </h3>
-                                            <div className="social_talks flex flex-center gap-1 mt-2">
-                                                {!member.linkedin ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.linkedin} target="_blank">
-                                                            {" "}
-                                                            <FaLinkedinIn />
-                                                        </Link>
-                                                    </div>
-                                                )}
-
-                                                {!member.github ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.github} target="_blank">
-                                                            <FaGithub />
-                                                        </Link>
-                                                    </div>
-                                                )}
-                                                {!member.facebook ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.facebook} target="_blank">
-                                                            <FaFacebook />
-                                                        </Link>
-                                                    </div>
-                                                )}
-                                                {!member.twitter ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.twitter} target="_blank">
-                                                            <FaXTwitter />
-                                                        </Link>
-                                                    </div>
-                                                )}
-                                                {!member.instagram ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.instagram} target="_blank">
-                                                            <FaInstagram />
-                                                        </Link>
-                                                    </div>
-                                                )}
-                                                {!member.youtube ? (
-                                                    ""
-                                                ) : (
-                                                    <div className="st_icon" data-aos="fade-up">
-                                                        <Link href={member.facebook} target="_blank">
-                                                            <FaYoutube />
-                                                        </Link>
-                                                    </div>
-                                                )}
+                            <Accordion
+                                selectionMode="multiple"
+                                key={member._id}
+                                variant="splitted"
+                                className="gap-[1rem] my-3"
+                            >
+                                <AccordionItem
+                                    startContent={
+                                        <>
+                                            <div className="flex">
+                                                <img
+                                                    color="primary"
+                                                    radius="lg"
+                                                    src={member.image}
+                                                    width={70}
+                                                    height={70}
+                                                    alt="this is a demo site"
+                                                    style={imgStyle}
+                                                />
+                                                <p>{member.name}</p>
                                             </div>
+                                        </>
+                                    }
+                                    className="dark:text-gray-300 dark:!bg-[#1a202c] w-full"
+                                    aria-label="Anchor"
+                                    subtitle={member.role}
+                                >
+                                    <h2 className="pb-2">Social Links</h2>
+                                    <div className="talk_sec">
+                                        <h4>
+                                            Want to find out how I can solve problems specific to
+                                            your business? Let's talk.
+                                        </h4>
+                                        <br />
+                                        <h3>
+                                            Phone:
+                                            <a className="px-1" href={`tel:${member.phone}`}>{member.phone}</a>
+                                        </h3>
+                                        <h3>
+                                            Email:
+                                            <a className="px-1" href={`mailto:${member.mail}`}>{member.email}</a>
+                                        </h3>
+                                        <div className="social_talks flex flex-center gap-1 mt-2">
+                                            {member.linkedin && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.linkedin} target="_blank">
+                                                        <FaLinkedinIn />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                            {member.github && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.github} target="_blank">
+                                                        <FaGithub />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                            {member.facebook && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.facebook} target="_blank">
+                                                        <FaFacebook />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                            {member.twitter && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.twitter} target="_blank">
+                                                        <FaXTwitter />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                            {member.instagram && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.instagram} target="_blank">
+                                                        <FaInstagram />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                            {member.youtube && (
+                                                <div className="st_icon" data-aos="fade-up">
+                                                    <Link href={member.youtube} target="_blank">
+                                                        <FaYoutube />
+                                                    </Link>
+                                                </div>
+                                            )}
                                         </div>
-                                    </AccordionItem>
-                                </Accordion>
-                            </>
+                                    </div>
+                                </AccordionItem>
+                            </Accordion>
                         );
                     })}
                 </>
