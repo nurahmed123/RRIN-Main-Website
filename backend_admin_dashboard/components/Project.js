@@ -207,10 +207,10 @@ export default function Project(
                                     d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                                 ></path>
                             </svg>
-                            Saving...
+                            {_id ? "Updating..." : 'Saving...'}
                         </div>
                     ) : (
-                        'Save Project'
+                        _id ? "Update Project" : 'Save Project'
                     )}
                 </button>
             </div>

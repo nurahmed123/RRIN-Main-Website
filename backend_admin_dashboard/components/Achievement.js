@@ -169,7 +169,7 @@ export default function Achievement(
 
 
             <div className='w-100 mb-2'>
-                <button type='submit' className='w-100 addwebbtn flex-center'>SAVE Achievements</button>
+                <button type='submit' className='w-100 addwebbtn flex-center'>{_id ? "Update Achievements" : 'Save Achievements'}</button>
             </div>
 
         </form>
