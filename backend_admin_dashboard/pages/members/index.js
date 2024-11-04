@@ -109,16 +109,17 @@ export default function Members() {
                                 <>
                                     {publishedblogs.length === 0 ? (
                                         <tr>
-                                            <td colSpan="5" className="text-center py-4 ">No Members Available</td>
+                                            <td colSpan="5" className="text-center py-4">No Members Available</td>
                                         </tr>
                                     ) : (
-                                        publishedblogs.map((blog, index) => (
+                                        publishedblogs.slice().reverse().map((blog, index) => (
                                             <tr key={blog._id} className="border-b dark:border-gray-200 shadow-lg">
                                                 <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">{indexOfFirstblog + index + 1}</td>
                                                 <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg break-words">{blog.name}</td>
                                                 <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg break-words">{blog.role}</td>
-                                                <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg"><Image src={blog.image} width={50} height={50} /></td>
-                                                {/* <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td> */}
+                                                <td className="px-4 py-2 border-r dark:border-gray-200 shadow-lg">
+                                                    <Image src={blog.image} width={50} height={50} alt={`${blog.name}'s image`} />
+                                                </td>
                                                 <td className="px-4 py-2">
                                                     <div className="flex gap-2">
                                                         <Link href={`/members/edit/${blog._id}`}>
