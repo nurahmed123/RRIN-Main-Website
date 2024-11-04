@@ -12,6 +12,7 @@ import Head from "next/head";
 import toast from "react-hot-toast";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
+import * as XLSX from 'xlsx';
 
 export default function userDiary() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -169,6 +170,22 @@ export default function userDiary() {
         if (pageNumber > 0 && pageNumber <= pageNumbers.length) {
             setCurrentPage(pageNumber);
         }
+    };
+
+    const filterExportData = (data) => {
+        return data.map(item => {
+            const { _id, userid, username, updatedAt, __v, ...filteredItem } = item;
+            return filteredItem;
+        });
+    };
+
+    // Function to export data to an Excel file
+    const exportToExcel = (data, fileName = 'data.xlsx') => {
+        const filteredData = filterExportData(data);
+        const worksheet = XLSX.utils.json_to_sheet(filteredData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+        XLSX.writeFile(workbook, fileName);
     };
 
     async function createProduct(ev) {
@@ -349,6 +366,7 @@ export default function userDiary() {
                     </div>
                     <div className="breadcrumb dark:text-[#6466f1]" data-aos="fade-left">
                         <BsPostcard className="dark:text-[#6466f1]" /> <span className="dark:text-[#6466f1]">/</span><span className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]" onClick={handleOpen}>Add Note</span>
+                        <span className="dark:text-[#6466f1]">/</span><span className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]" onClick={() => exportToExcel(filteredBlogs)}>Export</span>
                     </div>
                 </div>
                 <div className="blogstable mt-6">

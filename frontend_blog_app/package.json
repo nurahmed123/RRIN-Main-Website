@@ -49,7 +49,8 @@
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.12.0",
     "totp-generator": "^1.0.0",
-    "typed.js": "^2.1.0"
+    "typed.js": "^2.1.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
