@@ -4812,7 +4812,12 @@ tailwind-variants@^0.1.20:
   dependencies:
     tailwind-merge "^1.14.0"
 
-tailwindcss@*, tailwindcss@^3.4.4, tailwindcss@>=3.4.0:
+tailwindcss-motion@^0.4.0-beta:
+  version "0.4.0-beta"
+  resolved "https://registry.npmjs.org/tailwindcss-motion/-/tailwindcss-motion-0.4.0-beta.tgz"
+  integrity sha512-tr3zhvFpy4Z4Em197uC7eyZlbV7mOVV+1Hq8RpwcIdZIO+yWre2oTOw96JaZob3WUSpUVkOmglPb6PPdlXuH0g==
+
+tailwindcss@*, tailwindcss@^3.4.4, "tailwindcss@>=3.0.0 || insiders", tailwindcss@>=3.4.0:
   version "3.4.4"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.4.tgz"
   integrity sha512-ZoyXOdJjISB7/BcLTR6SEsLgKtDStYyYZVLsUtWChO4Ps20CBad7lfJKVDiejocV4ME1hLmyY0WJE3hSDcmQ2A==

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [nextui()],
+  plugins: [nextui(), require('tailwindcss-motion')],
   darkMode: "class"
 }
 

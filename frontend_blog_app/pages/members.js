@@ -106,6 +106,7 @@ const Members = () => {
                                         <div className="flex justify-evenly items-center gap-2 p-1 text-2xl text-white dark:text-gray-600">
                                             {member.linkedin && (
                                                 <Link
+                                                    className="hover:motion-rotate-in-[0.5turn]"
                                                     href={member.linkedin}
                                                     target="_blank"
                                                 >
@@ -113,12 +114,14 @@ const Members = () => {
                                                 </Link>
                                             )}
                                             {member.github && (
-                                                <Link href={member.github} target="_blank">
+                                                <Link
+                                                    href={member.github} className="hover:motion-preset-confetti" target="_blank">
                                                     <FaGithub />
                                                 </Link>
                                             )}
                                             {member.facebook && (
                                                 <Link
+                                                    className="hover:motion-preset-bounce"
                                                     href={member.facebook}
                                                     target="_blank"
                                                 >
@@ -126,12 +129,15 @@ const Members = () => {
                                                 </Link>
                                             )}
                                             {member.twitter && (
-                                                <Link href={member.twitter} target="_blank">
+                                                <Link
+                                                    className="hover:motion-preset-pop"
+                                                    href={member.twitter} target="_blank">
                                                     <FaXTwitter />
                                                 </Link>
                                             )}
                                             {member.instagram && (
                                                 <Link
+                                                    className="hover:motion-preset-shake"
                                                     href={member.instagram}
                                                     target="_blank"
                                                 >
@@ -139,7 +145,9 @@ const Members = () => {
                                                 </Link>
                                             )}
                                             {member.youtube && (
-                                                <Link href={member.youtube} target="_blank">
+                                                <Link
+                                                    className="group-hover:motion-preset-shrink"
+                                                    href={member.youtube} target="_blank">
                                                     <FaYoutube />
                                                 </Link>
                                             )}
