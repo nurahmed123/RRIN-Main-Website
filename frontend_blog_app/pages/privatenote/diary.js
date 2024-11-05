@@ -272,12 +272,14 @@ export default function userDiary() {
                             </ModalHeader>
                             <ModalBody className="w-full max-w-3xl">
                                 <form className="w-full rounded-md">
+                                    {/* Select Option */}
                                     <div className="mb-4">
                                         <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
                                             Select Option
                                         </label>
                                         <select
                                             isRequired
+                                            required
                                             className="block w-full p-2 sm:p-4 border-gray-300 rounded-md shadow-sm bg-slate-100 dark:border-gray-600 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
                                             value={option}
                                             onChange={(e) => setOption(e.target.value)}
@@ -288,21 +290,26 @@ export default function userDiary() {
                                         </select>
                                     </div>
 
-                                    {option === 'note' && (
+                                    {/* Note Input */}
+                                    {option === "note" && (
                                         <div className="mb-4" id="modalInput">
                                             <Textarea
                                                 isRequired
+                                                required
                                                 label="Note"
                                                 placeholder="Enter your note here..."
                                                 value={note}
-                                                color="dark:!bg-[#2d3748]"
                                                 onChange={(e) => setNote(e.target.value)}
                                                 className="dark:!text-gray-200 w-full"
                                             />
+                                            {!note && (
+                                                <p className="text-sm text-teal-500 opacity-90 mt-1">Please fill out this field.</p>
+                                            )}
                                         </div>
                                     )}
 
-                                    {option === 'hisab' && (
+                                    {/* Hisab Input Fields */}
+                                    {option === "hisab" && (
                                         <>
                                             <div className="mb-4" id="modalInput">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
@@ -310,15 +317,18 @@ export default function userDiary() {
                                                 </label>
                                                 <Input
                                                     isRequired
+                                                    required
                                                     autoFocus
                                                     label="Spend in"
                                                     type="text"
                                                     placeholder="Enter short text..."
-                                                    variant="bordered"
                                                     value={reason}
                                                     onChange={(e) => setReason(e.target.value)}
                                                     className="w-full dark:text-gray-200"
                                                 />
+                                                {!reason && (
+                                                    <p className="text-sm text-teal-500 opacity-90 mt-1">Please fill out this field.</p>
+                                                )}
                                             </div>
                                             <div className="mb-4" id="modalInput">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
@@ -326,14 +336,17 @@ export default function userDiary() {
                                                 </label>
                                                 <Input
                                                     isRequired
+                                                    required
                                                     label="Cost"
                                                     type="number"
                                                     placeholder="Enter cost..."
-                                                    variant="bordered"
                                                     value={cost}
                                                     onChange={(e) => setCost(e.target.value)}
                                                     className="w-full dark:text-gray-200"
                                                 />
+                                                {!cost && (
+                                                    <p className="text-sm text-teal-500 opacity-90 mt-1">Please fill out this field.</p>
+                                                )}
                                             </div>
                                             <div className="mb-4">
                                                 <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
@@ -341,6 +354,7 @@ export default function userDiary() {
                                                 </label>
                                                 <select
                                                     isRequired
+                                                    required
                                                     className="block w-full p-2 sm:p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
                                                     value={transactionType}
                                                     onChange={(e) => setTransactionType(e.target.value)}
@@ -351,16 +365,32 @@ export default function userDiary() {
                                                     <option value="borrowed">Borrowed</option>
                                                     <option value="lent">Lent</option>
                                                 </select>
+                                                {!transactionType && (
+                                                    <p className="text-sm text-teal-500 opacity-90 mt-1">Please select an option.</p>
+                                                )}
                                             </div>
                                         </>
                                     )}
+
+                                    {/* Create/Update Button */}
                                     <Button
+                                        disabled={
+                                            waiting ||
+                                            (option === "note" ? !note : !reason || !cost || !transactionType)
+                                        }
                                         type="submit"
                                         color="primary"
-                                        className="mt-4 w-full"
+                                        className={`mt-4 w-full ${option === "note"
+                                            ? !note
+                                                ? "bg-gray-300 cursor-not-allowed"
+                                                : "bg-[#6466f1]"
+                                            : !reason || !cost || !transactionType
+                                                ? "bg-gray-300 cursor-not-allowed"
+                                                : "bg-[#6466f1]"
+                                            } dark:bg-[#6466f1] dark:hover:bg-[#424f85] dark:hover:!border-[#38457b]`}
                                         onClick={createProduct}
                                     >
-                                        {editingNoteId ? "Update" : "Create"}
+                                        {editingNoteId ? waiting ? "Updating..." : "Update" : waiting ? "Creating..." : "Create"}
                                     </Button>
                                 </form>
                             </ModalBody>
@@ -378,6 +408,7 @@ export default function userDiary() {
                     )}
                 </ModalContent>
             </Modal>
+
 
             <div className="container !my-16">
                 <div className="titledashboard flex flex-sb">
