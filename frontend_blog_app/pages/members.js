@@ -20,6 +20,7 @@ const Members = () => {
     // List of specified departments
     const specifiedDepartments = [
         "founder",
+        "executive",
         "it_dpt",
         "hardware_dpt",
         "research_dpt",
@@ -29,7 +30,14 @@ const Members = () => {
     // Group members by specified departments
     const groupedMembers = {
         "Founders & Co-Founders": alldata.filter((member) => member.department === "founder"),
-        "IT Department": alldata.filter((member) => member.department === "it_dpt"),
+
+
+        "Borad of Executives": alldata.filter(
+            (member) => member.department === "executive"),
+
+        "IT Department": alldata.filter(
+            (member) => member.department === "it_dpt"),
+
         "Hardware Department": alldata.filter(
             (member) => member.department === "hardware_dpt"
         ),
