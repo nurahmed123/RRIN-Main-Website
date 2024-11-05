@@ -386,6 +386,16 @@ button {
   color: #666;
 }
 
+.dark #modalInput>div>div {
+  color: #e5e7eb;
+  background: #2d3748;
+}
+
+#modalInput>div>div {
+  background: #f1f5f9;
+  color: #10181c;
+}
+
 .nav_list_dark {
   display: flex;
   align-items: center;
