@@ -17,7 +17,7 @@ const AboutSection = () => {
                                 {/* <img src="../public/img/Coder.png"> */}
                                 {/* <Image src={"/../public/img/Coder.png"} height={'100'} width={'100'} /> */}
                                 <Image src={"/img/Coder.png"} alt='RoboSuperior' height={"100"} width={"100"} className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
-                                <h1 className="text-xl font-bold dark:text-gray-50">RoboSeperior</h1>
+                                <h1 className="text-xl font-bold dark:text-gray-50">RoboSuperior</h1>
                                 <p className="text-gray-700 dark:text-gray-300"></p>
                                 <div className="mt-6 flex flex-wrap gap-4 justify-center">
                                     <Link href="/contact" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</Link>
