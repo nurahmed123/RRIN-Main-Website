@@ -256,105 +256,129 @@ export default function userDiary() {
                 />
                 <meta name="twitter:image" content={appLogoUrl} />
             </Head>
-            <Modal className="dark:!bg-[#1a202c] !shadow-xl" backdrop={"blur"} isDismissable={false} size={"3xl"} isOpen={isOpen} onClose={closeReset}>
-                <ModalContent className="rounded-lg shadow-lg bg-white dark:bg-[#1c1c1e]">
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1">
-                                <h2 className="text-lg font-bold dark:text-gray-200">Make Note</h2>
-                            </ModalHeader>
-                            <ModalBody className="max-w-3xl w-[48rem]">
-                                <form className="p-6 w-[48rem] shadow-md rounded-md">
-                                    <div className="mb-4">
-                                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
-                                        <select
-                                            isRequired
-                                            className="block w-full p-4 border-gray-300 rounded-md shadow-sm bg-slate-100 dark:border-gray-600 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
-                                            value={option}
-                                            onChange={(e) => setOption(e.target.value)}
-                                        >
-                                            <option value="">Select...</option>
-                                            <option value="note">Note</option>
-                                            <option value="hisab">Hisab</option>
-                                        </select>
-                                    </div>
+            <Modal
+  className="dark:!bg-[#1a202c] !shadow-xl"
+  backdrop="blur"
+  isDismissable={false}
+  size="3xl"
+  isOpen={isOpen}
+  onClose={closeReset}
+>
+  <ModalContent className="rounded-lg shadow-lg bg-white dark:bg-[#1c1c1e]">
+    {(onClose) => (
+      <>
+        <ModalHeader className="flex flex-col gap-1">
+          <h2 className="text-lg font-bold dark:text-gray-200">Make Note</h2>
+        </ModalHeader>
+        <ModalBody className="w-full max-w-3xl">
+          <form className="p-6 w-full shadow-md rounded-md">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                Select Option
+              </label>
+              <select
+                isRequired
+                className="block w-full p-2 sm:p-4 border-gray-300 rounded-md shadow-sm bg-slate-100 dark:border-gray-600 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
+                value={option}
+                onChange={(e) => setOption(e.target.value)}
+              >
+                <option value="">Select...</option>
+                <option value="note">Note</option>
+                <option value="hisab">Hisab</option>
+              </select>
+            </div>
 
-                                    {option === 'note' && (
-                                        <div className="mb-4 dark:!bg-[#2d3748]">
-                                            <Textarea
-                                                isRequired
-                                                label="Note"
-                                                placeholder="Enter your note here..."
-                                                value={note}
-                                                color="dark:!bg-[#2d3748]"
-                                                onChange={(e) => setNote(e.target.value)}
-                                                className="dark:text-gray-200 dark:!bg-[#2d3748]"
-                                            />
-                                        </div>
-                                    )}
+            {option === 'note' && (
+              <div className="mb-4 dark:!bg-[#2d3748]">
+                <Textarea
+                  isRequired
+                  label="Note"
+                  placeholder="Enter your note here..."
+                  value={note}
+                  color="dark:!bg-[#2d3748]"
+                  onChange={(e) => setNote(e.target.value)}
+                  className="dark:text-gray-200 dark:!bg-[#2d3748] w-full"
+                />
+              </div>
+            )}
 
-                                    {option === 'hisab' && (
-                                        <>
-                                            <div className="mb-4 w-[43rem]">
-                                                <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
-                                                <Input
-                                                    isRequired
-                                                    autoFocus
-                                                    label="Spend in"
-                                                    type="text"
-                                                    placeholder="Enter short text..."
-                                                    variant="bordered"
-                                                    value={reason}
-                                                    onChange={(e) => setReason(e.target.value)}
-                                                    className="w-[43rem] bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200"
-                                                />
-                                            </div>
-                                            <div className="mb-4 w-[43rem]">
-                                                <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Select Option</label>
-                                                <Input
-                                                    isRequired
-                                                    label="Cost"
-                                                    type="number"
-                                                    placeholder="Enter cost..."
-                                                    variant="bordered"
-                                                    value={cost}
-                                                    onChange={(e) => setCost(e.target.value)}
-                                                    className="w-[43rem] bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200"
-                                                />
-                                            </div>
-                                            <div className="mb-4">
-                                                <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">Hisab</label>
-                                                <select
-                                                    isRequired
-                                                    className="block w-full p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
-                                                    value={transactionType}
-                                                    onChange={(e) => setTransactionType(e.target.value)}
-                                                // onChange={handelOparation}
-                                                >
-                                                    <option value="">Select...</option>
-                                                    <option value="debit">Debit</option>
-                                                    <option value="credit">Credit</option>
-                                                    <option value="borrowed">Borrowed</option>
-                                                    <option value="lent">Lent</option>
-                                                </select>
-                                            </div>
-                                        </>
-                                    )}
-                                    <Button type="submit" color="primary" className="mt-4 w-2/2" onClick={createProduct}>
-                                        {editingNoteId ? "Update" : "Create"}
-                                    </Button>
-                                </form>
-                            </ModalBody>
-                            <ModalFooter className="flex justify-between">
+            {option === 'hisab' && (
+              <>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                    Spend in
+                  </label>
+                  <Input
+                    isRequired
+                    autoFocus
+                    label="Spend in"
+                    type="text"
+                    placeholder="Enter short text..."
+                    variant="bordered"
+                    value={reason}
+                    onChange={(e) => setReason(e.target.value)}
+                    className="w-full bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                    Cost
+                  </label>
+                  <Input
+                    isRequired
+                    label="Cost"
+                    type="number"
+                    placeholder="Enter cost..."
+                    variant="bordered"
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
+                    className="w-full bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                    Hisab
+                  </label>
+                  <select
+                    isRequired
+                    className="block w-full p-2 sm:p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
+                    value={transactionType}
+                    onChange={(e) => setTransactionType(e.target.value)}
+                  >
+                    <option value="">Select...</option>
+                    <option value="debit">Debit</option>
+                    <option value="credit">Credit</option>
+                    <option value="borrowed">Borrowed</option>
+                    <option value="lent">Lent</option>
+                  </select>
+                </div>
+              </>
+            )}
+            <Button
+              type="submit"
+              color="primary"
+              className="mt-4 w-full"
+              onClick={createProduct}
+            >
+              {editingNoteId ? "Update" : "Create"}
+            </Button>
+          </form>
+        </ModalBody>
+        <ModalFooter className="flex justify-between">
+          <Button
+            color="danger"
+            variant="light"
+            onPress={closeReset}
+            className="w-full sm:w-auto mr-2"
+          >
+            Close
+          </Button>
+        </ModalFooter>
+      </>
+    )}
+  </ModalContent>
+</Modal>
 
-                                <Button color="danger" variant="light" onPress={closeReset} className="w-1/1 mr-2">
-                                    Close
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
 
 
 
