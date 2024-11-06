@@ -9,12 +9,13 @@ import {
     FaInstagram,
     FaLinkedinIn,
 } from "react-icons/fa";
+import Loading from "@/components/Loading";
 
 const Members = () => {
     const { alldata, loading } = useFetchData(`/api/getmember?status=active`);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <div className="container flex justify-center align-center h-[90vh]"><Loading /></div>;
     }
 
     // List of specified departments
@@ -68,7 +69,7 @@ const Members = () => {
                                 {department}
                             </h2>
                         </div>
-                        <div className="flex flex-wrap gap-6 items-center justify-start">
+                        <div data-aos="zoom-in" className="flex flex-wrap gap-6 items-center justify-start">
                             {members.reverse().map((member, index) => ( // Reverse the members array
                                 <div
                                     key={index}
