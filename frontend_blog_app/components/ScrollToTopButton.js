@@ -33,11 +33,12 @@ const ScrollToTopButton = () => {
 
   return (
     <button
-      className={`scrollToTop ${isVisible ? 'show' : 'hide'}`}
+      className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 p-2 md:p-3 lg:p-4 rounded-full bg-[#6466f1] dark:bg-[#2d3748] text-white shadow-lg transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
+        } hover:bg-[#4b4df0] dark:hover:bg-[#3a4964]`}
       onClick={scrollToTop}
       title="Go to top"
     >
-     <FaArrowUp />
+      <FaArrowUp className="text-lg md:text-xl lg:text-2xl" />
     </button>
   );
 };

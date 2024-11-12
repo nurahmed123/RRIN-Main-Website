@@ -410,177 +410,181 @@ export default function userDiary() {
             </Modal>
 
 
-            <div className="container !my-16">
-                <div className="titledashboard flex flex-sb">
+            <div className="container !my-16 px-4 md:px-8 lg:px-12">
+                <div className="titledashboard flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                     <div data-aos="fade-right">
-                        <h2 className="dark:!text-[#6466f1]">Your All<span className="dark:!text-gray-100"> History</span></h2>
-                        <h3 className="dark:text-[#6466f1]">ADMIN PANEL</h3>
+                        <h2 className="dark:text-[#6466f1] text-xl md:text-2xl">Your All<span className="dark:text-gray-100"> History</span></h2>
+                        <h3 className="dark:text-[#6466f1] text-lg md:text-xl">ADMIN PANEL</h3>
                     </div>
-                    <div className="breadcrumb dark:text-[#6466f1]" data-aos="fade-left">
-                        <BsPostcard className="dark:text-[#6466f1]" /> <span className="dark:text-[#6466f1]">/</span><span className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]" onClick={handleOpen}>Add Note</span>
-                        <span className="dark:text-[#6466f1]">/</span><span className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]" onClick={() => exportToExcel(filteredBlogs)}>Export</span>
+
+                    <div className="breadcrumb dark:text-[#6466f1] flex gap-2 flex-wrap items-center text-sm md:text-base" data-aos="fade-left">
+                        <BsPostcard className="dark:text-[#6466f1]" />
+                        <span className="dark:text-[#6466f1]">/</span>
+
+                        <span
+                            className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]"
+                            onClick={handleOpen}
+                        >
+                            Add Note
+                        </span>
+
+                        <span className="dark:text-[#6466f1]">/</span>
+
+                        <span
+                            className="underline cursor-pointer hover:underline-offset-4 dark:text-[#6466f1]"
+                            onClick={() => exportToExcel(filteredBlogs)}
+                        >
+                            Export
+                        </span>
                     </div>
                 </div>
+
                 <div className="blogstable mt-6">
-                    <div className="flex gap-2 mb-4" data-aos="fade-left">
-                        <h2 className="dark:text-gray-100">Search Notes: </h2>
+                    <div className="flex flex-wrap gap-2 mb-4 items-center" data-aos="fade-left">
+                        <h2 className="dark:text-gray-100 text-lg sm:w-full md:w-auto">Search {searchItem !== "$.1" ? "Note" : "Transaction"}:</h2>
+
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder={`Search by ${searchItem !== "$.1" ? "Note" : "Spend at..."}`}
-                            className="dark:text-gray-200 dark:bg-[#2d3748] p-2 rounded-md"
+                            className="dark:text-gray-200 dark:bg-[#2d3748] p-2 rounded-md w-full md:w-auto sm:flex-grow"
                         />
+
                         <select
                             value={perPage}
                             onChange={(e) => {
                                 setPerPage(Number(e.target.value)); // Update perPage based on dropdown selection
                                 setCurrentPage(1); // Reset to first page when perPage changes
                             }}
-                            className="dark:!bg-[#2d3748] bg-slate-100 dark:!text-gray-200 !shadow-2xl !px-4 !py-3 !rounded-md !border !border-gray-300 dark:!border-gray-600 hover:!shadow-lg !transition-shadow cursor-pointer !duration-300"
+                            className="w-full md:w-auto block p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent sm:flex-grow"
                         >
-                            <option className="cursor-pointer" value={5}>5</option>
-                            <option className="cursor-pointer" value={10}>10</option>
-                            <option className="cursor-pointer" value={15}>15</option>
-                            <option className="cursor-pointer" value={20}>20</option>
-                            <option className="cursor-pointer" value={50}>50</option>
+                            <option value={5}>5</option>
+                            <option value={10}>10</option>
+                            <option value={15}>15</option>
+                            <option value={20}>20</option>
+                            <option value={50}>50</option>
                         </select>
-                        {/* <Select
-                            isRequired
-                            placeholder="Select search query"
-                            defaultSelectedKeys={["All"]}
-                            className="max-w-xs py-2"
-                            size="lg"
-                            color="dark:bg-[#2d3748]"
-                            value={searchItem}
-                            label='.'
-                            onChange={(value) => {
-                                setSearchItem(value.target.value);
-                            }}
-                        >
-                            <SelectItem value="all" className="dark:text-gray-200">All</SelectItem>
-                            <SelectItem value="note" className="dark:text-gray-200">Amount</SelectItem>
-                            <SelectItem value="amount" className="dark:text-gray-200">Note</SelectItem>
 
-                        </Select> */}
                         <select
-                            isRequired
-                            className="block w-[15rem] p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
+                            className="w-full md:w-auto block p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent sm:flex-grow"
                             value={searchItem}
                             onChange={(e) => setSearchItem(e.target.value)}
-                        // onChange={handelOparation}
                         >
                             <option value="$.0">All</option>
                             <option value="$.1">Amount</option>
                             <option value="$.2">Note</option>
                         </select>
-                        {
-                            searchItem === "$.1" ?
-                                <>
-                                    <select
-                                        isRequired
-                                        className="block w-[15rem] p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent"
-                                        value={transType}
-                                        onChange={(e) => setTransType(e.target.value)}
-                                    // onChange={handelOparation}
-                                    >
-                                        <option value="all">All</option>
-                                        <option value="debit">Debit</option>
-                                        <option value="credit">Credit</option>
-                                        <option value="borrowed">Borrowed</option>
-                                        <option value="lent">Lent</option>
-                                    </select>
 
-                                </> : ""
-                        }
-
+                        {searchItem === "$.1" && (
+                            <select
+                                className="w-full md:w-auto block p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent sm:flex-grow"
+                                value={transType}
+                                onChange={(e) => setTransType(e.target.value)}
+                            >
+                                <option value="all">All</option>
+                                <option value="debit">Debit</option>
+                                <option value="credit">Credit</option>
+                                <option value="borrowed">Borrowed</option>
+                                <option value="lent">Lent</option>
+                            </select>
+                        )}
                     </div>
 
-                    <table className="w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
-                        <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
-                            <tr>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Type</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Transaction Type</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Spent at / Reason</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Note</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Cost</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Edit / Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {loading ? (
-                                <tr>
-                                    <td colSpan="7" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Loading...</td>
-                                </tr>
-                            ) : (
-                                <>
-                                    {currentBlogs.length === 0 ? (
-                                        <tr>
-                                            <td colSpan="7" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Nothing.... Create Note</td>
-                                        </tr>
-                                    ) : (
-                                        currentBlogs.map((blog, index) => (
-                                            <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{indexOfFirstBlog + index + 1}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.note ? "Note" : "Spend"}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">
-                                                    {blog.transactionType
-                                                        ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
-                                                        : ""}
-                                                </td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.reason}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.note || 'N/A'}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.cost || 'N/A'}</td>
-                                                {/* <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td> */}
-                                                <td className="px-4 py-2">
-                                                    <div className="flex gap-2">
 
-                                                        <button onClick={() => editNote(blog._id)} className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:!bg-[#424f85] hover:!border-[#38457b]"><FaEdit /> Edit</button>
-                                                        <Link href={`/privatenote/delete/${blog._id}`}>
-                                                            <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
-                                                        </Link>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    )}
-                                </>
-                            )}
-                        </tbody>
-                        {searchItem === "$.1"
-                            ?
-                            <thead thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
+                    <div className="w-full overflow-x-auto">
+                        <table className="min-w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
+                            <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
                                 <tr>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Total</th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">{totalCost}</th>
-                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg"></th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">#</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Type</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Transaction Type</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Spent at / Reason</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Note</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Cost</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Edit / Delete</th>
                                 </tr>
                             </thead>
-                            : ""
-                        }
-
-                    </table>
+                            <tbody>
+                                {loading ? (
+                                    <tr>
+                                        <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">Loading...</td>
+                                    </tr>
+                                ) : (
+                                    <>
+                                        {currentBlogs.length === 0 ? (
+                                            <tr>
+                                                <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">Nothing.... Create Note</td>
+                                            </tr>
+                                        ) : (
+                                            currentBlogs.map((blog, index) => (
+                                                <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{indexOfFirstBlog + index + 1}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.note ? "Note" : "Spend"}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                        {blog.transactionType ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1) : ""}
+                                                    </td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.reason}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.note || 'N/A'}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.cost || 'N/A'}</td>
+                                                    <td className="px-4 py-2">
+                                                        <div className="flex gap-2">
+                                                            <button onClick={() => editNote(blog._id)} className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"><FaEdit /> Edit</button>
+                                                            <Link href={`/privatenote/delete/${blog._id}`}>
+                                                                <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
+                                                            </Link>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
+                                    </>
+                                )}
+                            </tbody>
+                            {searchItem === "$.1" && (
+                                <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
+                                    <tr>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">#</th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200"></th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">Total</th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200"></th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200"></th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200">{totalCost}</th>
+                                        <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200"></th>
+                                    </tr>
+                                </thead>
+                            )}
+                        </table>
+                    </div>
 
                     {totalFilteredBlogs > 0 && (
-                        <div className="blogpagination mt-4 flex justify-center gap-2">
-                            <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 border rounded-md">Previous</button>
+                        <div className="blogpagination mt-4 flex flex-wrap justify-center gap-2">
+                            <button
+                                onClick={() => paginate(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className="px-4 py-2 border rounded-md disabled:opacity-50 dark:bg-gray-800 dark:text-gray-100"
+                            >
+                                Previous
+                            </button>
                             {pageNumbers.map(number => (
                                 <button
                                     key={number}
                                     onClick={() => paginate(number)}
-                                    className={`px-4 py-2 border rounded-md ${currentPage === number ? 'bg-gray-300 dark:bg-gray-700' : ''}`}
+                                    className={`px-4 py-2 border rounded-md ${currentPage === number ? '!bg-[#8a8dd8] dark:!bg-gray-700' : 'dark:bg-[#1c2532] bg-gray-400'} dark:text-gray-100 `}
                                 >
                                     {number}
                                 </button>
                             ))}
-                            <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageNumbers.length} className="px-4 py-2 border rounded-md">Next</button>
+                            <button
+                                onClick={() => paginate(currentPage + 1)}
+                                disabled={currentPage === pageNumbers.length}
+                                className="px-4 py-2 border rounded-md disabled:opacity-50 dark:bg-gray-800 dark:text-gray-100"
+                            >
+                                Next
+                            </button>
                         </div>
                     )}
+
                 </div>
             </div >
         </>

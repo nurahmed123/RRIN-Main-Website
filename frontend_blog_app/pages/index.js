@@ -65,7 +65,7 @@ export default function Home() {
             <div className="flex gap-2">
               <Link href='/contact'><button>Contact Us</button></Link>
               <Link href='/about'><button>About Us</button></Link>
-              <Link href='/members'><button className="dark:text-gray-100 text-gray-600">Members</button></Link>
+              <Link href='/members'><button>Members</button></Link>
             </div>
           </div>
           <div className="rightheader_img" data-aos="zoom-in">

@@ -82,7 +82,7 @@ export default function Blogs() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Aside />
-            <div className="p-[2rem] max-[1043px]:!m-0 blogpage">
+            <div className="max-[1043px]:!m-0 blogpage md:!px-4 ">
                 <div className="titledashboard flex flex-sb">
                     <div data-aos="fade-right">
                         <h2 className="dark:!text-[#6466f1]">Your All<span className="dark:!text-gray-100"> Blogs</span></h2>
@@ -93,14 +93,14 @@ export default function Blogs() {
                     </div>
                 </div>
                 <div className="blogstable mt-6">
-                    <div className="flex gap-2 mb-4" data-aos="fade-left">
+                    <div className="flex flex-wrap gap-2 mb-4 items-center" data-aos="fade-left">
                         <h2 className="dark:text-gray-100">Search Blogs: </h2>
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search by title..."
-                            className="dark:text-gray-200 dark:bg-[#2d3748] p-2 rounded-md"
+                            className="dark:text-gray-200 dark:bg-[#2d3748] p-2 rounded-md w-full md:w-auto sm:flex-grow"
                         />
                         <select
                             value={perPage}
@@ -108,7 +108,7 @@ export default function Blogs() {
                                 setPerPage(Number(e.target.value)); // Update perPage based on dropdown selection
                                 setCurrentPage(1); // Reset to first page when perPage changes
                             }}
-                            className="dark:!bg-[#2d3748] dark:!text-gray-200 !shadow-2xl !px-4 !py-3 !rounded-md !border !border-gray-300 dark:!border-gray-600 hover:!shadow-lg !transition-shadow cursor-pointer !duration-300"
+                            className="w-full md:w-auto block p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent sm:flex-grow"
                         >
                             <option className="cursor-pointer" value={5}>5</option>
                             <option className="cursor-pointer" value={10}>10</option>
@@ -119,51 +119,58 @@ export default function Blogs() {
 
                     </div>
 
-                    <table className="w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
-                        <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
-                            <tr>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Title</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Slug</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Status</th>
-                                <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Edit / Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {loading ? (
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
+                            <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
                                 <tr>
-                                    <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Loading...</td>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">#</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Title</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Slug</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Status</th>
+                                    <th className="px-4 py-2 text-left border-b dark:bg-[#2d3748] dark:text-gray-100 dark:border-gray-200 shadow-lg">Edit / Delete</th>
                                 </tr>
-                            ) : (
-                                <>
-                                    {currentBlogs.length === 0 ? (
-                                        <tr>
-                                            <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">No Blogs Available</td>
-                                        </tr>
-                                    ) : (
-                                        currentBlogs.map((blog, index) => (
-                                            <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{indexOfFirstBlog + index + 1}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.title}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.slug}</td>
-                                                <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td>
-                                                <td className="px-4 py-2">
-                                                    <div className="flex gap-2">
-                                                        <Link href={`/dashboard/blogs/edit/${blog._id}`}>
-                                                            <button className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:!bg-[#424f85] hover:!border-[#38457b]"><FaEdit /> Edit</button>
-                                                        </Link>
-                                                        <Link href={`/dashboard/blogs/delete/${blog._id}`}>
-                                                            <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
-                                                        </Link>
-                                                    </div>
-                                                </td>
+                            </thead>
+                            <tbody>
+                                {loading ? (
+                                    <tr>
+                                        <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">Loading...</td>
+                                    </tr>
+                                ) : (
+                                    <>
+                                        {currentBlogs.length === 0 ? (
+                                            <tr>
+                                                <td colSpan="5" className="text-center py-4 dark:!bg-[#2d3748] dark:!text-gray-100">No Blogs Available</td>
                                             </tr>
-                                        ))
-                                    )}
-                                </>
-                            )}
-                        </tbody>
-                    </table>
+                                        ) : (
+                                            currentBlogs.map((blog, index) => (
+                                                <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{indexOfFirstBlog + index + 1}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.title}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg break-words">{blog.slug}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 shadow-lg">{blog.status || 'Draft'}</td>
+                                                    <td className="px-4 py-2">
+                                                        <div className="flex gap-2">
+                                                            <Link href={`/dashboard/blogs/edit/${blog._id}`}>
+                                                                <button className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:!bg-[#424f85] hover:!border-[#38457b]">
+                                                                    <FaEdit /> Edit
+                                                                </button>
+                                                            </Link>
+                                                            <Link href={`/dashboard/blogs/delete/${blog._id}`}>
+                                                                <button className="dark:text-gray-100 dark:bg-red-500">
+                                                                    <RiDeleteBin6Fill /> Delete
+                                                                </button>
+                                                            </Link>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
+                                    </>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
 
                     {totalFilteredBlogs > 0 && (
                         <div className="blogpagination mt-4 flex justify-center gap-2">
