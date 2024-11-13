@@ -133,9 +133,9 @@ export default function Header() {
                         <li><Link className={activeLink === '/project' ? '!text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                         <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Apps</Link></li>
                         <li><Link className={activeLink === '/achievement' ? '!text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
-                        <li class='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
+                        <li className='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
                             <a href='javascript:void(0)'
-                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>About<svg
+                                className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>About<svg
                                     xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" className="dark:text-gray-200 ml-1 inline-block"
                                     viewBox="0 0 24 24">
                                     <path
@@ -144,10 +144,10 @@ export default function Header() {
                                 </svg>
                             </a>
                             <ul
-                                class='absolute top-5 max-lg:top-8 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden  group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col'>
+                                className='absolute top-5 max-lg:top-8 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden  group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col'>
 
                                 <Link href='/about'
-                                    class='hover:text-[#007bff] flex hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] '>
+                                    className='hover:text-[#007bff] flex hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] '>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
                                         <path d="M13 11h-2V9h2v2zm0 4h-2v-3h2v3zm-1-12C7.163 3 3 7.163 3 12s4.163 9 9 9 9-4.163 9-9-4.163-9-9-9zm0 16c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z" />
                                     </svg>
@@ -155,9 +155,9 @@ export default function Header() {
                                     &nbsp;About&nbsp;Us
                                 </Link>
 
-                                <li class='border-b'>
+                                <li className='border-b'>
                                     <Link href='/members'
-                                        class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex'>
+                                        className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block"
                                             viewBox="0 0 24 24">
                                             <path d="M12 12c2.485 0 4.5-1.635 4.5-3.5S14.485 5 12 5 7.5 6.635 7.5 8.5 9.515 12 12 12zM12 13.5c-2.5 0-7.5 1.25-7.5 3.75v3h15v-3c0-2.5-5-3.75-7.5-3.75z" />

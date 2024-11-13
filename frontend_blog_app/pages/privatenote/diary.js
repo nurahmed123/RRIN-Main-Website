@@ -13,6 +13,8 @@ import toast from "react-hot-toast";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import * as XLSX from 'xlsx';
+// import { DateRangePicker } from "@nextui-org/react";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function userDiary() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,6 +38,11 @@ export default function userDiary() {
     const [transType, setTransType] = useState();
     const [waiting, setWaiting] = useState(false);
     const [editingNoteId, setEditingNoteId] = useState(null); // Track the note being edited
+
+    const [date, setDate] = useState({
+        startDate: null,
+        endDate: null
+    });
 
     const handleOpen = (backdrop) => {
         setBackdrop(backdrop);
@@ -95,50 +102,57 @@ export default function userDiary() {
 
     // Filter blogs by author first, then by search query
     const filteredBlogs = useMemo(() => {
-        // Helper function to filter by search query
         const filterBySearchQuery = (notes, key) => {
             return notes.filter(note =>
                 note[key] && note[key].toLowerCase().includes(searchQuery.toLowerCase())
             );
         };
 
+        // Date filtering helper function using createdAt field
+        const filterByDateRange = (notes) => {
+            if (!date.startDate && !date.endDate) return notes;
+
+            return notes.filter(note => {
+                const noteDate = new Date(note.createdAt).setHours(0, 0, 0, 0); // Normalize to start of day
+                const startDate = new Date(date.startDate).setHours(0, 0, 0, 0);
+                const endDate = date.endDate ? new Date(date.endDate).setHours(23, 59, 59, 999) : startDate;
+
+                return noteDate >= startDate && noteDate <= endDate;
+            });
+        };
+
+        // Apply initial filtering based on transaction type, searchItem, and searchQuery
+        let filteredNotes = allNotes;
+
         if (searchItem === "$.1") {
-            // Filtering by 'cost' with transaction type (debit/credit/all)
             const costNotes = allNotes.filter(note => note.cost);
 
             if (transType === "debit") {
-                return filterBySearchQuery(
+                filteredNotes = filterBySearchQuery(
                     costNotes.filter(note => note.transactionType === "debit"),
                     "reason"
                 );
             } else if (transType === "credit") {
-                return filterBySearchQuery(
+                filteredNotes = filterBySearchQuery(
                     costNotes.filter(note => note.transactionType === "credit"),
                     "reason"
                 );
-            } else if (transType === "borrowed") {
-                return filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "borrowed"),
-                    "reason"
-                );
-            } else if (transType === "lent") {
-                return filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "lent"),
-                    "reason"
-                );
             } else {
-                return filterBySearchQuery(costNotes, "reason");
+                filteredNotes = filterBySearchQuery(costNotes, "reason");
             }
         } else if (searchItem === "$.2") {
-            // Filtering by 'note'
-            return filterBySearchQuery(allNotes.filter(note => note.note), "note");
+            filteredNotes = filterBySearchQuery(allNotes.filter(note => note.note), "note");
         } else {
-            // Default: Filtering all notes by 'note'
-            return allNotes.filter(note =>
+            filteredNotes = allNotes.filter(note =>
                 note.note.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
-    }, [searchItem, searchQuery, allNotes, transType]);
+
+        // Apply date filtering based on createdAt
+        return filterByDateRange(filteredNotes);
+    }, [searchItem, searchQuery, allNotes, transType, date.startDate, date.endDate]);
+
+
 
 
     const totalCost = useMemo(() => {
@@ -450,7 +464,14 @@ export default function userDiary() {
                             placeholder={`Search by ${searchItem !== "$.1" ? "Note" : "Spend at..."}`}
                             className="dark:text-gray-200 dark:bg-[#2d3748] p-2 rounded-md w-full md:w-auto sm:flex-grow"
                         />
-
+                        <div id="datePicker" className="dark:text-gray-200 p-2 rounded-md w-full md:w-auto sm:flex-grow">
+                            <Datepicker
+                                value={date}
+                                primaryColor={"violet"}
+                                onChange={newDate => setDate(newDate)}
+                                showShortcuts={true}
+                            />
+                        </div>
                         <select
                             value={perPage}
                             onChange={(e) => {
@@ -521,9 +542,31 @@ export default function userDiary() {
                                                 <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{indexOfFirstBlog + index + 1}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.note ? "Note" : "Spend"}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
-                                                        {blog.transactionType ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1) : ""}
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words text-sm sm:text-base lg:text-lg">
+                                                        <div className="relative flex flex-wrap items-center gap-2 sm:gap-4">
+
+                                                            {/* Transaction Type Label */}
+                                                            <span className="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100 hover:text-indigo-600 transition duration-200">
+                                                                {blog.transactionType
+                                                                    ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
+                                                                    : "N/A"}
+                                                            </span>
+
+                                                            {/* Date Label with subtle shadow and positioning adjustments */}
+                                                            <span onClick={() => { setDate({ startDate: blog.createdAt.split('T')[0], endDate: blog.createdAt.split('T')[0] }) }} className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]">
+                                                                {blog.createdAt.split('T')[0]}
+                                                            </span>
+
+                                                        </div>
                                                     </td>
+
+
+
+
+
+                                                    {/* <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                        {blog.transactionType ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1) : ""}
+                                                    </td> */}
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.reason}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.note || 'N/A'}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.cost || 'N/A'}</td>

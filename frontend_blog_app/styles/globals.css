@@ -396,6 +396,94 @@ button {
   color: #10181c;
 }
 
+/* Light mode styling */
+#datePicker {
+  background: #f1f5f9;
+  color: #10181c;
+  box-shadow: 0 0 5px #999;
+  border: 1px solid #999;
+  outline: #00d2d7;
+
+}
+
+#datePicker>div>input {
+  width: 100%;
+  /* Full width on small screens */
+  max-width: 26rem;
+  /* Limit width to 26rem on larger screens */
+  background: #f1f5f9;
+  color: #2d3748;
+  border: none !important;
+  box-shadow: none !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+#datePicker:focus-within {
+  border: 2px solid #6466f1;
+  /* Outline color when input is focused */
+  box-shadow: 0 0 5px #6466f1;
+  /* Optional: add a box-shadow for extra emphasis */
+}
+
+#datePicker>div>input:focus {
+  outline: none;
+  /* Remove default focus outline on the input itself */
+}
+
+/* Adjust width on tablet screens */
+@media (min-width: 768px) {
+  #datePicker>div>input {
+    width: 20rem;
+  }
+}
+
+/* Set max width on desktop screens */
+@media (min-width: 1024px) {
+  #datePicker>div>input {
+    width: 26rem;
+  }
+}
+
+#datePicker>div>div>div {
+  filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+  border: none !important;
+}
+
+#datePicker>div>div>div>div>div>div>div {
+  border: none !important;
+}
+
+/* Dark mode styling */
+.dark #datePicker {
+  background: #2d3748;
+  color: #e5e7eb;
+}
+
+.dark #datePicker>div>input {
+  width: 100%;
+  /* Full width on small screens */
+  max-width: 26rem !important;
+  background: #2d3748;
+  color: #e5e7eb;
+}
+
+/* Responsive width adjustments for dark mode on tablet screens */
+@media (min-width: 768px) {
+  .dark #datePicker>div>input {
+    width: 20rem !important;
+  }
+}
+
+/* Responsive width adjustments for dark mode on desktop screens */
+@media (min-width: 1024px) {
+  .dark #datePicker>div>input {
+    width: 26rem !important;
+  }
+}
+
+
+
 .nav_list_dark {
   display: flex;
   align-items: center;
@@ -2219,7 +2307,7 @@ button {
   padding: 10px;
   border: 1px solid #999;
   font-size: 22px;
-  outline-color: #571f9e;
+  outline-color: #6466f1;
   box-shadow: 0 0 5px #999;
   border-radius: 10px;
 }
@@ -2266,8 +2354,8 @@ button {
 }
 
 .blogstable table button:hover:nth-child(1) {
-  background-color: rgb(255, 85, 85);
-  border-color: rgb(255, 85, 85);
+  background-color: #212b36;
+  border-color: rgb(26 32 44);
   color: #fff;
 }
 

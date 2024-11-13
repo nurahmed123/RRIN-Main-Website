@@ -388,7 +388,7 @@
     "@react-types/datepicker" "3.7.4"
     "@react-types/shared" "3.23.1"
 
-"@nextui-org/date-picker@2.1.8":
+"@nextui-org/date-picker@^2.1.8", "@nextui-org/date-picker@2.1.8":
   version "2.1.8"
   resolved "https://registry.npmjs.org/@nextui-org/date-picker/-/date-picker-2.1.8.tgz"
   integrity sha512-pokAFcrf6AdM53QHf1EzvqVhj8imQRZHWitK9eZPtIdGzJzx28dW0ir7ID0lQFMiNNIQTesSpBLzedTawbcJrg==
@@ -2675,6 +2675,11 @@ csstype@^3.0.10, csstype@^3.0.2:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
+dayjs@^1.11.12:
+  version "1.11.13"
+  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.13.tgz"
+  integrity sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==
+
 debug@^4.0.0, debug@4, debug@4.x:
   version "4.3.5"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.5.tgz"
@@ -4437,6 +4442,11 @@ react-syntax-highlighter@^15.5.0:
     prismjs "^1.27.0"
     refractor "^3.6.0"
 
+react-tailwindcss-datepicker@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/react-tailwindcss-datepicker/-/react-tailwindcss-datepicker-1.7.2.tgz"
+  integrity sha512-/NIRLB1evT69pt3Syol3cZpsAnLZlGvFWav98/Rr77Gey382C1fjKW2Emgu+SC4NtiRt6CBFwx/0Wbkn4iI+nA==
+
 react-textarea-autosize@^8.5.3:
   version "8.5.4"
   resolved "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.5.4.tgz"
@@ -4453,7 +4463,7 @@ react-toastify@^10.0.5:
   dependencies:
     clsx "^2.1.0"
 
-react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=18:
+react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18", "react@^17.0.2 || ^18.2.0", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=18:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
