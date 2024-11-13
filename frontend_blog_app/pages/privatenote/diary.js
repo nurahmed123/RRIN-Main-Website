@@ -13,7 +13,6 @@ import toast from "react-hot-toast";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import * as XLSX from 'xlsx';
-// import { DateRangePicker } from "@nextui-org/react";
 import Datepicker from "react-tailwindcss-datepicker";
 
 export default function userDiary() {
@@ -559,23 +558,13 @@ export default function userDiary() {
 
                                                         </div>
                                                     </td>
-
-
-
-
-
-                                                    {/* <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
-                                                        {blog.transactionType ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1) : ""}
-                                                    </td> */}
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.reason}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.note || 'N/A'}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.cost || 'N/A'}</td>
                                                     <td className="px-4 py-2">
                                                         <div className="flex gap-2">
                                                             <button onClick={() => editNote(blog._id)} className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"><FaEdit /> Edit</button>
-                                                            <Link href={`/privatenote/delete/${blog._id}`}>
-                                                                <button className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill /> Delete</button>
-                                                            </Link>
+                                                            <button onClick={() => router.push(`/privatenote/delete/${blog._id}`)} className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill />Delete</button>
                                                         </div>
                                                     </td>
                                                 </tr>

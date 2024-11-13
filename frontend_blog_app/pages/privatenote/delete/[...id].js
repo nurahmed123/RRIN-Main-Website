@@ -95,7 +95,7 @@ export default function DeleteProduct() {
                 <div className="p-[2rem] max-[1043px]:!m-0 blogpage">
                     <div className="titledashboard flex flex-sb">
                         <div>
-                            <h2 className="dark:!text-[#6466f1]">Delete <span className="dark:!text-gray-100">{productInfo?.title}</span></h2>
+                            <h2 className="dark:!text-[#6466f1]">Delete <span className="dark:!text-gray-100">{productInfo?.reason ? productInfo?.reason : productInfo?.note}</span></h2>
                             <h3 className="dark:!text-[#6466f1]">ADMIN PANEL</h3>
                         </div>
                         <div className="breadcrumb">
