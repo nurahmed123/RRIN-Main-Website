@@ -60,14 +60,14 @@ export default function Blog() {
             </Head>
 
             <GalleryView
-                img4text="demo t"
-                img4url={"./../public/img/about.png"}
-                img3text="text"
-                img3url="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
-                img2text="demo"
-                img2url="https://images.unsplash.com/photo-1542759564-7ccbb6ac450a?auto=format&q=75&fit=crop&w=1000"
-                img1text="Nasa"
-                img1url="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
+                img4text=""
+                img4url={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/bd42147f-7422-4e22-aed3-e776b4bdb41a.jpg"}
+                img3text=""
+                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/8152781f-5bc2-4bbe-b9f9-2e9015e34ff9.jpg"
+                img2text=""
+                img2url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/cc16a027-11e3-4959-af16-f13950efd790.jpg"
+                img1text=""
+                img1url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/ca2916b5-4164-46e2-aae1-8144c135c976.jpg"
                 headline="Our Projects"
                 description="Here is our few memories...."
             />

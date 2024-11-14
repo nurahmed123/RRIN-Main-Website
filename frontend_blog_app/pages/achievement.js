@@ -60,7 +60,7 @@ export default function Blog() {
             </Head>
 
             <GalleryView
-                img4text="demo t"
+                img4text=""
                 img4url={"./../public/img/about.png"}
                 img3text="text"
                 img3url="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
