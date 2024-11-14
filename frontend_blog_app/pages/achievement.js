@@ -61,21 +61,21 @@ export default function Blog() {
 
             <GalleryView
                 img4text=""
-                img4url={"./../public/img/about.png"}
-                img3text="text"
-                img3url="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
-                img2text="demo"
-                img2url="https://images.unsplash.com/photo-1542759564-7ccbb6ac450a?auto=format&q=75&fit=crop&w=1000"
-                img1text="Nasa"
-                img1url="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
+                img4url={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/1dfc3530-98ef-46bf-b604-c36d25fa80e5.jpg"}
+                img3text=""
+                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/4728b341-4408-4758-b765-bd8c11e5f689.png"
+                img2text=""
+                img2url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/cc16a027-11e3-4959-af16-f13950efd790.jpg"
+                img1text=""
+                img1url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/20081534-2ed5-4659-b27b-bc22118c6f98.webp"
                 headline="Our Achievemnts"
-                description="Here is our few memories...."
+                description="....."
             />
 
             <section className="main_blog_section">
                 <div className="container flex flex-sb flex-left flex-wrap">
                     <div className="leftblog_sec">
-                        <h2>Recent Projects</h2>
+                        <h2>Recent Achievements</h2>
                         <div className="blogs_sec">
                             {loading ? (
                                 <div className="wh-100 flex flex-center mt-2 pb-5">
@@ -185,7 +185,7 @@ export default function Blog() {
                             <h2>Let's Talk</h2>
                             <div className="talk_sec">
                                 <h4>
-                                    Want to find out how I can solve problems specific to your business? Let's talk.
+                                We're here for you—get in touch, and let's make it happen!
                                 </h4>
                                 <div className="social_talks flex flex-center gap-1 mt-2">
                                     <Link href={"https://github.com/RoboSuperior"} target="_blank">

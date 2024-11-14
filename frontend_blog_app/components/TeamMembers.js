@@ -72,8 +72,7 @@ const TeamMembers = () => {
                                     <h2 className="pb-2">Social Links</h2>
                                     <div className="talk_sec">
                                         <h4>
-                                            Want to find out how I can solve problems specific to
-                                            your business? Let's talk.
+                                        We're here for you—get in touch, and let's make it happen!
                                         </h4>
                                         <br />
                                         <h3>

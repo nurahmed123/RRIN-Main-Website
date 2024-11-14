@@ -63,13 +63,13 @@ export default function Blog() {
                 img4text=""
                 img4url={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/bd42147f-7422-4e22-aed3-e776b4bdb41a.jpg"}
                 img3text=""
-                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/8152781f-5bc2-4bbe-b9f9-2e9015e34ff9.jpg"
+                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/01b6b1ff-98f2-427f-af8f-6841dd6c3720.png"
                 img2text=""
-                img2url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/cc16a027-11e3-4959-af16-f13950efd790.jpg"
+                img2url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/3ce0adca-5524-4264-a45e-5faf773f816a.webp"
                 img1text=""
                 img1url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/ca2916b5-4164-46e2-aae1-8144c135c976.jpg"
                 headline="Our Projects"
-                description="Here is our few memories...."
+                description="....."
             />
 
             <section className="main_blog_section">
@@ -185,7 +185,7 @@ export default function Blog() {
                             <h2>Let's Talk</h2>
                             <div className="talk_sec">
                                 <h4>
-                                    Want to find out how I can solve problems specific to your business? Let's talk.
+                                    Want to find out how I can solve problems specific to your ? Let's talk.
                                 </h4>
                                 <div className="social_talks flex flex-center gap-1 mt-2">
                                     <Link href={"https://github.com/RoboSuperior"} target="_blank">
