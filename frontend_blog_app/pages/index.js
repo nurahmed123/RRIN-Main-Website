@@ -61,7 +61,7 @@ export default function Home() {
         <div className="container flex flex-sb w-100">
           <div className="leftheader_info" data-aos="fade-right">
             <h1>Hi, This is <span>RoboSuperior</span>.<br /> A team from Bangladesh</h1>
-            <h3>We are passionate about <span ref={el} /></h3>
+            <h3>We are passionate about <br className="hidden max-[680px]:block"/> <span ref={el} /></h3>
             <div className="flex gap-2">
               <Link href='/contact'><button>Contact Us</button></Link>
               <Link href='/about'><button>About Us</button></Link>
