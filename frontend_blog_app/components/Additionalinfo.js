@@ -15,37 +15,39 @@ const Additionalinfo = () => {
                             </p>
                             <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                                 <div className="relative pl-9">
-                                    <dt className="dark:text-gray-200 inline font-semibold text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true" className="absolute left-1 top-1 h-5 w-5 text-indigo-600">
-                                        <path
-                                            d="M3.196 12.87l-.825.483a.75.75 0 000 1.294l7.25 4.25a.75.75 0 00.758 0l7.25-4.25a.75.75 0 000-1.294l-.825-.484-5.666 3.322a2.25 2.25 0 01-2.276 0L3.196 12.87z">
-                                        </path>
-                                        <path
-                                            d="M3.196 8.87l-.825.483a.75.75 0 000 1.294l7.25 4.25a.75.75 0 00.758 0l7.25-4.25a.75.75 0 000-1.294l-.825-.484-5.666 3.322a2.25 2.25 0 01-2.276 0L3.196 8.87z">
-                                        </path>
-                                        <path
-                                            d="M10.38 1.103a.75.75 0 00-.76 0l-7.25 4.25a.75.75 0 000 1.294l7.25 4.25a.75.75 0 00.76 0l7.25-4.25a.75.75 0 000-1.294l-7.25-4.25z">
-                                        </path>
-                                    </svg>Innovative Robotics Solutions: 
+                                    <dt className="dark:text-gray-200 inline font-semibold text-gray-900">
+                                        <Image
+                                            src="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/90cefa21-7e28-4c62-a3e2-ace4f64a3d94.png"
+                                            width={30}
+                                            height={30}
+                                            style={{
+                                                filter: "invert(85%) sepia(100%) saturate(7472%) hue-rotate(246deg) brightness(98%) contrast(78%)"
+                                            }}
+                                            className="absolute left-1 top-1 !text-indigo-600"
+                                        />
+                                        Innovative Robotics Solutions:
                                     </dt>
                                     <dd className="inline dark:text-gray-400"> ROBO Superior specializes in cutting-edge robotics development, providing advanced solutions for automation, AI integration, and intelligent systems.
                                     </dd>
                                 </div>
                                 <div className="relative pl-9">
                                     <dt className="dark:text-gray-200 inline font-semibold text-gray-900">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                                            className="absolute left-1 top-1 h-5 w-5 text-indigo-600">
-                                            <path fillRule="evenodd"
-                                                d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
-                                                cliprulee="evenodd"></path>
-                                        </svg>
+                                        <Image
+                                            src="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/908a6ba1-426b-44c7-9df9-23c1005c827b.png"
+                                            width={30}
+                                            height={30}
+                                            style={{
+                                                filter: "invert(85%) sepia(100%) saturate(7472%) hue-rotate(246deg) brightness(98%) contrast(78%)"
+                                            }}
+                                            className="absolute left-1 top-1 !text-indigo-600"
+                                        />
                                         Technology-Driven Projects:
                                     </dt>
                                     <dd className="inline dark:text-gray-400"> We are dedicated to pushing the boundaries of Technology, delivering projects in Robotics, IoT, and Machine Learning to enhance industry efficiency.</dd>
                                 </div>
                                 <div className="relative pl-9">
                                     <dt className="dark:text-gray-200 inline font-semibold text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true" className="absolute left-1 top-1 h-5 w-5 text-indigo-600">
+                                        fill="currentColor" aria-hidden="true" className="absolute left-1 top-1 h-5 w-5 text-[#764ee7]">
                                         <path fillRule="evenodd"
                                             d="M14.5 10a4.5 4.5 0 004.284-5.882c-.105-.324-.51-.391-.752-.15L15.34 6.66a.454.454 0 01-.493.11 3.01 3.01 0 01-1.618-1.616.455.455 0 01.11-.494l2.694-2.692c.24-.241.174-.647-.15-.752a4.5 4.5 0 00-5.873 4.575c.055.873-.128 1.808-.8 2.368l-7.23 6.024a2.724 2.724 0 103.837 3.837l6.024-7.23c.56-.672 1.495-.855 2.368-.8.096.007.193.01.291.01zM5 16a1 1 0 11-2 0 1 1 0 012 0z"
                                             cliprulee="evenodd"></path>
@@ -94,7 +96,7 @@ const Additionalinfo = () => {
                                     Robotics Team
                                 </h2>
                                 <p className="mt-4 text-lg dark:text-gray-300 text-gray-800">
-                                The Robotics Team of ROBO Superior is a group of skilled engineers and innovators passionate about designing and developing advanced robotic systems. We focus on creating intelligent, high-performance robots that push the limits of Technology and Automation.
+                                    The Robotics Team of ROBO Superior is a group of skilled engineers and innovators passionate about designing and developing advanced robotic systems. We focus on creating intelligent, high-performance robots that push the limits of Technology and Automation.
                                 </p>
                                 <div className="mt-6">
                                     <a className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
