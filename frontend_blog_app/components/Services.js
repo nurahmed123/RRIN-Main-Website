@@ -32,7 +32,7 @@ const Services = () => {
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
                             <div className="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg dark:bg-gray-700">
                                 <div className="flex items-center -mt-1">
-                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">App Deployment</h3>
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">App Development</h3>
                                 </div>
                                 <p className="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">------------</p>
                                 <p className="mb-2 text-gray-600 dark:text-gray-300">We provide comprehensive app development services, creating custom, user-friendly applications for both Android and iOS platforms. Our team delivers innovative, secure, and scalable solutions tailored to meet your business needs.</p>
