@@ -561,7 +561,7 @@ export default function userDiary() {
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.reason}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.note.length > maxChar ? <span onClick={() => setNoteColab(!noteColab)} style={blog.note.length > maxChar && !noteColab ? { textShadow: "#3c34344a 5px 5px 10px" } : {}} className={`${blog.note.length > maxChar ? "cursor-pointer" : ""}`}> {!noteColab ? blog.note.length > maxChar ? blog.note.substring(0, maxChar) + " ...." : blog.note : blog.note || 'N/A'}</span> : blog.note || 'N/A'}</td>
+                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.note.length > maxChar ? <span onClick={() => setNoteColab(!noteColab)} style={blog.note.length > maxChar && !noteColab ? { textShadow: "#3c34344a 5px 5px 10px" } : {}} className={`${blog.note.length > maxChar ? "cursor-pointer" : ""}`}> {!noteColab ? blog.note.length > maxChar ? blog.note.substring(0, maxChar) + " ...." : blog.note : blog.note || 'N/A'}</span> : blog.note || 'N/A'}</td>
                                                     <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.cost || 'N/A'}</td>
                                                     <td className="px-4 py-2">
                                                         <div className="flex gap-2">
