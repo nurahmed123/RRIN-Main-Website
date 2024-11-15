@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Problem Solving', 'Exprolore science', 'Innovation'],
+      strings: ['Problem Solving', 'Exploring science', 'Innovation'],
       loop: true,
       loopCount: Infinity,
       typeSpeed: 50,

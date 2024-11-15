@@ -12,7 +12,7 @@ const Services = () => {
     return (
         <div className="!my-9 container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 m">
             <h2 className={`mb-1 text-3xl font-extrabold leading-tight dark:text-gray-300 text-gray-900`}>Services</h2>
-            <p className="mb-12 text-lg text-gray-500">Here is a few of the awesome Services we provide.</p>
+            <p className="mb-12 text-lg text-gray-500">Here are few of the awesome Services we provide.</p>
             <div className="w-full">
                 <div className="flex flex-col w-full mb-10 sm:flex-row">
                     <div data-aos="fade-right" className="w-full mb-10 sm:mb-0 sm:w-1/2">

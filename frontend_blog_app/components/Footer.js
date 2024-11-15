@@ -12,7 +12,7 @@ export default function Footer() {
                 <div className="q_links" data-aos="fade-up">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><Link href='/'>Advertise with us</Link></li>
+                        <li><Link href='/'>Affiliate Partnership</Link></li>
                         <li><Link href='/about'>About Us</Link></li>
                         <li><Link href='/contact'>Contact Us</Link></li>
                     </ul>

@@ -43,7 +43,7 @@ const AboutSection = () => {
                         <div className="bg-white dark:bg-slate-700 shadow rounded-lg p-6">
                             <h1 className="text-xl font-bold mb-4 dark:text-gray-50">About Us</h1>
                             <p className="text-gray-70 dark:text-gray-50">
-                                ROBO Superior is a leading organization dedicated to advancing the fields of robotics, mechatronics and electrical project management. Based in Bangladesh, we are committed to promoting the growth and development of robotics through comprehensive educational and learning opportunities. Our mission is to foster a vibrant community of innovators and enthusiasts by providing extensive resources and support for robotics education. We offer a variety of programs and initiatives designed to cater to individuals at all levels of expertise. These include hands-on workshops, theoretical courses and participation in extracurricular activities (ECAs) focused on robotics.
+                                ROBO Superior is a leading organization dedicated to advancing the fields of robotics, mechatronics and electrical project management. Based in Bangladesh, we are committed to promoting the growth and development of robotics through comprehensive educational and learning opportunities. Our mission is to foster a vibrant community of innovators and enthusiasts by providing extensive resources and support for robotics education. We offer a variety of programs and initiatives designed to cater to individuals at all levels of expertise. These include hands-on workshops, theoretical courses, and participation in extracurricular activities (ECAs) focused on robotics.
                                 <br /><br />
                                 At ROBO Superior, we believe in the power of competition to drive excellence. Our members have consistently <Link href={"/achievement"} className='text-xl italic font-bold'>achieved</Link> remarkable success in various <Link href="/project" className='text-xl italic font-bold'>project</Link> showcase competitions. The most notable highlight in our history is the exceptional accomplishment of our organization’s “Team EXO MAX.” This team qualified for the international round of the prestigious NASA CONRAD CHALLENGE 2024, a global scientific case study and problem-solving contest. Competing against over 3,000 contestants worldwide, Team EXO MAX secured an impressive 5th place in the whole world, showcasing the talent and dedication present within our organization.
                                 <br /><br />
@@ -53,7 +53,7 @@ const AboutSection = () => {
                             </p>
 
                             <h2 className="dark:text-gray-50 font-semibold text-center mt-3 -mb-2">
-                                Find us
+                                Find us at
                             </h2>
                             <div className="flex justify-center items-center gap-6 my-6">
                                 <Link className="text-gray-700 dark:text-gray-50 hover:text-orange-600" aria-label="Visit TrendyMinds LinkedIn" href="https://www.linkedin.com/company/robo-superior"
