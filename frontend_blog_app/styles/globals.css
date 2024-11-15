@@ -14,8 +14,6 @@
   @apply opacity-50 cursor-not-allowed;
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +23,8 @@
 body {
   overflow-x: hidden;
   /* background-color: rgb(67, 71, 79); */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
 }
 
@@ -74,7 +73,8 @@ body.dark {
 }
 
 .dark #white-image {
-  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(185deg) brightness(119%) contrast(115%);
+  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(185deg)
+    brightness(119%) contrast(115%);
 }
 
 .scrollToTop.show {
@@ -267,7 +267,6 @@ pre {
 
 /* ================================================== */
 
-
 .full-h {
   height: 100vh !important;
 }
@@ -386,12 +385,12 @@ button {
   color: #666;
 }
 
-.dark #modalInput>div>div {
+.dark #modalInput > div > div {
   color: #e5e7eb;
   background: #2d3748;
 }
 
-#modalInput>div>div {
+#modalInput > div > div {
   background: #f1f5f9;
   color: #10181c;
 }
@@ -403,10 +402,9 @@ button {
   box-shadow: 0 0 5px #999;
   border: 1px solid #999;
   outline: #00d2d7;
-
 }
 
-#datePicker>div>input {
+#datePicker > div > input {
   width: 100%;
   /* Full width on small screens */
   max-width: 26rem;
@@ -426,31 +424,32 @@ button {
   /* Optional: add a box-shadow for extra emphasis */
 }
 
-#datePicker>div>input:focus {
+#datePicker > div > input:focus {
   outline: none;
   /* Remove default focus outline on the input itself */
 }
 
 /* Adjust width on tablet screens */
 @media (min-width: 768px) {
-  #datePicker>div>input {
+  #datePicker > div > input {
     width: 20rem;
   }
 }
 
 /* Set max width on desktop screens */
 @media (min-width: 1024px) {
-  #datePicker>div>input {
+  #datePicker > div > input {
     width: 26rem;
   }
 }
 
-#datePicker>div>div>div {
-  filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+#datePicker > div > div > div {
+  filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03))
+    drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
   border: none !important;
 }
 
-#datePicker>div>div>div>div>div>div>div {
+#datePicker > div > div > div > div > div > div > div {
   border: none !important;
 }
 
@@ -460,7 +459,7 @@ button {
   color: #e5e7eb;
 }
 
-.dark #datePicker>div>input {
+.dark #datePicker > div > input {
   width: 100%;
   /* Full width on small screens */
   max-width: 26rem !important;
@@ -470,19 +469,28 @@ button {
 
 /* Responsive width adjustments for dark mode on tablet screens */
 @media (min-width: 768px) {
-  .dark #datePicker>div>input {
+  .dark #datePicker > div > input {
     width: 20rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dark #datePicker > div > input {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  #datePicker > div > input {
+    font-size: 1rem;
   }
 }
 
 /* Responsive width adjustments for dark mode on desktop screens */
 @media (min-width: 1024px) {
-  .dark #datePicker>div>input {
+  .dark #datePicker > div > input {
     width: 26rem !important;
   }
 }
-
-
 
 .nav_list_dark {
   display: flex;
@@ -553,7 +561,6 @@ button {
   border-radius: 50%;
 }
 
-
 .navlist_mobile ul {
   margin-top: 1rem;
   padding-bottom: 2rem;
@@ -605,7 +612,7 @@ button {
   bottom: 0;
   background-color: #f4f4f5;
   box-shadow: 0 0 10px #999;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
 }
 
@@ -619,14 +626,14 @@ button {
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-  transition: .4s;
+  transition: 0.4s;
 }
 
-.darkmode input:checked+.slider_header {
+.darkmode input:checked + .slider_header {
   background-color: #303136;
 }
 
-.darkmode input:checked+.slider_header:before {
+.darkmode input:checked + .slider_header:before {
   left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
   background: #303136;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
@@ -658,8 +665,6 @@ button {
 .search_click.open {
   display: flex;
 }
-
-
 
 .searchab_input {
   display: flex;
@@ -757,9 +762,6 @@ button {
   color: #fff;
 }
 
-
-
-
 .navlist_mobile_ul {
   display: flex;
   align-items: center;
@@ -779,7 +781,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .navlist_mobile_ul button svg {
@@ -818,7 +819,7 @@ button {
 }
 
 .leftheader_info h1 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 3rem;
   font-weight: 900;
   color: #2d3748;
@@ -949,7 +950,6 @@ button {
 /************************************** main_blog_section section */
 /* ================================================== */
 
-
 .loader {
   --hue: 210;
   --size: 100px;
@@ -987,13 +987,17 @@ button {
   top: 0%;
   left: 50%;
   translate: -50% 0;
-  background: conic-gradient(white,
-      hsl(var(--hue), 100%, 70%),
-      hsl(var(--hue), 100%, 10%),
-      transparent 65%);
+  background: conic-gradient(
+    white,
+    hsl(var(--hue), 100%, 70%),
+    hsl(var(--hue), 100%, 10%),
+    transparent 65%
+  );
   border-radius: 50%;
-  mask: radial-gradient(transparent calc(((var(--size) * 0.5) - var(--border)) - 1px),
-      white calc((var(--size) * 0.5) - var(--border)));
+  mask: radial-gradient(
+    transparent calc(((var(--size) * 0.5) - var(--border)) - 1px),
+    white calc((var(--size) * 0.5) - var(--border))
+  );
 }
 
 @keyframes spin {
@@ -1001,9 +1005,6 @@ button {
     transform: rotate(-360deg) translateY(var(--y));
   }
 }
-
-
-
 
 .main_blog_section {
   position: relative;
@@ -1020,7 +1021,6 @@ button {
   /* width: 50%; */
 }
 
-
 .leftblog_sec h2 {
   position: relative;
   font-size: 25px;
@@ -1033,9 +1033,8 @@ button {
   color: #edf2f7;
 }
 
-
 .leftblog_sec h2::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 5px;
@@ -1086,7 +1085,6 @@ button {
   height: 100%;
   object-fit: cover;
 }
-
 
 .bloginfo h3 {
   margin: 1rem 0;
@@ -1265,8 +1263,6 @@ button {
   background-color: #667eea;
   color: #fff;
 }
-
-
 
 .tags_sec h2 {
   text-align: center;
@@ -1452,7 +1448,6 @@ button {
   color: #74a7fb;
 }
 
-
 /* ================================================== */
 /*                                Home Slug Page */
 /* ================================================== */
@@ -1461,7 +1456,7 @@ button {
   position: relative;
   padding-top: 5rem;
   background-color: #eeeeee65;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .dark .slugpage {
@@ -1469,7 +1464,7 @@ button {
 }
 
 .slugtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 3rem;
   font-weight: 800;
   color: #2d3748;
@@ -1508,7 +1503,6 @@ button {
   color: #e74717;
 }
 
-
 .leftblog_data_markdown {
   position: relative;
   width: 1000px;
@@ -1531,7 +1525,6 @@ button {
   margin-bottom: 5rem;
   overflow: hidden;
   font-weight: 500;
-
 }
 
 .dark .blogcontent {
@@ -1541,7 +1534,6 @@ button {
 
 .blogh1 {
   font-size: 45px;
-
 }
 
 .blogcontent h1:first-child {
@@ -1579,7 +1571,7 @@ button {
   position: relative;
   margin: 16px 0;
   padding: 5px 8px 5px 30px;
-  background: none repeat scroll 0 0 rgba(102, 128, 153, .05);
+  background: none repeat scroll 0 0 rgba(102, 128, 153, 0.05);
   color: #333;
   border: none;
   border-left: 10px solid #d6dbdf;
@@ -1683,7 +1675,7 @@ button {
 .profile_imgbg {
   width: 100%;
   height: 100%;
-  background-image: url('/img/profile_bg.png');
+  background-image: url("/img/profile_bg.png");
   background-size: 8rem;
   position: absolute;
   opacity: 0.15;
@@ -1710,8 +1702,6 @@ button {
   color: #8d99ae;
 }
 
-
-
 /* ================================================== */
 
 /*                                category Slug Page */
@@ -1737,7 +1727,6 @@ button {
   color: #8fabdb;
 }
 
-
 .dark .category_title h1 {
   color: #fcfcfc;
 }
@@ -1758,7 +1747,6 @@ button {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
 
 .cate_blog {
@@ -1783,7 +1771,6 @@ button {
   box-shadow: 0 0 5px #222;
 }
 
-
 .cate_blog .bloginfo {
   padding: 0rem 1rem;
   padding-bottom: 1rem;
@@ -1797,11 +1784,6 @@ button {
 .dark .cate_blog:hover {
   box-shadow: 0 0 5px #555;
 }
-
-
-
-
-
 
 /* *************************************************************************** */
 /* ***************************************************** MEDIA QUERY RESPONSIVE WEBSITE */
@@ -1979,9 +1961,6 @@ button {
   }
 }
 
-
-
-
 /* ********************************************** */
 /* ******************************* Aside section */
 /* ********************************************** */
@@ -2002,7 +1981,6 @@ button {
   flex-direction: column;
   align-items: center;
   padding: 1rem 1rem;
-
 }
 
 .asideleft ul li.navactive {
@@ -2093,7 +2071,7 @@ button {
   width: 380px;
   height: 250px;
   background-image: linear-gradient(to bottom right, #9358e0, #571f9e);
-  box-shadow: 2px 12px 26px 3px rgba(126, 55, 216, .3);
+  box-shadow: 2px 12px 26px 3px rgba(126, 55, 216, 0.3);
   color: #fff;
   display: flex;
   align-items: center;
@@ -2105,17 +2083,17 @@ button {
 
 .four_card:nth-child(2) {
   background-image: linear-gradient(to bottom right, #ff9cc3, #fd3484);
-  box-shadow: 2px 12px 26px 3px rgba(254, 128, 178, .3);
+  box-shadow: 2px 12px 26px 3px rgba(254, 128, 178, 0.3);
 }
 
 .four_card:nth-child(3) {
   background-image: linear-gradient(to bottom right, #ffd85d, #ffc200);
-  box-shadow: 2px 12px 26px 3px rgba(255, 199, 23, .3);
+  box-shadow: 2px 12px 26px 3px rgba(255, 199, 23, 0.3);
 }
 
 .four_card:nth-child(4) {
   background-image: linear-gradient(to bottom right, #00d2d7, #07b2dd);
-  box-shadow: 2px 12px 26px 3px rgba(6, 181, 221, .3);
+  box-shadow: 2px 12px 26px 3px rgba(6, 181, 221, 0.3);
 }
 
 .four_card h2 {
@@ -2134,8 +2112,6 @@ button {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-
-
 
 /* year overview */
 .year_overview {
@@ -2243,7 +2219,6 @@ button {
   color: #fff;
 }
 
-
 .leftyearoverview h3,
 .right_salescont h3 {
   font-weight: 800;
@@ -2253,7 +2228,6 @@ button {
   color: #158df7;
   font-weight: 700;
 }
-
 
 .blogscategory {
   width: 100%;
@@ -2270,7 +2244,6 @@ button {
   color: #000;
   font-weight: 900;
 }
-
 
 .blogscategory td {
   list-style: auto;
@@ -2407,8 +2380,6 @@ button {
   cursor: not-allowed;
 }
 
-
-
 /* ********************************************** */
 /* *******************************  ADD NEW BLOGS Page */
 /* ********************************************** */
@@ -2472,7 +2443,6 @@ button {
   border-radius: 10px;
 }
 
-
 .addWebsiteform button {
   width: 100%;
   padding: 1rem;
@@ -2495,7 +2465,6 @@ button {
   font-size: 15px;
 }
 
-
 /* ********************************************** */
 /* *******************************  DRAFTBLOGS PAGE */
 /* ********************************************** */
@@ -2509,8 +2478,6 @@ button {
   margin-left: 150px;
   padding: 2rem;
 }
-
-
 
 /* ********************************************** */
 /* *******************************  DELETE PAGE */
@@ -2567,7 +2534,7 @@ button {
   width: 120px;
   height: 50px;
   background-color: #7b57ff;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   border: none;
   color: rgb(241, 241, 241);
   cursor: pointer;
@@ -2580,7 +2547,7 @@ button {
   width: 120px;
   height: 50px;
   background-color: rgb(218, 218, 218);
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   color: rgb(46, 46, 46);
   border: none;
   cursor: pointer;
@@ -2591,15 +2558,13 @@ button {
 
 .declineButton:hover {
   background-color: #ebebeb;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
 }
 
 .acceptButton:hover {
   background-color: #9173ff;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
 }
-
-
 
 /* ********************************************** */
 /* *******************************  SETTING PAGE */
@@ -2624,7 +2589,7 @@ button {
   gap: 5rem;
   margin-top: 3rem;
   /* background-color: #e6e6e6; */
-  background: url('/img/profile_bg.jpg') no-repeat center center/cover;
+  background: url("/img/profile_bg.jpg") no-repeat center center/cover;
   border-radius: 35px;
   padding: 5rem 0;
 }
@@ -2714,7 +2679,6 @@ button {
   background: #888888;
   color: #fff;
 }
-
 
 /* *************************************************** */
 /*                     Login Page */
@@ -2811,15 +2775,9 @@ button {
   color: #000;
 }
 
-
-
-
-
-
 /* *************************************************** */
 /*                     Loading Components  */
 /* *************************************************** */
-
 
 .pl {
   display: block;
@@ -2910,31 +2868,29 @@ button {
 }
 
 @keyframes ringStroke42 {
-
   from,
   to {
-    strokeDashoffset: 452;
+    strokedashoffset: 452;
     transform: rotate(-45deg);
   }
 
   50% {
-    strokeDashoffset: 169.5;
+    strokedashoffset: 169.5;
     transform: rotate(-180deg);
   }
 }
 
 @keyframes tick42 {
-
   from,
   3%,
   47%,
   to {
-    strokeDashoffset: -12;
+    strokedashoffset: -12;
   }
 
   14%,
   36% {
-    strokeDashoffset: 0;
+    strokedashoffset: 0;
   }
 }
 
@@ -2954,7 +2910,7 @@ button {
 .jimu-primary-loading:after {
   position: absolute;
   top: 0;
-  content: '';
+  content: "";
 }
 
 .jimu-primary-loading:before {
@@ -2988,11 +2944,10 @@ button {
 }
 
 @-webkit-keyframes loading-keys-app-loading {
-
   0%,
   80%,
   100% {
-    opacity: .75;
+    opacity: 0.75;
     box-shadow: 0 0 #076fe5;
     height: 32px;
   }
@@ -3005,11 +2960,10 @@ button {
 }
 
 @keyframes loading-keys-app-loading {
-
   0%,
   80%,
   100% {
-    opacity: .75;
+    opacity: 0.75;
     box-shadow: 0 0 #076fe5;
     height: 32px;
   }
