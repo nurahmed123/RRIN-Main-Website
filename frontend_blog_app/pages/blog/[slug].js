@@ -89,31 +89,24 @@ export default function BlogPage({ blog }) {
                 <meta name="author" content={blog.author || "RoboSuperior"} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+                {/* Open Graph */}
                 <meta property="og:locale" content="en_US" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content={`${blog.title} | Robo Superior`} />
-                <meta property="og:description" content={blog.metadescription} />
-                <meta property="og:url" content={process.env.SITE_URL} />
+                <meta property="og:description" content={blog.metadescription || "Explore the latest updates and innovations in robotics on Robo Superior."} />
+                <meta property="og:url" content={`${process.env.SITE_URL}/blog/${blog.slug}`} />
                 <meta property="og:site_name" content="Robo Superior" />
-                <meta
-                    property="og:image"
-                    content={extractFirstImageUrl(blog.description) || "blog.png"}
-                />
-                <meta
-                    property="article:published_time"
-                    content={blog.createdAt ? new Date(blog.createdAt).toISOString() : ""}
-                />
+                <meta property="og:image" content={extractFirstImageUrl(blog.description) || '/img/blog.png'} />
+                <meta property="article:published_time" content={blog.createdAt ? new Date(blog.createdAt).toISOString() : ""} />
 
+                {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@RoboSuperior" />
-                <meta name="twitter:title" content={blog.title} />
-                <meta name="twitter:description" content={blog.metadescription} />
-                <meta
-                    name="twitter:image"
-                    content={extractFirstImageUrl(blog.description) || "blog.png"}
-                />
+                <meta name="twitter:title" content={blog.title || "Robo Superior - Blog"} />
+                <meta name="twitter:description" content={blog.metadescription || "Stay up to date with the latest news and breakthroughs in robotics at Robo Superior."} />
+                <meta name="twitter:image" content={extractFirstImageUrl(blog.description) || '/img/blog.png'} />
 
-                <link rel="canonical" href={`${process.env.SITE_URL}/${blog.slug}`} />
+                <link rel="canonical" href={`${process.env.SITE_URL}/blog/${blog.slug}`} />
 
                 <script type="application/ld+json">
                     {`{
@@ -121,7 +114,7 @@ export default function BlogPage({ blog }) {
                         "@type": "BlogPosting",
                         "mainEntityOfPage": {
                             "@type": "WebPage",
-                            "@id": "${process.env.SITE_URL}/${blog.slug}"
+                            "@id": "${process.env.SITE_URL}/blog/${blog.slug}"
                         },
                         "headline": "${blog.title}",
                         "description": "${blog.metadescription}",
