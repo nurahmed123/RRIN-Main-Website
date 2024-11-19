@@ -1,9 +1,0 @@
-# *
-User-agnet: *
-Allow: /
-
-#Host
-Host: 
-
-#Sitemap
-Sitemap:

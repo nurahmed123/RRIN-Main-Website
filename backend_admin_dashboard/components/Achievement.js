@@ -32,26 +32,29 @@ export default function Achievement(
     const [description, setDescription] = useState(existingDescription || '')
     const [tags, setTags] = useState(existingTags || [])
     const [status, setStatus] = useState(existingStatus || '')
-
+    const [loading, setLoading] = useState(false);
 
     async function createProduct(ev) {
         ev.preventDefault();
-
+        setLoading(true);
 
         const data = { title, slug, description, achievementcategory, tags, status };
+        try {
 
-        if (_id) {
-            await axios.put('/api/achievements', { ...data, _id })
-            toast.success('Data Updated!')
-        } else {
-            await axios.post('/api/achievements', data)
-            toast.success('Product Created!')
+            if (_id) {
+                await axios.put("/api/achievements", { ...data, _id });
+                toast.success("Achievements Updated!");
+            } else {
+                await axios.post("/api/achievements", data);
+                toast.success("Achievements Created!");
+            }
+            setRedirect(true);
+        } catch (error) {
+            toast.error('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false); // Always set loading to false once the operation is complete
         }
-
-        setRedirect(true);
-    };
-
-
+    }
 
     if (redirect) {
         router.push('/achievements')
@@ -61,13 +64,7 @@ export default function Achievement(
 
     const handleSlugChange = (ev) => {
         const inputValue = ev.target.value;
-        // console.log("Input Value:", inputValue);
-
-        const newSlug = inputValue
-            // Replace spaces with hyphens
-            .replace(/\s+/g, '-');
-
-        // console.log("New Slug:", newSlug);
+        const newSlug = inputValue.replace(/\s+/g, '-');
         setSlug(newSlug);
     };
 
@@ -167,13 +164,42 @@ export default function Achievement(
                 )}</p>
             </div>
 
-
             <div className='w-100 mb-2'>
-                <button type='submit' className='w-100 addwebbtn flex-center'>{_id ? "Update Achievements" : 'Save Achievements'}</button>
+                <button
+                    type="submit"
+                    className={`submit-button ${loading ? 'bg-gray-400 cursor-not-allowed' : ''}`}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <div className="flex items-center justify-center">
+                            <svg
+                                className="animate-spin h-5 w-5 mr-3 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                ></path>
+                            </svg>
+                            {_id ? "Updating..." : 'Creating...'}
+                        </div>
+                    ) : (
+                        _id ? "Update Achievement" : 'Add Achievement'
+                    )}
+                </button>
             </div>
-
         </form>
-
     </>
 }
 

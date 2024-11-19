@@ -138,6 +138,16 @@ export default function userDiary() {
                     costNotes.filter(note => note.transactionType === "credit"),
                     "reason"
                 );
+            } else if (transType === "lent") {
+                filteredNotes = filterBySearchQuery(
+                    costNotes.filter(note => note.transactionType === "lent"),
+                    "reason"
+                );
+            } else if (transType === "borrowed") {
+                filteredNotes = filterBySearchQuery(
+                    costNotes.filter(note => note.transactionType === "borrowed"),
+                    "reason"
+                );
             } else {
                 filteredNotes = filterBySearchQuery(costNotes, "reason");
             }
