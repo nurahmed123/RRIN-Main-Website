@@ -10,6 +10,12 @@ export default async function sitemap() {
         '/achievement',
         '/members',
         '/contact',
+        '/login',
+        '/signup',
+        '/forgot-password',
+        '/reset-password',
+        '/dashboard',
+        '/dashboard/blog',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString(),

@@ -6,7 +6,7 @@ module.exports = {
       `${process.env.SITE_URL}/sitemap.xml`,
     ],
   },
-  changefreq: 'weekly',
+  changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ['/server-sitemap.xml'],
