@@ -1,7 +1,7 @@
 export default async function sitemap() {
     const baseUrl = process.env.SITE_URL || 'https://robosuperior.com'
 
-    // Static routes
+    // Static routes - removed private routes
     const routes = [
         '',
         '/about',
@@ -10,12 +10,6 @@ export default async function sitemap() {
         '/achievement',
         '/members',
         '/contact',
-        '/login',
-        '/signup',
-        '/forgot-password',
-        '/reset-password',
-        '/dashboard',
-        '/dashboard/blog',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString(),
@@ -25,7 +19,15 @@ export default async function sitemap() {
 
     try {
         // Fetch blogs using the API endpoint
-        const blogResponse = await fetch(`${baseUrl}/api/getblog`);
+        const blogResponse = await fetch(`${baseUrl}/api/getblog`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-cache'
+        });
+
+        if (!blogResponse.ok) throw new Error('Failed to fetch blogs');
         const blogs = await blogResponse.json();
 
         // Create blog routes
@@ -37,7 +39,15 @@ export default async function sitemap() {
         }));
 
         // Fetch projects
-        const projectResponse = await fetch(`${baseUrl}/api/getproject`);
+        const projectResponse = await fetch(`${baseUrl}/api/getproject`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-cache'
+        });
+
+        if (!projectResponse.ok) throw new Error('Failed to fetch projects');
         const projects = await projectResponse.json();
 
         // Create project routes
@@ -49,7 +59,15 @@ export default async function sitemap() {
         }));
 
         // Fetch achievements
-        const achievementResponse = await fetch(`${baseUrl}/api/getachievement`);
+        const achievementResponse = await fetch(`${baseUrl}/api/getachievement`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-cache'
+        });
+
+        if (!achievementResponse.ok) throw new Error('Failed to fetch achievements');
         const achievements = await achievementResponse.json();
 
         // Create achievement routes
@@ -63,14 +81,13 @@ export default async function sitemap() {
         // Combine all routes
         return [
             ...routes,
-            ...blogRoutes,
-            ...projectRoutes,
-            ...achievementRoutes
+            ...(Array.isArray(blogRoutes) ? blogRoutes : []),
+            ...(Array.isArray(projectRoutes) ? projectRoutes : []),
+            ...(Array.isArray(achievementRoutes) ? achievementRoutes : [])
         ];
 
     } catch (error) {
         console.error('Error generating sitemap:', error);
-        // Return only static routes if there's an error
         return routes;
     }
 } 
