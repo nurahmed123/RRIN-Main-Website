@@ -5,18 +5,18 @@ import React from 'react'
 import TeamMembers from './TeamMembers'
 
 const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "RoboSuperior",
-  "description": "ROBO Superior is a leading organization dedicated to advancing robotics, mechatronics and electrical project management in Bangladesh.",
-  "url": process.env.SITE_URL,
-  "logo": `${process.env.SITE_URL}/img/Coder.png`,
-  "sameAs": [
-    "https://www.linkedin.com/company/robo-superior",
-    "https://www.facebook.com/robosuperior",
-    "https://www.instagram.com/robosuperior",
-    "https://www.x.com/robosuperior"
-  ]
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RoboSuperior",
+    "description": "ROBO Superior is a leading organization dedicated to advancing robotics, mechatronics and electrical project management in Bangladesh.",
+    "url": process.env.SITE_URL,
+    "logo": `${process.env.SITE_URL}/img/Coder.png`,
+    "sameAs": [
+        "https://www.linkedin.com/company/robo-superior",
+        "https://www.facebook.com/robosuperior",
+        "https://www.instagram.com/robosuperior",
+        "https://www.x.com/robosuperior"
+    ]
 }
 
 const AboutSection = () => {
@@ -121,8 +121,8 @@ const AboutSection = () => {
                 </div>
             </div>
             <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
             />
         </div>
     )
