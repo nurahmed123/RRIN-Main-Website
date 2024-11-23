@@ -20,6 +20,12 @@ export default function Sendsms({
         router.push('/login');
         return null; // Return null or any loading indicator while redirecting
     }
+    if (status === "loading") {
+        // Loading state, loader or any other indicator
+        return <div className='full-h flex flex-center'>
+            <div className="loading-bar">Loading</div>
+        </div>;
+    }
 
     // State Variables
     const [securitycode, setSecuritycode] = useState(existingSecuritycode);
@@ -85,7 +91,7 @@ export default function Sendsms({
     }
 
     if (session) {
-        return (
+        return <>
             <main className="blogsadd">
                 <div className="addblogspage">
                     <form onSubmit={sendMessage} className="addWebsiteform">
@@ -151,10 +157,9 @@ export default function Sendsms({
                                 </button>
                             </div>
                         }
-
                     </form>
                 </div>
             </main>
-        );
+        </>
     }
 }

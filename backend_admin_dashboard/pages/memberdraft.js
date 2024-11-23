@@ -56,8 +56,6 @@ export default function MemberDraft() {
 
 
     if (session) {
-
-
         return <>
             <div className="draftblogspage">
                 {/* title dashboard */}
