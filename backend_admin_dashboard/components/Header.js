@@ -2,7 +2,7 @@ import { GoScreenFull } from "react-icons/go";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
 import { BiExitFullscreen } from "react-icons/bi";
 import { useState } from "react";
-
+ 
 export default function Header() {
     const [isFullscreen, setIsFullscreen] = useState(false);
 
