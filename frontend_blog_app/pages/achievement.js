@@ -63,7 +63,7 @@ export default function Blog() {
                 img4text=""
                 img4url={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/1dfc3530-98ef-46bf-b604-c36d25fa80e5.jpg"}
                 img3text=""
-                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/4728b341-4408-4758-b765-bd8c11e5f689.png"
+                img3url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/d769bdad-84c1-46ea-b644-95f4c689f0f4.jpg"
                 img2text=""
                 img2url="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/cc16a027-11e3-4959-af16-f13950efd790.jpg"
                 img1text=""

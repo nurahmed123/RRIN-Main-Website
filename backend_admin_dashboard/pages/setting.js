@@ -53,7 +53,7 @@ export default function Setting() {
                             </div>
                             <div className="flex flex-sb mt-2">
                                 <h3>Phone:</h3>
-                                <input type="text" tel="+8801886772094" defaultValue="+880 1886772094" />
+                                <input type="text" tel="+8801571337059" defaultValue="+880 1571337059" />
                             </div>
                             <div className="mt-2">
                                 <input type="email" defaultValue="contact.robosuperior@gmail.com" />
