@@ -78,7 +78,7 @@ export default function Sendsms({
 
             const response = await axios.post(`http://bulksmsbd.net/api/smsapi?api_key=${process.env.NEXT_PUBLIC_Bulk_SMS_BD_NUR_API}&type=text&number=${disNumber}&senderid=8809617618206&message=${message}`);
             // const response = await axios.post("http://bulksmsbd.net/api/smsapi", data);
-            // console.log("Response:", response); // Log the API response
+            console.log("Response:", response); // Log the API response
 
             toast.success("Message Sent Successfully!");
             router.push("/sendsms");
