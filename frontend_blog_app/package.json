@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.4.2",
@@ -53,7 +54,8 @@
     "tailwindcss-motion": "^0.4.0-beta",
     "totp-generator": "^1.0.0",
     "typed.js": "^2.1.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "next-sitemap": "^4.2.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

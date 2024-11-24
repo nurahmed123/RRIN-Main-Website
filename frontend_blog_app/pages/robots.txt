@@ -1,9 +1,13 @@
 # *
-User-agnet: *
+User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /reset-password
 
-#Host
-Host: 
+# Host
+Host: https://robosuperior.com
 
-#Sitemap
-Sitemap:
+# Sitemaps
+Sitemap: https://robosuperior.com/sitemap.xml 

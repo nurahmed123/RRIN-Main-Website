@@ -54,10 +54,10 @@ export default function Blog({
         setBlogData({ ...blogData, [name]: values });
     };
 
-    const handleSlugChange = debounce((value) => {
-        const newSlug = value.replace(/\s+/g, '-');
+    const handleSlugChange = ((e) => {
+        const newSlug = e.replace(/\s+/g, '-');
         setBlogData((prev) => ({ ...prev, slug: newSlug }));
-    }, 300);
+    });
 
     const handleMarkdownChange = ({ text }) => {
         setBlogData((prev) => ({ ...prev, description: text }));
