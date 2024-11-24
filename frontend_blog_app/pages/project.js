@@ -105,7 +105,7 @@ export default function Blog({ blogs }) {
                             {displayedBlogs.map((blog) => {
                                 const firstImageUrl = extractFirstImageUrl(blog.description);
                                 return (
-                                    <div className="blog" key={blog._id}>
+                                    <div className="blog" key={blog._id}>n
                                         <div className="blogimg">
                                             <Link href={`/project/${blog.slug}`}>
                                                 <Image
