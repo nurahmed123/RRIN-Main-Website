@@ -111,6 +111,11 @@ export default function userDiary() {
             ? new Date(date.endDate).setHours(23, 59, 59, 999)
             : startDate;
     
+        // Return all notes if no filters are applied
+        if (!normalizedQuery && !searchItem && !date.startDate && !date.endDate) {
+            return allNotes;
+        }
+    
         const filterNotes = (note) => {
             // Date range filter
             if (startDate && endDate) {
@@ -118,9 +123,33 @@ export default function userDiary() {
                 if (noteDate < startDate || noteDate > endDate) return false;
             }
     
-            // Transaction type filter
-            if (searchItem === "$.1" && note.cost) {
-                if (transType && note.transactionType !== transType.toLowerCase()) return false;
+            // Filter for "note" selection
+            if (searchItem === "$.2") {
+                // Show only notes that have a `note` property and no `cost`
+                if (!note.note || note.cost) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch === "without" &&
+                    note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch !== "without" &&
+                    !note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+            }
+    
+            // Filter for "amount" selection
+            if (searchItem === "$.1") {
+                // Ensure only notes with a cost are included
+                if (!note.cost) return false;
+    
+                // If transactionType is specified and not "all", filter by the type
+                if (transType && transType !== "all" && note.transactionType !== transType.toLowerCase()) {
+                    return false;
+                }
     
                 if (
                     normalizedQuery &&
@@ -135,23 +164,8 @@ export default function userDiary() {
                 ) return false;
             }
     
-            // Note-specific filter
-            if (searchItem === "$.2" && note.note) {
-                if (
-                    normalizedQuery &&
-                    excepSearch === "without" &&
-                    note.note.toLowerCase().includes(normalizedQuery)
-                ) return false;
-    
-                if (
-                    normalizedQuery &&
-                    excepSearch !== "without" &&
-                    !note.note.toLowerCase().includes(normalizedQuery)
-                ) return false;
-            }
-    
-            // Default behavior (search in notes)
-            if (!searchItem || searchItem === "$.2") {
+            // Default behavior: Show all notes when no specific filters are applied
+            if (!searchItem) {
                 if (
                     normalizedQuery &&
                     excepSearch === "without" &&
@@ -178,6 +192,9 @@ export default function userDiary() {
         date.startDate,
         date.endDate,
     ]);
+    
+    
+    
     
     const totalCost = useMemo(() => {
         if (!filteredBlogs || filteredBlogs.length === 0) return 0;
