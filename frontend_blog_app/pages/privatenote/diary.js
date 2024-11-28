@@ -29,6 +29,7 @@ export default function userDiary() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const [option, setOption] = useState('');
+    const [excepSearch, setExcepSearch] = useState('');
     const [note, setNote] = useState('');
     const [transactionType, setTransactionType] = useState('');
     const [reason, setReason] = useState('');
@@ -101,79 +102,96 @@ export default function userDiary() {
         }
     }, [editingNoteId, allNotes]);
 
-    // Filter blogs by author first, then by search query
     const filteredBlogs = useMemo(() => {
-        const filterBySearchQuery = (notes, key) => {
-            return notes.filter(note =>
-                note[key] && note[key].toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        };
-
-        // Date filtering helper function using createdAt field
-        const filterByDateRange = (notes) => {
-            if (!date.startDate && !date.endDate) return notes;
-
-            return notes.filter(note => {
-                const noteDate = new Date(note.createdAt).setHours(0, 0, 0, 0); // Normalize to start of day
-                const startDate = new Date(date.startDate).setHours(0, 0, 0, 0);
-                const endDate = date.endDate ? new Date(date.endDate).setHours(23, 59, 59, 999) : startDate;
-
-                return noteDate >= startDate && noteDate <= endDate;
-            });
-        };
-
-        // Apply initial filtering based on transaction type, searchItem, and searchQuery
-        let filteredNotes = allNotes;
-
-        if (searchItem === "$.1") {
-            const costNotes = allNotes.filter(note => note.cost);
-
-            if (transType === "debit") {
-                filteredNotes = filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "debit"),
-                    "reason"
-                );
-            } else if (transType === "credit") {
-                filteredNotes = filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "credit"),
-                    "reason"
-                );
-            } else if (transType === "lent") {
-                filteredNotes = filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "lent"),
-                    "reason"
-                );
-            } else if (transType === "borrowed") {
-                filteredNotes = filterBySearchQuery(
-                    costNotes.filter(note => note.transactionType === "borrowed"),
-                    "reason"
-                );
-            } else {
-                filteredNotes = filterBySearchQuery(costNotes, "reason");
+        if (!allNotes || allNotes.length === 0) return [];
+    
+        const normalizedQuery = searchQuery.trim().toLowerCase();
+        const startDate = date.startDate ? new Date(date.startDate).setHours(0, 0, 0, 0) : null;
+        const endDate = date.endDate
+            ? new Date(date.endDate).setHours(23, 59, 59, 999)
+            : startDate;
+    
+        const filterNotes = (note) => {
+            // Date range filter
+            if (startDate && endDate) {
+                const noteDate = new Date(note.createdAt).getTime();
+                if (noteDate < startDate || noteDate > endDate) return false;
             }
-        } else if (searchItem === "$.2") {
-            filteredNotes = filterBySearchQuery(allNotes.filter(note => note.note), "note");
-        } else {
-            filteredNotes = allNotes.filter(note =>
-                note.note.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        }
-
-        // Apply date filtering based on createdAt
-        return filterByDateRange(filteredNotes);
-    }, [searchItem, searchQuery, allNotes, transType, date.startDate, date.endDate]);
-
-
-
-
-    const totalCost = useMemo(() => {
-        const calculateTotalCost = (array) => {
-            if (!Array.isArray(array)) return 0; // Ensure array is valid
-            return array.reduce((total, item) => total + parseInt(item.cost, 10), 0);
+    
+            // Transaction type filter
+            if (searchItem === "$.1" && note.cost) {
+                if (transType && note.transactionType !== transType.toLowerCase()) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch === "without" &&
+                    note.reason.toLowerCase().includes(normalizedQuery)
+                ) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch !== "without" &&
+                    !note.reason.toLowerCase().includes(normalizedQuery)
+                ) return false;
+            }
+    
+            // Note-specific filter
+            if (searchItem === "$.2" && note.note) {
+                if (
+                    normalizedQuery &&
+                    excepSearch === "without" &&
+                    note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch !== "without" &&
+                    !note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+            }
+    
+            // Default behavior (search in notes)
+            if (!searchItem || searchItem === "$.2") {
+                if (
+                    normalizedQuery &&
+                    excepSearch === "without" &&
+                    note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+    
+                if (
+                    normalizedQuery &&
+                    excepSearch !== "without" &&
+                    !note.note.toLowerCase().includes(normalizedQuery)
+                ) return false;
+            }
+    
+            return true;
         };
-
+    
+        return allNotes.filter(filterNotes);
+    }, [
+        allNotes,
+        searchQuery,
+        excepSearch,
+        searchItem,
+        transType,
+        date.startDate,
+        date.endDate,
+    ]);
+    
+    const totalCost = useMemo(() => {
+        if (!filteredBlogs || filteredBlogs.length === 0) return 0;
+    
+        const calculateTotalCost = (notes) => {
+            return notes.reduce((total, note) => {
+                const costValue = parseFloat(note.cost);
+                return total + (isNaN(costValue) ? 0 : costValue);
+            }, 0);
+        };
+    
         return calculateTotalCost(filteredBlogs);
-    }, [filteredBlogs, searchItem, searchQuery, allNotes, transType]);
+    }, [filteredBlogs]);
+    
 
 
 
@@ -484,6 +502,16 @@ export default function userDiary() {
                             />
                         </div>
                         <select
+                            value={excepSearch}
+                            onChange={(e) => {
+                                setExcepSearch(e.target.value); // Update perPage based on dropdown selection
+                            }}
+                            className="w-full md:w-auto block p-4 border-gray-300 rounded-md shadow-sm dark:border-gray-600 bg-slate-100 dark:bg-[#2d3748] dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6466f1] focus:border-transparent sm:flex-grow"
+                        >
+                            <option value={"with"}>Search with</option>
+                            <option value={"without"}>Search Without</option>
+                        </select>
+                        <select
                             value={perPage}
                             onChange={(e) => {
                                 setPerPage(Number(e.target.value)); // Update perPage based on dropdown selection
@@ -523,7 +551,6 @@ export default function userDiary() {
                         )}
                     </div>
 
-
                     <div className="w-full overflow-x-auto">
                         <table className="min-w-full table-auto border-collapse rounded-lg overflow-hidden shadow-lg dark:bg-[#2d3748]">
                             <thead className="bg-[#6466f1] text-white dark:bg-[#6466f1]">
@@ -551,102 +578,86 @@ export default function userDiary() {
                                                 </td>
                                             </tr>
                                         ) : (
-                                            Object.entries(
-                                                currentBlogs.reduce((groupedBlogs, blog) => {
-                                                    const date = blog.createdAt.split('T')[0]; // Extract the date portion
-                                                    if (!groupedBlogs[date]) {
-                                                        groupedBlogs[date] = [];
-                                                    }
-                                                    groupedBlogs[date].push(blog);
-                                                    return groupedBlogs;
-                                                }, {})
-                                            ).map(([date, blogs]) => (
-                                                <React.Fragment key={date}>
-                                                    {/* Date Header */}
-                                                    <tr className="bg-gray-100 dark:bg-[#1a202c]">
-                                                        <td colSpan="7" className="text-center font-bold py-2 text-gray-800 dark:text-gray-200">
-                                                            {date}
+                                            [...currentBlogs] // Clone the array to avoid mutating the original
+                                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by createdAt in descending order
+                                                .map((blog, index) => (
+                                                    <tr
+                                                        key={blog._id}
+                                                        className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200"
+                                                    >
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
+                                                            {index + 1} {/* Adjusted index based on sorted order */}
+                                                        </td>
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                            {blog.note ? "Note" : "Spend"}
+                                                        </td>
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words text-sm sm:text-base lg:text-lg">
+                                                            <div className="relative flex flex-wrap items-center gap-2 sm:gap-4">
+                                                                <span className="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100 hover:text-indigo-600 transition duration-200">
+                                                                    {blog.transactionType
+                                                                        ? blog.transactionType.charAt(0).toUpperCase() +
+                                                                        blog.transactionType.slice(1)
+                                                                        : "N/A"}
+                                                                </span>
+                                                                <span
+                                                                    onClick={() =>
+                                                                        setDate({
+                                                                            startDate: blog.createdAt.split('T')[0],
+                                                                            endDate: blog.createdAt.split('T')[0],
+                                                                        })
+                                                                    }
+                                                                    className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]"
+                                                                >
+                                                                    {blog.createdAt.split('T')[0]}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                            {blog.reason}
+                                                        </td>
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                            {blog.note.length > maxChar ? (
+                                                                <span
+                                                                    onClick={() => setNoteColab(!noteColab)}
+                                                                    style={
+                                                                        blog.note.length > maxChar && !noteColab
+                                                                            ? { textShadow: "#3c34344a 5px 5px 10px" }
+                                                                            : {}
+                                                                    }
+                                                                    className={`${blog.note.length > maxChar ? "cursor-pointer" : ""
+                                                                        }`}
+                                                                >
+                                                                    {!noteColab
+                                                                        ? blog.note.length > maxChar
+                                                                            ? blog.note.substring(0, maxChar) + " ...."
+                                                                            : blog.note
+                                                                        : blog.note || "N/A"}
+                                                                </span>
+                                                            ) : (
+                                                                blog.note || "N/A"
+                                                            )}
+                                                        </td>
+                                                        <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
+                                                            {blog.cost || "N/A"}
+                                                        </td>
+                                                        <td className="px-4 py-2">
+                                                            <div className="flex gap-2">
+                                                                <button
+                                                                    onClick={() => editNote(blog._id)}
+                                                                    className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"
+                                                                >
+                                                                    <FaEdit /> Edit
+                                                                </button>
+                                                                <button
+                                                                    onClick={() => router.push(`/privatenote/delete/${blog._id}`)}
+                                                                    className="dark:text-gray-100 dark:bg-red-500"
+                                                                >
+                                                                    <RiDeleteBin6Fill /> Delete
+                                                                </button>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    {blogs.map((blog, index) => (
-                                                        <tr
-                                                            key={blog._id}
-                                                            className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200"
-                                                        >
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
-                                                                {index + 1}
-                                                            </td>
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
-                                                                {blog.note ? "Note" : "Spend"}
-                                                            </td>
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words text-sm sm:text-base lg:text-lg">
-                                                                <div className="relative flex flex-wrap items-center gap-2 sm:gap-4">
-                                                                    <span className="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100 hover:text-indigo-600 transition duration-200">
-                                                                        {blog.transactionType
-                                                                            ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
-                                                                            : "N/A"}
-                                                                    </span>
-                                                                    <span
-                                                                        onClick={() => {
-                                                                            setDate({
-                                                                                startDate: blog.createdAt.split('T')[0],
-                                                                                endDate: blog.createdAt.split('T')[0],
-                                                                            });
-                                                                        }}
-                                                                        className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]"
-                                                                    >
-                                                                        {blog.createdAt.split('T')[0]}
-                                                                    </span>
-                                                                </div>
-                                                            </td>
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
-                                                                {blog.reason}
-                                                            </td>
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
-                                                                {blog.note.length > maxChar ? (
-                                                                    <span
-                                                                        onClick={() => setNoteColab(!noteColab)}
-                                                                        style={
-                                                                            blog.note.length > maxChar && !noteColab
-                                                                                ? { textShadow: "#3c34344a 5px 5px 10px" }
-                                                                                : {}
-                                                                        }
-                                                                        className={`${blog.note.length > maxChar ? "cursor-pointer" : ""
-                                                                            }`}
-                                                                    >
-                                                                        {!noteColab
-                                                                            ? blog.note.length > maxChar
-                                                                                ? blog.note.substring(0, maxChar) + " ...."
-                                                                                : blog.note
-                                                                            : blog.note || "N/A"}
-                                                                    </span>
-                                                                ) : (
-                                                                    blog.note || "N/A"
-                                                                )}
-                                                            </td>
-                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
-                                                                {blog.cost || "N/A"}
-                                                            </td>
-                                                            <td className="px-4 py-2">
-                                                                <div className="flex gap-2">
-                                                                    <button
-                                                                        onClick={() => editNote(blog._id)}
-                                                                        className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"
-                                                                    >
-                                                                        <FaEdit /> Edit
-                                                                    </button>
-                                                                    <button
-                                                                        onClick={() => router.push(`/privatenote/delete/${blog._id}`)}
-                                                                        className="dark:text-gray-100 dark:bg-red-500"
-                                                                    >
-                                                                        <RiDeleteBin6Fill /> Delete
-                                                                    </button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    ))}
-                                                </React.Fragment>
-                                            ))
+                                                ))
                                         )}
                                     </>
 
