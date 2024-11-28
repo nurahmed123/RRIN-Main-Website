@@ -104,66 +104,66 @@ export default function userDiary() {
 
     const filteredBlogs = useMemo(() => {
         if (!allNotes || allNotes.length === 0) return [];
-    
+
         const normalizedQuery = searchQuery.trim().toLowerCase();
         const startDate = date.startDate ? new Date(date.startDate).setHours(0, 0, 0, 0) : null;
         const endDate = date.endDate
             ? new Date(date.endDate).setHours(23, 59, 59, 999)
             : startDate;
-    
+
         // Return all notes if no filters are applied
         if (!normalizedQuery && !searchItem && !date.startDate && !date.endDate) {
             return allNotes;
         }
-    
+
         const filterNotes = (note) => {
             // Date range filter
             if (startDate && endDate) {
                 const noteDate = new Date(note.createdAt).getTime();
                 if (noteDate < startDate || noteDate > endDate) return false;
             }
-    
+
             // Filter for "note" selection
             if (searchItem === "$.2") {
                 // Show only notes that have a `note` property and no `cost`
                 if (!note.note || note.cost) return false;
-    
+
                 if (
                     normalizedQuery &&
                     excepSearch === "without" &&
                     note.note.toLowerCase().includes(normalizedQuery)
                 ) return false;
-    
+
                 if (
                     normalizedQuery &&
                     excepSearch !== "without" &&
                     !note.note.toLowerCase().includes(normalizedQuery)
                 ) return false;
             }
-    
+
             // Filter for "amount" selection
             if (searchItem === "$.1") {
                 // Ensure only notes with a cost are included
                 if (!note.cost) return false;
-    
+
                 // If transactionType is specified and not "all", filter by the type
                 if (transType && transType !== "all" && note.transactionType !== transType.toLowerCase()) {
                     return false;
                 }
-    
+
                 if (
                     normalizedQuery &&
                     excepSearch === "without" &&
                     note.reason.toLowerCase().includes(normalizedQuery)
                 ) return false;
-    
+
                 if (
                     normalizedQuery &&
                     excepSearch !== "without" &&
                     !note.reason.toLowerCase().includes(normalizedQuery)
                 ) return false;
             }
-    
+
             // Default behavior: Show all notes when no specific filters are applied
             if (!searchItem) {
                 if (
@@ -171,17 +171,17 @@ export default function userDiary() {
                     excepSearch === "without" &&
                     note.note.toLowerCase().includes(normalizedQuery)
                 ) return false;
-    
+
                 if (
                     normalizedQuery &&
                     excepSearch !== "without" &&
                     !note.note.toLowerCase().includes(normalizedQuery)
                 ) return false;
             }
-    
+
             return true;
         };
-    
+
         return allNotes.filter(filterNotes);
     }, [
         allNotes,
@@ -192,23 +192,20 @@ export default function userDiary() {
         date.startDate,
         date.endDate,
     ]);
-    
-    
-    
-    
+
     const totalCost = useMemo(() => {
         if (!filteredBlogs || filteredBlogs.length === 0) return 0;
-    
+
         const calculateTotalCost = (notes) => {
             return notes.reduce((total, note) => {
                 const costValue = parseFloat(note.cost);
                 return total + (isNaN(costValue) ? 0 : costValue);
             }, 0);
         };
-    
+
         return calculateTotalCost(filteredBlogs);
     }, [filteredBlogs]);
-    
+
 
 
 
@@ -518,6 +515,7 @@ export default function userDiary() {
                                 showShortcuts={true}
                             />
                         </div>
+
                         <select
                             value={excepSearch}
                             onChange={(e) => {
@@ -528,6 +526,7 @@ export default function userDiary() {
                             <option value={"with"}>Search with</option>
                             <option value={"without"}>Search Without</option>
                         </select>
+
                         <select
                             value={perPage}
                             onChange={(e) => {
