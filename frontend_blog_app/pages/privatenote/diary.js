@@ -546,43 +546,110 @@ export default function userDiary() {
                                     <>
                                         {currentBlogs.length === 0 ? (
                                             <tr>
-                                                <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">Nothing.... Create Note</td>
+                                                <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">
+                                                    Nothing.... Create Note
+                                                </td>
                                             </tr>
                                         ) : (
-                                            currentBlogs.map((blog, index) => (
-                                                <tr key={blog._id} className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{indexOfFirstBlog + index + 1}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.note ? "Note" : "Spend"}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words text-sm sm:text-base lg:text-lg">
-                                                        <div className="relative flex flex-wrap items-center gap-2 sm:gap-4">
-
-                                                            {/* Transaction Type Label */}
-                                                            <span className="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100 hover:text-indigo-600 transition duration-200">
-                                                                {blog.transactionType
-                                                                    ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
-                                                                    : "N/A"}
-                                                            </span>
-
-                                                            {/* Date Label with subtle shadow and positioning adjustments */}
-                                                            <span onClick={() => { setDate({ startDate: blog.createdAt.split('T')[0], endDate: blog.createdAt.split('T')[0] }) }} className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]">
-                                                                {blog.createdAt.split('T')[0]}
-                                                            </span>
-
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.reason}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">{blog.note.length > maxChar ? <span onClick={() => setNoteColab(!noteColab)} style={blog.note.length > maxChar && !noteColab ? { textShadow: "#3c34344a 5px 5px 10px" } : {}} className={`${blog.note.length > maxChar ? "cursor-pointer" : ""}`}> {!noteColab ? blog.note.length > maxChar ? blog.note.substring(0, maxChar) + " ...." : blog.note : blog.note || 'N/A'}</span> : blog.note || 'N/A'}</td>
-                                                    <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">{blog.cost || 'N/A'}</td>
-                                                    <td className="px-4 py-2">
-                                                        <div className="flex gap-2">
-                                                            <button onClick={() => editNote(blog._id)} className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"><FaEdit /> Edit</button>
-                                                            <button onClick={() => router.push(`/privatenote/delete/${blog._id}`)} className="dark:text-gray-100 dark:bg-red-500"><RiDeleteBin6Fill />Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                            Object.entries(
+                                                currentBlogs.reduce((groupedBlogs, blog) => {
+                                                    const date = blog.createdAt.split('T')[0]; // Extract the date portion
+                                                    if (!groupedBlogs[date]) {
+                                                        groupedBlogs[date] = [];
+                                                    }
+                                                    groupedBlogs[date].push(blog);
+                                                    return groupedBlogs;
+                                                }, {})
+                                            ).map(([date, blogs]) => (
+                                                <React.Fragment key={date}>
+                                                    {/* Date Header */}
+                                                    <tr className="bg-gray-100 dark:bg-[#1a202c]">
+                                                        <td colSpan="7" className="text-center font-bold py-2 text-gray-800 dark:text-gray-200">
+                                                            {date}
+                                                        </td>
+                                                    </tr>
+                                                    {blogs.map((blog, index) => (
+                                                        <tr
+                                                            key={blog._id}
+                                                            className="border-b dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200"
+                                                        >
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
+                                                                {index + 1}
+                                                            </td>
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                                {blog.note ? "Note" : "Spend"}
+                                                            </td>
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words text-sm sm:text-base lg:text-lg">
+                                                                <div className="relative flex flex-wrap items-center gap-2 sm:gap-4">
+                                                                    <span className="whitespace-nowrap font-medium text-gray-700 dark:text-gray-100 hover:text-indigo-600 transition duration-200">
+                                                                        {blog.transactionType
+                                                                            ? blog.transactionType.charAt(0).toUpperCase() + blog.transactionType.slice(1)
+                                                                            : "N/A"}
+                                                                    </span>
+                                                                    <span
+                                                                        onClick={() => {
+                                                                            setDate({
+                                                                                startDate: blog.createdAt.split('T')[0],
+                                                                                endDate: blog.createdAt.split('T')[0],
+                                                                            });
+                                                                        }}
+                                                                        className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]"
+                                                                    >
+                                                                        {blog.createdAt.split('T')[0]}
+                                                                    </span>
+                                                                </div>
+                                                            </td>
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                                {blog.reason}
+                                                            </td>
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200 break-words">
+                                                                {blog.note.length > maxChar ? (
+                                                                    <span
+                                                                        onClick={() => setNoteColab(!noteColab)}
+                                                                        style={
+                                                                            blog.note.length > maxChar && !noteColab
+                                                                                ? { textShadow: "#3c34344a 5px 5px 10px" }
+                                                                                : {}
+                                                                        }
+                                                                        className={`${blog.note.length > maxChar ? "cursor-pointer" : ""
+                                                                            }`}
+                                                                    >
+                                                                        {!noteColab
+                                                                            ? blog.note.length > maxChar
+                                                                                ? blog.note.substring(0, maxChar) + " ...."
+                                                                                : blog.note
+                                                                            : blog.note || "N/A"}
+                                                                    </span>
+                                                                ) : (
+                                                                    blog.note || "N/A"
+                                                                )}
+                                                            </td>
+                                                            <td className="px-4 py-2 border-r dark:bg-[#3a4964] dark:text-gray-100 dark:border-gray-200">
+                                                                {blog.cost || "N/A"}
+                                                            </td>
+                                                            <td className="px-4 py-2">
+                                                                <div className="flex gap-2">
+                                                                    <button
+                                                                        onClick={() => editNote(blog._id)}
+                                                                        className="dark:text-gray-100 dark:bg-[radial-gradient(black,transparent)] dark:hover:bg-[#424f85] hover:border-[#38457b]"
+                                                                    >
+                                                                        <FaEdit /> Edit
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={() => router.push(`/privatenote/delete/${blog._id}`)}
+                                                                        className="dark:text-gray-100 dark:bg-red-500"
+                                                                    >
+                                                                        <RiDeleteBin6Fill /> Delete
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </React.Fragment>
                                             ))
                                         )}
                                     </>
+
                                 )}
                             </tbody>
                             {searchItem === "$.1" && (
