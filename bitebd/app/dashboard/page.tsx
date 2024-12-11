@@ -24,7 +24,6 @@ const Page = () => {
 
   return (
     <>
-      <FloatingNav navItems={navItems} />
       <div className="pb-20 pt-36">
         {/* Spotlight Effects */}
         <div>
@@ -71,11 +70,11 @@ const Page = () => {
                   />
                 </Link>
                 <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200 text-center">
-                  Daily Plant-based Diet Plan
+                  Personalized Meal Plannner
                 </p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
+                {/* <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
                   The platform generates customized daily and weekly meal plans based on your-specific factors such as age, physical activity level, and the availability of local food items.
-                </p>
+                </p> */}
               </BackgroundGradient>
 
               {/* Product Card 2 */}
@@ -90,11 +89,11 @@ const Page = () => {
                   />
                 </Link>
                 <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200 text-center">
-                  Non-veg Protein Replacement Tool
+                  Affordable Alternative Food
                 </p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
+                {/* <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
                   You can search for affordable vegetarian alternatives to non-vegetarian protein sources. Suggestions are tailored to provide equivalent nutritional value at reduced costs.
-                </p>
+                </p> */}
               </BackgroundGradient>
 
               {/* Product Card 3 */}
@@ -109,11 +108,11 @@ const Page = () => {
                   />
                 </Link>
                 <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200 text-center">
-                  Vegetarian Recipe Search
+                  Budget-Friendly Recipe Tutorials
                 </p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
+                {/* <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
                   You can query recipes that replace non-vegetarian protein sources with plant-based alternatives. These recipes aim to replicate the protein content and nutritional value of traditional non-veg dishes.
-                </p>
+                </p> */}
               </BackgroundGradient>
             </div>
           </div>

@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
+import ReactMarkdown from "react-markdown";
 
 const SLUG_PROMPTS = {
-    "dveg-res-serach": "You are a recipe bot. Help users find vegetarian recipes that replace non-veg protein sources.",
-    "nonveg-protein": "You are a nutrition expert. Suggest affordable vegetarian alternatives to non-veg protein sources.",
-    "daily-diat": "You are a dietitian. Create daily diet plans based on local food availability.",
+    "dveg-res-serach": "I am a vegetarian, I am looking for a recipe for my meal. Please give me a recipe that will be so tasty within my avialable items. I have some items in my home these are",
+    "nonveg-protein": "I am a vegetarian. gimme the raw answer, i have a food item but I want to know if it is a veg or non-veg item and how much protein it has and what are alternative veg and non-veg items are similar in their vitamins and nutrition. my food item is ",
+    "daily-diat": "",
 };
 
 const SLUG_TITLES = {
@@ -42,6 +43,8 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
 
         try {
             const context = SLUG_PROMPTS[slug as keyof typeof SLUG_PROMPTS]; // Cast slug to valid key
+            console.log(context);
+            const searchQuery = `${context}${input}`;
 
             const response = await fetch("/api/chat", {
                 method: "POST",
@@ -49,7 +52,7 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    prompt: input,
+                    prompt: searchQuery,
                     context: context,
                 }),
             });
@@ -57,7 +60,7 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
             const data = await response.json();
 
             if (response.ok) {
-                setMessages((prev) => [...prev, { role: "assistant", content: data.choices[0]?.text || "No response" }]);
+                setMessages((prev) => [...prev, { role: "assistant", content: data || "No response" }]);
             } else {
                 setMessages((prev) => [
                     ...prev,
@@ -90,7 +93,7 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                 {messages.map((message, index) => (
                     <div
                         key={index}
-                        className={`mb-2 ${message.role === "user" ? "text-right" : "text-left"}`}
+                        className={`mb-4 ${message.role === "user" ? "text-right" : "text-left"}`}
                     >
                         <div
                             className={`inline-block px-4 py-2 rounded-lg ${message.role === "user"
@@ -98,9 +101,13 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                                 : "bg-gray-200 text-black"
                                 }`}
                         >
-                            {message.content}
+                            {/* Use ReactMarkdown to render Markdown */}
+                            <ReactMarkdown>
+                                {message.content}
+                            </ReactMarkdown>
                         </div>
                     </div>
+
                 ))}
                 {isLoading && (
                     <div className="mb-2 text-left text-gray-500">
