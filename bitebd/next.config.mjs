@@ -9,11 +9,13 @@ const nextConfig = {
 
 const sentryWebpackPluginOptions = {
     silent: true,
-    org: 'education-a7', // Ensure this matches your Sentry token's organization
-    project: 'javascript-nextjs', // Ensure this matches the Sentry project name
-    hideSourceMaps: true,
+    org: "education-a7",
+    project: "javascript-nextjs",
+    hideSourceMaps: true, // Hides source maps from client bundles
     disableLogger: true,
+    deleteSourceMapsAfterUpload: true, // Automatically delete source maps after upload
 };
+
 
 
 export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);
