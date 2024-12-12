@@ -8,16 +8,12 @@ const nextConfig = {
 };
 
 const sentryWebpackPluginOptions = {
-    silent: true, // Suppresses source map uploading logs during build
-    org: 'javascript-mastery', // Replace with your Sentry org
-    project: 'javascript-nextjs', // Replace with your Sentry project
-
-    // Optional optimizations to reduce build size/time
-    hideSourceMaps: true, // Hides source maps from client bundles
-    disableLogger: true, // Removes Sentry logger statements
-    widenClientFileUpload: false, // Disable if build times are an issue
-    transpileClientSDK: false, // Disable if IE11 support isn't required
-    automaticVercelMonitors: true, // Enable Vercel Cron Monitors
+    silent: true,
+    org: 'education-a7', // Ensure this matches your Sentry token's organization
+    project: 'javascript-nextjs', // Ensure this matches the Sentry project name
+    hideSourceMaps: true,
+    disableLogger: true,
 };
+
 
 export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);
