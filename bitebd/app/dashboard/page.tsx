@@ -53,7 +53,7 @@ const Page = () => {
         <div className="flex flex-col items-center relative my-20 z-10 px-4 md:px-8">
           <div className="max-w-7xl flex flex-col items-center justify-center">
             <TextGenerateEffect
-              words="Our Products"
+              words="Our Services"
               className="text-center text-3xl md:text-5xl lg:text-6xl mb-8"
             />
 
