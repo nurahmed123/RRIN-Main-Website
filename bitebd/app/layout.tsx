@@ -6,6 +6,7 @@ import { navItems } from "@/data";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
+import NextNProgress from 'nextjs-progressbar';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <NextNProgress color="#29D" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
             {children}
           </ThemeProvider>
           {/* <Footer /> */}

@@ -7,18 +7,18 @@ import { SessionProvider } from "next-auth/react"
 import { useRouter } from "next/router";
 import Loading from "@/components/Loading";
 import { useState, useEffect } from 'react';
+import Script from "next/script"; // Import the Script component
 import "@/styles/tailwind.css"
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(true);
-  const router = useRouter(); // Use useRouter hook
+  const router = useRouter();
 
   useEffect(() => {
     const handleStart = () => setLoading(true);
     const handleComplete = () => setLoading(false);
 
-    // Check if the route is already complete when the component mounts
     if (router.isReady) {
       setLoading(false);
     }
@@ -32,19 +32,35 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       router.events.off('routeChangeComplete', handleComplete);
       router.events.off('routeChangeError', handleComplete);
     };
-  }, [router.isReady]); // Add router.events as dependency
+  }, [router.isReady]);
 
-  return <>
-    <SessionProvider session={session}>
-      <Header />
-      <main>
-        <TopLoadingLine />
-        <Aos>
-          <Component {...pageProps} />
-        </Aos>
-        <ScrollToTopButton />
-        <Footer />
-      </main>
-    </SessionProvider>
-  </>
+  return (
+    <>
+      {/* Google Analytics Script */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-D8K4FT3YF8"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-D8K4FT3YF8');
+        `}
+      </Script>
+
+      <SessionProvider session={session}>
+        <Header />
+        <main>
+          <TopLoadingLine />
+          <Aos>
+            <Component {...pageProps} />
+          </Aos>
+          <ScrollToTopButton />
+          <Footer />
+        </main>
+      </SessionProvider>
+    </>
+  );
 }

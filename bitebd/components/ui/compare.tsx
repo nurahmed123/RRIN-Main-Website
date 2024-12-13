@@ -4,6 +4,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { IconDotsVertical } from "@tabler/icons-react";
+import Image from 'next/image';
 
 interface CompareProps {
     firstImage?: string;
@@ -206,13 +207,16 @@ export const Compare = ({
                             }}
                             transition={{ duration: 0 }}
                         >
-                            <img
+                            <Image
                                 alt="first image"
                                 src={firstImage}
                                 className={cn(
                                     "absolute inset-0  z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
                                     firstImageClassName
                                 )}
+                                layout="fill" // Makes the image responsive
+                                objectFit="cover" // Adjust this based on your requirements
+                                priority // Optional: Use this if the image is critical
                                 draggable={false}
                             />
                         </motion.div>
@@ -222,15 +226,24 @@ export const Compare = ({
 
             <AnimatePresence initial={false}>
                 {secondImage ? (
-                    <motion.img
+                    <motion.div
                         className={cn(
                             "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
                             secondImageClassname
                         )}
-                        alt="second image"
-                        src={secondImage}
-                        draggable={false}
-                    />
+                    >
+                        <Image
+                            alt="second image"
+                            src={secondImage}
+                            className={cn(
+                                "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
+                                secondImageClassname
+                            )}
+                            layout="fill"
+                            objectFit="cover"
+                            draggable={false}
+                        />
+                    </motion.div>
                 ) : null}
             </AnimatePresence>
         </div>

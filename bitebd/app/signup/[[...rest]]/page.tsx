@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { ClerkProvider, SignUp, useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Spotlight } from "@/components/ui/Spotlight";
-const page = () => {
+
+const Page = () => {
   const { isSignedIn } = useAuth();
   const router = useRouter();
 
@@ -64,4 +65,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
