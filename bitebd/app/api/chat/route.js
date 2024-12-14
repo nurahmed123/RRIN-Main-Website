@@ -9,7 +9,7 @@ const cohere = new CohereClientV2({
 export async function POST(req) {
     try {
         const { prompt } = await req.json();  // Extract the prompt from the request body
-        console.log('Request received:', prompt);
+        // console.log('Request received:', prompt);
 
         // Make a request to the Cohere chat API
         const response = await cohere.chat({
