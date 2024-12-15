@@ -26,7 +26,7 @@ const Footer = () => {
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Affordable Nutrition, One Plate at a Time.
         </p>
-        <a href="mailto:contact@jsmastery.pro">
+        <a href="mailto:contact.robosuperior@gmail.com">
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
