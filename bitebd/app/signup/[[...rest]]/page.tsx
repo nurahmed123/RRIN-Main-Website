@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { ClerkProvider, SignUp, useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Spotlight } from "@/components/ui/Spotlight";
-
 const Page = () => {
   const { isSignedIn } = useAuth();
   const router = useRouter();
@@ -51,9 +50,9 @@ const Page = () => {
             >
               {!isSignedIn && (
                 <SignUp
-                  path="/signin"
+                  path="/signup"
                   routing="path"
-                  signInUrl="/signup"
+                  signInUrl="/signin"
                   redirectUrl="/dashboard"
                 />
               )}
