@@ -18,7 +18,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Leets Make Humger Free World.",
+    title: "Leets Make Hunger Free World.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
