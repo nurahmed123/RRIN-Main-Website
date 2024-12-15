@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import AquaWolfPFP from "@/public/aquawolf-pfp.svg";
 
 export default function Letter() {
   return (
@@ -14,72 +13,76 @@ export default function Letter() {
         {/* Letter Top */}
         <div className="relative z-30 -rotate-1 rounded-lg bg-letter-top shadow-letter-top lg:rotate-2 lg:rounded-xl bg-[#080a25]">
           <article className="space-y-4 p-4 text-base text-white/80 lg:space-y-5 lg:p-5 lg:px-24 lg:py-14 lg:text-2xl">
-            <p>What&apos;s Up Everyone, I&apos;m AquaWolf from Miami, FL</p>
+            <p>Hello Everyone 👋,</p>
             <p>
-              So, my story&apos;s kinda wild. Started coding back in 2016, got
-              caught up in the crypto craze of October 2021.
+              Welcome to <strong>BiteBD</strong> – a project born out of a desire
+              to solve one of the biggest challenges in developing countries like
+              <strong> Bangladesh</strong>: <strong>protein deficiency</strong>.
             </p>
             <p>
-              Helped launch some really big NFT projects - DAW, TheLostKingdom &
-              SuperFuzz, My code generated over 28m+ and i ended up achieving a
-              massive personal success...
-            </p>
-            <p>But fuck, burnout hit me like a big 18 wheeler truck.</p>
-            <p>I was lost, ship wrecked, stranded at sea with no boat.</p>
-            <p>
-              So i decided to shake things up. Went digital nomadding for 2
-              years.
-            </p>
-            <p>Trekking through Peru, Thailand, India, Cambodia, Laos.</p>
-            <p>
-              Got real deep into Health & Wellness, Spirituality, Consciousness,
-              Neuroscience, Ayahuasca, Magic Mushrooms and DMT.
+              Many people can’t afford expensive protein sources like meat and
+              fish, which are crucial for their health. BiteBD steps in with
+              smart solutions to provide <strong>affordable vegetarian alternatives</strong>
+              that are rich in protein and nutrition.
             </p>
             <p>
-              I was looking for myself so i could put all the pieces back
-              together because i was so broken, i honestly didn&apos;t even want
-              to code anymore all i wanted to do was sell everything and become
-              a monk and just travel barefoot, but eventually i grounded myself
-              back in to reality
+              Our mission is simple but powerful: <strong>to fight malnutrition</strong>
+              and support communities with budget-friendly, healthy food options.
+              This initiative aligns with <strong>UN SDG Goal 2: Zero Hunger</strong>.
             </p>
-            <p>So, now I&apos;m back in the mix, wearing a bunch of hats:</p>
+            <p>
+              Here’s what BiteBD does:
+            </p>
             <ul className="list-disc pl-6">
-              <li>Full-Stack Blockchain Developer</li>
-              <li>Live Stream Coding (Building in Public)</li>
-              <li>UI/UX Designer</li>
-              <li>AI Tinkerer & Hacker</li>
-              <li>Creative Problem Solver</li>
+              <li>
+                Recommends <strong>protein-rich vegetarian foods</strong> that are
+                affordable and accessible.
+              </li>
+              <li>
+                Provides <strong>easy-to-follow recipes</strong> to help families
+                prepare nutritious meals with locally available ingredients.
+              </li>
+              <li>
+                Offers <strong>personalized meal plans</strong> based on age, weight,
+                and budget to ensure everyone gets the nutrition they need.
+              </li>
+              <li>
+                Supports <strong>health education</strong> through an AI-powered chatbot
+                assistant that answers questions and guides users.
+              </li>
             </ul>
             <p>
-              My mission is to bridge the gap between blockchain, AI, and
-              human-centered design, creating experiences that are not just
-              technically robust but also intuitive and meaningful.
+              By combining <strong>technology</strong>, <strong>data</strong>, and <strong>compassion</strong>,
+              BiteBD empowers families to make healthier food choices, improving
+              their lives and overall well-being.
             </p>
             <p>
-              Always open to connecting with fellow builders, innovators, and
-              curious minds. Whether it&apos;s discussing the future of Web3, AI
-              developments, or exploring new technological frontiers, I&apos;m
-              here for it.
+              This is more than just a project. It’s a movement to make sure
+              everyone, no matter where they live or what they earn, can access
+              the nutrition they deserve.
             </p>
-            <p>Let&apos;s build the future together.</p>
+            <p>
+              We are proud to contribute to a healthier, hunger-free future.
+            </p>
+            <p>Let’s build a better world, one meal at a time 🌍.</p>
             <div className="relative flex flex-col items-center gap-2">
               <div className="self-start">
                 Wholeness & Balanced Vibrations 🙏
               </div>
             </div>
             <div className="mb-10 font-handwriting text-4xl lg:text-6xl">
-              <div className="text-white">AquaWolf</div>
+              <div className="text-white">BiteBD Team</div>
             </div>
             <div className="flex items-center gap-2">
               <div>
-                <Image src={AquaWolfPFP} alt="AquaWolf PFP" />
+                <Image src={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/775d2d77-7c4d-4d46-9d36-0ab6eae39b0e.png"} alt="BiteBD Logo" width={60} height={60} />
               </div>
               <div className="lg:ml-4">
                 <div className="text-xl font-semibold text-white lg:text-2xl">
-                  0xAquawolf
+                  BiteBD
                 </div>
                 <div className="text-[12px] lg:text-lg">
-                  Senior Full-Stack Software Engineer
+                  Affordable Nutrition for a Healthier Tomorrow
                 </div>
               </div>
             </div>

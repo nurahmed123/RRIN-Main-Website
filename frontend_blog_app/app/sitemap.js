@@ -1,5 +1,5 @@
 export default async function sitemap() {
-    const baseUrl = process.env.SITE_URL || 'https://robosuperior.com'
+    const baseUrl = process.env.SITE_URL || 'https://robosuperior.com';
 
     // Static routes - removed private routes
     const routes = [
@@ -15,7 +15,7 @@ export default async function sitemap() {
         lastModified: new Date().toISOString(),
         changeFrequency: 'daily',
         priority: route === '' ? 1 : 0.8,
-    }))
+    }));
 
     try {
         // Fetch blogs using the API endpoint
@@ -24,7 +24,7 @@ export default async function sitemap() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-cache'
+            cache: 'no-cache',
         });
 
         if (!blogResponse.ok) throw new Error('Failed to fetch blogs');
@@ -44,7 +44,7 @@ export default async function sitemap() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-cache'
+            cache: 'no-cache',
         });
 
         if (!projectResponse.ok) throw new Error('Failed to fetch projects');
@@ -64,7 +64,7 @@ export default async function sitemap() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            cache: 'no-cache'
+            cache: 'no-cache',
         });
 
         if (!achievementResponse.ok) throw new Error('Failed to fetch achievements');
@@ -78,16 +78,37 @@ export default async function sitemap() {
             priority: 0.7,
         }));
 
+        // Additional websites
+        const additionalWebsites = [
+            {
+                baseUrl: 'https://code.robosuperior.com',
+                routes: ['/'],
+            },
+            {
+                baseUrl: 'https://bitebd.robosuperior.com',
+                routes: ['/', '/login', '/dashboard',],
+            },
+        ];
+
+        const additionalRoutes = additionalWebsites.flatMap(({ baseUrl, routes }) =>
+            routes.map((route) => ({
+                url: `${baseUrl}${route}`,
+                lastModified: new Date().toISOString(),
+                changeFrequency: 'daily',
+                priority: route === '/' ? 1 : 0.8,
+            }))
+        );
+
         // Combine all routes
         return [
             ...routes,
             ...(Array.isArray(blogRoutes) ? blogRoutes : []),
             ...(Array.isArray(projectRoutes) ? projectRoutes : []),
-            ...(Array.isArray(achievementRoutes) ? achievementRoutes : [])
+            ...(Array.isArray(achievementRoutes) ? achievementRoutes : []),
+            ...additionalRoutes,
         ];
-
     } catch (error) {
         console.error('Error generating sitemap:', error);
         return routes;
     }
-} 
+}

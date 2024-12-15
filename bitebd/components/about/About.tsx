@@ -6,9 +6,11 @@ export default function About() {
   return (
     <div id="about" className="mx-auto max-w-[1000px] px-4">
       <SectionHeading
-        heading="Who is 0xAquaWolf?"
-        subheading="8+ Years of Experience: Full-Stack Software engineer with a passion for UI/UX Design"
+        heading="What is BiteBD?"
+        subheading="Fighting Protein Deficiency with Affordable Nutrition Solutions"
       />
+      <div className="mt-6 text-lg leading-relaxed text-gray-300">
+      </div>
       <Letter />
     </div>
   );
