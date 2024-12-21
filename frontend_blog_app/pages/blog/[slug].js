@@ -7,6 +7,8 @@ import { useState } from "react";
 import Comments from "@/components/Comments";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
+import readingTimeStream from "reading-time/lib/stream";
+import readingTime from "reading-time";
 
 function extractFirstImageUrl(markdownContent) {
     if (!markdownContent || typeof markdownContent !== "string") {
@@ -148,7 +150,7 @@ export default function BlogPage({ blog }) {
                                 day: "numeric",
                                 year: "numeric",
                             })}
-                            <span>・ 1 min read</span>
+                            <span>・ {readingTime(blog.description).minutes} min read</span>
                         </h5>
                     </div>
 

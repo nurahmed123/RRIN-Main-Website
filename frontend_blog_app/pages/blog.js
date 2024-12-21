@@ -115,7 +115,7 @@ export default function Blog({ blogs }) {
                                             <Link href={`/blog/${blog.slug}`}>
                                                 <h3>{blog.title}</h3>
                                             </Link>
-                                            <p>{blog.metadescription}</p>
+                                            <p>{blog.metadescription.slice(0, 100)}{blog.metadescription.length > 100 && " ..."}</p>
                                             <div className="blogauthor flex gap-1">
                                                 <div className="blogaimg">
                                                     <img src={LogoImage} alt="author" />
