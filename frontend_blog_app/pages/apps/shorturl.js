@@ -194,7 +194,6 @@ const ShortURL = () => {
     // Handle URL click (open in a new tab and copy to clipboard)
     const handleUrlClick = async (shortUrl) => {
         window.open(shortUrl, "_blank");
-
         try {
             await navigator.clipboard.writeText(shortUrl);
             const Toast = Swal.mixin({
@@ -215,6 +214,7 @@ const ShortURL = () => {
         } catch (error) {
             Swal.fire("Error", "Failed to copy URL. Please copy it manually.", "error");
         }
+        router.push("/apps/shorturl")
     };
 
     // Handle manual copy
