@@ -67,23 +67,47 @@ const ShortURL = () => {
 
     // Handle URL shortening
     const handleShorten = async () => {
-        if (!longUrl) {
-            alert("Please enter a valid URL");
+        // Function to validate if the input is a valid URL
+        const isValidUrl = (url) => {
+            try {
+                const parsedUrl = new URL(url); // Use URL constructor to validate
+                return parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:";
+            } catch (err) {
+                return false;
+            }
+        };
+    
+        if (!longUrl || !isValidUrl(longUrl)) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Please enter a valid URL starting with http:// or https://",
+            });
             return;
         }
-
+    
         // If no username is available, prompt the user to log in
-        if (username === undefined || username === null || username === "") {
+        if (!username) {
             const confirm = await Swal.fire({
                 title: "Are you sure?",
-                text: "Login, otherwise your link will expire in 30 minutes.",
+                text: "Login, otherwise your link will expire in 30 days.",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, continue",
             });
-
+    
             if (confirm.isConfirmed) {
                 // Only call createShortUrl if the user has confirmed
                 await createShortUrl(longUrl); // Create short URL without username
@@ -93,6 +117,7 @@ const ShortURL = () => {
             await createShortUrl(longUrl, username); // Create short URL with username
         }
     };
+    
 
     // Function to handle the URL shortening logic
     const createShortUrl = async (url, username) => {
@@ -294,7 +319,7 @@ const ShortURL = () => {
                             type="text"
                             value={longUrl}
                             onChange={(e) => setLongUrl(e.target.value)}
-                            className="flex-1 px-4 py-2 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
+                            className="flex-1 dark:bg-[#2d3748] px-4 py-2 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300 ease-in-out transform hover:scale-105"
                             placeholder="Enter Long URL"
                         />
                         <button

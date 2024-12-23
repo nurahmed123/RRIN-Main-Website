@@ -38,11 +38,11 @@ export default async function handle(req, res) {
                 }
 
                 if (username) {
-                    const entries = await Url_Shortner.find({ username }).sort({ createdAt: -1 });
+                    const entries = await Url_Shortner.find({ username }).sort({ createdAt: 1 });
                     return res.status(200).json(entries);
                 }
 
-                const allEntries = await Url_Shortner.find().sort({ createdAt: -1 });
+                const allEntries = await Url_Shortner.find().sort({ createdAt: 1 });
                 return res.status(200).json(allEntries);
             }
 
