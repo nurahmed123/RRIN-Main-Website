@@ -107,6 +107,8 @@ export default function Sendsms({
             const response = await axios.post(
                 `${payload.url}?api_key=${payload.apiKey}&type=text&number=${payload.number}&senderid=${payload.senderid}&message=${payload.message}`
             );
+
+            console.log("Response:", response);
             toast.success("Message Sent Successfully!");
             router.push("/sendsms");
         } catch (error) {
