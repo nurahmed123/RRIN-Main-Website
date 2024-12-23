@@ -132,7 +132,43 @@ export default function Header() {
                         <li><Link className={activeLink === '/blog' ? '!text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                         <li><Link className={activeLink === '/project' ? '!text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                         <li><Link className={activeLink === '/achievement' ? '!text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
-                        <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Apps</Link></li>
+                        {/* <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Apps</Link></li> */}
+                        <li className='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
+                            <a href='javascript:void(0)'
+                                className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>Apps<svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" className="dark:text-gray-200 ml-1 inline-block"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z"
+                                        data-name="16" data-original="#000000" />
+                                </svg>
+                            </a>
+                            <ul
+    className='absolute top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
+    <li>
+        <Link
+            href='/apps/shorturl'
+            className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex items-center'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
+                <path d="M17 3H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4zM7 5h10a2 2 0 0 1 2 2v2H5V7a2 2 0 0 1 2-2zm10 14H7a2 2 0 0 1-2-2v-6h14v6a2 2 0 0 1-2 2z" />
+            </svg>
+            &nbsp;URL&nbsp;Shortener
+        </Link>
+    </li>
+    <li>
+        <Link
+            href='/privatenote/diary'
+            className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex items-center'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
+                <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
+            </svg>
+            &nbsp;Diary
+        </Link>
+    </li>
+</ul>
+
+
+                        </li>
                         <li className='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
                             <a href='javascript:void(0)'
                                 className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>About<svg

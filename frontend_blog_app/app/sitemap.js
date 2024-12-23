@@ -10,6 +10,7 @@ export default async function sitemap() {
         '/achievement',
         '/members',
         '/contact',
+        '/apps/shorturl'
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString(),
