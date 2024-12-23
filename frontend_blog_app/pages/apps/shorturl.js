@@ -245,7 +245,7 @@ const ShortURL = () => {
         <>
             <Head>
                 {/* Primary Meta Tags */}
-                <title>Robo Superior - URL Shortner</title>
+                <title>Robo Superior - URL Shortener</title>
                 <meta
                     name="description"
                     content="Robo Superior provides powerful tools like a Short URL Generator to enhance your productivity and simplify your online tasks. Discover innovative solutions today!"
@@ -259,7 +259,7 @@ const ShortURL = () => {
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph Meta Tags (For Social Media Sharing) */}
-                <meta property="og:title" content="Robo Superior - URL Shortner" />
+                <meta property="og:title" content="Robo Superior - URL Shortener" />
                 <meta
                     property="og:description"
                     content="Robo Superior provides powerful tools like a Short URL Generator to enhance your productivity and simplify your online tasks. Discover innovative solutions today!"
@@ -270,7 +270,7 @@ const ShortURL = () => {
 
                 {/* Twitter Card Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Robo Superior - URL Shortner" />
+                <meta name="twitter:title" content="Robo Superior - URL Shortener" />
                 <meta
                     name="twitter:description"
                     content="Robo Superior provides powerful tools like a Short URL Generator to enhance your productivity and simplify your online tasks. Discover innovative solutions today!"
