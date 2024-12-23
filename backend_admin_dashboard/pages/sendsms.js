@@ -51,13 +51,13 @@ export default function Sendsms({
             apiKey: process.env.NEXT_PUBLIC_BULK_SMS_BD_NUR_API,
             senderid: process.env.NEXT_PUBLIC_BULK_SMS_BD_NUR_USERID,
             url: process.env.NEXT_PUBLIC_BULK_SMS_BD_NUR_URL,
-            balanceUrl: "http://bulksmsbd.net/api/getBalanceApi",
+            balanceUrl: "https://bulksmsbd.net/api/getBalanceApi",
         },
         [process.env.NEXT_PUBLIC_BULK_SMS_BD_RS_SEC_CODE]: {
             apiKey: process.env.NEXT_PUBLIC_BULK_SMS_BD_RS_API,
             senderid: process.env.NEXT_PUBLIC_BULK_SMS_BD_RS_USERID,
             url: process.env.NEXT_PUBLIC_BULK_SMS_BD_RS_URL,
-            balanceUrl: "http://bulksmsbd.net/api/getBalanceApi",
+            balanceUrl: "https://bulksmsbd.net/api/getBalanceApi",
         },
     };
 
@@ -107,8 +107,6 @@ export default function Sendsms({
             const response = await axios.post(
                 `${payload.url}?api_key=${payload.apiKey}&type=text&number=${payload.number}&senderid=${payload.senderid}&message=${payload.message}`
             );
-
-            console.log("Response:", response);
             toast.success("Message Sent Successfully!");
             router.push("/sendsms");
         } catch (error) {
