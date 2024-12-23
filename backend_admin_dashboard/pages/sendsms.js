@@ -147,7 +147,7 @@ export default function Sendsms({
                             {balance !== null && (
                                 <div className="w-100 flex flex-col flex-left mb-2">
                                     <label>Available Balance:</label>
-                                    <p>{!balance ? "Invalid" : balance} SMS</p>
+                                    <p>{!balance ? "Invalid" : balance} /=</p>
                                 </div>
                             )}
 
