@@ -144,31 +144,30 @@ export default function Header() {
                                 </svg>
                             </a>
                             <ul
-    className='absolute top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
-    <li>
-        <Link
-            href='/apps/shorturl'
-            className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex items-center'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
-                <path d="M17 3H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4zM7 5h10a2 2 0 0 1 2 2v2H5V7a2 2 0 0 1 2-2zm10 14H7a2 2 0 0 1-2-2v-6h14v6a2 2 0 0 1-2 2z" />
-            </svg>
-            &nbsp;URL&nbsp;Shortener
-        </Link>
-    </li>
-    <li>
-        <Link
-            href='/privatenote/diary'
-            className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex items-center'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
-                <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
-            </svg>
-            &nbsp;Diary
-        </Link>
-    </li>
-</ul>
-
-
+                                className='absolute rounded-lg mt-1 top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
+                                <li className="w-full">
+                                    <Link
+                                        href='/apps/shorturl'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
+                                            <path d="M17 3H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4zM7 5h10a2 2 0 0 1 2 2v2H5V7a2 2 0 0 1 2-2zm10 14H7a2 2 0 0 1-2-2v-6h14v6a2 2 0 0 1-2 2z" />
+                                        </svg>
+                                        &nbsp;URL&nbsp;Shortener
+                                    </Link>
+                                </li>
+                                <li className="w-full">
+                                    <Link
+                                        href='/privatenote/diary'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
+                                            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
+                                        </svg>
+                                        &nbsp;Diary
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
+
                         <li className='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
                             <a href='javascript:void(0)'
                                 className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>About<svg
@@ -180,28 +179,24 @@ export default function Header() {
                                 </svg>
                             </a>
                             <ul
-                                className='absolute top-5 max-lg:top-8 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden  group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col'>
-
-                                <Link href='/about'
-                                    className='hover:text-[#007bff] flex hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] '>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block" viewBox="0 0 24 24">
+                                className='absolute rounded-lg mt-1 top-5 max-lg:top-8 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden  group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col'>
+                                <Link href='/about' className='hover:text-[#007bff] flex hover:fill-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
                                         <path d="M13 11h-2V9h2v2zm0 4h-2v-3h2v3zm-1-12C7.163 3 3 7.163 3 12s4.163 9 9 9 9-4.163 9-9-4.163-9-9-9zm0 16c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z" />
                                     </svg>
-
                                     &nbsp;About&nbsp;Us
                                 </Link>
 
-                                <li className='border-b'>
-                                    <Link href='/members'
-                                        className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] flex'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block"
-                                            viewBox="0 0 24 24">
+                                <li className=''>
+                                    <Link href='/members' className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
                                             <path d="M12 12c2.485 0 4.5-1.635 4.5-3.5S14.485 5 12 5 7.5 6.635 7.5 8.5 9.515 12 12 12zM12 13.5c-2.5 0-7.5 1.25-7.5 3.75v3h15v-3c0-2.5-5-3.75-7.5-3.75z" />
                                         </svg>
                                         &nbsp;Members
                                     </Link>
                                 </li>
                             </ul>
+
                         </li>
                         <li><Link className={activeLink === '/contact' ? '!text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
 
