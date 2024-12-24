@@ -14,6 +14,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import axios from "axios";
 import * as XLSX from 'xlsx';
 import Datepicker from "react-tailwindcss-datepicker";
+import Swal from "sweetalert2";
 
 export default function userDiary() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,10 +52,6 @@ export default function userDiary() {
         onOpen();
     };
 
-    // Fetch all blogs on component load
-    const { alldata, loading } = useFetchData(`/api/diary?userid=${author}`);
-    let allNotes = alldata;
-
     useEffect(() => {
         const checkUser = () => {
             try {
@@ -65,7 +62,7 @@ export default function userDiary() {
                     setUsername(JWTData.data.username); // Set author from JWT
                     setUser(JWTData.data); // Set user data if needed
                 } else {
-                    router.push('/login'); // Redirect if no token is found
+                    // router.push('/login'); // Redirect if no token is found
                 }
             } catch (err) {
                 console.error(err);
@@ -74,6 +71,29 @@ export default function userDiary() {
         };
         checkUser();
     }, [router]);
+
+    const sendAlert = (icon, title) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: icon,
+            title: title,
+        });
+    }
+
+    // Fetch all blogs on component load
+    const { alldata, loading } = useFetchData(username ? `/api/diary?userid=${author}` : {});
+    let allNotes = alldata;
+
 
     function closeReset() {
         setOption('');
@@ -207,8 +227,6 @@ export default function userDiary() {
     }, [filteredBlogs]);
 
 
-
-
     // Calculate total number of filtered blogs
     const totalFilteredBlogs = filteredBlogs.length;
     // Calculate the currently displayed blogs with pagination logic
@@ -238,80 +256,135 @@ export default function userDiary() {
 
     // Function to export data to an Excel file
     const exportToExcel = (data, fileName = 'data.xlsx') => {
-        const filteredData = filterExportData(data);
-        const worksheet = XLSX.utils.json_to_sheet(filteredData);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-        XLSX.writeFile(workbook, fileName);
+        if (username) {
+            if (data.length >= 1) {
+                const filteredData = filterExportData(data);
+                const worksheet = XLSX.utils.json_to_sheet(filteredData);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+                XLSX.writeFile(workbook, fileName);
+                sendAlert('success', 'Data exported successfully!');
+            } else {
+                sendAlert('error', 'No data to export!');
+            }
+        } else {
+            sendAlert('error', 'Please login to export data!');
+        }
     };
 
     async function createProduct(ev) {
         ev.preventDefault();
-        setWaiting(true);
-
         const data = { userid: author, username, transactionType, reason, note, cost };
-
-        try {
-            if (editingNoteId) {
-                await axios.put('/api/diary', { ...data, _id: editingNoteId });
-                toast.success('Data Updated!');
-                onClose();
-                setEditingNoteId(null); // Reset editing note ID
-                router.push("/a");
-            } else {
-                await axios.post('/api/diary', data);
-                toast.success('Product Created!');
-                onClose();
-                router.push("/a");
+        if (username && author) {
+            setWaiting(true);
+            try {
+                if (editingNoteId) {
+                    await axios.put('/api/diary', { ...data, _id: editingNoteId });
+                    sendAlert('success', 'Note Updated!');
+                    onClose();
+                    setEditingNoteId(null); // Reset editing note ID
+                    router.push("/a");
+                } else {
+                    await axios.post('/api/diary', data);
+                    sendAlert('success', 'Note Created!');
+                    onClose();
+                    router.push("/a");
+                }
+            } catch (err) {
+                console.error(err);
+                toast.error(err.response?.data?.message || 'An error occurred!');
+            } finally {
+                setWaiting(false);
             }
-        } catch (err) {
-            console.error(err);
-            toast.error(err.response?.data?.message || 'An error occurred!');
-        } finally {
-            setWaiting(false);
+        } else {
+            sendAlert('error', 'Please login to create a note!');
         }
     }
-
     function editNote(id) {
         setEditingNoteId(id);
         handleOpen('opaque');
     }
 
-    if (user.value === null) {
-        return null; // Prevent rendering if user data is not yet available
-    }
-
-
-
+    // if (user.value === null) {
+    //     return null; // Prevent rendering if user data is not yet available
+    // }
 
     return (
         <>
             <Head>
-                <title>Private Diary | RoboSuperior</title>
+                {/* Primary Metadata */}
+                <title>Private Diary - Secure Notes & Expense Tracker | RoboSuperior</title>
                 <meta
                     name="description"
-                    content="Private Diary helps you securely store your personal notes and keep track of your monthly expenses. Manage your diary entries, monitor your spending habits, and preserve your memories safely."
+                    content="Private Diary: A secure app to store personal notes, track expenses, and manage budgets. Keep your memories and financial records safe and accessible."
                 />
                 <meta
                     name="keywords"
-                    content="private diary, personal notes, expense tracker, monthly budget, secure diary, note-taking, spending tracker"
+                    content="secure diary, personal notes app, expense tracker, monthly budgeting, private notes, spending tracker, memory storage, RoboSuperior diary, secure notes and budgeting"
                 />
-                <meta name="author" content="Private Diary" />
-                <meta property="og:title" content="Private Diary | Secure Your Personal Notes & Expenses" />
+                <meta name="author" content="RoboSuperior" />
+                <link rel="canonical" href="https://robosuperior.com" />
+
+                {/* Open Graph Metadata (Social Sharing) */}
+                <meta property="og:title" content="Private Diary - Secure Notes & Expense Tracker" />
                 <meta
                     property="og:description"
-                    content="Record your personal notes, track your monthly expenses, and manage your spending with ease using Private Diary. Your data is securely stored and always accessible."
+                    content="Securely store your personal notes and track expenses with Private Diary. Manage your memories and finances in one app with peace of mind."
                 />
-                <meta property="og:image" content={appLogoUrl} />
+                <meta property="og:image" content={`https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/f39d4062-8da7-4198-9168-1977f5ceecd8.jpeg`} />
                 <meta property="og:url" content="https://robosuperior.com" />
                 <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="Private Diary by RoboSuperior" />
+
+                {/* Twitter Card Metadata */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Private Diary | RoboSuperior" />
+                <meta name="twitter:title" content="Private Diary - Secure Notes & Expense Tracker" />
                 <meta
                     name="twitter:description"
-                    content="Keep your notes private and your expenses tracked with Private Diary. An intuitive app designed to secure your memories and budget information."
+                    content="Private Diary helps you track expenses, store personal notes securely, and manage your finances with ease. A must-have app for privacy-conscious users."
                 />
-                <meta name="twitter:image" content={appLogoUrl} />
+                <meta name="twitter:image" content={`https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/f39d4062-8da7-4198-9168-1977f5ceecd8.jpeg`} />
+                <meta name="twitter:site" content="@RoboSuperior" />
+                <meta name="twitter:creator" content="@RoboSuperior" />
+
+                {/* Robots and Crawling */}
+                <meta name="robots" content="index, follow" />
+                <meta name="googlebot" content="index, follow" />
+
+                {/* Language and Locale */}
+                <meta httpEquiv="Content-Language" content="en" />
+                <meta name="language" content="English" />
+
+                {/* Apple Touch Icon */}
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+                {/* Structured Data (JSON-LD) */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebApplication",
+                        "name": "Private Diary",
+                        "url": "https://robosuperior.com",
+                        "description":
+                            "Private Diary helps you securely store personal notes, track monthly expenses, and manage your budget effectively.",
+                        "applicationCategory": "FinanceApplication",
+                        "operatingSystem": "iOS, Android, Web",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "RoboSuperior",
+                            "url": "https://robosuperior.com",
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0.00",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock",
+                        },
+                        "image": appLogoUrl,
+                    })}
+                </script>
+                {/* Viewport for Mobile Optimization */}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
             </Head>
             <Modal
                 className="dark:!bg-[#1a202c] !shadow-xl"
@@ -581,7 +654,7 @@ export default function userDiary() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {loading ? (
+                                {username && loading ? (
                                     <tr>
                                         <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">Loading...</td>
                                     </tr>
@@ -590,7 +663,17 @@ export default function userDiary() {
                                         {currentBlogs.length === 0 ? (
                                             <tr>
                                                 <td colSpan="7" className="text-center py-4 dark:bg-[#2d3748] dark:text-gray-100">
-                                                    Nothing.... Create Note
+                                                    {username ? (
+                                                        "No notes found.... Create Note"
+                                                    ) : (
+                                                        <>
+                                                            Please{" "}
+                                                            <Link href="/login">
+                                                                <span className="font-mono hover:underline">login</span>
+                                                            </Link>{" "}
+                                                            to view your notes...
+                                                        </>
+                                                    )}
                                                 </td>
                                             </tr>
                                         ) : (
