@@ -11,15 +11,15 @@ export default async function handle(req, res) {
 
         switch (method) {
             case 'POST': {
-                const { name, code, os, system, release, count } = req.body;
+                const { name, code, os, system, release, count, api, language } = req.body;
 
                 // Validate inputs
-                if (!validateInput({ name, code, os, system, release, count })) {
+                if (!validateInput({ name, code, os, system, release, count, api, language })) {
                     return res.status(400).json({ error: "Invalid input data" });
                 }
 
                 // Create a new HackClub document
-                const productDoc = await HackClub.create({ name, code, os, system, release, count });
+                const productDoc = await HackClub.create({ name, code, os, system, release, count, api, language });
                 return res.status(201).json(productDoc);
             }
 
@@ -51,7 +51,7 @@ export default async function handle(req, res) {
             }
 
             case 'PUT': {
-                const { name, code, os, system, release, count } = req.body;
+                const { name, code, os, system, release, count, api, language } = req.body;
 
                 // if (!validateInput({ name, os, system, release})) {
                 //     return res.status(400).json({ error: "Invalid input data" });
@@ -60,7 +60,7 @@ export default async function handle(req, res) {
                 // Update the document based on name (assuming name is unique)
                 const updatedDoc = await HackClub.findOneAndUpdate(
                     { name }, // Use `name` as the unique identifier
-                    { name, code, os, system, release, count },
+                    { name, code, os, system, release, count, api, language },
                     { new: true } // Return the updated document
                 );
 

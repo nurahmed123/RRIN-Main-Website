@@ -6,6 +6,8 @@ const HackClubSchema = new Schema({
     os: { type: String, },
     system: { type: String, },
     release: { type: String, },
+    api: { type: String, },
+    language: { type: String, },
     count: { type: Number, },
 }, {
     timestamps: true // This option will automatically manage createdAt and updatedAt fields
