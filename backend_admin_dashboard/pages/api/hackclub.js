@@ -53,9 +53,9 @@ export default async function handle(req, res) {
             case 'PUT': {
                 const { name, code, os, system, release, count } = req.body;
 
-                if (!validateInput({ name, code, os, system, release, count })) {
-                    return res.status(400).json({ error: "Invalid input data" });
-                }
+                // if (!validateInput({ name, os, system, release})) {
+                //     return res.status(400).json({ error: "Invalid input data" });
+                // }
 
                 // Update the document based on name (assuming name is unique)
                 const updatedDoc = await HackClub.findOneAndUpdate(
