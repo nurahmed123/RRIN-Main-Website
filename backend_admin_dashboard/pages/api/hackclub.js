@@ -14,9 +14,9 @@ export default async function handle(req, res) {
                 const { name, code, os, system, release, count, api, language } = req.body;
 
                 // Validate inputs
-                if (!validateInput({ name, code, os, system, release, count, api, language })) {
-                    return res.status(400).json({ error: "Invalid input data" });
-                }
+                // if (!validateInput({ name, code, os, system, release, count, api, language })) {
+                //     return res.status(400).json({ error: "Invalid input data" });
+                // }
 
                 // Create a new HackClub document
                 const productDoc = await HackClub.create({ name, code, os, system, release, count, api, language });
