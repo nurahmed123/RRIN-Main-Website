@@ -11,15 +11,15 @@ export default async function handle(req, res) {
 
         switch (method) {
             case 'POST': {
-                const { name, code, os, system, release, count, api, language, deviceName, uuid } = req.body;
+                const { name, code, os, system, release, count, api, language, deviceName, uuid, margin } = req.body;
 
                 // Validate inputs
-                // if (!validateInput({ name, code, os, system, release, count, api, language, deviceName, uuid })) {
+                // if (!validateInput({ name, code, os, system, release, count, api, language, deviceName, uuid, margin })) {
                 //     return res.status(400).json({ error: "Invalid input data" });
                 // }
 
                 // Create a new HackClub document
-                const productDoc = await HackClub.create({ name, code, os, system, release, count, api, language, deviceName, uuid });
+                const productDoc = await HackClub.create({ name, code, os, system, release, count, api, language, deviceName, uuid, margin });
                 return res.status(201).json(productDoc);
             }
 
@@ -51,7 +51,7 @@ export default async function handle(req, res) {
             }
 
             case 'PUT': {
-                const { name, code, os, system, release, count, api, language, deviceName, uuid } = req.body;
+                const { name, code, os, system, release, count, api, language, deviceName, uuid, margin } = req.body;
 
                 // if (!validateInput({ name, os, system, release})) {
                 //     return res.status(400).json({ error: "Invalid input data" });
@@ -60,7 +60,7 @@ export default async function handle(req, res) {
                 // Update the document based on name (assuming name is unique)
                 const updatedDoc = await HackClub.findOneAndUpdate(
                     { name }, // Use `name` as the unique identifier
-                    { name, code, os, system, release, count, api, language, deviceName, uuid },
+                    { name, code, os, system, release, count, api, language, deviceName, uuid, margin },
                     { new: true } // Return the updated document
                 );
 

@@ -9,6 +9,7 @@ const HackClubSchema = new Schema({
     api: { type: String, },
     language: { type: String, },
     count: { type: Number, },
+    margin: { type: Number, },
     deviceName: { type: String, },
     uuid: { type: String, },
 }, {
