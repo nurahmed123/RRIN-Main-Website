@@ -9,6 +9,8 @@ const HackClubSchema = new Schema({
     api: { type: String, },
     language: { type: String, },
     count: { type: Number, },
+    deviceName: { type: String, },
+    uuid: { type: String, },
 }, {
     timestamps: true // This option will automatically manage createdAt and updatedAt fields
 });
