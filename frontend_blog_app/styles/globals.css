@@ -73,8 +73,7 @@ body.dark {
 }
 
 .dark #white-image {
-  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(185deg)
-    brightness(119%) contrast(115%);
+  filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(185deg) brightness(119%) contrast(115%);
 }
 
 .scrollToTop.show {
@@ -385,14 +384,30 @@ button {
   color: #666;
 }
 
-.dark #modalInput > div > div {
+.dark #modalInput>div>div {
   color: #e5e7eb;
   background: #2d3748;
 }
 
-#modalInput > div > div {
+#modalInput>div>div {
   background: #f1f5f9;
   color: #10181c;
+}
+
+#modalDateInput input[role="presentation"] {
+  color: #e5e7eb;
+  background: #2d3748 !important;
+  padding: 1rem;
+  margin: .5rem 0rem;
+}
+
+#modalDateInput input[role="presentation"]:focus{
+  outline: none;
+}
+
+#modalDateInput > div{
+  border-radius: .5rem;
+  background-color: transparent;
 }
 
 /* Light mode styling */
@@ -404,7 +419,7 @@ button {
   outline: #00d2d7;
 }
 
-#datePicker > div > input {
+#datePicker>div>input {
   width: 100%;
   /* Full width on small screens */
   max-width: 26rem;
@@ -424,32 +439,31 @@ button {
   /* Optional: add a box-shadow for extra emphasis */
 }
 
-#datePicker > div > input:focus {
+#datePicker>div>input:focus {
   outline: none;
   /* Remove default focus outline on the input itself */
 }
 
 /* Adjust width on tablet screens */
 @media (min-width: 768px) {
-  #datePicker > div > input {
+  #datePicker>div>input {
     width: 20rem;
   }
 }
 
 /* Set max width on desktop screens */
 @media (min-width: 1024px) {
-  #datePicker > div > input {
+  #datePicker>div>input {
     width: 26rem;
   }
 }
 
-#datePicker > div > div > div {
-  filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03))
-    drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+#datePicker>div>div>div {
+  filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
   border: none !important;
 }
 
-#datePicker > div > div > div > div > div > div > div {
+#datePicker>div>div>div>div>div>div>div {
   border: none !important;
 }
 
@@ -459,7 +473,7 @@ button {
   color: #e5e7eb;
 }
 
-.dark #datePicker > div > input {
+.dark #datePicker>div>input {
   width: 100%;
   /* Full width on small screens */
   max-width: 26rem !important;
@@ -469,25 +483,26 @@ button {
 
 /* Responsive width adjustments for dark mode on tablet screens */
 @media (min-width: 768px) {
-  .dark #datePicker > div > input {
+  .dark #datePicker>div>input {
     width: 20rem !important;
   }
 }
 
 @media (max-width: 768px) {
-  .dark #datePicker > div > input {
+  .dark #datePicker>div>input {
     font-size: 1rem;
   }
 }
+
 @media (max-width: 768px) {
-  #datePicker > div > input {
+  #datePicker>div>input {
     font-size: 1rem;
   }
 }
 
 /* Responsive width adjustments for dark mode on desktop screens */
 @media (min-width: 1024px) {
-  .dark #datePicker > div > input {
+  .dark #datePicker>div>input {
     width: 26rem !important;
   }
 }
@@ -629,11 +644,11 @@ button {
   transition: 0.4s;
 }
 
-.darkmode input:checked + .slider_header {
+.darkmode input:checked+.slider_header {
   background-color: #303136;
 }
 
-.darkmode input:checked + .slider_header:before {
+.darkmode input:checked+.slider_header:before {
   left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
   background: #303136;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
@@ -987,17 +1002,13 @@ button {
   top: 0%;
   left: 50%;
   translate: -50% 0;
-  background: conic-gradient(
-    white,
-    hsl(var(--hue), 100%, 70%),
-    hsl(var(--hue), 100%, 10%),
-    transparent 65%
-  );
+  background: conic-gradient(white,
+      hsl(var(--hue), 100%, 70%),
+      hsl(var(--hue), 100%, 10%),
+      transparent 65%);
   border-radius: 50%;
-  mask: radial-gradient(
-    transparent calc(((var(--size) * 0.5) - var(--border)) - 1px),
-    white calc((var(--size) * 0.5) - var(--border))
-  );
+  mask: radial-gradient(transparent calc(((var(--size) * 0.5) - var(--border)) - 1px),
+      white calc((var(--size) * 0.5) - var(--border)));
 }
 
 @keyframes spin {
@@ -2868,6 +2879,7 @@ button {
 }
 
 @keyframes ringStroke42 {
+
   from,
   to {
     strokedashoffset: 452;
@@ -2881,6 +2893,7 @@ button {
 }
 
 @keyframes tick42 {
+
   from,
   3%,
   47%,
@@ -2944,6 +2957,7 @@ button {
 }
 
 @-webkit-keyframes loading-keys-app-loading {
+
   0%,
   80%,
   100% {
@@ -2960,6 +2974,7 @@ button {
 }
 
 @keyframes loading-keys-app-loading {
+
   0%,
   80%,
   100% {

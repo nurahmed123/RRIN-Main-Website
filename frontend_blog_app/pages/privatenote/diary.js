@@ -15,6 +15,7 @@ import axios from "axios";
 import * as XLSX from 'xlsx';
 import Datepicker from "react-tailwindcss-datepicker";
 import Swal from "sweetalert2";
+import { formatISO, format } from 'date-fns';
 
 export default function userDiary() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,6 +46,12 @@ export default function userDiary() {
     const [date, setDate] = useState({
         startDate: null,
         endDate: null
+    });
+
+
+    const [createdDate, setCreatedDate] = useState({
+        startDate: new Date(),
+        endDate: new Date()
     });
 
     const handleOpen = (backdrop) => {
@@ -113,6 +120,10 @@ export default function userDiary() {
                 setTransactionType(noteToEdit.transactionType || '');
                 setReason(noteToEdit.reason || '');
                 setCost(noteToEdit.cost || '');
+                setCreatedDate({
+                    startDate: new Date(noteToEdit.createdAt),
+                    endDate: new Date(noteToEdit.createdAt)
+                });
             }
         } else {
             setNote('');
@@ -274,7 +285,9 @@ export default function userDiary() {
 
     async function createProduct(ev) {
         ev.preventDefault();
-        const data = { userid: author, username, transactionType, reason, note, cost };
+        let formatedDate = formatISO(new Date(createdDate.endDate), { representation: 'complete' })
+
+        const data = { userid: author, username, transactionType, reason, note, cost, createdAt: formatedDate };
         if (username && author) {
             setWaiting(true);
             try {
@@ -394,7 +407,7 @@ export default function userDiary() {
                 isOpen={isOpen}
                 onClose={closeReset}
             >
-                <ModalContent className="rounded-lg shadow-lg bg-white dark:bg-[#1c1c1e]">
+                <ModalContent className="rounded-lg overflow-y-auto shadow-lg bg-white dark:bg-[#1c1c1e]">
                     {(onClose) => (
                         <>
                             <ModalHeader className="flex flex-col gap-1">
@@ -435,6 +448,18 @@ export default function userDiary() {
                                             {!note && (
                                                 <p className="text-sm text-teal-500 opacity-90 mt-1">Please fill out this field.</p>
                                             )}
+                                            <div className="mt-2" id="modalDateInput">
+                                                <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                                                    Created At
+                                                </label>
+                                                <Datepicker
+                                                    useRange={false}
+                                                    asSingle={true}
+                                                    primaryColor={"violet"}
+                                                    value={createdDate}
+                                                    onChange={newValue => setCreatedDate(newValue)}
+                                                />
+                                            </div>
                                         </div>
                                     )}
 
@@ -498,6 +523,19 @@ export default function userDiary() {
                                                 {!transactionType && (
                                                     <p className="text-sm text-teal-500 opacity-90 mt-1">Please select an option.</p>
                                                 )}
+                                                <div id="modalDateInput">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                                                        Created At
+                                                    </label>
+                                                    <Datepicker
+                                                        useRange={false}
+                                                        asSingle={true}
+                                                        primaryColor={"violet"}
+                                                        value={createdDate}
+                                                        onChange={newValue => setCreatedDate(newValue)}
+                                                    />
+                                                </div>
+
                                             </div>
                                         </>
                                     )}
@@ -701,13 +739,13 @@ export default function userDiary() {
                                                                 <span
                                                                     onClick={() =>
                                                                         setDate({
-                                                                            startDate: blog.createdAt.split('T')[0],
-                                                                            endDate: blog.createdAt.split('T')[0],
+                                                                            startDate: format(blog.createdAt, 'yyyy-MM-dd'),
+                                                                            endDate: format(blog.createdAt, 'yyyy-MM-dd'),
                                                                         })
                                                                     }
                                                                     className="sm:inline-block sm:relative sm:top-0 sm:right-0 sm:translate-x-0 sm:translate-y-0 sm:mt-0 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a202c] py-1 px-3 text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-200 shadow-lg cursor-pointer transition duration-200 hover:bg-indigo-50 dark:hover:bg-[#1c2b48]"
                                                                 >
-                                                                    {blog.createdAt.split('T')[0]}
+                                                                    {format(blog.createdAt, 'EEE MMM dd yyyy')}
                                                                 </span>
                                                             </div>
                                                         </td>

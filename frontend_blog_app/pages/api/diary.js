@@ -10,17 +10,21 @@ export default async function handle(req, res) {
 
 
     if (method === 'POST') {
-        const { userid, username, transactionType, reason, note, cost } = req.body;
-        // console.log(author)
-        // console.log(title)
-        // console.log(description)
+        const { userid, username, transactionType, reason, note, cost, createdAt } = req.body;
 
         const productDoc = await Diary.create({
-            userid, username, transactionType, reason, note, cost
-        })
+            userid,
+            username,
+            transactionType,
+            reason,
+            note,
+            cost,
+            createdAt: createdAt || new Date(), // Use the provided createdAt or default to current time
+        });
 
-        res.json(productDoc)
+        res.json(productDoc);
     }
+
 
     if (method === 'GET') {
         if (req.query?.id) {
@@ -36,13 +40,24 @@ export default async function handle(req, res) {
 
 
     if (method === 'PUT') {
-        const { _id, userid, username, transactionType, reason, note, cost } = req.body;
-        await Diary.updateOne({ _id }, {
-            userid, username, transactionType, reason, note, cost
-        });
+        const { _id, userid, username, transactionType, reason, note, cost, createdAt } = req.body;
+
+        await Diary.updateOne(
+            { _id },
+            {
+                userid,
+                username,
+                transactionType,
+                reason,
+                note,
+                cost,
+                createdAt, // Update createdAt if provided
+            }
+        );
 
         res.json(true);
     }
+
 
     if (method === 'DELETE') {
         if (req.query?.id) {
