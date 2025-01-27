@@ -389,25 +389,58 @@ button {
   background: #2d3748;
 }
 
-#modalInput>div>div {
-  background: #f1f5f9;
-  color: #10181c;
-}
-
+/* Input field styles inside #modalDateInput */
 #modalDateInput input[role="presentation"] {
-  color: #e5e7eb;
-  background: #2d3748 !important;
   padding: 1rem;
-  margin: .5rem 0rem;
+  border: 1px solid #d1d5db;
+  transition: color 0.3s ease, background 0.3s ease;
 }
 
-#modalDateInput input[role="presentation"]:focus{
-  outline: none;
+/* Light mode input field */
+#modalDateInput input[role="presentation"] {
+  color: #71717a;
+  background: #f1f5f9;
 }
 
-#modalDateInput > div{
-  border-radius: .5rem;
-  background-color: transparent;
+/* Dark mode input field */
+.dark #modalDateInput input[role="presentation"] {
+  color: #e5e7eb;
+  background: #2d3748;
+}
+
+/* Nested div styles inside #modalDateInput */
+#modalDateInput div div {
+  color: #6b7280;
+  border: none;
+}
+
+/* Light mode nested div background */
+#modalDateInput div div div {
+  background-color: #f1f5f9;
+  color: inherit;
+  /* Inherits parent color for consistency */
+}
+
+/* Dark mode nested div background */
+.dark #modalDateInput div div div {
+  background-color: #2d3748;
+  color: #e5e7eb;
+}
+
+/* Special styled element with multiple classes */
+.mt-2\.5.shadow-sm.border.border-gray-300.px-1.py-0\.5.bg-white.dark\:bg-slate-800.dark\:text-white.dark\:border-slate-600.rounded-lg {
+  margin-bottom: 1rem;
+
+  /* Box-shadow settings */
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+
+  /* Color settings */
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 /* Light mode styling */
@@ -465,6 +498,7 @@ button {
 
 #datePicker>div>div>div>div>div>div>div {
   border: none !important;
+  color: #6b7280;
 }
 
 /* Dark mode styling */

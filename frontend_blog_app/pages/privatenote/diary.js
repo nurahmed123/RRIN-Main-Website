@@ -524,7 +524,7 @@ export default function userDiary() {
                                                     <p className="text-sm text-teal-500 opacity-90 mt-1">Please select an option.</p>
                                                 )}
                                                 <div id="modalDateInput">
-                                                    <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300">
+                                                    <label className="block inset-shadow-indigo-500 text-sm font-medium text-gray-700 mt-2 mb-1 dark:text-gray-300">
                                                         Created At
                                                     </label>
                                                     <Datepicker
