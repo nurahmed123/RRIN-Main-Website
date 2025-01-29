@@ -22,10 +22,26 @@ const Advisor = () => {
             image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
         },
     ];
+    const mentor = [
+        {
+            testimonial: "Empowering the community through science and innovation is not just a passion; it’s a commitment to building a brighter future for all.",
+            name: "SALMAN PROMON",
+            title: "Founder, Mechamind | Lecturer, Independent University, Bangladesh",
+            image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
+        },
+    ];
 
     return (
         <section id="testimonials" aria-label="What our customers are saying" className="py-20 sm:py-32">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Mentors</h2>
+                </div>
+                <div data-aos="fade-up" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center mx-auto">
+                    {mentor.map((mentor, index) => (
+                        <TestimonialCard key={index} {...mentor} />
+                    ))}
+                </div>
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Advisors</h2>
                 </div>
