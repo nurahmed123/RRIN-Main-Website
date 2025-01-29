@@ -37,7 +37,7 @@ const Advisor = () => {
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Mentors</h2>
                 </div>
-                <div data-aos="fade-up" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center mx-auto">
+                <div data-aos="fade-up" className="grid mb-4 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center mx-auto">
                     {mentor.map((mentor, index) => (
                         <TestimonialCard key={index} {...mentor} />
                     ))}
