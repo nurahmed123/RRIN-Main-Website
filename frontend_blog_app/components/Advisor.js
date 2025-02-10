@@ -24,11 +24,12 @@ const Advisor = () => {
     ];
     const mentor = [
         {
-            testimonial: "Empowering the community through science and innovation is not just a passion; it’s a commitment to building a brighter future for all.",
-            name: "SALMAN PROMON",
-            title: "Founder, Mechamind | Lecturer, Independent University, Bangladesh",
-            image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
+            testimonial: "In every line of code, there lies the potential to change the world; my journey in tech is a testament to that.",
+            name: "MD SABBIR AL SHAFI",
+            title: "BSc in CSE | Varendra University, Bangladesh",
+            image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/39176093-a0f4-4823-87c1-772cb5341a8c.png"
         },
+       
     ];
 
     return (
