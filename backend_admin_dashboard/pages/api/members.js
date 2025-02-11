@@ -20,12 +20,20 @@ export default async function handle(req, res) {
     }
 
     if (method === 'GET') {
+        const filter = {};
+
         if (req.query?.id) {
-            res.json(await Member.findById(req.query.id));
-        } else {
-            res.json((await Member.find()).reverse())
+            filter._id = req.query.id;
         }
+
+        if (req.query?.status) {
+            filter.status = req.query.status;
+        }
+
+        const members = await Member.find(filter).sort({ _id: -1 }); // Reverse sorting
+        res.json(members);
     }
+
 
 
     if (method === 'PUT') {

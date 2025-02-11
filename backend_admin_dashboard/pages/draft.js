@@ -29,7 +29,7 @@ export default function Draft() {
     // Pagination settings
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(4); // Default items per page
-    const { alldata, loading } = useFetchData('/api/blogs');
+    const { alldata, loading } = useFetchData('/api/blogs?status=draft');
 
     // Function to handle page change
     const paginate = (pageNumber) => {

@@ -31,7 +31,7 @@ export default function MemberDraft() {
     // pagination blogs
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(4);
-    const { alldata, loading } = useFetchData('/api/members');
+    const { alldata, loading } = useFetchData('/api/members?status=inactive');
 
     // Function to handle page change
     const paginate = (pageNumber) => {
@@ -44,6 +44,8 @@ export default function MemberDraft() {
 
     // Filtering draft blogs
     const draftblogs = currentblogs.filter(ab => ab.status === "inactive");
+    console.log(draftblogs)
+    console.log(currentblogs)
 
 
     const allblog = alldata.length; // Total number of blogs
