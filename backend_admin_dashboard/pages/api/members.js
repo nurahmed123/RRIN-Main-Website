@@ -19,20 +19,23 @@ export default async function handle(req, res) {
         res.json(productDoc)
     }
 
+    // if (method === 'GET') {
+    //     if (req.query?.id) {
+    //         res.json(await Member.findById(req.query.id));
+    //     } else {
+    //         res.json((await Member.find()).reverse())
+    //     }
+    // }
+
     if (method === 'GET') {
-        const filter = {};
-
-        if (req.query?.id) {
-            filter._id = req.query.id;
-        }
-
-        if (req.query?.status) {
-            filter.status = req.query.status;
-        }
-
-        const members = await Member.find(filter).sort({ _id: -1 }); // Reverse sorting
-        res.json(members);
+        const { id, status } = req.query;
+        const filter = id ? { _id: id } : status ? { status } : {};
+    
+        const result = id ? await Member.findOne(filter) : await Member.find(filter).sort({ _id: -1 });
+    
+        res.json(result || (id ? {} : []));
     }
+    
 
 
 
