@@ -8,20 +8,24 @@ export default async function handle(req, res) {
 
     if (method === 'GET') {
         if (req.query?.id) {
-            // Fetch a single blog by id
-            const members = await Member.findById(req.query.id);
-            res.json(members);
+            // Fetch a single member by id
+            const member = await Member.findById(req.query.id);
+            res.json(member || {});
         } else if (req.query?.role) {
             // Fetch members by role
             const members = await Member.find({ role: req.query.role });
             res.json(members.reverse());
         } else if (req.query?.email) {
-            // Fetch members by role
+            // Fetch members by email
             const members = await Member.find({ tags: req.query.email });
             res.json(members.reverse());
         } else if (req.query?.phone) {
-            // Fetch members by bcategory
+            // Fetch members by phone
             const members = await Member.find({ slug: req.query.phone });
+            res.json(members.reverse());
+        } else if (req.query?.status) {
+            // Fetch members by status
+            const members = await Member.find({ status: req.query.status });
             res.json(members.reverse());
         } else {
             // Fetch all members
