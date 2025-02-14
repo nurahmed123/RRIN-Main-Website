@@ -283,7 +283,8 @@ export default function Header() {
                     <li><Link className={activeLink === '/blog' ? 'text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                     <li><Link className={activeLink === '/project' ? 'text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
-                    <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Apps</Link></li>
+                    <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Add Notes</Link></li>
+                    <li><Link className={activeLink === '/apps/shorturl' ? 'text-[#5485e0]' : ''} href="/apps/shorturl">URL Shortener</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
                     <li><Link className={activeLink === '/members' ? 'text-[#5485e0]' : ''} href="/members">Members</Link></li>
                     <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>

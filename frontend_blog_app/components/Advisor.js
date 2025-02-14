@@ -21,6 +21,7 @@ const Advisor = () => {
             title: "Founder, Mechamind | Lecturer, Independent University, Bangladesh",
             image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
         },
+        
     ];
     const mentor = [
         {
