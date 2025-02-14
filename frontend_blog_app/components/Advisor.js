@@ -24,7 +24,7 @@ const Advisor = () => {
     ];
     const mentor = [
         {
-            testimonial: "In every line of code, there lies the potential to change the world; my journey in tech is a testament to that.",
+            testimonial: "Failure is the opportunity to begin again more intelligently.",
             name: "MEHEDI HASSAN",
             title: "Former Vice President, DUET Robotics Club | BSc in Mechanical Engineering DUET, Bangladesh",
             image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/869e809c-fe74-49e4-98a7-41063d82e114.png"
