@@ -25,31 +25,41 @@ const Advisor = () => {
     const mentor = [
         {
             testimonial: "In every line of code, there lies the potential to change the world; my journey in tech is a testament to that.",
+            name: "MEHEDI HASSAN",
+            title: "Former Vice President, DUET Robotics Club | BSc in Mechanical Engineering DUET, Bangladesh",
+            image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/869e809c-fe74-49e4-98a7-41063d82e114.png"
+        },
+        {
+            testimonial: "In every line of code, there lies the potential to change the world; my journey in tech is a testament to that.",
             name: "MD SABBIR AL SHAFI",
-            title: "BSc in CSE | Varendra University, Bangladesh",
+            title: "BSc in CSE, Varendra University, Bangladesh",
             image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/39176093-a0f4-4823-87c1-772cb5341a8c.png"
         },
-       
+        
     ];
 
     return (
         <section id="testimonials" aria-label="What our customers are saying" className="py-20 sm:py-32">
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Mentors</h2>
                 </div>
-                <div data-aos="fade-up" className="grid mb-4 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center mx-auto">
-                    {mentor.map((mentor, index) => (
-                        <TestimonialCard key={index} {...mentor} />
-                    ))}
+                <div data-aos="fade-up" className="flex justify-center">
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+                        {mentor.map((mentor, index) => (
+                            <TestimonialCard key={index} {...mentor} />
+                        ))}
+                    </div>
                 </div>
-                <div className="text-center mb-12">
+                <div className="text-center mt-20 mb-12">
                     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Advisors</h2>
                 </div>
-                <div data-aos="fade-up" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center mx-auto">
-                    {testimonials.map((testimonial, index) => (
-                        <TestimonialCard key={index} {...testimonial} />
-                    ))}
+                <div data-aos="fade-up" className="flex justify-center">
+                    <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-1">
+                        {testimonials.map((testimonial, index) => (
+                            <TestimonialCard key={index} {...testimonial} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
