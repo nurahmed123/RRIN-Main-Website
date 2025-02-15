@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TestimonialCard = ({ testimonial, name, title, image }) => (
-    <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center space-y-4 transition-transform duration-200 hover:scale-105">
+    <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center space-y-4 transition-transform duration-200 hover:scale-105 max-w-[41rem]">
         <img src={image} alt={name} className="w-16 h-16 rounded-full object-cover" />
         <blockquote className="text-lg tracking-tight text-slate-900 dark:text-gray-300">
             {testimonial}
