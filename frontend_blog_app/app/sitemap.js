@@ -10,7 +10,8 @@ export default async function sitemap() {
         '/achievement',
         '/members',
         '/contact',
-        '/apps/shorturl'
+        '/apps/shorturl',
+        'privatenote/diary',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString(),
@@ -83,12 +84,20 @@ export default async function sitemap() {
         const additionalWebsites = [
             {
                 baseUrl: 'https://code.robosuperior.com',
-                routes: ['/'],
+                routes: ['/login', '/dashboard', '/pricing'],
             },
             {
-                baseUrl: 'https://bitebd.robosuperior.com',
-                routes: ['/', '/login', '/dashboard',],
+                baseUrl: 'https://meet.robosuperior.com',
+                routes: ['/', '/login', '/chats', 'calls'],
             },
+            {
+                baseUrl: 'https:nurahmed.hackclub.app',
+                routes: ['/',],
+            },
+            // {
+            //     baseUrl: 'https://chat.robosuperior.com',
+            //     routes: ['/', '/login', '/chats', 'calls'],
+            // },
         ];
 
         const additionalRoutes = additionalWebsites.flatMap(({ baseUrl, routes }) =>
