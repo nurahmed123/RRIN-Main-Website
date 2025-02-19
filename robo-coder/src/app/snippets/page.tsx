@@ -35,7 +35,8 @@ function SnippetsPage() {
       snippet.language.toLowerCase().includes(searchQuery.toLowerCase()) ||
       snippet.userName.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesLanguage = !selectedLanguage || snippet.language === selectedLanguage;
+    const matchesLanguage =
+      !selectedLanguage || snippet.language === selectedLanguage;
 
     return matchesSearch && matchesLanguage;
   });
@@ -50,8 +51,7 @@ function SnippetsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r
-             from-blue-500/10 to-purple-500/10 text-sm text-gray-400 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-sm text-gray-400 mb-6"
           >
             <BookOpen className="w-4 h-4" />
             Community Code Library
@@ -103,7 +103,9 @@ function SnippetsPage() {
             {popularLanguages.map((lang) => (
               <button
                 key={lang}
-                onClick={() => setSelectedLanguage(lang === selectedLanguage ? null : lang)}
+                onClick={() =>
+                  setSelectedLanguage(lang === selectedLanguage ? null : lang)
+                }
                 className={`
                     group relative px-3 py-1.5 rounded-lg transition-all duration-200
                     ${
@@ -114,7 +116,11 @@ function SnippetsPage() {
                   `}
               >
                 <div className="flex items-center gap-2">
-                  <img src={`/${lang}.png`} alt={lang} className="w-4 h-4 object-contain" />
+                  <img
+                    src={`/${lang}.png`}
+                    alt={lang}
+                    className="w-4 h-4 object-contain"
+                  />
                   <span className="text-sm">{lang}</span>
                 </div>
               </button>
@@ -192,7 +198,9 @@ function SnippetsPage() {
               >
                 <Code className="w-8 h-8 text-gray-400" />
               </div>
-              <h3 className="text-xl font-medium text-white mb-3">No snippets found</h3>
+              <h3 className="text-xl font-medium text-white mb-3">
+                No snippets found
+              </h3>
               <p className="text-gray-400 mb-6">
                 {searchQuery || selectedLanguage
                   ? "Try adjusting your search query or filters"

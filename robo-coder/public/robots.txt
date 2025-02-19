@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://code.robosuperior.com
+
+# Sitemaps
+Sitemap: https://code.robosuperior.com/sitemap.xml

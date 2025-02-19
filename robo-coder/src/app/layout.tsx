@@ -6,6 +6,7 @@ import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -27,11 +28,11 @@ export const metadata: Metadata = {
     title: "Rs-Coder - Online Code Execution & Sharing",
     description:
       "Run, share, and collaborate on code snippets instantly with Rs-Coder.",
-    url: "https://yourwebsite.com",
+    url: "code.robosuperior.com",
     siteName: "Rs-Coder",
     images: [
       {
-        url: "/og-image.png", // Replace with a real image URL
+        url: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png", // Replace with a real image URL
         width: 1200,
         height: 630,
         alt: "Rs-Coder Preview",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     title: "Rs-Coder - Online Code Execution & Sharing",
     description:
       "Run, share, and collaborate on code snippets instantly with Rs-Coder.",
-    images: ["/twitter-image.png"], // Replace with an actual image
+    images: ["/https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png"], // Replace with an actual image
   },
 };
 
