@@ -145,6 +145,27 @@ export default function Header() {
                             </a>
                             <ul
                                 className='absolute rounded-lg mt-1 top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
+                              
+                              <li className="w-full">
+                                    <Link
+                                        href='https://chat.robosuperior.com/'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
+                                            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
+                                        </svg>
+                                        &nbsp;RS Chat
+                                    </Link>
+                                </li>
+                                <li className="w-full">
+                                    <Link
+                                        href='https://meet.robosuperior.com/'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
+                                            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
+                                        </svg>
+                                        &nbsp;RS Meet
+                                    </Link>
+                                </li>
                                 <li className="w-full">
                                     <Link
                                         href='/apps/shorturl'
@@ -283,6 +304,8 @@ export default function Header() {
                     <li><Link className={activeLink === '/blog' ? 'text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                     <li><Link className={activeLink === '/project' ? 'text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
+                    <li><Link className={activeLink === 'https://chat.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://chat.robosuperior.com/">RS Chat</Link></li>
+                    <li><Link className={activeLink === 'https://meet.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://meet.robosuperior.com/">RS Meet</Link></li>
                     <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Add Notes</Link></li>
                     <li><Link className={activeLink === '/apps/shorturl' ? 'text-[#5485e0]' : ''} href="/apps/shorturl">URL Shortener</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
