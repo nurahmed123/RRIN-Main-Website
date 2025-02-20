@@ -94,10 +94,10 @@ export default async function sitemap() {
                 baseUrl: 'https:nurahmed.hackclub.app',
                 routes: ['/',],
             },
-            // {
-            //     baseUrl: 'https://chat.robosuperior.com',
-            //     routes: ['/', '/login', '/chats', 'calls'],
-            // },
+            {
+                baseUrl: 'https://chat.robosuperior.com',
+                routes: ['/', '/login', '/chats', 'calls'],
+            },
         ];
 
         const additionalRoutes = additionalWebsites.flatMap(({ baseUrl, routes }) =>

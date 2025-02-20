@@ -30,7 +30,7 @@ export default function Footer() {
                     <ul>
                         <li><Link href='https://github.com/nurahmed123' target="_blank">Github</Link></li>
                         <li><Link href='https://x.com/robo_superior' target="_blank">Twitter</Link></li>
-                        <li><Link href='https://www.instagram.com/_robo_superior/' target="_blank">Instagram</Link></li>
+                        <li><Link href='https://www.instagram.com/robo__superior/' target="_blank">Instagram</Link></li>
                         <li><Link href='https://www.facebook.com/robosuperior' target="_blank">Facebook</Link></li>
                     </ul>
                 </div>
