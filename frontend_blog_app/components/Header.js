@@ -145,14 +145,44 @@ export default function Header() {
                             </a>
                             <ul
                                 className='absolute rounded-lg mt-1 top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
-                              
+                              <li className="w-full">
+                                    <Link
+                                        href='https://code.robosuperior.com/'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+
+  <rect x="0" y="0" width="20" height="20" rx="2" ry="2" fill="#2D2D2D" />
+  
+  <rect x="1" y="3" width="18" height="1" fill="#333" />
+  <rect x="1" y="6" width="12" height="1" fill="#333" />
+  <rect x="1" y="9" width="16" height="1" fill="#333" />
+  <rect x="1" y="12" width="14" height="1" fill="#333" />
+  
+
+  <line x1="13" y1="6" x2="13" y2="9" stroke="#fff" stroke-width="0.5" />
+  
+  <rect x="0" y="0" width="20" height="2" fill="#1E1E1E" />
+  <circle cx="3" cy="1" r="0.5" fill="#ff5c5c" />
+  <circle cx="6" cy="1" r="0.5" fill="#ffbd4a" />
+  <circle cx="9" cy="1" r="0.5" fill="#4caf50" />
+</svg>
+
+
+                                        &nbsp;RS Code
+                                    </Link>
+                                </li>
                               <li className="w-full">
                                     <Link
                                         href='https://chat.robosuperior.com/'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
-                                            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
-                                        </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <rect x="1" y="1" width="18" height="14" rx="3" ry="3" fill="#e0e0e0" stroke="#c0c0c0" stroke-width="0.5"/>
+  
+  <polygon points="8,14 12,14 10,18" fill="#e0e0e0" stroke="#c0c0c0" stroke-width="0.5"/>
+  
+  <text x="3" y="9" font-family="Arial" font-size="3" fill="#333333"></text>
+</svg>
+
                                         &nbsp;RS Chat
                                     </Link>
                                 </li>
@@ -160,9 +190,16 @@ export default function Header() {
                                     <Link
                                         href='https://meet.robosuperior.com/'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
-                                            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
-                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+
+  <rect x="4" y="6" width="12" height="8" rx="2" fill="#34B7F1"/>
+  <polygon points="16,10 19,7 19,13" fill="#34B7F1"/>
+
+  <circle cx="10" cy="10" r="2" fill="#fff"/>
+
+  <line x1="2" y1="17" x2="18" y2="17" stroke="#34B7F1" stroke-width="1" stroke-linecap="round"/>
+</svg>
+
                                         &nbsp;RS Meet
                                     </Link>
                                 </li>
