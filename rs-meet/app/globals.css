@@ -47,6 +47,7 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+
 .glassmorphism2 {
   background: rgba(18, 17, 17, 0.25);
   backdrop-filter: blur(8px);
@@ -62,6 +63,7 @@
 .cl-logoBox {
   height: 40px;
 }
+
 .cl-dividerLine {
   background: #252a41;
   height: 2px;
@@ -74,6 +76,7 @@
 .cl-internal-wkkub3 {
   color: white;
 }
+
 .cl-userButtonPopoverActionButton {
   color: white;
 }
@@ -109,4 +112,48 @@
     animation-timing-function: ease-in;
     width: 100%;
   }
+}
+
+.cl-internal-16rjnjd{
+  display: none;
+}
+
+
+.cl-internal-180wb59 {
+  display: none;
+}
+
+.cl-internal-160m63s img:first-of-type {
+  /* Your styles here */
+  filter: invert(1);
+}
+
+.cl-socialButtons button:nth-child(1),
+.cl-socialButtons button:nth-child(3),
+.cl-socialButtons button:nth-child(2) {
+  filter: invert(1);
+}
+
+[data-color="neutral"] {
+  color: white;
+}
+
+/* 
+
+
+
+
+
+[data-color="primary"]{
+  background-color: rgb(51 53 68);
+}
+
+
+
+.cl-internal-sl145r{
+  background: #383e6c;
+} */
+
+[role="menuitem"]:hover {
+  color: #808398;
 }
