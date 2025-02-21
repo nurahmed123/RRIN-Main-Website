@@ -168,7 +168,7 @@ export default function Header() {
 </svg>
 
 
-                                        &nbsp;RS Code
+                                        &nbsp;RS Coder
                                     </Link>
                                 </li>
                               <li className="w-full">
@@ -341,7 +341,7 @@ export default function Header() {
                     <li><Link className={activeLink === '/blog' ? 'text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                     <li><Link className={activeLink === '/project' ? 'text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
-                    <li><Link className={activeLink === 'https://code.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://code.robosuperior.com/">RS Code</Link></li>
+                    <li><Link className={activeLink === 'https://code.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://code.robosuperior.com/">RS Coder</Link></li>
                     <li><Link className={activeLink === 'https://chat.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://chat.robosuperior.com/">RS Chat</Link></li>
                     <li><Link className={activeLink === 'https://meet.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://meet.robosuperior.com/">RS Meet</Link></li>
                     <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Diary</Link></li>
