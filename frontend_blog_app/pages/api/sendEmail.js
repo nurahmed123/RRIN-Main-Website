@@ -276,11 +276,11 @@ export default async function sendEmail(req, res) {
         });
 
         const receiver = {
-            from:process.env.SMTP_EMAIL,
+            from: `"Robo Superior" <${process.env.SMTP_EMAIL}>`,
             to: otp ? email : process.env.SEND_MAIL_TO,
             subject: otp ? "RoboSuperior Login Code" : "Someone Contact RoboSuperior!",
             html: otp ? otpTemp : contactTemp
-        };
+        };        
 
         auth.sendMail(receiver, (error, emailResponse) => {
             if (error)
