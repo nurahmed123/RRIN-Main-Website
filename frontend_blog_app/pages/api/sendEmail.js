@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 
 export default async function sendEmail(req, res) {
     const { method } = req;
+
 
     if (method === 'POST') {
         const { otp, message, subject, name, phone, email } = req.body;
@@ -249,14 +250,19 @@ export default async function sendEmail(req, res) {
 </body>
 
 </html>`;
+
         const otpTemp = `<!DOCTYPE html>
 <html lang="en">
     <body>
+
         <header>
-            <h1>Your OTP is: ${otp}</h1>
+            <h1>>Your OTP is: ${otp}</h1>
         </header>
     </body>
-</html>`;
+</html>`
+
+
+
 
         const auth = nodemailer.createTransport({
             service: "gmail",
@@ -264,24 +270,27 @@ export default async function sendEmail(req, res) {
             port: 465,
             auth: {
                 user: process.env.SMTP_EMAIL,
-                pass: process.env.SMTP_PASSWORD,
-            },
+                pass: process.env.SMTP_PASSWORD
+
+            }
         });
 
         const receiver = {
-            from: `"Robo Superior" <${process.env.SMTP_EMAIL}>`,
+            from:process.env.SMTP_EMAIL,
             to: otp ? email : process.env.SEND_MAIL_TO,
             subject: otp ? "RoboSuperior Login Code" : "Someone Contact RoboSuperior!",
-            html: otp ? otpTemp : contactTemp,
+            html: otp ? otpTemp : contactTemp
         };
 
-        try {
-            await auth.sendMail(receiver);
-            res.status(200).json({ message: 'Email sent successfully' });
-        } catch (error) {
-            console.error('Error sending email:', error);
-            res.status(500).json({ message: 'Failed to send email' });
-        }
+        auth.sendMail(receiver, (error, emailResponse) => {
+            if (error)
+                throw error;
+            // console.log("success!");
+            response.end();
+        });
+
+        // return NextResponse.json({ message: "Email Sent Successfully" }, { status: 200 })
+        res.status(200).json({ message: email });
     } else {
         res.status(405).json({ message: 'Method Not Allowed' });
     }
