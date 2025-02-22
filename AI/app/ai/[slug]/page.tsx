@@ -56,7 +56,7 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
             });
 
             const data = await response.json();
-            console.log(data)
+            // console.log(data)
 
             if (response.ok) {
                 setMessages((prev) => [...prev, { role: "assistant", content: data || "No response" }]);
