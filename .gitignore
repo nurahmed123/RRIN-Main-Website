@@ -1,6 +1,8 @@
 node_modules
 .env
+.env.local
 .next
+.vercel
 
 public/robots.txt
 public/sitemap.xml
