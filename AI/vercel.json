@@ -4,6 +4,6 @@
       "src": "package.json",
       "use": "@vercel/next"
     }
-  ]
+  ],
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD . || exit 1"
 }
-
