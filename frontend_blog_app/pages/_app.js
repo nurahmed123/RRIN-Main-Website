@@ -51,7 +51,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       </Script>
 
       {/* Adsterra Banner Script */}
-      <div className="flex justify-center text-center">
+      {/* <div className="flex justify-center text-center">
         <Script
           strategy="afterInteractive" // Load after page is interactive
           type="text/javascript"
@@ -72,7 +72,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
           strategy="afterInteractive"
           src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
         />
-      </div>
+      </div> */}
 
       <SessionProvider session={session}>
         <Header />
