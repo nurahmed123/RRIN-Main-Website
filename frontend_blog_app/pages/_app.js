@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import Script from "next/script"; // Import the Script component
 import "@/styles/tailwind.css"
 import "@/styles/globals.css";
-import Script from 'next/script';
+
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
