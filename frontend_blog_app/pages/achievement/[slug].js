@@ -7,6 +7,7 @@ import { useState } from "react";
 import Comments from "@/components/Comments";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
+import Script from "next/script";
 
 function extractFirstImageUrl(markdownContent) {
     if (!markdownContent || typeof markdownContent !== "string") {
@@ -79,6 +80,14 @@ const Code = ({ node, inline, className, children, ...props }) => {
 export default function BlogPage({ blog }) {
     return (
         <>
+            {/* Adsterra Ad JSScript */}
+            <Script
+                id="adsterra-ad"
+                strategy="lazyOnload"
+                data-cfasync="false"
+                src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
+            />
+
             <Head>
                 <title>{blog.title ? `${blog.title} | Robo Superior` : "Loading..."}</title>
                 <meta name="description" content={blog.metadescription || "Discover our latest robotics projects, advancements, and blog posts on RoboSuperior."} />
@@ -167,6 +176,8 @@ export default function BlogPage({ blog }) {
                         </div>
                         <div className="rightslug_data">
                             <RightPortfolioInfo />
+                            {/* adsterra native banner ad  */}
+                            <div id="container-ce15f12e9d1b6592798b163f7a7b3f15"></div>
                             <RightTopicSection />
                         </div>
                     </div>

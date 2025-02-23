@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
+import Script from "next/script";
 import TeamMembers from './TeamMembers'
 
 const structuredData = {
@@ -49,6 +49,12 @@ const AboutSection = () => {
                                     <Link href={"/members"}><li className="mb-2 dark:text-gray-50">Member</li></Link>
                                     <Link href={"/contact"}><li className="mb-2 dark:text-gray-50">Contact</li></Link>
                                 </ul>
+                                {/* Adsterra Ad Script */}
+                                <Script
+                                    id="adsterra-script"
+                                    strategy="lazyOnload"
+                                    src="//pl25949179.effectiveratecpm.com/0d/8c/b4/0d8cb431300cd1925f1d61ca5d9eb3c1.js"
+                                />
                             </div>
                         </div>
                     </div>
@@ -60,7 +66,7 @@ const AboutSection = () => {
 
                                 .
                                 <br /><br />
-                                ROBO Superior is at the forefront of revolutionizing robotics, mechatronics, and electrical project management in Bangladesh. Our mission is bold: to cultivate a thriving ecosystem of innovators and technology enthusiasts through cutting-edge education, hands-on experiences, and a vibrant community of like-minded individuals. 
+                                ROBO Superior is at the forefront of revolutionizing robotics, mechatronics, and electrical project management in Bangladesh. Our mission is bold: to cultivate a thriving ecosystem of innovators and technology enthusiasts through cutting-edge education, hands-on experiences, and a vibrant community of like-minded individuals.
                                 {/* <Link href={"/achievement"} className='text-xl italic font-bold'>achieved</Link> remarkable success in various <Link href="/project" className='text-xl italic font-bold'>project</Link> showcase competitions. The most notable highlight in our history is the exceptional accomplishment of our organization’s “Team EXO MAX.” This team qualified for the international round of the prestigious NASA CONRAD CHALLENGE 2024, a global scientific case study and problem-solving contest. Competing against over 3,000 contestants worldwide, Team EXO MAX secured an impressive 5th place in the whole world, showcasing the talent and dedication present within our organization. */}
                                 <br /><br />
                                 We are more than just an organization—we’re a movement dedicated to shaping the next generation of engineers and technologists. With programs designed for every skill level, we offer a mix of practical workshops, immersive theoretical courses, and engaging extracurricular activities (ECAs) to fuel curiosity and mastery in robotics.
@@ -70,7 +76,7 @@ const AboutSection = () => {
                                 Our focus on mechatronics and robotics-related project management ensures that our community is equipped with the tools to lead in the technological frontier. Together, we’re empowering individuals to dream big, think boldly, and push the boundaries of possibility.
                                 <br /><br />
                                 Join us in our mission to elevate robotics education, foster innovation, and drive excellence. Together, we are ROBO Superior—pioneering the future of technology and engineering in Bangladesh.
-                                
+
                             </p>
 
                             <h2 className="dark:text-gray-50 font-semibold text-center mt-3 -mb-2">

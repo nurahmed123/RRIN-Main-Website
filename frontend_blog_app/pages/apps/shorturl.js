@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useRouter } from 'next/router';
 import { jwtDecode } from "jwt-decode";
 import Head from 'next/head';
+import Link from "next/link";
 
 const ShortURL = () => {
     const [urls, setUrls] = useState([]);
@@ -76,7 +77,7 @@ const ShortURL = () => {
                 return false;
             }
         };
-    
+
         if (!longUrl || !isValidUrl(longUrl)) {
             const Toast = Swal.mixin({
                 toast: true,
@@ -95,7 +96,7 @@ const ShortURL = () => {
             });
             return;
         }
-    
+
         // If no username is available, prompt the user to log in
         if (!username) {
             const confirm = await Swal.fire({
@@ -107,7 +108,7 @@ const ShortURL = () => {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, continue",
             });
-    
+
             if (confirm.isConfirmed) {
                 // Only call createShortUrl if the user has confirmed
                 await createShortUrl(longUrl); // Create short URL without username
@@ -117,7 +118,7 @@ const ShortURL = () => {
             await createShortUrl(longUrl, username); // Create short URL with username
         }
     };
-    
+
 
     // Function to handle the URL shortening logic
     const createShortUrl = async (url, username) => {
@@ -382,7 +383,8 @@ const ShortURL = () => {
                                 {urls.length === 0 && (
                                     <tr>
                                         <td colSpan="5" className="px-4 py-2 text-center text-gray-600 dark:text-gray-300">
-                                            No URLs available. Add some!
+                                            No URLs available. Add some! 
+                                            <span><Link className="underline" target="_blank" href="https:robosuperior.com/api/XT8_S_sgc"> https:robosuperior.com/api/XT8_S_sgc</Link></span>
                                         </td>
                                     </tr>
                                 )}

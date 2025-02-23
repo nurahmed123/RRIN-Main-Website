@@ -5,6 +5,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { FiDatabase } from "react-icons/fi";
 import { AiOutlineDeploymentUnit } from "react-icons/ai";
 import { useState } from "react";
+import Script from "next/script";
 
 
 function extractFirstImageUrl(markdownContent) {
@@ -30,6 +31,13 @@ export default function Blog({ blogs }) {
 
     return (
         <>
+            {/* Adsterra Ad JSScript */}
+            <Script
+                id="adsterra-ad"
+                strategy="lazyOnload"
+                data-cfasync="false"
+                src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
+            />
 
             <Head>
                 <title>Blogs | RoboSuperior</title>
@@ -146,6 +154,8 @@ export default function Blog({ blogs }) {
                     </div>
                     <div className="rightblog_info">
                         {/* Add your Topics and Tags Section */}
+                        {/* adsterra native banner ad  */}
+                        <div id="container-ce15f12e9d1b6592798b163f7a7b3f15"></div>
                     </div>
                 </div>
             </section>

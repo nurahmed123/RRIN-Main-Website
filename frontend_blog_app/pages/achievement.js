@@ -7,6 +7,7 @@ import { AiOutlineDeploymentUnit } from "react-icons/ai";
 import GalleryView from "@/components/GalleryView";
 import { useState } from "react";
 import Image from "next/image";
+import Script from "next/script";
 
 function extractFirstImageUrl(markdownContent) {
     if (!markdownContent || typeof markdownContent !== "string") {
@@ -31,6 +32,14 @@ export default function Blog({ blogs }) {
 
     return (
         <>
+            {/* Adsterra Ad JSScript */}
+            <Script
+                id="adsterra-ad"
+                strategy="lazyOnload"
+                data-cfasync="false"
+                src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
+            />
+
             <Head>
                 <title>Achievements | RoboSuperior</title>
                 <meta
@@ -160,6 +169,8 @@ export default function Blog({ blogs }) {
                     </div>
                     <div className="rightblog_info">
                         {/* Add your Topics and Tags Section */}
+                        {/* adsterra native banner ad  */}
+                        <div id="container-ce15f12e9d1b6592798b163f7a7b3f15"></div>
                     </div>
                 </div>
             </section>

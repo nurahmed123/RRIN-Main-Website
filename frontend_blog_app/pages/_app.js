@@ -35,7 +35,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   }, [router.isReady]);
 
   return (
-    <> 
+    <>
       {/* Google Analytics Script */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-D8K4FT3YF8"
@@ -50,27 +50,29 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
         `}
       </Script>
 
-      {/* AdBlock Script */}
-      <Script
-        strategy="afterInteractive" // Load after page is interactive
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `
+      {/* Adsterra Banner Script */}
+      <div className="flex justify-center text-center">
+        <Script
+          strategy="afterInteractive" // Load after page is interactive
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
             atOptions = {
               'key' : 'e3e85e80cf459ac6e6ac495fb75a1982',
               'format' : 'iframe',
               'height' : 90,
-              'width' : 728,
+              'width' : 2000,
               'params' : {}
             };
           `,
-        }}
-      />
-      <Script
-        strategy="afterInteractive"
-        src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
-      />
-
+          }}
+        />
+        
+        <Script
+          strategy="afterInteractive"
+          src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
+        />
+      </div>
 
       <SessionProvider session={session}>
         <Header />

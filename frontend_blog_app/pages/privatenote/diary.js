@@ -16,6 +16,7 @@ import * as XLSX from 'xlsx';
 import Datepicker from "react-tailwindcss-datepicker";
 import Swal from "sweetalert2";
 import { formatISO, format } from 'date-fns';
+import Script from "next/script";
 
 export default function userDiary() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -608,9 +609,30 @@ export default function userDiary() {
                 </div>
 
                 <div className="blogstable mt-6">
+                    <div className="flex justify-center text-center">
+                        {/* Adsterra Banner Ad Script */}
+                        <Script
+                            strategy="afterInteractive" // Load after page is interactive
+                            type="text/javascript"
+                            dangerouslySetInnerHTML={{
+                                __html: `
+                                    atOptions = {
+                                    'key' : 'e3e85e80cf459ac6e6ac495fb75a1982',
+                                    'format' : 'iframe',
+                                    'height' : 90,
+                                    'width' : 1000,
+                                    'params' : {}
+                                    };
+                                `,
+                            }}
+                        />
+                        <Script
+                            strategy="afterInteractive"
+                            src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
+                        />
+                    </div>
                     <div className="flex flex-wrap gap-2 mb-4 items-center" data-aos="fade-left">
                         <h2 className="dark:text-gray-100 text-lg sm:w-full md:w-auto">Search {searchItem !== "$.1" ? "Note" : "Transaction"}:</h2>
-
                         <input
                             type="text"
                             value={searchQuery}
