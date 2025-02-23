@@ -26,6 +26,7 @@ export default function Document() {
           src="//pl25948524.effectiveratecpm.com/db/1b/4d/db1b4d2a7488b382d77a782e2aaa5a4b.js"
         />
 
+
         {/*Adsterra Social Ad */}
         <Script
           id="adsterra-script"
@@ -33,11 +34,17 @@ export default function Document() {
           src="//pl25949179.effectiveratecpm.com/0d/8c/b4/0d8cb431300cd1925f1d61ca5d9eb3c1.js"
         />
 
-
+        {/* Adsterra Ad JSScript */}
+        <Script
+          id="adsterra-ad"
+          strategy="lazyOnload"
+          data-cfasync="false"
+          src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
+        />
 
 
         {/* HillTopAdds */}
-        <HillTopAdds/>
+        <HillTopAdds />
       </body>
     </Html>
   );
