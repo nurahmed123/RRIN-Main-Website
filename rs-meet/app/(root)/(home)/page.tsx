@@ -1,25 +1,25 @@
-"use client"
-import { useState, useEffect } from "react";
-import MeetingTypeList from "@/components/MeetingTypeList";
+'use client';
+import { useState, useEffect } from 'react';
+import MeetingTypeList from '@/components/MeetingTypeList';
 
 const Home = () => {
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
 
   useEffect(() => {
     const updateDateTime = () => {
       const now = new Date();
 
       setTime(
-        now.toLocaleTimeString("en-Bn", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
+        now.toLocaleTimeString('en-Bn', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        }),
       );
 
       setDate(
-        new Intl.DateTimeFormat("en-Bn", { dateStyle: "full" }).format(now)
+        new Intl.DateTimeFormat('en-Bn', { dateStyle: 'full' }).format(now),
       );
     };
 
@@ -45,6 +45,7 @@ const Home = () => {
       </div>
 
       <MeetingTypeList />
+      <div id="container-4acfee4fec061346e24c489b7a6f5dba"></div>
     </section>
   );
 };

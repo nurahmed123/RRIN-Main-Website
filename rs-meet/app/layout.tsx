@@ -71,6 +71,45 @@ export default function RootLayout({
           <Toaster />
           {children}
 
+          {/* popup Script */}
+          <Script
+            id="adsterra-ad"
+            strategy="lazyOnload"
+            src="//southflannelclassic.com/62/03/71/62037180d8990945967c1a219e9cf55e.js"
+          />
+
+          <Script
+            id="adsterra-ad-options"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+            atOptions = {
+              'key' : '328ea0f1a6ed988d460bfe1653dc3f9e',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          `,
+            }}
+          />
+
+          {/* External ad script */}
+          <Script
+            id="adsterra-ad-script"
+            strategy="afterInteractive"
+            src="//southflannelclassic.com/328ea0f1a6ed988d460bfe1653dc3f9e/invoke.js"
+          />
+
+          {/* Ad Script */}
+          <Script
+            id="adsterra-ad"
+            strategy="lazyOnload"
+            async={true}
+            data-cfasync="false"
+            src="//southflannelclassic.com/4acfee4fec061346e24c489b7a6f5dba/invoke.js"
+          />
+
           {/* ✅ FIX: Added `id="structured-data"` to avoid Next.js warning */}
           <Script
             id="structured-data"
