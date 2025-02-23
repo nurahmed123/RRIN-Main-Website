@@ -29,6 +29,7 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "framer-motion": "^11.2.11",
     "fs": "^0.0.1-security",
     "handlebars": "^4.7.8",
