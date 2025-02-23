@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import Script from "next/script"; // Import the Script component
 import "@/styles/tailwind.css"
 import "@/styles/globals.css";
-
+import Script from 'next/script';
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -49,6 +49,27 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
           gtag('config', 'G-D8K4FT3YF8');
         `}
       </Script>
+
+      {/* AdBlock Script */}
+      <Script
+        strategy="afterInteractive" // Load after page is interactive
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
+            atOptions = {
+              'key' : 'e3e85e80cf459ac6e6ac495fb75a1982',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          `,
+        }}
+      />
+      <Script
+        strategy="afterInteractive"
+        src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
+      />
 
 
       <SessionProvider session={session}>
