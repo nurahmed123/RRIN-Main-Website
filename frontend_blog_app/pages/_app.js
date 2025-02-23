@@ -36,9 +36,6 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
 
   return (
     <>
-      <Head>
-        <meta name="2d9411ba8b77a336dc470fef38942249dbbecc18" content="2d9411ba8b77a336dc470fef38942249dbbecc18" />
-      </Head>
 
 
       {/* Google Analytics Script */}
