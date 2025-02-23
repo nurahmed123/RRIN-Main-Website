@@ -1,7 +1,7 @@
 import RootLayout from './RootLayout'; // Import RootLayout from a separate file
 
 export const metadata = {
-  title: "BiteBD",
+  title: "RS AI",
   description: "Leets remove hunger together....",
 };
 
