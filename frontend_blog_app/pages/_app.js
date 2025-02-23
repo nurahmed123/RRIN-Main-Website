@@ -35,7 +35,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   }, [router.isReady]);
 
   return (
-    <> 
+    <>  
       {/* Google Analytics Script */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-D8K4FT3YF8"
