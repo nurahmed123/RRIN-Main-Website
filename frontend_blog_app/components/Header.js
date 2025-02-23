@@ -146,6 +146,34 @@ export default function Header() {
                             </a>
                             <ul
                                 className='absolute rounded-lg mt-1 top-5 left-0 z-50 space-y-2 shadow-lg min-w-min bg-white dark:bg-[#1e293b] max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500 flex flex-col items-start'>
+
+                                <li className="w-full">
+                                    <Link
+                                        href='https://ai.robosuperior.com/'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20px"
+                                            height="20px"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+
+                                            <path d="M21 15c-1.37 0-2.74.5-3.78 1.38L14 16l-2 2v-5H7V6h10v8l4 2v1z"></path>
+
+                                            <circle cx="12" cy="9" r="1"></circle>
+                                            <circle cx="9" cy="9" r="1"></circle>
+                                        </svg>
+
+
+
+                                        &nbsp;RS AI
+                                    </Link>
+                                </li>
                                 <li className="w-full">
                                     <Link
                                         href='https://code.robosuperior.com/'
@@ -339,6 +367,7 @@ export default function Header() {
                     <li><Link className={activeLink === '/blog' ? 'text-[#5485e0]' : ''} href="/blog">Blog</Link></li>
                     <li><Link className={activeLink === '/project' ? 'text-[#5485e0]' : ''} href="/project">Projects</Link></li>
                     <li><Link className={activeLink === '/achievement' ? 'text-[#5485e0]' : ''} href="/achievement">Achievements</Link></li>
+                    <li><Link className={activeLink === 'https://ai.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://ai.robosuperior.com/">RS AI</Link></li>
                     <li><Link className={activeLink === 'https://code.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://code.robosuperior.com/">RS Coder</Link></li>
                     <li><Link className={activeLink === 'https://chat.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://chat.robosuperior.com/">RS Chat</Link></li>
                     <li><Link className={activeLink === 'https://meet.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://meet.robosuperior.com/">RS Meet</Link></li>

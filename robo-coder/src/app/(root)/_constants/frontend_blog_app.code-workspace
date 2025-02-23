@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"name": "frontend_blog_app",
+			"path": "../../../../../frontend_blog_app"
+		},
+		{
+			"name": "backend_admin_dashboard",
+			"path": "../../../../../backend_admin_dashboard"
+		},
+		{
+			"name": "Meet_And_Chat",
+			"path": "../../../../../Meet_And_Chat"
+		},
+		{
+			"name": "rs-meet",
+			"path": "../../../../../rs-meet"
+		},
+		{
+			"name": "robo-coder",
+			"path": "../../../.."
+		},
+		{
+			"name": "code-editor",
+			"path": "../../../../../code-editor"
+		}
+	]
+}

@@ -1,6 +1,6 @@
 export const navItems = [
 
-  { name: "Start 👉🏻", link: "/ai/chat" },
+  { name: "RoboSuperior AI ||", link: "/ai/chat" },
 ];
 
 export const gridItems = [
