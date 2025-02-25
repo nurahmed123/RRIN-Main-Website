@@ -40,6 +40,7 @@ const Services = () => {
                         </div>
                     </div>
                 </div>
+
                 <div data-aos="zoom-in-right" className="flex flex-col w-full mb-5 sm:flex-row">
                     <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
                         <div className="relative h-full ml-0 mr-0 sm:mr-10">
@@ -65,6 +66,7 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
+
                     <div data-aos="zoom-in-left" className="w-full sm:w-1/2">
                         <div className="relative h-full ml-0 md:mr-10">
                             <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
@@ -77,6 +79,29 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
+                    <div data-aos="zoom-in-up" className="w-full mb-10 sm:mb-0 sm:w-1/2">
+                        <div className="relative h-full ml-0 mr-0 sm:mr-10 min-h-[400px]">
+                            <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-red-400 rounded-lg"></span>
+                            <div className="relative h-full p-5 bg-white border-2 border-red-400 rounded-lg dark:bg-gray-700">
+                                <div className="flex items-center -mt-1">
+                                    <h3 className="my-2 ml-3 text-lg font-bold text-gray-800 dark:text-gray-100">Sticker Printing</h3>
+                                </div>
+                                <p className="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">------------</p>
+                                <p className="mb-2 text-gray-600 dark:text-gray-300">We now offer high-quality sticker printing services! Whether you need custom designs for business, events, or personal use, our expert team ensures vibrant, durable stickers that make your message stick. Get your ideas printed with precision and style!</p>
+
+                                {/* Container to maintain block size */}
+                                <div className="mt-4">
+                                    <a href="https://forms.gle/UQDj7ox39X7jqGHQ7" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline inline-block">
+                                        Submit Your Sticker Designs
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </div>
         </div>

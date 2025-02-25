@@ -17,12 +17,12 @@ const Advisor = () => {
     const testimonials = [
         {
             testimonial: "Empowering the community through science and innovation is not just a passion; it’s a commitment to building a brighter future for all.",
-            name: "SALMAN PROMON",
+            name: <a href="https://www.salmanpromon.com/" target="_blank" rel="noopener noreferrer"><u>SALMAN</u> <u>PROMON</u></a>,
             title: "Founder, Mechamind | Lecturer, Independent University, Bangladesh",
             image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
         },
-        
     ];
+
     const mentor = [
         {
             testimonial: "Failure is the opportunity to begin again more intelligently.",
@@ -36,7 +36,6 @@ const Advisor = () => {
             title: "BSc in CSE, Varendra University, Bangladesh",
             image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/39176093-a0f4-4823-87c1-772cb5341a8c.png"
         },
-        
     ];
 
     return (
