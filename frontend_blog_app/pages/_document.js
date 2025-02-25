@@ -1,10 +1,10 @@
-import HillTopAdds from "@/components/ads/HillTopAdds";
+import { HilltopPOPAdsScript, BannerScript } from "@/components/ads/HilltopAdsScript";
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
 export default function Document() {
   return (
-    
+
     <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -45,7 +45,9 @@ export default function Document() {
 
 
         {/* HillTopAdds */}
-        <HillTopAdds />
+        <HilltopPOPAdsScript />
+        <BannerScript />
+
       </body>
     </Html>
   );

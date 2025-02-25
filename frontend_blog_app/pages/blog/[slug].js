@@ -3,13 +3,15 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Comments from "@/components/Comments";
 import RightPortfolioInfo from "@/components/RightPortfolioInfo";
 import { RightTopicSection } from "@/components/RightTopicSection";
 import readingTimeStream from "reading-time/lib/stream";
 import readingTime from "reading-time";
 import Script from "next/script";
+import { useRouter } from "next/router";
+
 
 function extractFirstImageUrl(markdownContent) {
     if (!markdownContent || typeof markdownContent !== "string") {
@@ -21,6 +23,33 @@ function extractFirstImageUrl(markdownContent) {
 }
 
 const Code = ({ node, inline, className, children, ...props }) => {
+    const router = useRouter();
+    useEffect(() => {
+        const loadAdScript = () => {
+            console.log("run fucntion")
+            const script = document.createElement("script");
+            script.src = "//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js";
+            script.async = true;
+            script.dataset.cfasync = "false";
+
+            document.body.appendChild(script);
+
+            return () => {
+                document.body.removeChild(script);
+            };
+        };
+        console.log("run effect")
+
+        loadAdScript();
+
+        // Re-run script on route change
+        router.events.on("routeChangeComplete", loadAdScript);
+
+        return () => {
+            router.events.off("routeChangeComplete", loadAdScript);
+        };
+    }, [router.events]);
+
     const match = /language-(\w+)/.exec(className || "");
     const [copied, setCopied] = useState(false);
 
@@ -83,14 +112,15 @@ export default function BlogPage({ blog }) {
     return (
         <>
             {/* Adsterra Ad JSScript */}
-            <Script
-                id="adsterra-ad"
-                strategy="lazyOnload"
-                data-cfasync="false"
-                src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
-            />
+
 
             <Head>
+                {/* <Script
+                    id="adsterra-ad"
+                    strategy="lazyOnload"
+                    data-cfasync="false"
+                    src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
+                /> */}
                 <title>{blog.title ? `${blog.title} | Robo Superior` : "Loading..."}</title>
                 <meta name="description" content={blog.metadescription} />
                 <meta
