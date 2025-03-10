@@ -55,6 +55,11 @@ export default function userDiary() {
         endDate: new Date()
     });
 
+    const [updateDate, setUpdatedDate] = useState({
+        startDate: new Date(),
+        endDate: new Date()
+    });
+
     const handleOpen = (backdrop) => {
         setBackdrop(backdrop);
         onOpen();
@@ -124,6 +129,10 @@ export default function userDiary() {
                 setCreatedDate({
                     startDate: new Date(noteToEdit.createdAt),
                     endDate: new Date(noteToEdit.createdAt)
+                });
+                setUpdatedDate({
+                    startDate: new Date(noteToEdit.updatedAt),
+                    endDate: new Date(noteToEdit.updatedAt)
                 });
             }
         } else {
@@ -460,6 +469,22 @@ export default function userDiary() {
                                                     value={createdDate}
                                                     onChange={newValue => setCreatedDate(newValue)}
                                                 />
+                                                {
+                                                    editingNoteId &&
+                                                    <>
+                                                        <label className="block inset-shadow-indigo-500 text-sm font-medium text-gray-700 mt-2 mb-1 dark:text-gray-300">
+                                                            Updated At
+                                                        </label>
+                                                        <Datepicker
+                                                            disabled
+                                                            useRange={false}
+                                                            asSingle={true}
+                                                            primaryColor={"violet"}
+                                                            value={updateDate}
+                                                            onChange={newValue => setUpdatedDate(newValue)}
+                                                        />
+                                                    </>
+                                                }
                                             </div>
                                         </div>
                                     )}
@@ -535,6 +560,22 @@ export default function userDiary() {
                                                         value={createdDate}
                                                         onChange={newValue => setCreatedDate(newValue)}
                                                     />
+                                                    {
+                                                        editingNoteId &&
+                                                        <>
+                                                            <label className="block inset-shadow-indigo-500 text-sm font-medium text-gray-700 mt-2 mb-1 dark:text-gray-300">
+                                                                Updated At
+                                                            </label>
+                                                            <Datepicker
+                                                                disabled
+                                                                useRange={false}
+                                                                asSingle={true}
+                                                                primaryColor={"violet"}
+                                                                value={updateDate}
+                                                                onChange={newValue => setUpdatedDate(newValue)}
+                                                            />
+                                                        </>
+                                                    }
                                                 </div>
 
                                             </div>
