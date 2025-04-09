@@ -28,7 +28,7 @@ const Members = ({ members }) => {
         "Founders & Co-Founders": members.filter((member) => member.department === "founder"),
         "Board of Executives": members.filter((member) => member.department === "executive"),
         "IT Department": members.filter((member) => member.department === "it_dpt"),
-        "Hardware Department": members.filter((member) => member.department === "hardware_dpt"),
+        "Tech Department": members.filter((member) => member.department === "hardware_dpt"),
         "Research Department": members.filter((member) => member.department === "research_dpt"),
         "Media Department": members.filter((member) => member.department === "media_dpt"),
         Others: members.filter((member) => !specifiedDepartments.includes(member.department)),
