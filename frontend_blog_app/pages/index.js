@@ -66,7 +66,10 @@ export default function Home() {
               <Link href='/contact'><button>Contact Us</button></Link>
               <Link href='/about'><button>About Us</button></Link>
               <Link href='/members'><button>Members</button></Link>
+              {/* <Link href='/members'><button>Donate</button></Link>
+              <Link href='/members'><button>Join ROBO Superior</button></Link> */}
             </div>
+            
           </div>
           <div className="rightheader_img" data-aos="zoom-in">
             <div className="image_bg_top"></div>
