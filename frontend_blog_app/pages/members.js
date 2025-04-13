@@ -30,7 +30,7 @@ const Members = ({ members }) => {
         "IT Department": members.filter((member) => member.department === "it_dpt"),
         "Tech Department": members.filter((member) => member.department === "hardware_dpt"),
         "Research Department": members.filter((member) => member.department === "research_dpt"),
-        "Media Department": members.filter((member) => member.department === "media_dpt"),
+        "Creative Department": members.filter((member) => member.department === "media_dpt"),
         Others: members.filter((member) => !specifiedDepartments.includes(member.department)),
     };
 
