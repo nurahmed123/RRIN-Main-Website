@@ -91,12 +91,16 @@ export default async function sitemap() {
                 routes: ['/', '/login', '/chats', 'calls'],
             },
             {
-                baseUrl: 'https:nurahmed.hackclub.app',
+                baseUrl: 'https:nurahmed.robosuperior.com',
                 routes: ['/',],
             },
             {
                 baseUrl: 'https://chat.robosuperior.com',
                 routes: ['/', '/login', '/chats', 'calls'],
+            },
+            {
+                baseUrl: 'https://invoice.robosuperior.com',
+                routes: ['/', '/login', '/dashboard', 'invoice'],
             },
         ];
 
