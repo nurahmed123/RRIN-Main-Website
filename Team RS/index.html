@@ -1,48 +1,1576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>We're Working on It</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1e1e2f;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.5em;
-      color: #ccc;
-    }
-    .loader {
-      margin-top: 2em;
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #00bcd4;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1.2s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROAD LINK | Road Safety Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2667cc;
+            --primary-light: #4d94ff;
+            --secondary: #4cc9f0;
+            --dark: #121212;
+            --dark-gray: #1e1e1e;
+            --medium-gray: #333333;
+            --light-gray: #444444;
+            --light: #2a2a2a;
+            --white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-gray: #b0b0b0;
+            --danger: #ff5a5f;
+            --warning: #ffbe0b;
+            --success: #4cc9f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.25);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.2);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 96px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+        
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .mb-4 { margin-bottom: 4rem; }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-gray);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--white);
+            font-weight: 800;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 32px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--dark) 100%);
+            color: var(--white);
+            padding: 200px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--dark-gray);
+            padding: 80px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 40px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .stat-card h3 {
+            font-size: 2.75rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .stat-card p {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        
+        .stat-card small {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Problem Section */
+        .problem {
+            background-color: var(--dark);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .problem-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 40px 30px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+            text-align: center;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .problem-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            background: rgba(58, 134, 255, 0.1);
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .problem-card p {
+            font-size: 1rem;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background-color: var(--dark-gray);
+        }
+        
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            background: rgba(58, 134, 255, 0.1);
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+        
+        .feature-card p {
+            font-size: 1rem;
+        }
+        
+        /* Product Section */
+        .product {
+            background-color: var(--dark);
+        }
+        
+        .product-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .product-image {
+            flex: 1;
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .product-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .product-content {
+            flex: 1;
+        }
+        
+        .product-specs {
+            margin-top: 40px;
+        }
+        
+        .spec-item {
+            display: flex;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+        
+        .spec-icon {
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            min-width: 24px;
+        }
+        
+        .spec-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .spec-content p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+        
+        /* App Section */
+        .app {
+            background-color: var(--dark-gray);
+        }
+        
+        .app-screenshots {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .app-screen {
+            width: 220px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .app-screen:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Market Section */
+        .market {
+            background-color: var(--dark);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--dark-gray);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--light-gray);
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            z-index: 0;
+            line-height: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--dark) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+            opacity: 0.05;
+        }
+        
+        .cta .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta h2::after {
+            background: var(--white);
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+        }
+        
+        .contact-form {
+            background: var(--light);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--dark-gray);
+            color: var(--text-light);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 12px;
+        }
+        
+        .footer-about p {
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+        
+        .footer-links h3 {
+            color: var(--white);
+            margin-bottom: 24px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .footer-contact i {
+            margin-right: 12px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.25rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .product-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .hero::before {
+                width: 100%;
+                opacity: 0.05;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 64px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--dark-gray);
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                box-shadow: var(--shadow-lg);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 20px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stat-card {
+                min-width: calc(50% - 12px);
+            }
+            
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 56px 0;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .hero {
+                padding: 160px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-card {
+                min-width: 100%;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+        
+    </style>
 </head>
 <body>
-  <h1>We're Working on It!</h1>
-  <p>Our site is under construction. Please check back soon.</p>
-  <div class="loader"></div>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="">
+                    <span><a href="#home">ROAD LINK</a></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#problem">Problem</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="slide-up">ROAD LINK</h1>
+                <p class="lead slide-up delay-1">A revolutionary Bangladeshi innovation designed to transform road safety worldwide through real-time data analysis and proactive hazard identification.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary btn-lg slide-up delay-2"><i class="fas fa-laptop"></i> Request Demo</a>
+                    <a href="#solution" class="btn btn-secondary btn-lg slide-up delay-3"><i class="fas fa-book-open"></i> Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card fade-in delay-1">
+                    <h3>119,000+</h3>
+                    <p>Road Accident Deaths (2023)</p>
+                    <small>World Health Organization</small>
+                </div>
+                <div class="stat-card fade-in delay-2">
+                    <h3>$1.8T</h3>
+                    <p>Economic Loss (2015-2030)</p>
+                    <small>Centers for Disease Control</small>
+                </div>
+                <div class="stat-card fade-in delay-3">
+                    <h3>1 Every 26s</h3>
+                    <p>Person Dies From Road Accidents</p>
+                    <small>World Health Organization</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2>The Critical Road Safety Challenges</h2>
+            <p class="text-center lead mb-4">Understanding the multifaceted problems that plague our roadways today</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card fade-in delay-1">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Unlicensed Operators</h3>
+                    <p>Millions operate vehicles without proper training or knowledge of traffic regulations, creating dangerous conditions.</p>
+                </div>
+                <div class="problem-card fade-in delay-2">
+                    <i class="fas fa-clock"></i>
+                    <h3>Delayed Emergency Response</h3>
+                    <p>Critical minutes lost in accident response significantly reduce survival and recovery rates.</p>
+                </div>
+                <div class="problem-card fade-in delay-3">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Environmental Impact</h3>
+                    <p>Accidents contribute to pollution through fluid leaks, debris, and increased congestion emissions.</p>
+                </div>
+                <div class="problem-card fade-in delay-4">
+                    <i class="fas fa-eye-low-vision"></i>
+                    <h3>Visibility Challenges</h3>
+                    <p>Poor lighting and weather conditions combined with speeding create high-risk scenarios.</p>
+                </div>
+                <div class="problem-card fade-in delay-3">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Distracted Driving</h3>
+                    <p>Mobile device usage while driving causes thousands of preventable accidents annually.</p>
+                </div>
+                <div class="problem-card fade-in delay-2">
+                    <i class="fas fa-wine-glass-alt"></i>
+                    <h3>Impaired Operation</h3>
+                    <p>Substance impairment and fatigue contribute significantly to collision statistics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <h2>Our Comprehensive Solution</h2>
+            <p class="text-center lead mb-4">The ROAD LINK system addresses all major road safety challenges through integrated technology</p>
+            
+            <div class="solution-features">
+                <div class="feature-card fade-in delay-1">
+                    <i class="fas fa-fingerprint"></i>
+                    <h3>Biometric Security</h3>
+                    <p>Unique identification ensures only authorized individuals can operate vehicles.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Integration</h3>
+                    <p>Complete system control through our intuitive mobile application.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Adaptive Lighting</h3>
+                    <p>Automatically adjusts headlights for optimal visibility in all conditions.</p>
+                </div>
+                <div class="feature-card fade-in delay-4">
+                    <i class="fas fa-bed"></i>
+                    <h3>Fatigue Detection</h3>
+                    <p>Advanced algorithms detect drowsiness and alert drivers to prevent accidents.</p>
+                </div>
+                <div class="feature-card fade-in delay-5">
+                    <i class="fas fa-flask"></i>
+                    <h3>Impairment Analysis</h3>
+                    <p>Identifies substance-impaired drivers and prevents vehicle operation.</p>
+                </div>
+                <div class="feature-card fade-in delay-1">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Fitness Monitoring</h3>
+                    <p>Reminds drivers to assess their vehicle fitness before operating vehicles.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <i class="fas fa-low-vision"></i>
+                    <h3>Visibility Enhancement</h3>
+                    <p>Improves safety during low-visibility conditions with sensor fusion.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Voice Control</h3>
+                    <p>Hands-free operation reduces distractions while driving.</p>
+                </div>
+                <div class="feature-card fade-in delay-4">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Speed Management</h3>
+                    <p>Alerts drivers when exceeding safe speed limits for conditions.</p>
+                </div>
+                <div class="feature-card fade-in delay-5">
+                    <i class="fas fa-car-crash"></i>
+                    <h3>Collision Detection</h3>
+                    <p>Automatically detects accidents and alerts emergency services with location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product" id="product">
+        <div class="container">
+            <h2>Advanced Safety Technology</h2>
+            <p class="text-center lead mb-4">The ROAD LINK system integrates multiple advanced components working in harmony</p>
+            
+            <div class="product-container">
+                <div class="product-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1583&q=80" alt="ROAD LINK">
+                </div>
+                <div class="product-content">
+                    <h3 class="fade-in delay-1">System Architecture</h3>
+                    <p class="fade-in delay-2">The ROAD LINK combines cutting-edge hardware with intelligent software to create a comprehensive safety net for all road users.</p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item fade-in delay-3">
+                            <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                            <div class="spec-content">
+                                <h4>Central Processing Unit</h4>
+                                <p>High-performance computing with display and haptic feedback system</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-3">
+                            <div class="spec-icon"><i class="fas fa-display"></i></div>
+                            <div class="spec-content">
+                                <h4>Display</h4>
+                                <p>All status of the vehicle will be here</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-4">
+                            <div class="spec-icon"><i class="fas fa-camera-retro"></i></div>
+                            <div class="spec-content">
+                                <h4>Vision System</h4>
+                                <p>Multi-spectral cameras with 360° coverage for driver and environment monitoring</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-5">
+                            <div class="spec-icon"><i class="fas fa-satellite-dish"></i></div>
+                            <div class="spec-content">
+                                <h4>Sensor Array</h4>
+                                <p>LiDAR, radar, and ultrasonic sensors for comprehensive environmental detection</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-1">
+                            <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="spec-content">
+                                <h4>Precision Telemetry</h4>
+                                <p>Real-time speed measurement with adaptive control algorithms</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-2">
+                            <div class="spec-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="spec-content">
+                                <h4>Impact Detection</h4>
+                                <p>Instantaneous collision recognition with automatic emergency response</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app">
+        <div class="container">
+            <h2>Companion Mobile Application</h2>
+            <p class="text-center lead mb-4">Enhancing the ROAD LINK experience with powerful features and real-time monitoring</p>
+            
+            <!-- <div class="app-screenshots">
+                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=676&q=80" alt="App Screen 1" class="app-screen fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="App Screen 2" class="app-screen fade-in delay-2">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="App Screen 3" class="app-screen fade-in delay-3">
+            </div> -->
+            
+            <div class="solution-features">
+                <div class="feature-card fade-in delay-1">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Driving Tips</h3>
+                    <p>Personalized suggestions to improve fuel efficiency and reduce emissions.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Driver Profiles</h3>
+                    <p>Comprehensive performance tracking and historical data analysis.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Access Management</h3>
+                    <p>Flexible driver modes for different users and situations.</p>
+                </div>
+                <div class="feature-card fade-in delay-4">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Performance Analytics</h3>
+                    <p>Detailed feedback to improve driving habits and safety.</p>
+                </div>
+                <div class="feature-card fade-in delay-5">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Speed Monitoring</h3>
+                    <p>Real-time alerts and logging of speeding incidents.</p>
+                </div>
+                <div class="feature-card fade-in delay-1">
+                    <i class="fas fa-lock"></i>
+                    <h3>Remote Security</h3>
+                    <p>Vehicle lock/unlock and anti-theft features from anywhere.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Safety Scoring</h3>
+                    <p>Driver ranking system based on comprehensive safety metrics.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education Portal</h3>
+                    <p>Interactive learning resources for traffic laws and best practices.</p>
+                </div>
+                <div class="feature-card fade-in delay-4">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Fleet Tracking</h3>
+                    <p>Real-time location monitoring with geofencing capabilities.</p>
+                </div>
+                <div class="feature-card fade-in delay-5">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Smart Suggestions</h3>
+                    <p>Personalized recommendations to enhance driving experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Section -->
+    <section class="market">
+        <div class="container">
+            <h2>Market Opportunity</h2>
+            <div class="product-container">
+                <div class="product-content">
+                    <h3 class="fade-in">Addressing a Global Need</h3>
+                    <p class="lead fade-in delay-1">With only 10% of vehicles equipped with advanced safety systems, our solution targets the 900 million vehicles currently without protection - representing a $38 billion market growing at 17% annually.</p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item fade-in delay-2">
+                            <div class="spec-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="spec-content">
+                                <h4>Explosive Market Growth</h4>
+                                <p>ADAS sector valued at $38.1 billion in 2023 with 17% CAGR projected through 2032</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-3">
+                            <div class="spec-icon"><i class="fas fa-globe-asia"></i></div>
+                            <div class="spec-content">
+                                <h4>Strategic Focus Areas</h4>
+                                <p>Developing nations and regions with high accident rates present the greatest opportunities</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-4">
+                            <div class="spec-icon"><i class="fas fa-tags"></i></div>
+                            <div class="spec-content">
+                                <h4>Competitive Pricing</h4>
+                                <p>At $299 per unit, we're 60% more affordable than comparable systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-image fade-in delay-3">
+                    <img src="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/f2c53dfe-f2d2-41ed-a2c0-247dd4d38841.png" alt="Market Opportunity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Industry Endorsements</h2>
+            <p class="text-center lead mb-4">What transportation experts and safety professionals say about our solution</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in delay-1">
+                    <div class="testimonial-text">
+                        "This innovative approach to road safety represents a quantum leap forward. By addressing multiple risk factors simultaneously, the ROAD LINK has the potential to reduce accidents by 40% or more in targeted markets."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DR</div>
+                        <div class="author-info">
+                            <h4>Dr. Rahman</h4>
+                            <p>Transportation Safety Institute</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in delay-2">
+                    <div class="testimonial-text">
+                        "The affordability and comprehensive nature of this solution make it particularly valuable for developing nations where traditional safety systems are cost-prohibitive. This could save millions of lives worldwide."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Ayesha Siddiqua</h4>
+                            <p>Urban Planning Consultant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in delay-3">
+                    <div class="testimonial-text">
+                        "As a fleet manager, I appreciate how the ROAD LINK addresses both immediate safety concerns and long-term driver education. The behavioral feedback system has already improved our drivers' performance metrics by 28%."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KH</div>
+                        <div class="author-info">
+                            <h4>Kamal Hossain</h4>
+                            <p>Logistics Operations Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="fade-in">Ready to Transform Road Safety?</h2>
+            <p class="lead fade-in delay-1">Join governments, fleets, and safety organizations worldwide in adopting this life-saving technology. Contact us today to discuss implementation options for your community or organization.</p>
+            <a href="#contact" class="btn btn-primary btn-lg fade-in delay-2"><i class="fas fa-envelope"></i> Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="text-center lead mb-4">Have questions about implementation or partnership opportunities? Our team is ready to assist you.</p>
+            
+            <div class="product-container">
+                <div class="product-content">
+                    <h3 class="fade-in">Robo Superior</h3>
+                    <p class="fade-in delay-1">We welcome inquiries from safety organizations, government agencies, and potential distribution partners worldwide.</p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item fade-in delay-2">
+                            <div class="spec-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="spec-content">
+                                <h4>Founder & CEO</h4>
+                                <p>MD NADIM SHAHRIAR APURBO</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-3">
+                            <div class="spec-icon"><i class="fas fa-envelope-open-text"></i></div>
+                            <div class="spec-content">
+                                <h4>Email Address</h4>
+                                <p>nadimshahriar@robosuperior.com</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-4">
+                            <div class="spec-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="spec-content">
+                                <h4>Contact Number</h4>
+                                <p>+880 1716 909892</p>
+                            </div>
+                        </div>
+                        <div class="spec-item fade-in delay-5">
+                            <div class="spec-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="spec-content">
+                                <h4>Location</h4>
+                                <p>Rajshahi, Bangladesh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-image fade-in delay-3">
+                    <form class="contact-form">
+                        <div class="form-group fade-in delay-1">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group fade-in delay-2">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group fade-in delay-3">
+                            <input type="text" placeholder="Organization">
+                        </div>
+                        <div class="form-group fade-in delay-4">
+                            <textarea placeholder="How can we assist you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg fade-in delay-5"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <!-- <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Road Safety Logo"> -->
+                        <span>ROAD LINK</span>
+                    </div>
+                    <p>Pioneering intelligent safety solutions that protect lives and transform transportation ecosystems worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#problem">The Challenge</a></li>
+                        <li><a href="#solution">Our Technology</a></li>
+                        <li><a href="#product">Product Specs</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Technology</h3>
+                    <ul>
+                        <li><a href="#">Safety Features</a></li>
+                        <li><a href="#">Mobile Integration</a></li>
+                        <li><a href="#">System Architecture</a></li>
+                        <li><a href="#">Data Security</a></li>
+                        <li><a href="#">Ongoing Research</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@robosuperior.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+880 1571 337059</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangladesh</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ROAD LINK. All Rights Reserved. | Designed in Bangladesh</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Observe other elements with fade-in class
+        document.querySelectorAll('.fade-in, .slide-up').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
