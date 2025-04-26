@@ -34,7 +34,7 @@ const RightPortfolioInfo = () => {
             <h4>By <Link href={"https://linkedin.com/in/06nurahmed"}>Nur Ahmad</Link></h4>
             <div className="social_talks flex flex-center gap-1 mt-2">
                 <div className="st_icon" data-aos="fade-up">
-                    <Link href={"https:github.com/nurahmed123"} target="_blank"><FaGithub /></Link>
+                    <Link href={"https:/nurahmed123"} target="_blank"><FaGithub /></Link>
                 </div>
                 <div className="st_icon" data-aos="fade-up">
                     <Link href={"https://x.com/robo_superior"} target="_blank"><FaTwitter /></Link>

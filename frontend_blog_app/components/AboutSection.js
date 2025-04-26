@@ -14,8 +14,8 @@ const structuredData = {
     "sameAs": [
         "https://www.linkedin.com/company/robo-superior",
         "https://www.facebook.com/robosuperior",
-        "https://www.instagram.com/robosuperior",
-        "https://www.x.com/robosuperior"
+        "https://www.instagram.com/robo__superior/",
+        "https://x.com/robo_superior"
     ]
 }
 
@@ -107,7 +107,7 @@ const AboutSection = () => {
                                         </path>
                                     </svg>
                                 </Link>
-                                <Link className="text-gray-700 dark:text-gray-50 hover:text-orange-600" aria-label="Visit TrendyMinds Instagram" href="https://www.instagram.com/robosuperior"
+                                <Link className="text-gray-700 dark:text-gray-50 hover:text-orange-600" aria-label="Visit TrendyMinds Instagram" href="https://www.instagram.com/robo__superior/"
                                     target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="h-6">
                                         <path fill="currentColor"
@@ -115,7 +115,7 @@ const AboutSection = () => {
                                         </path>
                                     </svg>
                                 </Link>
-                                <Link className="text-gray-700 dark:text-gray-50 hover:text-orange-600" aria-label="Visit TrendyMinds Twitter" href="https://www.x.com/robosuperior"
+                                <Link className="text-gray-700 dark:text-gray-50 hover:text-orange-600" aria-label="Visit TrendyMinds Twitter" href="https://x.com/robo_superior"
                                     target="_blank">
                                     <svg className="h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path fill="currentColor"
