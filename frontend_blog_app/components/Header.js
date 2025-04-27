@@ -231,6 +231,22 @@ export default function Header() {
                                 </li>
                                 <li className="w-full">
                                     <Link
+                                        href='https://invoice.robosuperior.com/'
+                                        className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <rect x="4" y="3" width="16" height="18" rx="2" ry="2" stroke="#34B7F1" stroke-width="2" fill="none"/>
+  <line x1="8" y1="8" x2="16" y2="8" stroke="#34B7F1" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="8" y1="12" x2="16" y2="12" stroke="#34B7F1" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="8" y1="16" x2="12" y2="16" stroke="#34B7F1" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="17" cy="16" r="1.5" stroke="#34B7F1" stroke-width="1.5" fill="none"/>
+</svg>
+
+
+                                        &nbsp;RS Invoicer
+                                    </Link>
+                                </li>
+                                <li className="w-full">
+                                    <Link
                                         href='/apps/shorturl'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
@@ -371,6 +387,7 @@ export default function Header() {
                     <li><Link className={activeLink === 'https://code.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://code.robosuperior.com/">RS Coder</Link></li>
                     <li><Link className={activeLink === 'https://chat.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://chat.robosuperior.com/">RS Chat</Link></li>
                     <li><Link className={activeLink === 'https://meet.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://meet.robosuperior.com/">RS Meet</Link></li>
+                    <li><Link className={activeLink === 'https://invoice.robosuperior.com/' ? 'text-[#5485e0]' : ''} href="https://invoice.robosuperior.com/">RS Invoicer</Link></li>
                     <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Diary</Link></li>
                     <li><Link className={activeLink === '/apps/shorturl' ? 'text-[#5485e0]' : ''} href="/apps/shorturl">URL Shortener</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
