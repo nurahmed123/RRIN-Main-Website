@@ -21,13 +21,19 @@ const Advisor = () => {
             title: "Founder, Mechamind | Lecturer, Independent University, Bangladesh",
             image: "https://res.cloudinary.com/dnvmjyiml/image/upload/v1730203477/salman.jpg"
         },
+        {
+            testimonial: "Innovation begins with curiosity. I strive to explore, learn, and build solutions that create meaningful impact in the lives of others.",
+            name: <a href="https://www.salmanpromon.com/" target="_blank" rel="noopener noreferrer">MIZANUR RAHMAN</a>,
+            title: "BSc in EEE | RA, Islamic University of Technology",
+            image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/d2caab8b-e886-4adc-8d83-d7bea9d2ba06.jpeg"
+        },
     ];
 
     const mentor = [
         {
             testimonial: "Failure is the opportunity to begin again more intelligently.",
             name: "MEHEDI HASSAN",
-            title: "Former Vice President, DUET Robotics Club | BSc in Mechanical Engineering DUET, Bangladesh",
+            title: "BSc in Mechanical Engineering | Former Vice President, DUET Robotics Club",
             image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/869e809c-fe74-49e4-98a7-41063d82e114.png"
         },
         {
@@ -55,7 +61,7 @@ const Advisor = () => {
                     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">Our Advisors</h2>
                 </div>
                 <div data-aos="fade-up" className="flex justify-center">
-                    <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-1">
+                    <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                         {testimonials.map((testimonial, index) => (
                             <TestimonialCard key={index} {...testimonial} />
                         ))}
