@@ -23,7 +23,7 @@ const Advisor = () => {
         },
         {
             testimonial: "Innovation begins with curiosity. I strive to explore, learn, and build solutions that create meaningful impact in the lives of others.",
-            name: <a href="https://www.salmanpromon.com/" target="_blank" rel="noopener noreferrer">MIZANUR RAHMAN</a>,
+            name: <a target="_blank" rel="noopener noreferrer">MIZANUR RAHMAN</a>,
             title: "BSc in EEE | RA, Islamic University of Technology",
             image: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/d2caab8b-e886-4adc-8d83-d7bea9d2ba06.jpeg"
         },
