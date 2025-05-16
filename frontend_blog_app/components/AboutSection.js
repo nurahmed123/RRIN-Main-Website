@@ -49,12 +49,12 @@ const AboutSection = () => {
                                     <Link href={"/members"}><li className="mb-2 dark:text-gray-50">Member</li></Link>
                                     <Link href={"/contact"}><li className="mb-2 dark:text-gray-50">Contact</li></Link>
                                 </ul>
-                                {/* Adsterra Ad Script */}
+                                {/* Adsterra Ad Script
                                 <Script
                                     id="adsterra-script"
                                     strategy="lazyOnload"
                                     src="//pl25949179.effectiveratecpm.com/0d/8c/b4/0d8cb431300cd1925f1d61ca5d9eb3c1.js"
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>

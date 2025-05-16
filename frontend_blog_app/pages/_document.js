@@ -28,7 +28,7 @@ export default function Document() {
         /> */}
 
 
-        {/*Adsterra Social Ad */}
+        {/* Adsterra Social Ad
         <Script
           id="adsterra-script"
           strategy="lazyOnload"
@@ -36,12 +36,12 @@ export default function Document() {
         />
 
         {/* Adsterra Ad JSScript */}
-        <Script
+        {/* <Script
           id="adsterra-ad"
           strategy="lazyOnload"
           data-cfasync="false"
           src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
-        />
+        /> */} 
 
 
         {/* HillTopAdds */}

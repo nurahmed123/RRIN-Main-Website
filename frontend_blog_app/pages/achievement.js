@@ -32,13 +32,13 @@ export default function Blog({ blogs }) {
 
     return (
         <>
-            {/* Adsterra Ad JSScript */}
+            {/* Adsterra Ad JSScript
             <Script
                 id="adsterra-ad"
                 strategy="lazyOnload"
                 data-cfasync="false"
                 src="//pl25948868.effectiveratecpm.com/ce15f12e9d1b6592798b163f7a7b3f15/invoke.js"
-            />
+            /> */}
 
             <Head>
                 <title>Achievements | RoboSuperior</title>

@@ -210,7 +210,7 @@ export default function BlogPage({ blog }) {
                         <div className="rightslug_data">
                             <RightPortfolioInfo />
                             {/* adsterra native banner ad  */}
-                            <div id="container-ce15f12e9d1b6592798b163f7a7b3f15"></div>
+                            {/* <div id="container-ce15f12e9d1b6592798b163f7a7b3f15"></div> */}
                             <RightTopicSection />
                         </div>
                     </div>

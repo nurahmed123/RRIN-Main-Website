@@ -651,7 +651,7 @@ export default function userDiary() {
 
                 <div className="blogstable mt-6">
                     <div className="flex justify-center text-center">
-                        {/* Adsterra Banner Ad Script */}
+                        {/* Adsterra Banner Ad Script
                         <Script
                             strategy="afterInteractive" // Load after page is interactive
                             type="text/javascript"
@@ -670,7 +670,7 @@ export default function userDiary() {
                         <Script
                             strategy="afterInteractive"
                             src="//www.highperformanceformat.com/e3e85e80cf459ac6e6ac495fb75a1982/invoke.js"
-                        />
+                        /> */}
                     </div>
                     <div className="flex flex-wrap gap-2 mb-4 items-center" data-aos="fade-left">
                         <h2 className="dark:text-gray-100 text-lg sm:w-full md:w-auto">Search {searchItem !== "$.1" ? "Note" : "Transaction"}:</h2>
