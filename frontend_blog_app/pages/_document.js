@@ -1,4 +1,4 @@
-import { HilltopPOPAdsScript, BannerScript } from "@/components/ads/HilltopAdsScript";
+// import { HilltopPOPAdsScript, BannerScript } from "@/components/ads/HilltopAdsScript";
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
@@ -45,8 +45,8 @@ export default function Document() {
 
 
         {/* HillTopAdds */}
-        <HilltopPOPAdsScript />
-        <BannerScript />
+        {/* <HilltopPOPAdsScript /> */}
+        {/* <BannerScript /> */}
 
       </body>
     </Html>

@@ -1,0 +1,19 @@
+{
+  "name": "rrin-main-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nurahmed123/RRIN-Main-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nurahmed123/RRIN-Main-Website/issues"
+  },
+  "homepage": "https://github.com/nurahmed123/RRIN-Main-Website#readme",
+  "description": ""
+}
