@@ -14,12 +14,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "RS Invoicer - Professional Invoice Maker",
+  title: "Arionys Invoicer - Professional Invoice Maker",
   description:
-    "Easily create, manage, and send professional invoices with RS Invoicer by Arionys. Simple, fast, and powerful invoicing for businesses of all sizes.",
+    "Easily create, manage, and send professional invoices with Arionys Invoicer by Arionys. Simple, fast, and powerful invoicing for businesses of all sizes.",
   keywords: [
     "invoice maker",
-    "RS Invoicer",
+    "Arionys Invoicer",
     "Arionys",
     "create invoices",
     "send invoices",
@@ -29,35 +29,35 @@ export const metadata: Metadata = {
     "small business invoice",
     "easy invoice creator",
   ],
-  authors: [{ name: "Arionys", url: "https://robosuperior.com" }],
+  authors: [{ name: "Arionys", url: "https://arionys.com" }],
   creator: "Arionys",
   publisher: "Arionys",
   openGraph: {
-    title: "RS Invoicer - Professional Invoice Maker by Arionys",
+    title: "Arionys Invoicer - Professional Invoice Maker by Arionys",
     description:
-      "Easily create and send professional invoices with RS Invoicer by Arionys. Streamline your billing process today!",
-    url: "https://invoice.robosuperior.com", // Replace with your actual deployed app URL
-    siteName: "RS Invoicer",
+      "Easily create and send professional invoices with Arionys Invoicer by Arionys. Streamline your billing process today!",
+    url: "https://invoice.arionys.com", // Replace with your actual deployed app URL
+    siteName: "Arionys Invoicer",
     images: [
       {
         url: "https://your-app-url.com/og-image.png", // Add a good Open Graph image for sharing
         width: 1200,
         height: 630,
-        alt: "RS Invoicer - Invoicing Made Simple",
+        alt: "Arionys Invoicer - Invoicing Made Simple",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RS Invoicer - Create Professional Invoices Instantly",
+    title: "Arionys Invoicer - Create Professional Invoices Instantly",
     description:
-      "Create, customize, and send invoices effortlessly with RS Invoicer by Arionys.",
+      "Create, customize, and send invoices effortlessly with Arionys Invoicer by Arionys.",
     images: [
       "https://your-app-url.com/og-image.png", // Same or similar image for Twitter
     ],
   },
-  metadataBase: new URL("https://invoice.robosuperior.com"), // Your deployed URL
+  metadataBase: new URL("https://invoice.arionys.com"), // Your deployed URL
 };
 
 
