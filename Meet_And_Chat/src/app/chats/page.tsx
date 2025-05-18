@@ -13,7 +13,7 @@ const ChatPage = () => {
       <div className='hidden md:grid h-full max-w-56 text-center mx-auto place-content-center'>
         <FaSignalMessenger className='mx-auto text-primary-main' size={200} />
         <p className='text-sm mt-5 text-primary-main'>
-          Welcome to RoboSuperior messenger! Start a new chat or select an existing
+          Welcome to  messenger! Start a new chat or select an existing
           one to get started.
         </p>
       </div>

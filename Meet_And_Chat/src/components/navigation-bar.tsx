@@ -30,7 +30,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({ trigger }) => {
   const menuItems = useMemo(
     () => [
       { icon: MessageCircle, label: 'Chat', path: '/chats' },
-      { icon: Phone, label: 'Call', path: 'https://meet.robosuperior.com/' },
+      { icon: Phone, label: 'Call', path: 'https://meet.arionys.com/' },
     ],
     []
   );

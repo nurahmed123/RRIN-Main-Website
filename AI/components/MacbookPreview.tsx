@@ -14,7 +14,7 @@ export function MacbookPreview() {
             </span>
           }
           badge={
-            <Link href="https://www.facebook.com/robosuperior">
+            <Link href="https://www.facebook.com/Arionys">
               <Badge className="h-10 w-10 transform -rotate-12" />
             </Link>
           }

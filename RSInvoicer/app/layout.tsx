@@ -16,11 +16,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "RS Invoicer - Professional Invoice Maker",
   description:
-    "Easily create, manage, and send professional invoices with RS Invoicer by Robo Superior. Simple, fast, and powerful invoicing for businesses of all sizes.",
+    "Easily create, manage, and send professional invoices with RS Invoicer by Arionys. Simple, fast, and powerful invoicing for businesses of all sizes.",
   keywords: [
     "invoice maker",
     "RS Invoicer",
-    "Robo Superior",
+    "Arionys",
     "create invoices",
     "send invoices",
     "invoice generator",
@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     "small business invoice",
     "easy invoice creator",
   ],
-  authors: [{ name: "Robo Superior", url: "https://robosuperior.com" }],
-  creator: "Robo Superior",
-  publisher: "Robo Superior",
+  authors: [{ name: "Arionys", url: "https://robosuperior.com" }],
+  creator: "Arionys",
+  publisher: "Arionys",
   openGraph: {
-    title: "RS Invoicer - Professional Invoice Maker by Robo Superior",
+    title: "RS Invoicer - Professional Invoice Maker by Arionys",
     description:
-      "Easily create and send professional invoices with RS Invoicer by Robo Superior. Streamline your billing process today!",
+      "Easily create and send professional invoices with RS Invoicer by Arionys. Streamline your billing process today!",
     url: "https://invoice.robosuperior.com", // Replace with your actual deployed app URL
     siteName: "RS Invoicer",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "RS Invoicer - Create Professional Invoices Instantly",
     description:
-      "Create, customize, and send invoices effortlessly with RS Invoicer by Robo Superior.",
+      "Create, customize, and send invoices effortlessly with RS Invoicer by Arionys.",
     images: [
       "https://your-app-url.com/og-image.png", // Same or similar image for Twitter
     ],

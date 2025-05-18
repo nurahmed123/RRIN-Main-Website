@@ -1,8 +1,8 @@
 import RootLayout from './RootLayout'; // Import RootLayout from a separate file
 
 export const metadata = {
-  title: "RoboSuperior AI",
-  description: "RoboSuperior AI",
+  title: "Arionys AI",
+  description: "Arionys AI",
 };
 
 export default function Layout({

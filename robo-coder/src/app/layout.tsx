@@ -21,21 +21,21 @@ const geistMono = localFont({
 
 
 export const metadata: Metadata = {
-  title: "Rs-Coder - Online Code Execution & Sharing",
+  title: "Arionys Coder - Online Code Execution & Sharing",
   description:
-    "Rs-Coder by Robo Superior, made by Nur Ahmed, is an online coding platform where users can write, execute, and share code snippets instantly.",
+    "Arionys Coder by Arionys, made by Nur Ahmed, is an online coding platform where users can write, execute, and share code snippets instantly.",
   openGraph: {
-    title: "Rs-Coder - Online Code Execution & Sharing",
+    title: "Arionys Coder - Online Code Execution & Sharing",
     description:
-      "Run, share, and collaborate on code snippets instantly with Rs-Coder.",
-    url: "code.robosuperior.com",
-    siteName: "Rs-Coder",
+      "Run, share, and collaborate on code snippets instantly with Arionys Coder.",
+    url: "code.arionys.com",
+    siteName: "Arionys Coder",
     images: [
       {
         url: "https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png", // Replace with a real image URL
         width: 1200,
         height: 630,
-        alt: "Rs-Coder Preview",
+        alt: "Arionys Coder Preview",
       },
     ],
     type: "website",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@your_twitter_handle", // Replace with your Twitter handle
-    title: "Rs-Coder - Online Code Execution & Sharing",
+    title: "Arionys Coder - Online Code Execution & Sharing",
     description:
-      "Run, share, and collaborate on code snippets instantly with Rs-Coder.",
+      "Run, share, and collaborate on code snippets instantly with Arionys Coder.",
     images: ["/https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/37b0a981-7d1e-4c79-ae16-47d31e4be6fa.png"], // Replace with an actual image
   },
 };

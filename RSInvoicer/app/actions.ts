@@ -69,7 +69,7 @@ export async function createInvoice(prevState: any, formData: FormData) {
 
   const sender = {
     email: `${process.env.EMAIL_FROM}`,
-    name: "Robo Superior",
+    name: "Arionys",
   };
 
   emailClient.send({
@@ -136,7 +136,7 @@ export async function editInvoice(prevState: any, formData: FormData) {
 
   const sender = {
     email: `${process.env.EMAIL_FROM}`,
-    name: "Robo Superior",
+    name: "Arionys",
   };
 
   emailClient.send({

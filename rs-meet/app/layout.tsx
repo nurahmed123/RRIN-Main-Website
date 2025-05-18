@@ -12,11 +12,11 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'RS Meet | Video Conferencing & Online Meetings',
+  title: 'Arionys   | Video Conferencing & Online Meetings',
   description:
-    'RS Meet by Robo Superior is a next-gen video conferencing platform. Host meetings, schedule calls, and collaborate seamlessly.',
+    'Arionys   by Robo Superior is a next-gen video conferencing platform. Host meetings, schedule calls, and collaborate seamlessly.',
   keywords: [
-    'RS Meet',
+    'Arionys  ',
     'Robo Superior Meet',
     'Video conferencing',
     'Online meetings',
@@ -25,22 +25,22 @@ export const metadata: Metadata = {
     'Schedule meetings',
     'Secure video chat',
   ],
-  authors: [{ name: 'Robo Superior', url: 'https://robosuperior.com' }],
+  authors: [{ name: 'Robo Superior', url: 'https://arionys .com' }],
   icons: {
     icon: '/icons/logo.svg',
   },
   openGraph: {
-    title: 'RS Meet | Secure Video Meetings',
+    title: 'Arionys   | Secure Video Meetings',
     description:
-      'Experience high-quality, secure, and easy-to-use video meetings with RS Meet (Robo Superior Meet). Start an instant meeting or schedule one today!',
-    url: 'https://meet.robosuperior.com',
-    siteName: 'RS Meet',
+      'Experience high-quality, secure, and easy-to-use video meetings with Arionys   (Robo Superior Meet). Start an instant meeting or schedule one today!',
+    url: 'https://meet.arionys .com',
+    siteName: 'Arionys  ',
     images: [
       {
         url: 'https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/8b5672bd-81f3-495e-89a5-b064858a5928.png',
         width: 1200,
         height: 630,
-        alt: 'RS Meet - Video Conferencing',
+        alt: 'Arionys   - Video Conferencing',
       },
     ],
     type: 'website',
@@ -126,11 +126,11 @@ export default function RootLayout({
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
-                name: 'RS Meet',
-                url: 'https://meet.robosuperior.com',
+                name: 'Arionys  ',
+                url: 'https://meet.arionys .com',
                 potentialAction: {
                   '@type': 'SearchAction',
-                  target: 'https://meet.robosuperior.com',
+                  target: 'https://meet.arionys .com',
                   'query-input': 'required name=search_term_string',
                 },
               }),

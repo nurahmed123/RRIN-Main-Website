@@ -75,7 +75,7 @@ export default function Letter() {
             </div>
             <div className="flex items-center gap-2">
               <div>
-                <Image src={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/42656a2b-16c3-43ad-933a-fc52e31bff45.png"} alt="RS AI" width={60} height={60} />
+                <Image src={"https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/42656a2b-16c3-43ad-933a-fc52e31bff45.png"} alt="Arionys AI" width={60} height={60} />
               </div>
               <div className="lg:ml-4">
                 <div className="text-xl font-semibold text-white lg:text-2xl">

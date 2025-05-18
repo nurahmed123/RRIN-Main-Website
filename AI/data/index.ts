@@ -1,6 +1,6 @@
 export const navItems = [
 
-  { name: "RoboSuperior AI ||", link: "/ai/chat" },
+  { name: "Arionys AI ||", link: "/ai/chat" },
 ];
 
 export const gridItems = [
@@ -17,7 +17,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "RoboSuperior AI",
+    title: "Arionys AI",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",

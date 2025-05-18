@@ -23,7 +23,7 @@ const Calls = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('https://meet.robosuperior.com/');
+    router.replace('https://meet.arionys.com/');
   }, [router]);
 
   return null; // Prevents rendering anything before redirect

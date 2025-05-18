@@ -25,7 +25,7 @@ const Footer = () => {
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Affordable Nutrition, One Plate at a Time.
         </p>
-        <a href="mailto:contact.robosuperior@gmail.com">
+        <a href="mailto:info.arionys@gmail.com">
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
@@ -36,7 +36,7 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row justify-between items-center mt-16">
         <p className="md:text-base text-sm font-light">
-          Copyright &copy; 2024 RS AI
+          Copyright &copy; 2024 Arionys AI
         </p>
 
         <div className="flex items-center gap-6 md:gap-3">

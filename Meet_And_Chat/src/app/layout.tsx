@@ -10,8 +10,8 @@ import ConvexClientProvider from '@/providers/convex-client-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'RS Chat',
-  description: 'Created By Robo Superior',
+  title: 'Arionys Chat',
+  description: 'Created By Arionys',
 };
 
 export default function RootLayout({

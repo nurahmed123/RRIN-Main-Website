@@ -29,7 +29,7 @@ export async function POST(
 
     const sender = {
       email: `${process.env.EMAIL_FROM}`,
-      name: "Robo Superior",
+      name: "Arionys",
     };
 
     emailClient.send({
@@ -38,7 +38,7 @@ export async function POST(
       template_uuid: "23d1ff7e-c917-4efd-a4eb-6cbaf139b5f2",
       template_variables: {
         first_name: invoiceData.clientName,
-        company_info_name: "Robo Superior",
+        company_info_name: "Arionys",
         company_info_address: "Rajshahi",
         company_info_city: "Rajshahi",
         company_info_zip_code: "6000",
