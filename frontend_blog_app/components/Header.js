@@ -171,7 +171,7 @@ export default function Header() {
 
 
 
-                                        &nbsp;Aerions AI
+                                        &nbsp;Arionys AI
                                     </Link>
                                 </li>
                                 <li className="w-full">
@@ -194,12 +194,12 @@ export default function Header() {
                                             <line x1="14" y1="4" x2="10" y2="20"></line>
                                         </svg>
 
-                                        &nbsp;Aerions Coder
+                                        &nbsp;Arionys Coder
                                     </Link>
                                 </li>
                                 <li className="w-full">
                                     <Link
-                                        href='https://chat.aerions.com/'
+                                        href='https://chat.Arionys.com/'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
                                             <rect x="1" y="1" width="18" height="14" rx="3" ry="3" fill="#e0e0e0" stroke="#c0c0c0" stroke-width="0.5" />
@@ -209,12 +209,12 @@ export default function Header() {
                                             <text x="3" y="9" font-family="Arial" font-size="3" fill="#333333"></text>
                                         </svg>
 
-                                        &nbsp;Aerions Chat
+                                        &nbsp;Arionys Chat
                                     </Link>
                                 </li>
                                 <li className="w-full">
                                     <Link
-                                        href='https://meet.aerions.com/'
+                                        href='https://meet.Arionys.com/'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 
@@ -226,12 +226,12 @@ export default function Header() {
                                             <line x1="2" y1="17" x2="18" y2="17" stroke="#34B7F1" stroke-width="1" stroke-linecap="round" />
                                         </svg>
 
-                                        &nbsp;Aerions Meet
+                                        &nbsp;Arionys Meet
                                     </Link>
                                 </li>
                                 <li className="w-full">
                                     <Link
-                                        href='https://invoice.aerions.com/'
+                                        href='https://invoice.Arionys.com/'
                                         className='hover:text-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex items-center'>
                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
   <rect x="4" y="3" width="16" height="18" rx="2" ry="2" stroke="#34B7F1" stroke-width="2" fill="none"/>
@@ -242,7 +242,7 @@ export default function Header() {
 </svg>
 
 
-                                        &nbsp;Aerions&nbsp;Invoicer
+                                        &nbsp;Arionys&nbsp;Invoicer
                                     </Link>
                                 </li>
                                 <li className="w-full">
@@ -262,7 +262,7 @@ export default function Header() {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
                                             <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 4h10v2H7V4zm10 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V8h10v2z" />
                                         </svg>
-                                        &nbsp;Aerions Diary
+                                        &nbsp;Arionys Diary
                                     </Link>
                                 </li>
                             </ul>
