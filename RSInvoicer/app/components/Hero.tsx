@@ -18,7 +18,7 @@ export function Hero() {
         </h1>
 
         <p className="max-w-xl mx-auto mt-4 lg:text-lg text-muted-foreground">
-          Creating Invoices can be a pain! We at Arionys Invoicerr make it super
+          Creating Invoices can be a pain! We at Arionys Invoicer make it super
           easy for you to get paid in time!
         </p>
 
