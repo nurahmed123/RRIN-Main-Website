@@ -11,7 +11,7 @@ const Additionalinfo = () => {
                     {/* Text */}
                     <div data-aos="zoom-in-right" className="lg:pr-8">
                         <div className="lg:max-w-lg">
-                            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">We are Arionys</p>
+                            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">We are Robo Superior</p>
                             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                                 All about Software and Technology.
                             </p>
@@ -31,7 +31,7 @@ const Additionalinfo = () => {
                                         Innovative Robotics Solutions:
                                     </dt>
                                     <dd className="inline dark:text-gray-400">
-                                        <br></br>Arionys specializes in cutting-edge robotics development, providing advanced solutions for automation, AI integration, and intelligent systems.
+                                        <br></br>Robo Superior specializes in cutting-edge robotics development, providing advanced solutions for automation, AI integration, and intelligent systems.
                                     </dd>
                                 </div>
 
@@ -72,7 +72,7 @@ const Additionalinfo = () => {
                                         Research and Development:
                                     </dt>
                                     <dd className="inline dark:text-gray-400">
-                                         <br></br>Arionys prioritizes Research, continuously exploring new technologies and trends to stay at the forefront of the Robotics and Tech industry.
+                                         <br></br>Robo Superior prioritizes Research, continuously exploring new technologies and trends to stay at the forefront of the Robotics and Tech industry.
                                     </dd>
                                 </div>
                             </dl>
@@ -134,7 +134,7 @@ const Additionalinfo = () => {
                             Robotics Team
                         </h2>
                         <p className="mt-4 text-lg dark:text-gray-300 text-gray-800">
-                            The Robotics Team of Arionys is a group of skilled engineers and innovators passionate about designing and developing advanced robotic systems. We focus on creating intelligent, high-performance robots that push the limits of Technology and Automation.
+                            The Robotics Team of Robo Superior is a group of skilled engineers and innovators passionate about designing and developing advanced robotic systems. We focus on creating intelligent, high-performance robots that push the limits of Technology and Automation.
                         </p>
                         <div className="mt-6">
                             <a
