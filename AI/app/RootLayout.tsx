@@ -20,7 +20,7 @@ export default function RootLayout({
         <ClerkProvider>
             <html lang="en" suppressHydrationWarning>
                 <head>
-                    <link rel="icon" href="https://files.edgestore.dev/iz2sept3369gmc0f/publicFiles/_public/42656a2b-16c3-43ad-933a-fc52e31bff45.png" sizes="any" />
+                    <link rel="icon" href="https://files.edgestore.dev/58ak0uq249vmf7cf/publicFiles/_public/8bfea0a4-8fa0-4623-8fed-eb262f79ab6d.ico" sizes="any" />
                     <UserButton showName />
                 </head>
                 <body className={inter.className}>
