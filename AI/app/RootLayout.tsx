@@ -31,10 +31,9 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        {/* <NextNProgress color="#FF0000" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} /> */}
                         {children}
+                        <Footer />
                     </ThemeProvider>
-                    {/* <Footer /> */}
                 </body>
             </html>
         </ClerkProvider>

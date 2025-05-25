@@ -15,74 +15,55 @@ export default function Letter() {
           <article className="space-y-4 p-4 text-base text-white/80 lg:space-y-5 lg:p-5 lg:px-24 lg:py-14 lg:text-2xl">
             <p>Hello Everyone 👋,</p>
             <p>
-              Welcome to <strong>BiteBD</strong> – a project born out of a desire
-              to solve one of the biggest challenges in developing countries like
-              <strong> Bangladesh</strong>: <strong>protein deficiency</strong>.
+              Welcome to <strong>Arionys</strong> – a pioneering robotics and technology organization based in Bangladesh, dedicated to advancing the fields of robotics, mechatronics, and electrical project management.
             </p>
             <p>
-              Many people can’t afford expensive protein sources like meat and
-              fish, which are crucial for their health. BiteBD steps in with
-              smart solutions to provide <strong>affordable vegetarian alternatives</strong>
-              that are rich in protein and nutrition.
+              Our mission is to foster innovation and excellence in technology education through hands-on learning, community engagement, and real-world application.
             </p>
             <p>
-              Our mission is simple but powerful: <strong>to fight malnutrition</strong>
-              and support communities with budget-friendly, healthy food options.
-              This initiative aligns with <strong>UN SDG Goal 2: Zero Hunger</strong>.
-            </p>
-            <p>
-              Here’s what BiteBD does:
+              Here's what Arionys offers:
             </p>
             <ul className="list-disc pl-6">
               <li>
-                Recommends <strong>protein-rich vegetarian foods</strong> that are
-                affordable and accessible.
+                <strong>Educational Programs</strong> designed for various skill levels, including practical workshops and immersive theoretical courses.
               </li>
               <li>
-                Provides <strong>easy-to-follow recipes</strong> to help families
-                prepare nutritious meals with locally available ingredients.
+                <strong>Innovative Projects</strong> in robotics, IoT, and machine learning, enhancing industry efficiency and pushing the boundaries of technology.
               </li>
               <li>
-                Offers <strong>personalized meal plans</strong> based on age, weight,
-                and budget to ensure everyone gets the nutrition they need.
+                <strong>Research and Development</strong> to continuously explore new technologies and trends.
               </li>
               <li>
-                Supports <strong>health education</strong> through an AI-powered chatbot
-                assistant that answers questions and guides users.
+                <strong>AI-powered solutions</strong> to help solve complex problems and enhance technological capabilities.
               </li>
             </ul>
             <p>
-              By combining <strong>technology</strong>, <strong>data</strong>, and <strong>compassion</strong>,
-              BiteBD empowers families to make healthier food choices, improving
-              their lives and overall well-being.
+              Our notable achievements include qualifying for the <strong>NASA CONRAD CHALLENGE 2024</strong> (5th place) and competing in the global <strong>Moonshot Pirates Challenge</strong>.
             </p>
             <p>
-              This is more than just a project. It’s a movement to make sure
-              everyone, no matter where they live or what they earn, can access
-              the nutrition they deserve.
+              We also offer services including <strong>Web and App Development</strong>, <strong>Project Development</strong>, <strong>Research and Writing Services</strong>, and <strong>Sticker Printing</strong>.
             </p>
             <p>
-              We are proud to contribute to a healthier, hunger-free future.
+              Arionys is more than just an organization; it's a community dedicated to pushing the boundaries of robotics and technology.
             </p>
-            <p>Let’s build a better world, one meal at a time 🌍.</p>
             <div className="relative flex flex-col items-center gap-2">
               <div className="self-start">
-                Wholeness & Balanced Vibrations 🙏
+                Innovation & Excellence 🚀
               </div>
             </div>
             <div className="mb-10 font-handwriting text-4xl lg:text-6xl">
-              <div className="text-white">BiteBD Team</div>
+              <div className="text-white">Arionys Team</div>
             </div>
             <div className="flex items-center gap-2">
               <div>
-                <Image src={"https://files.edgestore.dev/58ak0uq249vmf7cf/publicFiles/_public/8bfea0a4-8fa0-4623-8fed-eb262f79ab6d.ico"} alt="Arionys AI" width={60} height={60} />
+                <Image src={"/logo.png"} alt="Arionys" width={60} height={60} />
               </div>
               <div className="lg:ml-4">
                 <div className="text-xl font-semibold text-white lg:text-2xl">
-                  BiteBD
+                  Arionys
                 </div>
                 <div className="text-[12px] lg:text-lg">
-                  Affordable Nutrition for a Healthier Tomorrow
+                  Pioneering Robotics and Technological Innovation
                 </div>
               </div>
             </div>

@@ -148,3 +148,9 @@ td {
 .cl-internal-1dauvpw{
   display: none;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

@@ -53,7 +53,7 @@ const Hero = () => {
            *  change md:text-6xl, add more responsive code
            */}
           <TextGenerateEffect
-            words="Transforming Nutrition for a Hunger-Free Future Affordable Protein Alternatives for All"
+            words=""
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 

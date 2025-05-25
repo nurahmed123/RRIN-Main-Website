@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req) {
     try {
-        const { prompt } = await req.json(); // Extract the prompt from the request body
+        const { prompt, context } = await req.json(); // Extract both prompt and context
 
         // Make a POST request to the Hack Club API
         const response = await fetch('https://ai.hackclub.com/chat/completions', {
@@ -12,6 +12,10 @@ export async function POST(req) {
             },
             body: JSON.stringify({
                 messages: [
+                    {
+                        role: 'system',
+                        content: context || "You are a helpful AI assistant." // Use context as system message
+                    },
                     {
                         role: 'user',
                         content: prompt, // Pass the prompt as user content

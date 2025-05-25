@@ -19,12 +19,12 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw] text-center">
-          <span className="text-purple">Join Us</span> in building a healthier world!
+        {/* <h1 className="heading lg:max-w-[45vw] text-center">
+          <span className="text-purple">Contact</span> Our Team
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Affordable Nutrition, One Plate at a Time.
-        </p>
+          We're here to help with all your AI assistant needs
+        </p> */}
         <a href="mailto:info.arionys@gmail.com">
           <MagicButton
             title="Let's get in touch"

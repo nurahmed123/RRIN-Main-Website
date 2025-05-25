@@ -53,7 +53,7 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["Affordable Food Alternatives", "Personalized Meal Planner",];
+  const leftLists = ["Personalized Meal Planner",];
   const rightLists = ["Budget-Friendly Recipe Tutorials", "Chatbot Assistance",];
 
   const [copied, setCopied] = useState(false);

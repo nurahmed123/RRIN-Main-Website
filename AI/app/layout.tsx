@@ -1,8 +1,8 @@
-import RootLayout from './RootLayout'; // Import RootLayout from a separate file
+import RootLayout from './RootLayout';
 
 export const metadata = {
-  title: "Arionys AI",
-  description: "Arionys AI",
+  title: "Arionys AI - Your Intelligent Assistant",
+  description: "Experience the power of AI with Arionys AI - your intelligent assistant for chat, coding, content creation, and more.",
 };
 
 export default function Layout({

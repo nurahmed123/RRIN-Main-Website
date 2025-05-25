@@ -89,7 +89,7 @@ const Page = () => {
                   />
                 </Link>
                 <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200 text-center">
-                  Affordable Alternative Food
+        
                 </p>
                 {/* <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center">
                   You can search for affordable vegetarian alternatives to non-vegetarian protein sources. Suggestions are tailored to provide equivalent nutritional value at reduced costs.

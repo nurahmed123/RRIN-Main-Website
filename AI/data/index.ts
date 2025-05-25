@@ -1,6 +1,8 @@
 export const navItems = [
-
-  { name: "Arionys AI ||", link: "/ai/chat" },
+  { name: "Home", link: "/" },
+  { name: "AI Chat", link: "/ai/chat" },
+  { name: "Code Assistant", link: "/ai/code-assistant" },
+  { name: "Content Writer", link: "/ai/content-writer" },
 ];
 
 export const gridItems = [
@@ -204,16 +206,26 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
-    url: "https://github.com/nurahmed123",
+    url: "https://github.com/arionysai",
   },
   {
     id: 2,
     img: "/twit.svg",
-    url: "https://github.com/nurahmed123",
+    url: "https://twitter.com/arionysai",
   },
   {
     id: 3,
     img: "/link.svg",
-    url: "https://github.com/nurahmed123",
+    url: "https://linkedin.com/company/arionysai",
+  },
+  {
+    id: 4,
+    img: "/insta.svg",
+    url: "https://instagram.com/arionysai",
+  },
+  {
+    id: 5,
+    img: "/wha.svg",
+    url: "https://wa.me/message/arionysai",
   },
 ];
