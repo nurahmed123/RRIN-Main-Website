@@ -21,7 +21,7 @@ export default function Letter() {
               Our mission is to foster innovation and excellence in technology education through hands-on learning, community engagement, and real-world application.
             </p>
             <p>
-              Here's what Arionys offers:
+              Here&apos;s what Arionys offers:
             </p>
             <ul className="list-disc pl-6">
               <li>
@@ -44,7 +44,7 @@ export default function Letter() {
               We also offer services including <strong>Web and App Development</strong>, <strong>Project Development</strong>, <strong>Research and Writing Services</strong>, and <strong>Sticker Printing</strong>.
             </p>
             <p>
-              Arionys is more than just an organization; it's a community dedicated to pushing the boundaries of robotics and technology.
+              Arionys is more than just an organization; it&apos;s a community dedicated to pushing the boundaries of robotics and technology.
             </p>
             <div className="relative flex flex-col items-center gap-2">
               <div className="self-start">
