@@ -126,9 +126,29 @@ export const FloatingNav = ({
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: "-100%", opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="fixed top-0 left-0 bottom-0 w-3/4 max-w-xs bg-[rgba(10,10,20,0.95)] backdrop-blur-lg border-r border-white/10 shadow-xl z-[6000] sm:hidden"
+                className="fixed top-0 left-0 bottom-0 w-3/4 max-w-xs bg-gray-900 border-r border-white/10 shadow-xl z-[6000] sm:hidden"
               >
-                <div className="flex flex-col p-4 space-y-4">
+                <div className="flex justify-between items-center p-4 border-b border-white/10 bg-gray-800">
+                    <h2 className="text-white font-medium">Menu</h2>
+                    <button
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-white"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div className="flex flex-col p-4 space-y-4 bg-gray-900">
                   {navItems.map((navItem, idx) => (
                     <Link
                       key={`mobile-link=${idx}`}
