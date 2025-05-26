@@ -19,6 +19,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.7.1",
     "@types/three": "^0.163.0",
+    "caniuse-lite": "^1.0.30001718",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cohere-ai": "^7.15.0",

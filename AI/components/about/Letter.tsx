@@ -15,7 +15,7 @@ export default function Letter() {
           <article className="space-y-4 p-4 text-base text-white/80 lg:space-y-5 lg:p-5 lg:px-24 lg:py-14 lg:text-2xl">
             <p>Hello Everyone 👋,</p>
             <p>
-              Welcome to <strong>Arionys</strong> – a pioneering IT and technology company based in Bangladesh, dedicated to advancing the fields of IT, mechatronics, and electrical project management.
+              Welcome to <strong>Arionys</strong> – a pioneering robotics and technology organization based in Bangladesh, dedicated to advancing the fields of robotics, mechatronics, and electrical project management.
             </p>
             <p>
               Our mission is to foster innovation and excellence in technology education through hands-on learning, community engagement, and real-world application.
@@ -28,7 +28,7 @@ export default function Letter() {
                 <strong>Educational Programs</strong> designed for various skill levels, including practical workshops and immersive theoretical courses.
               </li>
               <li>
-                <strong>Innovative Projects</strong> in IT, IoT, and machine learning, enhancing industry efficiency and pushing the boundaries of technology.
+                <strong>Innovative Projects</strong> in robotics, IoT, and machine learning, enhancing industry efficiency and pushing the boundaries of technology.
               </li>
               <li>
                 <strong>Research and Development</strong> to continuously explore new technologies and trends.
@@ -44,7 +44,7 @@ export default function Letter() {
               We also offer services including <strong>Web and App Development</strong>, <strong>Project Development</strong>, <strong>Research and Writing Services</strong>, and <strong>Sticker Printing</strong>.
             </p>
             <p>
-              Arionys is more than just an company; it's a community dedicated to pushing the boundaries of IT and technology.
+              Arionys is more than just an organization; it's a community dedicated to pushing the boundaries of robotics and technology.
             </p>
             <div className="relative flex flex-col items-center gap-2">
               <div className="self-start">
@@ -63,7 +63,7 @@ export default function Letter() {
                   Arionys
                 </div>
                 <div className="text-[12px] lg:text-lg">
-                  Pioneering IT and Technological Innovation
+                  Pioneering Robotics and Technological Innovation
                 </div>
               </div>
             </div>

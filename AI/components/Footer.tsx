@@ -36,7 +36,7 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row justify-between items-center mt-16">
         <p className="md:text-base text-sm font-light">
-          <br></br>Copyright &copy; 2024 Arionys AI
+          Copyright &copy; 2024 Arionys AI
         </p>
 
         <div className="flex items-center gap-6 md:gap-3">

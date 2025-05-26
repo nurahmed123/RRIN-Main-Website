@@ -57,7 +57,7 @@ const HomePage = () => {
 
           <Link href="/signin" className="text-bold">
             <MagicButton
-              title="Sign In"
+              title="Get Started"
               icon={<FaSignInAlt />}
               position="right"
             />

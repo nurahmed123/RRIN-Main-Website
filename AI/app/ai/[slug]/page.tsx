@@ -163,46 +163,50 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                                         : "bg-gray-800 text-white max-w-[90%] sm:max-w-[80%]"}`}
                                 >
                                     <div className={`${message.role === "user" ? "relative z-10 w-full" : ""}`}>
-                                        <ReactMarkdown
-                                            remarkPlugins={[remarkGfm]}
-                                            rehypePlugins={[rehypeSanitize]}
-                                            components={{
-                                                a: ({ href, children }) => (
-                                                    <a
-                                                        href={href}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-blue-400 underline"
-                                                    >
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        rehypePlugins={[rehypeSanitize]}
+                                        components={{
+                                            a: ({ href, children }) => (
+                                                <a
+                                                    href={href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-400 underline"
+                                                >
+                                                    {children}
+                                                </a>
+                                            ),
+                                            code({ node, inline, className, children, ...props }: any) { // Changed this line to use 'any' for simplicity, or you can define a more specific type
+                                                const match = /language-(\w+)/.exec(className || '');
+                                                return !inline && match ? (
+                                                    <div className="flex flex-col gap-2">
+                                                        <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto">
+                                                            <code className={className} {...props}>
+                                                                {children}
+                                                            </code>
+                                                        </pre>
+                                                        <button
+                                                            onClick={() => copyToClipboard(String(children).replace(/\n$/, ''))}
+                                                            className="self-end px-3 py-1 text-xs rounded bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                                                                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6zm0-2h8a4 4 0 014 4v11a4 4 0 01-4 4H6a4 4 0 01-4-4V5a4 4 0 014-4z" />
+                                                            </svg>
+                                                            Copy code
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <code className={`bg-gray-900 px-1 py-0.5 rounded ${className}`} {...props}>
                                                         {children}
-                                                    </a>
-                                                ),
-                                                code: ({ node, inline, className, children, ...props }) => {
-                                                    const match = /language-(\w+)/.exec(className || '');
-                                                    return !inline ? (
-                                                        <div className="flex flex-col gap-2">
-                                                            <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto">
-                                                                <code className={className}>{children}</code>
-                                                            </pre>
-                                                            <button
-                                                                onClick={() => copyToClipboard(children as string)}
-                                                                className="self-end px-3 py-1 text-xs rounded bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1"
-                                                            >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                                                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6zm0-2h8a4 4 0 014 4v11a4 4 0 01-4 4H6a4 4 0 01-4-4V5a4 4 0 014-4z" />
-                                                                </svg>
-                                                                Copy code
-                                                            </button>
-                                                        </div>
-                                                    ) : (
-                                                        <code className="bg-gray-900 px-1 py-0.5 rounded">{children}</code>
-                                                    );
-                                                },
-                                            }}
-                                        >
-                                            {message.content}
-                                        </ReactMarkdown>
+                                                    </code>
+                                                );
+                                            },
+                                        }}
+                                    >
+                                        {message.content}
+                                    </ReactMarkdown>
                                     </div>
                                     {message.role === "user" && (
                                         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-purple-800/10 rounded-2xl blur-xl -z-10"></div>
