@@ -32,17 +32,17 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
             router.push("/signin");
             return;
         }
-        
+
         if (!Object.keys(SLUG_PROMPTS).includes(slug)) {
             router.push("/404");
             return;
         }
-        
+
         // Load chat history from localStorage if available
         if (userId) {
             const chatHistoryKey = `chat_history_${userId}_${slug}`;
             const savedMessages = localStorage.getItem(chatHistoryKey);
-            
+
             if (savedMessages) {
                 try {
                     const parsedMessages = JSON.parse(savedMessages);
@@ -132,37 +132,40 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                     Arionys {SLUG_TITLES[slug as keyof typeof SLUG_TITLES] || slug.replace("-", " ")}
                 </h1>
                 {messages.length > 0 && (
-                    <button 
+                    <button
                         onClick={clearChatHistory}
-                        className="px-3 py-1 text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors hidden sm:block"
+                        className="px-3 py-1 text-sm text-red-500 hover:text-red-600 transition-colors border border-red-500/20 hover:border-red-500/40 rounded-lg bg-red-500/5 hover:bg-red-500/10"
                     >
                         Clear History
                     </button>
                 )}
             </div>
-            
+
             <div className="chat-box border border-gray-700 rounded-lg h-[60vh] sm:h-[65vh] md:h-[70vh] p-4 overflow-y-auto bg-gray-900/80 backdrop-blur-sm">
                 {messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-gray-400">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                            <path d="M18 14h-8"></path>
+                            <path d="M18 18h-8"></path>
+                            <path d="M18 10h-8"></path>
                         </svg>
                         <p className="mt-4 text-center">Start a conversation with Arionys {SLUG_TITLES[slug as keyof typeof SLUG_TITLES] || "AI"}!</p>
                     </div>
                 )}
-                {messages.map((message, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className={`mb-4 ${message.role === "user" ? "flex justify-end w-full" : "text-left"}`}
-                        >
-                            <div className="flex flex-col gap-2">
-                                <div
-                                    className={`inline-block px-6 py-3 rounded-2xl shadow-lg ${message.role === "user"
-                                        ? "bg-gradient-to-r from-purple-600 to-purple-800 text-white border border-purple-400/30 backdrop-blur-sm min-w-[300px] w-fit max-w-[95%] hover:shadow-purple-500/20 transition-all duration-300 whitespace-pre-wrap break-words flex justify-center items-center text-center"
-                                        : "bg-gray-800 text-white max-w-[90%] sm:max-w-[80%]"}`}
-                                >
-                                    <div className={`${message.role === "user" ? "relative z-10 w-full" : ""}`}>
+                {messages.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`flex ${message.role === "user" ? "justify-end" : "justify-start"} mb-4`}
+                    >
+                        <div className="flex flex-col">
+                            <div
+                                className={`${message.role === "user"
+                                    ? "bg-purple-600 text-white"
+                                    : "bg-gray-800 text-white max-w-[90%] sm:max-w-[80%]"
+                                    } rounded-lg p-4 relative shadow-lg border border-purple-500/20`}
+                            >
+                                <div className={`${message.role === "user" ? "relative z-10 w-full" : ""}`}>
                                     <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
                                         rehypePlugins={[rehypeSanitize]}
@@ -177,18 +180,18 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                                                     {children}
                                                 </a>
                                             ),
-                                            code({ node, inline, className, children, ...props }: any) { // Changed this line to use 'any' for simplicity, or you can define a more specific type
+                                            code({ node, inline, className, children, ...props }: any) {
                                                 const match = /language-(\w+)/.exec(className || '');
                                                 return !inline && match ? (
                                                     <div className="flex flex-col gap-2">
-                                                        <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto">
+                                                        <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto border border-gray-700">
                                                             <code className={className} {...props}>
                                                                 {children}
                                                             </code>
                                                         </pre>
                                                         <button
                                                             onClick={() => copyToClipboard(String(children).replace(/\n$/, ''))}
-                                                            className="self-end px-3 py-1 text-xs rounded bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1"
+                                                            className="self-end px-3 py-1 text-xs rounded bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1 border border-gray-600"
                                                         >
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                                                                 <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
@@ -198,7 +201,7 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                                                         </button>
                                                     </div>
                                                 ) : (
-                                                    <code className={`bg-gray-900 px-1 py-0.5 rounded ${className}`} {...props}>
+                                                    <code className={`bg-gray-900 px-1 py-0.5 rounded ${className} border border-gray-700`} {...props}>
                                                         {children}
                                                     </code>
                                                 );
@@ -207,30 +210,29 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                                     >
                                         {message.content}
                                     </ReactMarkdown>
-                                    </div>
-                                    {message.role === "user" && (
-                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-purple-800/10 rounded-2xl blur-xl -z-10"></div>
-                                    )}
                                 </div>
-                                {message.role === "assistant" && (
-                                    <button
-                                        onClick={() => copyToClipboard(message.content)}
-                                        className="self-start px-3 py-1 text-xs rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                                            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6zm0-2h8a4 4 0 014 4v11a4 4 0 01-4 4H6a4 4 0 01-4-4V5a4 4 0 014-4z" />
-                                        </svg>
-                                        Copy message
-                                    </button>
+                                {message.role === "user" && (
+                                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-purple-800/10 rounded-2xl blur-xl -z-10"></div>
                                 )}
                             </div>
+                            {message.role === "assistant" && (
+                                <button
+                                    onClick={() => copyToClipboard(message.content)}
+                                    className="self-start mt-2 px-3 py-1 text-xs rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-1 border border-gray-600"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                                        <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6zm0-2h8a4 4 0 014 4v11a4 4 0 01-4 4H6a4 4 0 01-4-4V5a4 4 0 014-4z" />
+                                    </svg>
+                                    Copy message
+                                </button>
+                            )}
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
                 {isLoading && (
                     <div className="mb-2 text-left text-gray-500">
-                        <div className="inline-block px-4 py-2 rounded-lg bg-gray-800 text-white">
+                        <div className="inline-block px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700">
                             <div className="flex items-center">
                                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse mr-1"></div>
                                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-75 mr-1"></div>
@@ -240,49 +242,23 @@ const ChatPage = ({ params }: { params: { slug: string } }) => {
                     </div>
                 )}
             </div>
-            <div className="mt-4 flex flex-col sm:flex-row">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    className="flex-1 p-2 sm:p-3 border border-gray-700 rounded-lg bg-gray-900/80 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 mb-2 sm:mb-0"
-                    placeholder="Type your message..."
-                    disabled={isLoading}
-                />
 
-                <div className="flex justify-between w-full sm:w-auto sm:ml-2">
-                    {messages.length > 0 && (
-                        <button 
-                            onClick={clearChatHistory}
-                            className="px-3 py-2 text-xs bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors mr-2 sm:hidden"
-                        >
-                            Clear
-                        </button>
-                    )}
+            <div className="mt-4">
+                <div className="flex gap-2 p-4 bg-gray-900/80 rounded-lg border border-gray-700">
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        placeholder="Type your message..."
+                        className="flex-1 p-2 sm:p-3 border border-gray-700 rounded-lg bg-gray-900/80 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
                     <button
                         onClick={handleSendMessage}
-                        className="px-4 py-2 sm:px-6 sm:py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex-grow sm:flex-grow-0 border-2 border-purple-400 hover:border-purple-300 shadow-lg hover:shadow-purple-500/50 relative overflow-hidden group"
-                        disabled={isLoading}
+                        disabled={isLoading || !input.trim()}
+                        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-purple-500/20"
                     >
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                            Send
-                            <svg
-                                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                                />
-                            </svg>
-                        </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Send
                     </button>
                 </div>
             </div>

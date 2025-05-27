@@ -63,12 +63,12 @@ let numbersOfRings = [0];
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
     | {
-        size: number;
-        order: number;
-        color: (t: number) => string;
-        lat: number;
-        lng: number;
-      }[]
+      size: number;
+      order: number;
+      color: (t: number) => string;
+      lat: number;
+      lng: number;
+    }[]
     | null
   >(null);
 
@@ -207,7 +207,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
-      numbersOfRings = genRandomNumbers(
+      const numbersOfRings = genRandomNumbers(
         0,
         data.length,
         Math.floor((data.length * 4) / 5)
@@ -221,7 +221,22 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData]);
+  }, [globeData, data.length]);
+
+  useEffect(() => {
+    if (!globeRef.current || !globeData) return;
+    startAnimation();
+  }, [globeData, startAnimation]);
+
+  useEffect(() => {
+    if (!globeRef.current) return;
+    const { width, height } = size;
+    const aspect = width / height;
+    const camera = new PerspectiveCamera(50, aspect, 180, 1800);
+    camera.position.z = cameraZ;
+    gl.setSize(width, height);
+    gl.setPixelRatio(window.devicePixelRatio);
+  }, [gl, size.width, size.height]);
 
   return (
     <>
@@ -287,10 +302,10 @@ export function hexToRgb(hex: string) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+    }
     : null;
 }
 

@@ -1,8 +1,39 @@
-export const navItems = [
-  { name: "Home", link: "/" },
-  { name: "AI Chat", link: "/ai/chat" },
-  { name: "Code Assistant", link: "/ai/code-assistant" },
-  { name: "Content Writer", link: "/ai/content-writer" },
+import { FaHome, FaCode, FaPenFancy, FaUser } from "react-icons/fa";
+import { BsChatDots } from "react-icons/bs";
+import { IconType } from "react-icons";
+
+interface NavItem {
+    name: string;
+    link: string;
+    icon: IconType;
+}
+
+export const navItems: NavItem[] = [
+    {
+        name: "Home",
+        link: "/",
+        icon: FaHome,
+    },
+    {
+        name: "Chat",
+        link: "/ai/chat",
+        icon: BsChatDots,
+    },
+    {
+        name: "Code Assistant",
+        link: "/ai/code-assistant",
+        icon: FaCode,
+    },
+    {
+        name: "Content Writer",
+        link: "/ai/content-writer",
+        icon: FaPenFancy,
+    },
+    {
+        name: "Profile",
+        link: "/profile",
+        icon: FaUser,
+    },
 ];
 
 export const gridItems = [
