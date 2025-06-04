@@ -46,7 +46,7 @@ const AboutSection = () => {
                                     <Link href={"/project"}><li className="mb-2 dark:text-gray-50">Projects</li></Link>
                                     <Link href={"/achievement"}><li className="mb-2 dark:text-gray-50">Achievements</li></Link>
                                     <Link href={"/about"}><li className="mb-2 dark:text-gray-50 !text-[#5485e0]">About us</li></Link>
-                                    <Link href={"/members"}><li className="mb-2 dark:text-gray-50">Member</li></Link>
+                                    {/* <Link href={"/members"}><li className="mb-2 dark:text-gray-50">Member</li></Link> */}
                                     <Link href={"/contact"}><li className="mb-2 dark:text-gray-50">Contact</li></Link>
                                 </ul>
                                 {/* Adsterra Ad Script

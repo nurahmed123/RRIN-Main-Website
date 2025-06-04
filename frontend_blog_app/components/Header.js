@@ -287,14 +287,14 @@ export default function Header() {
                                     &nbsp;About&nbsp;Us
                                 </Link>
 
-                                <li className=''>
+                                {/* <li className=''>
                                     <Link href='/members' className='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 dark:text-gray-300 font-semibold text-[15px] flex'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="inline-block fill-current" viewBox="0 0 24 24">
                                             <path d="M12 12c2.485 0 4.5-1.635 4.5-3.5S14.485 5 12 5 7.5 6.635 7.5 8.5 9.515 12 12 12zM12 13.5c-2.5 0-7.5 1.25-7.5 3.75v3h15v-3c0-2.5-5-3.75-7.5-3.75z" />
                                         </svg>
                                         &nbsp;Members
                                     </Link>
-                                </li>
+                                </li> */}
                             </ul>
 
                         </li>
@@ -391,7 +391,7 @@ export default function Header() {
                     <li><Link className={activeLink === '/privatenote/diary' ? 'text-[#5485e0]' : ''} href="/privatenote/diary">Diary</Link></li>
                     <li><Link className={activeLink === '/apps/shorturl' ? 'text-[#5485e0]' : ''} href="/apps/shorturl">URL Shortener</Link></li>
                     <li><Link className={activeLink === '/about' ? 'text-[#5485e0]' : ''} href="/about">About us</Link></li>
-                    <li><Link className={activeLink === '/members' ? 'text-[#5485e0]' : ''} href="/members">Members</Link></li>
+                    {/* <li><Link className={activeLink === '/members' ? 'text-[#5485e0]' : ''} href="/members">Members</Link></li> */}
                     <li><Link className={activeLink === '/contact' ? 'text-[#5485e0]' : ''} href="/contact">Contact</Link></li>
 
                     {user.value ? <div className="relative mb-3">
